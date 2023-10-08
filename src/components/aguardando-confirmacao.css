@@ -1,0 +1,64 @@
+.container-dados {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    overflow: hidden;
+    border: 1px solid #DB4B90;
+    box-shadow: 0px 6px 15px #676767;
+
+
+
+}
+
+.informacoes-parceiro {
+    margin-left: 5%;
+}
+
+
+
+.tipo-status {
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+}
+
+.tipo-servico {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10%;
+
+}
+
+.data-hora {
+    margin-bottom: 16px;
+    font-size: 17px;
+}
+
+
+.nome-prestador {
+    font-size: 20px;
+
+
+}
+
+.nome-pet {
+    font-size: 17px;
+    margin-bottom: 10%;
+}
+
+
+.dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.informacoes-parceiro {
+    display: flex;
+    flex-direction: column;
+}
