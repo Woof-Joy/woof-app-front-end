@@ -1,0 +1,33 @@
+<!--import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Carousel } from "react-bootstrap";
+import img1 from "caminho/imagem1.jpg";
+import img2 from "caminho/imagem2.jpg";
+import img3 from "caminho/imagem3.jpg";
+
+const BootstrapCarousel = () => {
+  const imageStyle = {
+    width: "800px",
+    height: "800px",
+    objectFit: "cover",
+  };
+
+  return (
+    <div>
+      <h2>Bootstrap Carousel</h2>
+      <Carousel>
+        <Carousel.Item>
+          <img style={imageStyle} src={img1} alt="Imagem 1" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img style={imageStyle} src={img2} alt="Imagem 2" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img style={imageStyle} src={img3} alt="Imagem 3" />
+        </Carousel.Item>
+      </Carousel>
+    </div>
+  );
+};
+
+export default BootstrapCarousel;
