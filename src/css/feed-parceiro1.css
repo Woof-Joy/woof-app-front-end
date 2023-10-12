@@ -1,0 +1,14 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500&family=Nunito:wght@200;400;500;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 100%;
+    background-color:#FFDEDF;
+}
