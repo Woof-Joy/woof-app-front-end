@@ -1,6 +1,7 @@
 import React from "react";
 import ImgInicioPata from "../imgs/img-inicio-pata.png";
 
+
 function Index() {
     return (
         <>
