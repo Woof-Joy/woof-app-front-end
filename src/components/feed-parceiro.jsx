@@ -1,16 +1,11 @@
+import React from "react";
+import Menu from "./menu";
+import Carrossel from "./carrossel";
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feed | Woof Joy</title>
-    <link rel="stylesheet" type="text/css" href="/src/css/feed-parceiro1.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="../src/css/menu.css">
-  </head>
-  <body>
-    <header class="footer-feed">
+function FeedParceiro(){
+    return(
+        <>
+<header class="footer-feed">
             <img
               src="/src/imgs/feed-parceiro/img-mini-foto-lateral.png"alt="imagem pequena feed"/>
     </header>
@@ -53,14 +48,14 @@
                 </div>
                 <div class="servicos">
                     <div class="info-servicos">
-                        <img class="caixa-branca" src="/src/imgs/feed-parceiro/caixa-info-servico.png" alt="caixa info servicos">
+                        <img class="caixa-branca" src="/src/imgs/feed-parceiro/caixa-info-servico.png" alt="caixa info servicos"/>
                         <p class="txt-servico">Serviços</p>
                         <p class="txt-descricao-servico">Qtd. Serviços Prestados: 20</p>
                     </div>
                     <div class="tipo-servicos">
             
                         <div class="dog-walker">
-                            <img src="/src/imgs/feed-parceiro/icon-dog-walker.png" alt="icon dog walker">
+                            <img src="/src/imgs/feed-parceiro/icon-dog-walker.png" alt="icon dog walker"/>
                             <div class="dog-walker-txt">
                                 <div class="titulo">Dog Walker</div>
                                 <p>R$ 60,00 / Passeio</p>
@@ -69,7 +64,7 @@
                         </div>
 
                         <div class="dog-sitter">
-                            <img src="/src/imgs/feed-parceiro/icon-dog-sitter.png" alt="icon dog sitter">
+                            <img src="/src/imgs/feed-parceiro/icon-dog-sitter.png" alt="icon dog sitter"/>
                             <div class="dog-sitter-txt">
                             <div class="titulo">Dog Sitter</div>
                             <p>R$ 20,00 / Hora</p>
@@ -86,34 +81,34 @@
                 <div class="todas">
                     <div class="obs-1">
                         <div class="conteudo-obs-1">
-                            <img class="img-icon-1" src="/src/imgs/feed-parceiro/icon-two-pet.png" alt="icon-two-pet">
+                            <img class="img-icon-1" src="/src/imgs/feed-parceiro/icon-two-pet.png" alt="icon-two-pet"/>
                             <p>Recebe até 2 pets</p>
                         </div>
                         <div class="conteudo-obs-1">
-                            <img class="img-icon-1" src="/src/imgs/feed-parceiro/icon-pet-especial.png" alt="icon-pet-especial">
+                            <img class="img-icon-1" src="/src/imgs/feed-parceiro/icon-pet-especial.png" alt="icon-pet-especial"/>
                             <p>Cuida de pets especiais</p>
                         </div>
                     </div>
 
                     <div class="obs-2">
                         <div class="conteudo-obs-2">
-                            <img class="img-icon-2" src="/src/imgs/feed-parceiro/icon-dog-idoso.png" alt="dog-idoso">
+                            <img class="img-icon-2" src="/src/imgs/feed-parceiro/icon-dog-idoso.png" alt="dog-idoso"/>
                             <p>Aceita pets idosos</p>
                         </div>
                 
                         <div class="conteudo-obs-2">
-                            <img class="img-icon-2" src="/src/imgs/feed-parceiro/icon-dog-bravo.png" alt="icon-pet-bravo">
+                            <img class="img-icon-2" src="/src/imgs/feed-parceiro/icon-dog-bravo.png" alt="icon-pet-bravo"/>
                             <p>Aceita pet bravo</p>
                         </div>
                     </div>
 
                     <div class="obs-3">
                         <div class="conteudo-obs-3">
-                            <img class="img-icon-3" src="/src/imgs/feed-parceiro/icon-dog-grande.png" alt="dog-grande">
+                            <img class="img-icon-3" src="/src/imgs/feed-parceiro/icon-dog-grande.png" alt="dog-grande"/>
                             <p>Aceita pets de grande porte</p>
                         </div>
                         <div class="conteudo-obs-3">
-                            <img class="img-icon-3" src="/src/imgs/feed-parceiro/icon-dog-femea.png" alt="icon-pet-femea-cio">
+                            <img class="img-icon-3" src="/src/imgs/feed-parceiro/icon-dog-femea.png" alt="icon-pet-femea-cio"/>
                             <p>Não aceita fêmeas no cio</p>
                         </div>
                     </div>
@@ -126,33 +121,33 @@
                     <div class="todas">
                         <div class="acom-4">
                             <div class="conteudo-anc-4">
-                                <img class="img-icon-4" src="/src/imgs/feed-parceiro/icon-dog-mora-em-casa.png" alt="icon-dog-mora-em-casa">
+                                <img class="img-icon-4" src="/src/imgs/feed-parceiro/icon-dog-mora-em-casa.png" alt="icon-dog-mora-em-casa"/>
                                 <p>Mora em casa</p>
                             </div>
                             <div class="conteudo-anc-4">
-                                <img class="img-icon-4" src="/src/imgs/feed-parceiro/dog-area-externa.png" alt="dog-area-externa">
+                                <img class="img-icon-4" src="/src/imgs/feed-parceiro/dog-area-externa.png" alt="dog-area-externa"/>
                                 <p>Possui área externa</p>
                             </div>
                         </div>
 
                         <div class="acom-5">
                             <div class="conteudo-anc-5">
-                                <img class="img-icon-5" src="/src/imgs/feed-parceiro/icon-dog-tem-animal.png" alt="icon-dog-tem-animal">
+                                <img class="img-icon-5" src="/src/imgs/feed-parceiro/icon-dog-tem-animal.png" alt="icon-dog-tem-animal"/>
                                 <p>Tem animais</p>
                             </div>
                             <div class="conteudo-anc-5">
-                                <img class="img-icon-5" src="/src/imgs/feed-parceiro/icon-dog-sem-crianca.png" alt="icon-sem-crinca">
+                                <img class="img-icon-5" src="/src/imgs/feed-parceiro/icon-dog-sem-crianca.png" alt="icon-sem-crinca"/>
                                 <p>Não tem crianças</p>
                             </div>
                         </div>
 
                         <div class="acom-6">
                             <div class="conteudo-anc-6">
-                                <img class="img-icon-6" src="/src/imgs/feed-parceiro/icon-dog-sem-fuga.png" alt="icon-dog-sem-fuga">
+                                <img class="img-icon-6" src="/src/imgs/feed-parceiro/icon-dog-sem-fuga.png" alt="icon-dog-sem-fuga"/>
                                 <p>Sem rotas de fuga</p>
                             </div>
                             <div class="conteudo-anc-6">
-                                <img class="img-icon-6" src="/src/imgs/feed-parceiro/icon-dog-sobe-sofa.png" alt="icon-dog-sobe-sofa">
+                                <img class="img-icon-6" src="/src/imgs/feed-parceiro/icon-dog-sobe-sofa.png" alt="icon-dog-sobe-sofa"/>
                                 <p>Pode subir no sofá/cama</p>
                             </div>
                         </div>
@@ -164,6 +159,7 @@
             <footer class="footer">
             </footer>
         </div>
-  </body>
-</html>
-
+        </>
+    )
+}
+export default FeedParceiro();
