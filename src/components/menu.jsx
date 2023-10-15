@@ -1,5 +1,6 @@
 import React from "react";
-import "./css/menu.css";
+import logo from "../imgs/logo-branca-footer.png"
+import MenuStyle from "../css/menu.css"
 
 
 function Menu() {
@@ -12,7 +13,7 @@ function Menu() {
 
                             <div class="btn-lateral-menu">
                                 <i class="bi bi-list"></i>
-                                <img class="logo-img-navbar" src="./imgs/logo-branca-footer.png" alt="logo branca da Woof Joy"></img>
+                                <img class="logo-img-navbar" src={logo} alt="logo branca da Woof Joy"></img>
                             </div>
                             <div class="space-menor"></div>
                             <div class="todos-menu-item">

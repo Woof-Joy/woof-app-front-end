@@ -1,5 +1,5 @@
 import React from "react";
-import "./card-parceiro-feed.css";
+import "../card-parceiro-feed.css";
 
 
 function CardParceiro() {
