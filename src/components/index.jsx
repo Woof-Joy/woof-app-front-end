@@ -1,4 +1,5 @@
 import React from "react";
+import Botao from "./botao/botao"
 import ImgInicioPata from "../imgs/img-inicio-pata.png";
 
 function Index() {
@@ -31,7 +32,9 @@ function Index() {
                                 <p class="texto-menor">
                                     Descubra cuidadores apaixonados por <strong>pets</strong> como você ou <strong>seja um</strong>.
                                 </p>
-                                <button class="btn-confira" type="button">Confira</button>
+                                <Botao component="a">
+                                    Confira
+                                </Botao>
                             </div>
                             <img class="img-inicio-pata" src={ImgInicioPata} alt="imagem logo pata com pet"></img>
                         </div>
