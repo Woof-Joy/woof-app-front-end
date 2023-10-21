@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/index.css"
 import ImgInicioPata from "../imgs/img-inicio-pata.jpg";
 
 

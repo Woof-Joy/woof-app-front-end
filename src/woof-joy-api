@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const woofJoyApi = axios.create({
-  baseURL: "https://65120acdb8c6ce52b39545c8.mockapi.io/musicas",
-});
-
+    baseURL: "http://localhost:8080",
+  });
 export default woofJoyApi;
