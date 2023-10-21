@@ -1,12 +1,12 @@
 import React from "react";
 import "./css/index.css";
 import "./css/responsivo.css";
-import CadastroInicial from "./components/site-institucional/cadastro-inicial";
+import Cadastro from "./components/site-institucional/cadastro";
 function App() {
 
   return (
     <>
-      <CadastroInicial />
+      <Cadastro />
 
     </>
   );
