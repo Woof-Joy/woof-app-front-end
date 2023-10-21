@@ -1,4 +1,6 @@
 import React from "react";
+import ImgInicioPata from "../imgs/img-inicio-pata.jpg";
+
 
 function Index({ nome }) {
     return (
@@ -32,7 +34,7 @@ function Index({ nome }) {
                                 </p>
                                 <button class="btn-confira" type="button">Confira</button>
                             </div>
-                            <img class="img-inicio-pata" src="./imgs/img-inicio-pata.png" alt="imagem logo pata com pet"></img>
+                            <img class="img-inicio-pata" src={ImgInicioPata} alt="imagem logo pata com pet"></img>
                         </div>
                     </section>
 

@@ -1,3 +1,4 @@
+import React from "react";
 import "./css/index.css";
 import "./css/responsivo.css";
 import Menu from "./components/menu";
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-      <Cadastro />
+
     </>
   );
 }
