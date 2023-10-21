@@ -1,13 +1,14 @@
 import React from "react";
-import "./css/index.css";
 import "./css/responsivo.css";
-import Menu from "./components/menu";
-import Cadastro from "./components/cadastro";
+import "./css/styleAll.css"
+import Login from "./components/login";
+import CadastroInicial from "./components/cadastro-inicial";
+import Index from "./components";
 function App() {
 
   return (
     <>
-
+      < CadastroInicial/>
     </>
   );
 }
