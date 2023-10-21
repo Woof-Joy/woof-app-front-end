@@ -1,18 +1,13 @@
 import React from "react";
 import "./css/index.css";
 import "./css/responsivo.css";
-import BootstrapCarousel from "./components/carrossel";
-import FeedParceiro from "./components/feed-parceiro";
-
+import CadastroInicial from "./components/site-institucional/cadastro-inicial";
 function App() {
 
   return (
     <>
-    <Index/>
-    <CadastroInicial/>
-    <AguardandoConformacao/>
-    <ItemFeed/>
-    <FeedParceiro/>
+      <CadastroInicial />
+
     </>
   );
 }
