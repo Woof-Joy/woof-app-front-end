@@ -67,9 +67,13 @@ function Cadastro() {
                     texto: "Cep Encontrado",
                     style: { color: "green" }
                 });
+                console.log(resposta.message)
+                console.log(resposta.status)
             })
             .catch((erro) => {
                 console.log(`${erro.message}`);
+                console.log(`${erro.status}`)
+
                 setMensagemErro({
                     texto: "Cep Inválido",
                     style: { color: "red" }
