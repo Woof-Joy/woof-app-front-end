@@ -1,18 +1,21 @@
-import React from "react";
+import React from "react"
 import "../css/menu.css"
+
+import ImgLogoWoofJoy from "../imgs/logo-branca-footer.png"
+
+import { Link } from 'react-router-dom';
 
 
 function Menu() {
     return (
         <>
-            <body>
                 <header>
                     <nav class="cabecalho-menu">
                         <ul class="menu-navbar">
 
                             <div class="btn-lateral-menu">
                                 <i class="bi bi-list"></i>
-                                <img class="logo-img-navbar" src="./imgs/logo-branca-footer.png" alt="logo branca da Woof Joy"></img>
+                                <img class="logo-img-navbar" src={ImgLogoWoofJoy} alt="logo branca da Woof Joy"></img>
                             </div>
                             <div class="space-menor"></div>
                             <div class="todos-menu-item">
@@ -51,17 +54,16 @@ function Menu() {
                             <div class="space-menor"></div>
                             <hr></hr>
                                 <div class="space"></div>
-                                <div class="menu-item-sair">
+                                <Link to= "/" class="menu-item-sair">
                                     <a href="#">
                                         <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
                                         <span class="txt-link">Sair</span>
                                     </a>
-                                </div>
+                                </Link>
                                 <div class="space"></div>
                         </ul>
                     </nav>
                 </header>
-            </body>
         </>
     );
 }

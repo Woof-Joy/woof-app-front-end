@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-body {
+.login-body {
     display: flex;
     width: 1360px;
     background-color: rgb(255, 255, 255);
@@ -11,7 +11,7 @@ body {
 
 
 
-main {
+.login-main {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,6 +88,8 @@ main {
     color: white;
     border: none;
     font-size: 20px;
+    padding-top: 0.5vh;
+    text-align: center;
 }
 
 .span_cadastrase {

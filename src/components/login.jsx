@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import woofJoyApi from "../woof-joy-api";
 import "../css/login.css"
+
+import imgLogoWoffJoy from "../imgs/logo-branca-footer.png"
+import imgIconVoltar from "../imgs/icon-voltar.png"
+
 import customEnv from "../process";
 import SESSION_STORAGE from "../sessionStorage";
+
+import { Link } from 'react-router-dom';
 
 function setSessiomStorage(name, value) {
     SESSION_STORAGE[name] = value;
@@ -49,20 +55,14 @@ function Login() {
 
     return (
         <>
-
-
-            <body>
-                <main>
+            <body className="login-body">
+                <main className="login-main">
                     <div className="container1">
-
                         <span className="span_bem_vindo">
                             Bem-vindo(a) de volta!
                         </span>
-
                         <div id="mensagemErro" className="div_mensagem_erro"> Usuário ou senha incorretos! Por favor, tente novamente.
                         </div>
-
-
                         <label for="email">E-mail
                             <input type="text" id="email" placeholder=""
                                 name="email"
@@ -71,39 +71,28 @@ function Login() {
 
                             />
                         </label>
-
                         <label for="senha">Senha
                             <input type="text" id="senha" placeholder=""
                                 name="senha"
                                 value={usuarioLogin.senha}
                                 onChange={handleInputChange}
 
-
                             />
                         </label>
-
-                        <button className="button_entrar" onClick={loginUsuario}>Entrar</button>
-
+                        <Link to="/home-cliente" className="button_entrar" onClick={loginUsuario}>Entrar</Link>
                         <span className="span_cadastrase">Ainda não tem uma conta?<a className="a_cadastrase" href="cadastro.html" />
-                            <a href="./cadastro.html"><b>Cadastre-se</b></a> </span>
-
-
-
+                            <Link to="/cadastro-inicial"><b>Cadastre-se</b></Link> </span>
                         <div className="div_botao_voltar">
-                            <button className="button_voltar" onclick="window.location.href='./index.html'">
-                                <img src="./imgs/Mask group.png" alt="Ícone de curtir" />
+                            <Link to="/" className="button_voltar">
+                                <img src={imgIconVoltar} alt="Ícone de curtir" />
                                 <b>Voltar</b>
-                            </button>
+                            </Link>
                         </div>
-
-
                     </div>
                     <div className="container2">
                         <div calss="containerLogo">
-                            <img src="./imgs/logo-branca-footer.png" alt="Logo da WoofJoy" className="logo" />
+                            <img src={imgLogoWoffJoy} alt="Logo da WoofJoy" className="logo" />
                         </div>
-
-
                     </div>
 
                 </main>
