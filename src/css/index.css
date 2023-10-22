@@ -6,14 +6,16 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
+
 }
 
 
 html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
-body {
+.index {
     width: 100%;
     color: #303030;
 }
@@ -21,7 +23,7 @@ body {
 
 /*-------------------------------------------NAVBAR-----------------------------------------*/
 
-header {
+.index-header {
     background-color: #ffffff;
     top: 0;
     display: flex;
@@ -32,24 +34,23 @@ header {
     z-index: 5;
 }
 
-nav {
+.index-nav {
     /*clase pai*/
-    background-color: #ffffff;
-    top: 0;
     display: flex;
-    justify-content: center;
-    position:fixed;
-    width: 100%;
-    font-size: 18px;
-    z-index: 5;
+    width: 90%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    padding: 3vh 0;
+    list-style: none;
 }
 
-.logo-img-navbar {
+.index-logo-img-navbar {
     width: 10%;
     margin-right: 5%;
 }
 
-.menu-navbar {
+.index-menu-navbar {
     display: flex;
     justify-content: center;
     width: 50%;
@@ -58,19 +59,19 @@ nav {
     list-style: none;
 }
 
-.menu-navbar a {
+.index-menu-navbar a {
     text-decoration: none;
     color: #303030;
     font-weight: 500;
 }
 
-.menu-item:hover {
+.index-menu-item:hover {
     font-weight: 700;
     border-bottom: 0.7102272727272727vh solid #DB4B90;
     border-radius: 2px;
 }
 
-.menu-item-login-cadastro {
+.index-menu-item-login-cadastro {
     display: flex;
     justify-content: center;
     width: 20%;
@@ -78,7 +79,7 @@ nav {
     gap: 20px;
 }
 
-.btn-entrar {
+.index-btn-entrar {
     width: 40%;
     border-radius: 30px;
     border: 3px solid #DB4B90;
@@ -89,7 +90,7 @@ nav {
     cursor: pointer;
 }
 
-.btn-cadastrar {
+.index-btn-cadastrar {
     background-color: #DB4B90;
     width: 60%;
     border: none;
@@ -102,11 +103,11 @@ nav {
 
 /*-------------------------------------------INÍCIO-----------------------------------------*/
 
-main {
+.index-main {
     margin-top: 5vh;
 }
 
-.inicio {
+.index-inicio {
     padding-top: 12vh;
     width: 100%;
     display: flex;
@@ -115,7 +116,7 @@ main {
 
 }
 
-.banner {
+.index-banner {
     width: 90%;
     gap: 20%;
     display: flex;
@@ -123,44 +124,45 @@ main {
     align-items: center;
 }
 
-.banner-texto-apresentacao {
+.index-banner-texto-apresentacao {
     width: 60%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.img-inicio-pata {
+.index-img-inicio-pata {
+    margin-top: 12px;
     width: 40%;
 }
 
-.rosa {
+.index-txt-hashtag-rosa {
     font-weight: 700;
     font-size: 20px;
     color: #DB4B90;
 }
 
-.texto-preto,
-.texto-rosa {
+.index-texto-preto,
+.index-texto-rosa {
     font-weight: 800;
     font-size: 64px;
 }
 
-.texto-preto {
+.index-texto-preto {
     color: #303030;
 }
 
-.texto-rosa {
+.index-texto-rosa {
     color: #DB4B90;
 }
 
-.texto-menor {
+.index-texto-menor {
     font-weight: 400;
     font-size: 20px;
     color: #303030;
 }
 
-.btn-confira {
+.index-btn-confira {
     background-color: #DB4B90;
     width: 30%;
     padding: 1vh;
@@ -175,7 +177,7 @@ main {
 
 /*-------------------------------------------SERVIÇOS-----------------------------------------*/
 
-.servicos1 {
+.index-servicos1 {
     width: 100%;
     margin-top: 40px;
     background-color: #ffffff;
@@ -183,7 +185,7 @@ main {
 
 }
 
-.servicos-img-e-texto {
+.index-servicos-img-e-texto {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -192,12 +194,12 @@ main {
     gap: 10%
 }
 
-.img-servicos-inicial {
+.index-img-servicos-inicial {
     width: 45%;
     margin-left: 5%;
 }
 
-.servicos-texto {
+.index-servicos-texto {
     display: flex;
     width: 50%;
     margin-right: 5%;
@@ -206,25 +208,25 @@ main {
     align-items: center;
 }
 
-.servicos-texto h1 {
+.index-servicos-texto h1 {
     margin-top: 40px;
     font-weight: 800;
     font-size: 32px;
     color: #303030;
 }
 
-.servicos-texto p {
+.index-servicos-texto p {
     font-weight: 500;
     font-size: 16px;
     color: #303030;
 }
 
-.servico-texto-img-conteudo {
+.index-servico-texto-img-conteudo {
     height: 270px;
     align-items: center;
 }
 
-.servicos2 {
+.index-servicos2 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -232,7 +234,7 @@ main {
     align-items: center;
 }
 
-.servicos-informacoes {
+.index-servicos-informacoes {
     display: flex;
     width: 90%;
     flex-direction: column;
@@ -241,14 +243,14 @@ main {
     padding: 24px;
 }
 
-.texto-servicos-informacoes {
+.index-texto-servicos-informacoes {
     padding: 30px;
     font-weight: 800;
     font-size: 24px;
     color: #303030;
 }
 
-.servicos-agenda-seguranca-doacao {
+.index-servicos-agenda-seguranca-doacao {
     width: 90%;
     display: flex;
     justify-content: center;
@@ -257,9 +259,9 @@ main {
     gap: 10%;
 }
 
-.agenda,
-.seguranca,
-.doacao {
+.index-agenda,
+.index-seguranca,
+.index-doacao {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -267,16 +269,16 @@ main {
     
 }
 
-.icon-agenda,
-.icon-seguranca,
-.icon-doacao {
+.index-icon-agenda,
+.index-icon-seguranca,
+.index-icon-doacao {
     width: 30px;
     height: 30px;
 }
 
-.servico-titulo-agenda,
-.servico-titulo-seguranca,
-.servico-titulo-doacao{
+.index-servico-titulo-agenda,
+.index-servico-titulo-seguranca,
+.index-servico-titulo-doacao{
     margin-top: 10px;
     text-align: center;
     font-weight: 700;
@@ -284,7 +286,7 @@ main {
     color: #DB4B90
 }
 
-.servicos-agenda-seguranca-doacao p {
+.index-servicos-agenda-seguranca-doacao p {
     margin-top: 40px;
     text-align: center;
     font-weight: 700;
@@ -294,19 +296,19 @@ main {
 
 /*-------------------------------------------PARCEIRO-----------------------------------------*/
 
-.trabalhe-conosco {
+.index-trabalhe-conosco {
     width: 100%;
     padding: 10vh;
     display: flex;
 }
 
-.container-conteudo-parceiro {
+.index-container-conteudo-parceiro {
     width: 45%;
     position: absolute;
     z-index: 1;
 }
 
-.container-trabalhe-conosco{
+.index-container-trabalhe-conosco{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -314,39 +316,39 @@ main {
     z-index: 0;
 }
 
-.trabalhe-conosco-texto {
+.index-trabalhe-conosco-texto {
     display: flex;
     flex-direction: column;
     margin-left: 15%;
 }
 
-.texto-menor-trabalhe-conosco {
+.index-texto-menor-trabalhe-conosco {
     margin-top: 15%;
     font-weight: 800;
     font-size: 16px;
     color: #DB4B90;
 }
 
-.texto-pricipal-trabalhe-conosco {
+.index-texto-pricipal-trabalhe-conosco {
     margin-top: 5%;
     font-weight: 600;
     font-size: 32px;
     color: #303030;
 }
 
-.link-e-icon-trabalhe-conosco {
+.index-link-e-icon-trabalhe-conosco {
     margin-top: 10%;
     display: flex;
     align-items: center;
     gap: 2vw;
 }
 
-.icon-link-faca-seu-cadastro{
+.index-icon-link-faca-seu-cadastro{
     display: flex;
     justify-content: center;
 }
 
-.link-trabalhe-conosco {
+.index-link-trabalhe-conosco {
     text-decoration: none;
     font-weight: 800;
     font-size: 24px;
@@ -355,65 +357,68 @@ main {
 
 /*-------------------------------------------QUEM SOMOS-----------------------------------------*/
 
-.quem-somos-section{
+.index-quem-somos-section{
     margin: 0 0 5% 0;
 }
 
-.quem-somos {
+.index-quem-somos {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.img-fundo-quem-somos{
-    width: 100%;
-}
-
-.img-conteudo-fundo-quem-somos{
-    width: 80%;
-}
-
-.container-quem-somos{
+.index-container-quem-somos{
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.mural-img-dogs{
+.index-mural-img-dogs{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 25%;
+    width: 20%;
 }
 
-.column-imgs{
+.index-missao-visao-valores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0%;
+    width: 70%;
+}
+
+.index-img-fundo-quem-somos{
+    width: 100%;
+}
+
+.index-img-conteudo-fundo-quem-somos{
+    width: 80%;
+}
+
+
+
+
+.index-column-imgs{
     width: 40%;
     display: flex;
     gap: 3%;
 }
 
-.column-1, .column-2{
+.index-column-1, .index-column-2{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
 }
 
-.line-img{
+.index-line-img{
     margin-top: 5px;
 }
 
-.missao-visao-valores{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5%;
-    width: 70%;
-}
-
-.fundo-quem-somos{
+.index-fundo-quem-somos{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -421,14 +426,14 @@ main {
     position: relative;
 }
 
-.container-conteudo-missao-visao-valores{
+.index-container-conteudo-missao-visao-valores{
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.titulo-quem-somos{
+.index-titulo-quem-somos{
     margin-left: 5%;
     font-size: 40px;
     font-weight: 800;
@@ -436,21 +441,20 @@ main {
 
 /*-------------------------------------------FOOTER-----------------------------------------*/
 
-.footer {
+.index-footer {
     background-color: #DB4B90;
     display: flex;
     justify-content: center;
-
     padding: 32px;
 }
 
-.footer-informacoes{
+.index-footer-informacoes{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.logo-branca-footer {
+.index-logo-branca-footer {
     margin-top: 15px;
 }
 
@@ -461,6 +465,6 @@ main {
     color: #ffffff;
 }
 
-.icon-footer-redes {
+.index-icon-footer-redes {
     margin-top: 15px;
 }

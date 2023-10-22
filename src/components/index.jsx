@@ -1,80 +1,101 @@
-import React from "react";
+import React from "react"
 import "../css/index.css"
-import ImgInicioPata from "../imgs/img-inicio-pata.jpg";
+import "../css/responsivo.css"
 
+import imgNavLogoWoofJoy from "../imgs/logo-preta.png"
+import imgInicioChamativo from "../imgs/img-inicio-pata.jpg"
+import imgServicosChamativo from "../imgs/img-servicos.png"
+import imgServicosDescricao from "../imgs/img-descricao-servicos.png"
+import imgServicosIconAgendamento from "../imgs/icon-calendario.png"
+import imgServicosIconSeguranca from "../imgs/icon-seguranca.png"
+import imgServicosIconDoacao from "../imgs/icon-osso.png"
+import imgParceiroFundo from "../imgs/fundo-parceiro.png"
+import imgParceiroIconBtn from "../imgs/icon-faca-seu-cadastro.png"
+import imgSobreNosDog1 from "../imgs/img-dog-1.png"
+import imgSobreNosDog2 from "../imgs/img-dog-2.png"
+import imgSobreNosDog3 from "../imgs/img-dog-3.png"
+import imgSobreNosDog4 from "../imgs/img-dog-4.png"
+import imgSobreNosDog5 from "../imgs/img-dog-5.png"
+import imgSobreNosDog6 from "../imgs/img-dog-6.png"
+import imgSobreNosFundoVMV from "../imgs/fundo-quem-somos.png"
+import imgSobreNosQuadroVMV from "../imgs/texto-quem-somos-m-v-v.png"
+import imgFooterLogoWoofJoy from "../imgs/logo-branca-footer.png"
+import imgFooterIconsRedesSociais from "../imgs/icon-footer-redes.png"
+
+import { Link } from 'react-router-dom';
 
 function Index({ nome }) {
     return (
         <>
-            <body>
-                <header>
-                    <nav>
-                        <img class="logo-img-navbar" src="./imgs/logo-preta.png" alt="logo preta da Woof Joy"></img>
-                        <ul class="menu-navbar">
-                            <li><a class="menu-item" href="index.html" value ={nome}></a></li>
-                            <li><a class="menu-item" href="index.html#servicos">Serviços</a></li>
-                            <li><a class="menu-item" href="index.html#trabalhe-conosco">Vire um Parceiro</a></li>
-                            <li><a class="menu-item" href="index.html#quem-somos">Sobre Nós</a></li>
+            <body className="index">
+                <header className="index-header">
+                    <nav className="index-nav">
+                        <img className="index-logo-img-navbar" src={imgNavLogoWoofJoy} alt="logo preta da Woof Joy"></img>
+                        <ul className="index-menu-navbar">
+                            <li><a className="index-menu-item" href="#" value ={nome}>Início</a></li>
+                            <li><a className="index-menu-item" href="#servicos">Serviços</a></li>
+                            <li><a className="index-menu-item" href="#trabalhe-conosco">Vire um Parceiro</a></li>
+                            <li><a className="index-menu-item" href="#quem-somos">Sobre Nós</a></li>
                         </ul>
-                        <div class="menu-item-login-cadastro">
-                            <button class="btn-entrar" onclick="window.location.href='./login.html'">Entrar</button>
-                            <button class="btn-cadastrar" onclick="window.location.href='./cadastro.html'">Criar Conta</button>
+                        <div class="index-menu-item-login-cadastro">
+                            <Link to="/cadastro" className="index-btn-entrar">Entrar</Link>
+                            <button className="index-btn-cadastrar" onclick="window.location.href='./cadastro.html'">Criar Conta</button>
                         </div>
                     </nav>
                 </header>
 
-                <main>
-                    <section class="inicio">
-                        <div class="banner">
-                            <div class="banner-texto-apresentacao">
-                                <p class="rosa"><strong>#DogWalker &nbsp #DogSitter</strong></p>
-                                <h1 class="texto-preto">Seu cão feliz :) </h1>
-                                <h1 class="texto-rosa">em boas mãos</h1>
-                                <p class="texto-menor">
+                <main className="index-main">
+                    <section class="index-inicio">
+                        <div class="index-banner">
+                            <div class="index-banner-texto-apresentacao">
+                                <p class="index-txt-hashtag-rosa"><strong>#DogWalker #DogSitter</strong></p>
+                                <h1 class="index-texto-preto">Seu cão feliz :) </h1>
+                                <h1 class="index-texto-rosa">em boas mãos</h1>
+                                <p class="index-texto-menor">
                                     Descubra cuidadores apaixonados por <strong>pets</strong> como você ou <strong>seja um</strong>.
                                 </p>
-                                <button class="btn-confira" type="button">Confira</button>
+                                <button class="index-btn-confira" type="button">Confira</button>
                             </div>
-                            <img class="img-inicio-pata" src={ImgInicioPata} alt="imagem logo pata com pet"></img>
+                            <img class="index-img-inicio-pata" src= {imgInicioChamativo}  alt="imagem logo pata com pet"></img>
                         </div>
                     </section>
 
-                    <section class="servicos1" id="servicos">
-                        <div class="servicos-img-e-texto">
-                            <img class="img-servicos-inicial" src="./imgs/img-servicos.png" alt="imagem principal de servicos"></img>
-                            <div class="servicos-texto">
+                    <section class="index-servicos1" id="servicos">
+                        <div class="index-servicos-img-e-texto">
+                            <img class="index-img-servicos-inicial" src={imgServicosChamativo} alt="imagem principal de servicos"></img>
+                            <div class="index-servicos-texto">
                                 <h1>Dias corridos, cafunés adiados?</h1>
                                 <p>Nossos cuidadores estão aqui para preencher essa lacuna!</p>
-                                <img class="servico-texto-img-conteudo" src="./imgs/img-descricao-servicos.png" alt="descricao do servico"></img>
+                                <img class="index-servico-texto-img-conteudo" src={imgServicosDescricao} alt="descricao do servico"></img>
                             </div>
                         </div>
                     </section>
 
-                    <section class="servicos2">
-                        <div class="servicos-informacoes">
-                            <h2 class="texto-servicos-informacoes">
+                    <section class="index-servicos2">
+                        <div class="index-servicos-informacoes">
+                            <h2 class="index-texto-servicos-informacoes">
                                 Conectamos patinhas a corações cuidadosos com uma plataforma completa!
                             </h2>
-                            <div class="servicos-agenda-seguranca-doacao">
-                                <div class="agenda">
-                                    <img class="icon-agenda" src="./imgs/icon-calendario.png" alt="icone de calendario"></img>
-                                    <h2 class="servico-titulo-agenda">Agendamento online</h2>
+                            <div class="index-servicos-agenda-seguranca-doacao">
+                                <div class="index-agenda">
+                                    <img class="index-icon-agenda" src={imgServicosIconAgendamento} alt="icone de calendario"></img>
+                                    <h2 class="index-servico-titulo-agenda">Agendamento online</h2>
                                     <p>
                                         Encontre o profissional ideal para o seu pet, chame-o para uma
                                         conversa e agende o compromisso sem enrolação!
                                     </p>
                                 </div>
-                                <div class="seguranca">
-                                    <img class="icon-seguranca" src="./imgs/icon-seguranca.png" alt="icone de seguranca"></img>
+                                <div class="index-seguranca">
+                                    <img class="index-icon-seguranca" src={imgServicosIconSeguranca} alt="icone de seguranca"></img>
                                     <h2 class="servico-titulo-seguranca">Segurança</h2>
                                     <p>
                                         Avalie o serviço e leia os depoimentos realizados. Se necessário, denuncie! Segurança em primeiro lugar
                                         para proteger você e seu pet.
                                     </p>
                                 </div>
-                                <div class="doacao">
-                                    <img class="icon-doacao" src="./imgs/icon-osso.png" alt="icone de osso"></img>
-                                    <h2 class="servico-titulo-doacao">Sistema de doação</h2>
+                                <div class="index-doacao">
+                                    <img class="index-icon-doacao" src={imgServicosIconDoacao} alt="icone de osso"></img>
+                                    <h2 class="index-servico-titulo-doacao">Sistema de doação</h2>
                                     <p>
                                         Sabe aquele acessório ou brinquedo que seu pet não usa mais? Você pode doar aqui, ajudar um cuidador e
                                         outros cães!
@@ -84,71 +105,70 @@ function Index({ nome }) {
                         </div>
                     </section>
 
-                    <section class="trabalhe-conosco" id="trabalhe-conosco">
-                        <div class="container-trabalhe-conosco">
-                            <div class="fundo-parceiro">
-                                <img class="img-fundo-parceiro" src="./imgs/fundo-parceiro.png" alt=""></img>
+                    <section class="index-trabalhe-conosco" id="trabalhe-conosco">
+                        <div class="index-container-trabalhe-conosco">
+                            <div class="index-fundo-parceiro">
+                                <img class="index-img-fundo-parceiro" src={imgParceiroFundo} alt=""></img>
                             </div>
                         </div>
-                        <div class="container-conteudo-parceiro">
-                            <div class="trabalhe-conosco-texto">
-                                <p class="texto-menor-trabalhe-conosco">
+                        <div class="index-container-conteudo-parceiro">
+                            <div class="index-trabalhe-conosco-texto">
+                                <p class="index-texto-menor-trabalhe-conosco">
                                     Você pode ser o cliente ou um parceiro Woof Joy
                                 </p>
-                                <h3 class="texto-pricipal-trabalhe-conosco">
+                                <h3 class="index-texto-pricipal-trabalhe-conosco">
                                     Cadastre-se na nossa plataforma como um profissional de pet, encontre clientes e ganhe dinheiro fazendo o
-                                    que
-                                    ama!
+                                    que ama!
                                 </h3>
-                                <div class="link-e-icon-trabalhe-conosco">
-                                    <a class="link-trabalhe-conosco" href="./cadastro.html">Faça seu cadastro</a>
-                                    <a href="./cadastro.html" class="icon-link-faca-seu-cadastro"><img class="icon-texto-trabalhe-conosco"
-                                        src="./imgs/icon-faca-seu-cadastro.png" alt="icone faca seu cadastro"></img></a>
+                                <div class="index-link-e-icon-trabalhe-conosco">
+                                    <a class="index-link-trabalhe-conosco" href="./cadastro.html">Faça seu cadastro</a>
+                                    <a href="./cadastro.html" class="index-icon-link-faca-seu-cadastro"><img class="icon-texto-trabalhe-conosco"
+                                        src={imgParceiroIconBtn} alt="icone faca seu cadastro"></img></a>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <section class="quem-somos-section" id="quem-somos">
-                        <div class="quem-somos">
-                            <div class="container-quem-somos">
-                                <div class="mural-img-dogs">
-                                    <div class="column-imgs">
-                                        <div class="column-1">
-                                            <img class="img-dog" src="./imgs/img-dog-1.png" alt="" width="158px"></img>
-                                            <img class="img-dog" src="./imgs/img-dog-3.png" alt="" width="158px"></img>
+                    <section class="index-quem-somos-section" id="quem-somos">
+                        <div class="index-quem-somos">
+                            <div class="index-container-quem-somos">
+                                <div class="index-mural-img-dogs">
+                                    <div class="index-column-imgs">
+                                        <div class="index-column-1">
+                                            <img class="index-img-dog" src={imgSobreNosDog1} alt="" width="158px"></img>
+                                            <img class="index-img-dog" src={imgSobreNosDog3} alt="" width="158px"></img>
                                         </div>
-                                        <div class="column-2">
-                                            <img class="img-dog" src="./imgs/img-dog-2.png" alt="" width="126px"></img>
-                                            <img class="img-dog" src="./imgs/img-dog-4.png" alt="" width="126px"></img>
-                                            <img class="img-dog" src="./imgs/img-dog-5.png" alt="" width="126px"></img>
+                                        <div class="index-column-2">
+                                            <img class="index-img-dog" src={imgSobreNosDog2} alt="" width="126px"></img>
+                                            <img class="index-img-dog" src={imgSobreNosDog4} alt="" width="126px"></img>
+                                            <img class="index-img-dog" src={imgSobreNosDog5} alt="" width="126px"></img>
                                         </div>
                                     </div>
-                                    <div class="line-img">
-                                        <img class="img-dog" src="./imgs/img-dog-6.png" alt="" width="292px"></img>
+                                    <div class="index-line-img">
+                                        <img class="index-img-dog" src={imgSobreNosDog6} alt="" width="292px"></img>
                                     </div>
                                 </div>
-                                <div class="missao-visao-valores">
-                                    <div class="fundo-quem-somos">
-                                        <img class="img-fundo-quem-somos" src="./imgs/fundo-quem-somos.png" alt=""></img>
+                                <div class="index-missao-visao-valores">
+                                    <div class="index-fundo-quem-somos">
+                                        <img class="index-img-fundo-quem-somos" src={imgSobreNosFundoVMV} alt=""></img>
                                     </div>
-                                    <div class="container-conteudo-missao-visao-valores">
-                                        <img class="img-conteudo-fundo-quem-somos" src="./imgs/texto-quem-somos-m-v-v.png" alt=""></img>
+                                    <div class="index-container-conteudo-missao-visao-valores">
+                                        <img class="index-img-conteudo-fundo-quem-somos" src={imgSobreNosQuadroVMV} alt=""></img>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="titulo-quem-somos">
+                        <div class="index-titulo-quem-somos">
                             <p>Somos Woof Joy</p>
                         </div>
                     </section>
                 </main>
 
-                <footer class="footer">
-                    <div class="footer-informacoes">
-                        <img class="logo-branca-footer" src="./imgs/logo-branca-footer.png" alt="logo banca do Woof Joy"></img>
-                        <p class="footer-texto">© 2023 Woof Joy. Todos os direitos reservados.</p>
-                        <img class="icon-footer-redes" src="./imgs/icon-footer-redes.png" alt="nossas redes sociais"></img>
+                <footer class="index-footer">
+                    <div class="index-footer-informacoes">
+                        <img class="index-logo-branca-footer" src={imgFooterLogoWoofJoy} alt="logo banca do Woof Joy"></img>
+                        <p class="index-footer-texto">© 2023 Woof Joy. Todos os direitos reservados.</p>
+                        <img class="icon-footer-redes" src={imgFooterIconsRedesSociais} alt="nossas redes sociais"></img>
                     </div>
                 </footer>
             </body>
