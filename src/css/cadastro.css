@@ -1,18 +1,15 @@
-body {
-    height: 100vh;
-    overflow: hidden;
+.cadastro-body {
+    /* overflow: hidden; */
 }
 
-main {
+.cadastro-main {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
 }
 
-.sessionImg {
-    width: 35.2%;
-    height: 100%;
+.cadastro-sessionImg {
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -22,156 +19,38 @@ main {
     background-size: cover;
 }
 
-
-.containerText {
+.cadastro-containerText {
     margin-bottom: 17px;
 }
 
-.text {
+.cadastro-text {
     color: rgba(245, 245, 245, 1);
     font-size: 16px;
     font-weight: 700;
     margin: 0 51px;
 }
 
-.containerLogo {
+.cadastro-containerLogo {
     display: flex;
     flex-direction: row-reverse;
 }
 
-.logo {
+.cadastro-logo {
     margin-right: 50px;
     margin-bottom: 27px;
 }
 
-.campoTitlulo {
-    margin: 41px 0 18px 81px;
-    font-size: 32px;
-    color: rgba(219, 75, 144, 1);
-}
 
-.sessionForm {
-    width: 64.8%;
-    height: 100%;
+.cadastro-div_botao_voltar {
+    width: 2%;
     display: flex;
-    flex-direction: column
-}
-
-
-.form {
-    height: 74%;
-    width: 100%;
-
-}
-
-.camposJuntos {
-    display: flex;
-    width: 100%;
-    height: 10%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 0;
-    gap: 6vw;
-}
-
-.campoSozinho {
-    display: flex;
-    width: 100%;
-    height: 10%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-.campoForm {
-    display: flex;
-    justify-self: center;
-    flex-direction: column;
-    height: 100%;
-
-}
-
-.campoForm label {
-    height: 42.6%;
-
-}
-
-.inputEmail {
-    width: 680px;
-}
-
-.inputOutros {
-    width: 270px
-}
-
-.campoForm input {
-    height: 57.4%;
-    background-color: rgba(229, 229, 229, 1);
-    border: none;
-    overflow: none;
-    border-radius: 10px;
-    border-bottom: 1px solid #ccc;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
-
-}
-
-.buttonForm {
-    border: none;
-    border-radius: 30px;
-    padding: 3px 75px;
-    background-color:
-        rgba(219, 75, 144, 1);
-    color:
-        rgba(245, 245, 245, 1);
-}
-
-.button_entrar {
-    background-color: #DB4B90;
-    border-radius: 30px;
-    width: 249px;
-    height: 40px;
-    color: white;
-    border: none;
-    font-size: 20px;
-    margin-bottom: 2vh;
-}
-
-.linkForm {
-    color: rgba(219, 75, 144, 1);
-    text-decoration: none;
-}
-
-
-
-.campoCadastre {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-
-}
-
-.buttonSair {
-    border: none;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(219, 75, 144)
-}
-
-
-.div_botao_voltar {
-    display: flex;
+    align-items: end;
     margin-left: 5vh;
     margin-top: 3vh;
-
+    margin-bottom: 3vh;
 }
 
-.button_botao_voltar {
+.cadastro-button_voltar {
     border: none;
     background-color: white;
     border-radius: 10px;
@@ -180,24 +59,108 @@ main {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-left: -80%;
-    margin-bottom: -70px;
+    gap: 1vh;
 }
 
-.img_botao_voltar {
-
-    width: 26px;
-    margin-right: 5px;
-    margin-top: -10px;
-
+.cadastro-sessionForm {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
 }
 
+.cadastro-campoTitulo {
+    display: flex;
+    margin-left: 2vw;
+    font-size: 40px;
+    font-weight: 800;
+    color: rgba(219, 75, 144, 1);
+    margin-top: 5vh;
+}
 
+.cadastro-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.menssagemErro {
+.cadastro-container-dados-pessoais,
+.cadastro-container-endereco,
+.cadastro-container-login {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.cadastro-texto-guia {
+    width: 15%;
+    display: flex;
+    font-size: 16px;
+    font-weight: 700;
+    color: #DB4B90;
+    justify-content: end;
+    margin-right: 5%;
+}
+
+.cadastro-dados-pessoais,
+.cadastro-endereco,
+.cadastro-login {
+    width: 70%;
+    margin-right: 10%;
+}
+
+.cadastro-camposJuntos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    gap: 5%;
+}
+
+.cadastro-campoForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro-campoSozinho {
+    width: 100%;
+    margin-top: 2vh;
+}
+
+.cadastro-campoForm label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cadastro-inputEmail {
+    width: 100%;
+    height: 35px;
+}
+
+.cadastro-inputOutros {
+    width: 100%;
+    height: 35px;
+}
+
+.cadastro-campoForm input {
+    background-color: rgba(229, 229, 229, 1);
+    border: none;
+    overflow: none;
+    border-radius: 10px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.cadastro-menssagemErro {
     margin-top: 5px;
     color: rgba(219, 75, 144, 1);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: medium;
     display: flex;
     flex-direction: row;
@@ -205,188 +168,126 @@ main {
     align-items: center;
 }
 
+.cadastro-campoCadastre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+
+}
+
+.cadastro-button_entrar {
+    background-color: #DB4B90;
+    border-radius: 30px;
+    width: 249px;
+    color: white;
+    border: none;
+    font-size: 20px;
+    margin: 2vh 0;
+}
+
+.cadastro-linkForm {
+    color: rgba(219, 75, 144, 1);
+    text-decoration: none;
+}
+
+.cadastro-span-chamativo-login {
+    display: flex;
+    gap: 5px;
+}
+
+
 /*--------------------------------------------------RESPONSIVIDADE---------------------------------------------------------*/
 
-@media (max-width: 600px){
-    .sessionImg {
+@media (max-width: 600px) {
+
+    .cadastro-sessionImg {
         display: none;
     }
 
-    .sessionForm {
+    .cadastro-div_botao_voltar {
+        display: none;
+    }
+
+    .cadastro-campoTitulo {
+        font-size: 32px;
+        justify-content: center;
+    }
+
+    .cadastro-sessionForm {
         width: 100%;
-
-    }
-    
-    .inputEmail {
-        width: 400px;
-    }
-    
-    .inputOutros {
-        width: 150px
+        margin-left: 5vh;
     }
 
-    .campoTitlulo {
-        text-align: center;
-        margin-top: 46px;
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 24px;
+    .cadastro-campoForm label {
+        font-size: 14px;
     }
 
-    label{
+    .cadastro-texto-guia {
+        font-size: 14px;
+    }
+
+    .cadastro-menssagemErro {
+        font-size: 12px;
+    }
+
+    .cadastro-button_entrar {
         font-size: 16px;
     }
 }
 
-
 @media (min-width: 600px) {
 
-    .sessionImg {
+    .cadastro-sessionImg {
         display: none;
     }
 
-    .sessionForm {
-        width: 100%;
-
-    }
-    
-    .inputEmail {
-        width: 500px;
-    }
-    
-    .inputOutros {
-        width: 200px
+    .cadastro-div_botao_voltar {
+        display: none;
     }
 
-    .campoTitlulo {
-        text-align: center;
-        margin-top: 46px;
-        margin-left: 0;
-        margin-right: 0;
+    .cadastro-campoTitulo {
         font-size: 32px;
+        justify-content: center;
+    }
+
+    .cadastro-sessionForm {
+        width: 100%;
+        margin-left: 5vh;
+    }
+
+    .cadastro-campoForm label {
+        font-size: 14px;
+    }
+
+    .cadastro-texto-guia {
+        font-size: 14px;
+    }
+
+    .cadastro-menssagemErro {
+        font-size: 12px;
+    }
+
+    .cadastro-button_entrar {
+        font-size: 16px;
     }
 }
 
 @media (min-width: 768px){
 
-    .sessionImg {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        align-items: end;
-        background-image: url(../imgs/cadastro/img-fundo-cadastro.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .sessionForm {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column
-    }
-
-    .containerLogo {
-        display: flex;
+    .cadastro-body {
+        /* overflow: hidden; */
     }
     
-    .logo {
-        width: 100px;
-    }
-
-    .sessionForm {
+    .cadastro-main {
         width: 100%;
-
-    }
-    
-    .inputEmail {
-        width: 420px;
-    }
-    
-    .inputOutros {
-        width: 150px
-    }
-
-    .campoTitlulo {
-        text-align: center;
-        margin-top: 46px;
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 32px;
-    }
-
-    .text {
-        color: rgba(245, 245, 245, 1);
-        font-size: 12px;
-        font-weight: 700;
-        margin: 30px;
-    }
-}
-
-@media (min-width: 992px){
-    .sessionImg {
-        width: 50%;
-        height: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: end;
-        align-items: end;
-        background-image: url(../imgs/cadastro/img-fundo-cadastro.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .sessionForm {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column
-    }
-
-    .containerLogo {
-        display: flex;
+        flex-direction: row;
     }
     
-    .logo {
-        width: 100px;
-    }
-
-    .sessionForm {
-        width: 100%;
-
-    }
-    
-    .inputEmail {
-        width: 520px;
-    }
-    
-    .inputOutros {
-        width: 200px
-    }
-
-    .campoTitlulo {
-        text-align: center;
-        margin-top: 46px;
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 32px;
-    }
-
-    .text {
-        color: rgba(245, 245, 245, 1);
-        font-size: 12px;
-        font-weight: 700;
-        margin: 30px;
-    }
-}
-
-@media (min-width: 1200px){
-
-    .sessionImg {
-        width: 35.2%;
-        height: 100%;
+    .cadastro-sessionImg {
+        width: 40%;
         display: flex;
         flex-direction: column;
         justify-content: end;
@@ -396,156 +297,38 @@ main {
         background-size: cover;
     }
     
-    
-    .containerText {
+    .cadastro-containerText {
         margin-bottom: 17px;
     }
     
-    .text {
+    .cadastro-text {
         color: rgba(245, 245, 245, 1);
         font-size: 16px;
         font-weight: 700;
         margin: 0 51px;
     }
     
-    .containerLogo {
+    .cadastro-containerLogo {
         display: flex;
         flex-direction: row-reverse;
     }
     
-    .logo {
+    .cadastro-logo {
         margin-right: 50px;
         margin-bottom: 27px;
     }
     
-    .campoTitlulo {
-        margin: 41px 0 18px 81px;
-        font-size: 32px;
-        color: rgba(219, 75, 144, 1);
-    }
     
-    .sessionForm {
-        width: 64.8%;
-        height: 100%;
+    .cadastro-div_botao_voltar {
+        width: 2%;
         display: flex;
-        flex-direction: column
-    }
-    
-    
-    .form {
-        height: 74%;
-        width: 100%;
-    
-    }
-    
-    .camposJuntos {
-        display: flex;
-        width: 100%;
-        height: 10%;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 30px 0;
-        gap: 6vw;
-    }
-    
-    .campoSozinho {
-        display: flex;
-        width: 100%;
-        height: 10%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin: 30px 0;
-    }
-    
-    .campoForm {
-        display: flex;
-        justify-self: center;
-        flex-direction: column;
-        height: 100%;
-    
-    }
-    
-    .campoForm label {
-        height: 42.6%;
-    
-    }
-    
-    .inputEmail {
-        width: 680px;
-    }
-    
-    .inputOutros {
-        width: 270px
-    }
-    
-    .campoForm input {
-        height: 57.4%;
-        background-color: rgba(229, 229, 229, 1);
-        border: none;
-        overflow: none;
-        border-radius: 10px;
-        border-bottom: 1px solid #ccc;
-        box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
-    
-    }
-    
-    .buttonForm {
-        border: none;
-        border-radius: 30px;
-        padding: 3px 75px;
-        background-color:
-            rgba(219, 75, 144, 1);
-        color:
-            rgba(245, 245, 245, 1);
-    }
-    
-    .button_entrar {
-        background-color: #DB4B90;
-        border-radius: 30px;
-        width: 249px;
-        height: 40px;
-        color: white;
-        border: none;
-        font-size: 20px;
-        margin-bottom: 2vh;
-    }
-    
-    .linkForm {
-        color: rgba(219, 75, 144, 1);
-        text-decoration: none;
-    }
-    
-    
-    
-    .campoCadastre {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 60px;
-    
-    }
-    
-    .buttonSair {
-        border: none;
-        background-color: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: rgb(219, 75, 144)
-    }
-    
-    
-    .div_botao_voltar {
-        display: flex;
+        align-items: end;
         margin-left: 5vh;
         margin-top: 3vh;
-    
+        margin-bottom: 3vh;
     }
     
-    .button_botao_voltar {
+    .cadastro-button_voltar {
         border: none;
         background-color: white;
         border-radius: 10px;
@@ -554,29 +337,142 @@ main {
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        margin-left: -80%;
-        margin-bottom: -70px;
+        gap: 1vh;
     }
     
-    .img_botao_voltar {
-    
-        width: 26px;
-        margin-right: 5px;
-        margin-top: -10px;
-    
+    .cadastro-sessionForm {
+        width: 58%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3vh;
     }
     
+    .cadastro-campoTitulo {
+        display: flex;
+        margin-left: 2vw;
+        font-size: 40px;
+        font-weight: 800;
+        color: rgba(219, 75, 144, 1);
+        margin-top: 5vh;
+    }
     
+    .cadastro-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     
-    .menssagemErro {
+    .cadastro-container-dados-pessoais,
+    .cadastro-container-endereco,
+    .cadastro-container-login {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 5%;
+    }
+    
+    .cadastro-texto-guia {
+        width: 15%;
+        display: flex;
+        font-size: 16px;
+        font-weight: 700;
+        color: #DB4B90;
+        justify-content: end;
+        margin-right: 5%;
+    }
+    
+    .cadastro-dados-pessoais,
+    .cadastro-endereco,
+    .cadastro-login {
+        width: 70%;
+        margin-right: 10%;
+    }
+    
+    .cadastro-camposJuntos {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2vh;
+        gap: 5%;
+    }
+    
+    .cadastro-campoForm {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cadastro-campoSozinho {
+        width: 100%;
+        margin-top: 2vh;
+    }
+    
+    .cadastro-campoForm label {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    
+    .cadastro-inputEmail {
+        width: 100%;
+        height: 35px;
+    }
+    
+    .cadastro-inputOutros {
+        width: 100%;
+        height: 35px;
+    }
+    
+    .cadastro-campoForm input {
+        background-color: rgba(229, 229, 229, 1);
+        border: none;
+        overflow: none;
+        border-radius: 10px;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+    }
+    
+    .cadastro-menssagemErro {
         margin-top: 5px;
         color: rgba(219, 75, 144, 1);
-        font-size: 16px;
+        font-size: 14px;
         font-weight: medium;
         display: flex;
         flex-direction: row;
         justify-content: start;
         align-items: center;
     }
-
+    
+    .cadastro-campoCadastre {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 60px;
+    
+    }
+    
+    .cadastro-button_entrar {
+        background-color: #DB4B90;
+        border-radius: 30px;
+        width: 249px;
+        color: white;
+        border: none;
+        font-size: 20px;
+        margin: 2vh 0;
+        text-align: center;
+    }
+    
+    .cadastro-linkForm {
+        color: rgba(219, 75, 144, 1);
+        text-decoration: none;
+    }
+    
+    .cadastro-span-chamativo-login {
+        display: flex;
+        gap: 5px;
+    }    
 }

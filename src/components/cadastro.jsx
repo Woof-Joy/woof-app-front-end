@@ -4,6 +4,11 @@ import AllStyle from "../css/styleAll.css";
 import woofJoyApi from "../woof-joy-api";
 import customEnv from "../process";
 
+import imgLogoWoofJoy from "../imgs/logo-branca-footer.png"
+import imgIconBtnVoltar from "../imgs/icon-voltar.png"
+
+import { Link } from 'react-router-dom';
+
 
 function Cadastro() {
     const [mensagemErro, setMensagemErro] = useState({
@@ -102,196 +107,208 @@ function Cadastro() {
         });
     };
     return (
-        <body>
-            <main>
-                <section className="sessionImg">
-                    <div className="containerText">
-                        <p className="text">
+        <body className="cadastro-body">
+            <main className="cadastro-main">
+                <section className="cadastro-sessionImg">
+                    <div className="cadastro-containerText">
+                        <p className="cadastro-text">
                             A vida está agitada, deixando seu cão solitário?
                             Conecte-se a cuidadores amorosos agora mesmo!
                         </p>
                     </div>
-                    <div className="containerLogo">
-                        <img src="./imgs/logo-branca-footer.png" alt="Logo da WoofJoy" className="logo" />
+                    <div className="cadastro-containerLogo">
+                        <img src={imgLogoWoofJoy} alt="Logo da WoofJoy" className="cadastro-logo" />
                     </div>
                 </section>
 
-                <section className="sessionForm">
-                    <div className="campoTitlulo">
-                        <h1>Crie sua conta agora</h1>
+                <section className="cadastro-div_botao_voltar">
+                    <Link to="/" className="cadastro-button_voltar" onClick={() => criarUsuario(userID)}>
+                        <img className="cadastro-img_botao_voltar" src={imgIconBtnVoltar} alt="Ícone de curtir" />
+                        <b>Voltar</b>
+                    </Link>
+                </section>
+
+                <section className="cadastro-sessionForm">
+                    <div className="cadastro-campoTitulo">
+                        <p>Crie sua conta agora</p>
                     </div>
-                    <div className="form">
-                        <div className="camposJuntos">
-                            <div className="campoForm">
-                                <label htmlFor="nome">Nome</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="nome"
-                                    value={usuario.nome}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className="campoForm">
-                                <label htmlFor="sobrenome">Sobrenome</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="sobrenome"
-                                    value={usuario.sobrenome}
-                                    onChange={handleInputChange}
-                                />
+                    <div className="cadastro-form">
+                        <div className="cadastro-container-dados-pessoais">
+                            <p className="cadastro-texto-guia">Dados Pessoais:</p>
+                            <div className="cadastro-dados-pessoais">
+                                <div className="cadastro-camposJuntos">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="nome">Nome</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="nome"
+                                            value={usuario.nome}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="sobrenome">Sobrenome</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="sobrenome"
+                                            value={usuario.sobrenome}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="cadastro-camposJuntos">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="cpf">CPF</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="cpf"
+                                            value={usuario.cpf}
+                                            onChange={handleInputChange}
+                                            placeholder="000.000.000-00"
+                                        />
+                                    </div>
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="dataNasc">Data de nascimento</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="dataNasc"
+                                            value={usuario.dataNasc}
+                                            onChange={handleInputChange}
+                                            placeholder="00/00/0000"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="camposJuntos">
-                            <div className="campoForm">
-                                <label htmlFor="cpf">CPF</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="cpf"
-                                    value={usuario.cpf}
-                                    onChange={handleInputChange}
-                                    placeholder="000.000.000-00"
-                                />
-                            </div>
-                            <div className="campoForm">
-                                <label htmlFor="dataNasc">Data de nascimento</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="dataNasc"
-                                    value={usuario.dataNasc}
-                                    onChange={handleInputChange}
-                                    placeholder="00/00/0000"
-                                />
-                            </div>
-                        </div>
-                        <div className="camposJuntos">
-                            <div className="campoForm">
-                                <label htmlFor="cep">CEP</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="cep"
-                                    value={usuario.cep}
-                                    onChange={handleCepChange}
-                                    onBlur={buscarPorCep}
-                                    placeholder="00000-000"
-                                />
-                                <label style={mensagemErro.style} className="mensagemErro" htmlFor="cep" >{mensagemErro.texto}</label>
 
+                        <div className="cadastro-container-endereco">
+                            <p className="cadastro-texto-guia">Endereço:</p>
+                            <div className="cadastro-endereco">
+                                <div className="cadastro-camposJuntos">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="cep">CEP</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="cep"
+                                            value={usuario.cep}
+                                            onChange={handleCepChange}
+                                            onBlur={buscarPorCep}
+                                            placeholder="00000-000"
+                                        />
+                                        <label style={mensagemErro.style} className="cadastro-mensagemErro" htmlFor="cep" >{mensagemErro.texto}</label>
+                                    </div>
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="numero">Número</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="numero"
+                                            value={usuario.numero}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="cadastro-campoSozinho">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="rua">Rua</label>
+                                        <input
+                                            className="cadastro-inputEmail"
+                                            type="text"
+                                            name="rua"
+                                            value={cepResultado.logradouro}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="cadastro-camposJuntos">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="cidade">Cidade</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="cidade"
+                                            value={cepResultado.localidade}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="estado">Estado</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="text"
+                                            name="estado"
+                                            value={cepResultado.uf}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
-                            <div className="campoForm">
-                                <label htmlFor="estado">Estado</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="estado"
-                                    value={cepResultado.uf}
-                                    onChange={handleInputChange}
-                                />
+                        <div className="cadastro-container-login">
+                            <p className="cadastro-texto-guia">Login:</p>
+                            <div className="cadastro-login">
+                                <div className="cadastro-campoSozinho">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="email">E-mail</label>
+                                        <input
+                                            className="cadastro-inputEmail"
+                                            type="text"
+                                            name="email"
+                                            value={usuario.email}
+                                            onChange={handleInputChange}
+                                        />
+                                        <p className="cadastro-menssagemErro">
+                                            <img src="./imgs/Mask group (1).png" alt="" /> Digite um email válido
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="cadastro-camposJuntos">
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="senha">Senha</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="password"
+                                            name="senha"
+                                            value={usuario.senha}
+                                            onChange={handleInputChange}
+                                        />
+                                        <p className="cadastro-menssagemErro">
+                                            <img src="./imgs/Mask group (1).png" alt="" /> Digite uma senha válida
+                                        </p>
+                                    </div>
+                                    <div className="cadastro-campoForm">
+                                        <label htmlFor="confirmacaoSenha">Confirmação de senha</label>
+                                        <input
+                                            className="cadastro-inputOutros"
+                                            type="password"
+                                            name="confirmacaoSenha"
+                                            value={usuario.confirmacaoSenha}
+                                            onChange={handleInputChange}
+                                        />
+                                        <p className="cadastro-menssagemErro">
+                                            <img src="./imgs/Mask group (1).png" alt="" /> Senhas Incompatíveis
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="camposJuntos">
-                            <div className="campoForm">
-                                <label htmlFor="cidade">Cidade</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="cidade"
-                                    value={cepResultado.localidade}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className="campoForm">
-                                <label htmlFor="rua">Rua</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="rua"
-                                    value={cepResultado.logradouro}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="camposJuntos">
-                            <div className="campoForm">
-                                <label htmlFor="numero">Número</label>
-                                <input
-                                    className="inputOutros"
-                                    type="text"
-                                    name="numero"
-                                    value={usuario.numero}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="campoSozinho">
-                            <div className="campoForm">
-                                <label htmlFor="email">E-mail</label>
-                                <input
-                                    className="inputEmail"
-                                    type="text"
-                                    name="email"
-                                    value={usuario.email}
-                                    onChange={handleInputChange}
-                                />
-                                <p className="menssagemErro">
-                                    <img src="./imgs/Mask group (1).png" alt="" /> Digite um email válido
-                                </p>
-                            </div>
-                        </div>
-                        <div className="camposJuntos">
-                            <div className="campoForm">
-                                <label htmlFor="senha">Senha</label>
-                                <input
-                                    className="inputOutros"
-                                    type="password"
-                                    name="senha"
-                                    value={usuario.senha}
-                                    onChange={handleInputChange}
-                                />
-                                <p className="menssagemErro">
-                                    <img src="./imgs/Mask group (1).png" alt="" /> Digite uma senha válida
-                                </p>
-                            </div>
-                            <div className="campoForm">
-                                <label htmlFor="confirmacaoSenha">Confirmação de senha</label>
-                                <input
-                                    className="inputOutros"
-                                    type="password"
-                                    name="confirmacaoSenha"
-                                    value={usuario.confirmacaoSenha}
-                                    onChange={handleInputChange}
-                                />
-                                <p className="menssagemErro">
-                                    <img src="./imgs/Mask group (1).png" alt="" /> Senhas Incompatíveis
-                                </p>
-                            </div>
-                        </div>
-                        <div className="campoCadastre">
-                            <button className="button_entrar" onClick={criarUsuario}>
-                                Criar Conta
-                            </button>
-                            <p>
-                                Já tem uma conta?{" "}
-                                <a className="linkForm" href="./login.html">
-                                    <b>Conecte-se</b>
-                                </a>
-                            </p>
-                        </div>
+                    </div>
+                    <div className="cadastro-campoCadastre">
+                        <Link to="/login-inicial" className="cadastro-button_entrar" onClick={criarUsuario}>Criar Conta</Link>
+                        <span className="cadastro-span-chamativo-login">Já tem uma conta?
+                        <Link to="/login-inicial" className="cadastro-linkForm"><b>Conecte-se</b></Link>
+                        </span>
                     </div>
                 </section>
             </main>
-            <div className="div_botao_voltar">
-                <button className="button_voltar" onClick={() => criarUsuario(userID)}>
-                    <img src="./imgs/Mask group.png" alt="Ícone de curtir" />
-                    <b>Voltar</b>
-                </button>
-            </div>
         </body>
+
     );
 }
 

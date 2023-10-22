@@ -7,13 +7,6 @@
     box-sizing: border-box;
 }
 
-body{
-    font-size: 100%;
-    background-color:#FFDEDF;
-    font-size: 16px;
-    font-weight: 500;
-}
-
 .cabecalho-menu{
     width: 5%;
     height: 100%;
@@ -118,6 +111,7 @@ ul li.menu-item a .txt-link{
 
 .txt-link{
     display: none;
+    font-weight: 600;
 }
 
 

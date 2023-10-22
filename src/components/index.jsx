@@ -38,8 +38,8 @@ function Index({ nome }) {
                             <li><a className="index-menu-item" href="#quem-somos">Sobre Nós</a></li>
                         </ul>
                         <div class="index-menu-item-login-cadastro">
-                            <Link to="/cadastro" className="index-btn-entrar">Entrar</Link>
-                            <button className="index-btn-cadastrar" onclick="window.location.href='./cadastro.html'">Criar Conta</button>
+                            <Link to="/login-inicial" className="index-btn-entrar">Entrar</Link>
+                            <Link to="/cadastro-inicial" className="index-btn-cadastrar">Criar Conta</Link>
                         </div>
                     </nav>
                 </header>
