@@ -3,7 +3,7 @@ import "../css/index.css"
 import ImgInicioPata from "../imgs/img-inicio-pata.jpg";
 
 
-function Index() {
+function Index({ nome }) {
     return (
         <>
             <body>
@@ -11,7 +11,7 @@ function Index() {
                     <nav>
                         <img class="logo-img-navbar" src="./imgs/logo-preta.png" alt="logo preta da Woof Joy"></img>
                         <ul class="menu-navbar">
-                            <li><a class="menu-item" href="index.html">Início</a></li>
+                            <li><a class="menu-item" href="index.html" value ={nome}></a></li>
                             <li><a class="menu-item" href="index.html#servicos">Serviços</a></li>
                             <li><a class="menu-item" href="index.html#trabalhe-conosco">Vire um Parceiro</a></li>
                             <li><a class="menu-item" href="index.html#quem-somos">Sobre Nós</a></li>

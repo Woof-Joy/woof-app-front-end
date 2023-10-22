@@ -1,5 +1,5 @@
 import React from "react";
-import "./aguardando-confirmacao.css"
+import "../aguardando-confirmacao.css"
 
 
 function AguardandoConfirmacao() {
