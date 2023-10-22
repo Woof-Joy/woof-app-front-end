@@ -2,14 +2,15 @@ import "../css/cadastro-inicial.css"
 import customEnv from "../process";
 
 function setEnvVar(name, value) {
-    customEnv[name] = value;
-  }
+  customEnv[name] = value;
+}
+
   
-  function CadastroInicial() {
+function LoginInicial() {
   
     function EscolherTipo(numero) {
-      setEnvVar("tipo", numero);
-      console.log(customEnv.tipo);
+      setEnvVar("role", numero);
+      console.log(customEnv.role);
     };
   
     return (
@@ -30,10 +31,9 @@ function setEnvVar(name, value) {
               <div className="container-card">
                 <img className="icon" src="../src/imgs/cadastro-inicial/icon-cliente.png" alt="" />
                 <div className="card">
-                  <div className="card-border"  onClick={() => EscolherTipo(0)}>
+                  <div className="card-border" onClick={() => EscolherTipo("C")}>
                     <p className="title">Cliente</p>
-                    <p className="content">Quero encontrar os melhores dog walkers e pet sitters para cuidar do meu
-                      cachorro.</p>
+                    <p className="content">Logar como cliente</p>
                   </div>
                 </div>
               </div>
@@ -43,9 +43,9 @@ function setEnvVar(name, value) {
               <div className="container-card">
                 <img className="icon" src="../src/imgs/cadastro-inicial/icon-parceiro.png" alt="" />
                 <div className="card">
-                  <div className="card-border" onClick={() => EscolherTipo(1)}>
+                  <div className="card-border" onClick={() => EscolherTipo("P")}>
                     <p className="title">Parceiro</p>
-                    <p className="content">Quero me conectar a donos de cães que precisam dos meus serviços.</p>
+                    <p className="content">Logar como parceiro</p>
                   </div>
                 </div>
               </div>
@@ -61,6 +61,6 @@ function setEnvVar(name, value) {
       </>
     );
   }
-  export default CadastroInicial;
+  export default LoginInicial;
 
   

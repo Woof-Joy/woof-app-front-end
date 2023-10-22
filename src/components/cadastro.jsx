@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Style from "../css/cadastro.css";
 import AllStyle from "../css/styleAll.css";
 import woofJoyApi from "../woof-joy-api";
+import customEnv from "../process";
+
 
 function Cadastro() {
     const [mensagemErro, setMensagemErro] = useState({
@@ -34,7 +36,7 @@ function Cadastro() {
         usuario: null
     });
 
-    const userID = 0;
+    const userID = customEnv.tipo;
 
     let cepTimer;
 
