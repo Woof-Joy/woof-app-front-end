@@ -8,7 +8,7 @@
 }
 
 .cabecalho-menu{
-    width: 5%;
+    width: 6%;
     height: 100%;
     background-color: #DB4B90;
     position: fixed;
@@ -16,7 +16,7 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    transition: .1.5s;
+    transition: 0.3s;
 }
 
 .menu-navbar{
@@ -26,6 +26,8 @@
 .cabecalho-menu:hover{
     width: 20%;
     height: 100%;
+    transition: 0.3s;
+
 }
 
 .cabecalho-menu:hover .txt-link{
@@ -59,7 +61,7 @@
 
 .btn-lateral-menu > i{
     color: #ffffff;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
 }
 
@@ -88,6 +90,8 @@ ul{
 
 .menu-item:hover{
     border-left: 4px solid white;
+
+    
 } 
 
 li.menu-item a{
@@ -98,7 +102,7 @@ ul li.menu-item a{
     font-family: 'Nunito', sans-serif;
     color: #FFDEDF;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 ul li.menu-item a .txt-link{
