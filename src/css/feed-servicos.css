@@ -3,6 +3,17 @@
     flex-direction: column;
     justify-content: end;
     align-items: center;
+    
+}
+
+.container-card-feed-servico{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+margin-bottom: 2%;
+
+
 }
 
 .header-feed-servico{

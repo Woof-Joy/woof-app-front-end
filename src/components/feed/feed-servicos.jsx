@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 import Menu from "../MenuCliente";
 import "../../css/feed-servicos.css"
@@ -9,28 +9,34 @@ import CardParceiro from "./card-parceiro-feed";
 
 function FeedServico() {
 
-    const [listaParceiros, setListaParceiros] = useState([])
 
-    const prestador = {
-        servicoWalker: "DogWalker",
-        servicoSitter: "DogSitter",
-        nome: "Homem Aranha",
-        endereco: "São Bernoia do Campo, São Paulo",
-        descricao: "Lorem ipsum dribus iste eaque porro a cumque excepturi voluptatibus ipsum, blanditiis nulla deserunt?",
-        avaliacao: 4.5
-    };
+    const [listaParceiros, setParceiros] = useState([])
 
-    const getParceiros = () => {
+
+    useEffect(() => {
+        // Chama a função listar() imediatamente
+        listar();
+
+        // Define um intervalo para chamar a função listar() 
+        const intervalId = setInterval(() => {
+            listar();
+        }, 1 * 60 * 1000);//minutos em milisegundos(O numero primario determina, exemplo: Se 1 então 1 minuto)   
+
+        // Limpa o intervalo quando o componente for desmontado
+        return () => clearInterval(intervalId);
+    }, []);
+
+    function listar() {
         woofJoyApi
-            .get(`/parceiros`)
-            .then((resposta) => {
-                alert(resposta.message)
+            .get('/parceiros')
+            .then((response) => {
+                console.log(response.data);
+                setParceiros(response.data);
             })
-            .catch((erro) => {
-                console.log(erro)
-                alert(`Erro ao trazer os parceiros: ${erro.message}`);
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido);
             });
-    };
+    }
     return (
         <>
             <Menu />
@@ -71,14 +77,23 @@ function FeedServico() {
                     </div>
 
                 </div>
-                <CardParceiro
-                    servicoWalker={prestador.servicoWalker}
-                    servicoSitter={prestador.servicoSitter}
-                    nome={prestador.nome}
-                    endereco={prestador.endereco}
-                    descricao={prestador.descricao}
-                    avaliacao={prestador.avaliacao}
-                />
+                <div className="container-card-feed-servico">
+                    {listaParceiros?.map((parceiro) => (
+                        <>
+                            <CardParceiro
+                                key={parceiro.id}
+                                servicoWalker={parceiro.servicoWalker}
+                                servicoSitter={parceiro.servicoSitter}
+                                nome={parceiro.nome}
+                                endereco={parceiro.endereco}
+                                descricao={parceiro.descricao}
+                                avaliacao={parceiro.avaliacao}
+                            />
+
+                        </>
+                    ))}
+
+                </div>
 
             </div>
 

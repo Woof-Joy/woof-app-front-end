@@ -4,12 +4,18 @@ import point from "../../imgs/feed-parceiro/point-localizacao.png"
 
 
 function CardParceiro(props) {
-    const { servicoWalker, servicoSitter, nome, endereco, descricao, avaliacao } = props;
+    const {
+        servicoWalker,
+        servicoSitter,
+        nome,
+        endereco,   
+        descricao,
+            avaliacao } = props;
     return (
         <>
             <div className="card-servico cards">
                 <div className="container-foto">
-                    <img classNameName="imagem-prestador" src="../src/imgs/img-dog-2.png" alt="foto prestador" />
+                    <img className="imagem-prestador" src="../src/imgs/img-dog-2.png" alt="foto prestador" />
                 </div>
                 <div className="container-dados">
                     <div className="informacoes-parceiro">
@@ -29,7 +35,7 @@ function CardParceiro(props) {
                     </div>
                     <label className="descricao">
                         <strong className="descricao-texto-card-parceiro">
-                           {descricao}
+                            {descricao}
                         </strong>
                     </label>
 
