@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { Outlet } from "react-router-dom";
-import FeedServico from './components/feed/feed-servicos';
-
+import MeusServicos from './components/feed/meus-servicos';
 function App() {
   return (
     <>
-      <FeedServico />
+      <MeusServicos />
     </>
   );
 }
