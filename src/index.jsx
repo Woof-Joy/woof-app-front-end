@@ -8,6 +8,8 @@ import Cadastro from "./components/cadastro"
 import LoginInicial from "./components/login-inicial"
 import Login from "./components/login"
 import HomeCliente from "./components/tela-provisoria-home"
+import Chat from "./components/Chat"
+import HistoricoChat from './components/ChatHistorico'
 import ErrorPage from './components/ErrorPage'
 
 // 1 - Configurando router
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "home-cliente",
         element: <HomeCliente />
+      },
+      {
+        path: "chat",
+        element: <Chat />
+      },
+      {
+        path: "historico-chat",
+        element: <HistoricoChat/>
       }
 
     ]
