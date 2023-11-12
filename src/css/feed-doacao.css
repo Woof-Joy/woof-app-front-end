@@ -1,4 +1,4 @@
-.container-historico-servicos {
+.container-feed-doacao {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -6,7 +6,7 @@
 
 }
 
-.container-card-historico-servicos {
+.container-card-feed-doacao {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,50 +16,56 @@
 
 }
 
-
-
-.header-historico-servicos {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3%;
-    width: 100%;
+.titulo-feed-doacao {
+    margin-top: 5%;
 }
 
-.titulo-historico-servicos {
+.header-feed-doacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 9%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    width: 80%;
+}
+
+.button-doar-feed-doacao {
+    display: flex;
+    align-items: center;
+    width: 15%;
+    margin-left: -10%;
+
+}
+
+
+.entradas-feed-doacao {
     display: flex;
     flex-direction: column;
-    margin-left: -10%;
+    margin-top: 6%;
     width: 60%;
 
 }
 
-.foto-perfil-historico-servicos {
-    border-radius: 100%;
-}
-
-
-.entradas-historico-servicos {
+.links-feed-doacao {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    width: 8%;
-    margin-right: -20%;
-    margin-left: 10%;
-    margin-top: -8%;
+    height: 25px;
+    width: 7%;
+    margin-top: -2%;
+    margin-right: -5%;
 }
 
-.img-pesquisa-historico-servicos {
+.img-pesquisa-feed-doacao {
     margin-bottom: -1%;
 }
 
-.barra-pesquisa-historico-servicos {
+.barra-pesquisa-feed-doacao {
     margin-top: 2%;
 }
 
-.input-pesquisa-historico-servicos {
+.input-pesquisa-feed-doacao {
     height: 50%;
     width: 90%;
     margin-bottom: 4%;
@@ -67,16 +73,14 @@
 
 }
 
-.filtros-historico-servicos {
+.filtros-feed-doacao {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 45%;
+    justify-content: space-around;
     font-size: 20px;
-    margin-top: 3%;
 }
 
-.select-historico-servicos {
+.select-feed-doacao {
     width: 150px;
     padding: 2%;
     border: none;

@@ -22,11 +22,10 @@ margin-bottom: 2%;
     justify-content: space-around;
     margin-top: 3%;
     width: 80%;
-}
-
-.titulo-feed-servico{
+    margin-left: 6%;
 
 }
+
 
 .entradas-feed-servico{
     display: flex;

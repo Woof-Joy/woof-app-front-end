@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Outlet } from "react-router-dom";
-import HistoricoServico from './components/feed/historico-servicos';
+import FeedDocao from './components/feed/feed-doacao';
 function App() {
   return (
     <>
-      <HistoricoServico />
+      <FeedDocao />
     </>
   );
 }

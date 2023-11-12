@@ -1,36 +1,42 @@
 import React from "react";
-import "../item-feed.css"
+import "../../css/item-feed.css"
+import point from "../../imgs/feed-parceiro/point-localizacao.png"
+import osso from "../../imgs/item-doacao/osso-foto.png"
 
 
-function ItemFeed() {
+
+function ItemFeed(props) {
+    const {
+        clienteNome,
+        categoria,
+        nome,
+        endereco,
+        descricao,
+        avaliacao,
+        image = osso
+    } = props;
+
+   
+
+
     return (
         <>
-            <div className="card-servico cards">
-                <div className="container-foto">
-                    <img className="imagem-prestador" src="../src/imgs/img-dog-2.png" alt="foto prestador" />
-                </div>
-                <div className="container-dados">
-                    <div className="informacoes-parceiro">
 
-                        <label className="nome-prestador">Item do cachorro</label>
-                        <section className="endereco">
-                            <img className="imagem-localizacao" src="../src/imgs/Mask group.png" alt="ponto de localização" />
-                            <label className="cidade">São Bernoia do Campo, São Paulo </label>
-                        </section>
-
-
-                        <label className="descricao">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit doloribus alias
-                            repudiandae, atque
-                            blanditiis id,
-                            maiores aliquam possimus laudantium earum eum! Voluptatum ullam ex quis voluptatem accusamus quos,
-                            expedita vitae.</label>
-
-                    </div>
-
+            <div className="card-item-doacao">
+                <div style={{ backgroundImage: `url(${image})` }} className="container-imagem-item-doacao">
                 </div>
 
+
+                <div className="container-informacoes-item-doacao">
+                    <h6>Doador: {clienteNome} | Categoria: Brinquedo</h6>
+                    <h2>Osso Mastigável</h2>
+                    <h4><img className="point-feed-doacao" src={point} alt="point" /> Mooca, São Paulo</h4>
+                    <h6><strong>Descrição: </strong></h6>
+                    <h6 className="descricao-item-doacao"></h6>
+                </div>
 
             </div>
+
         </>
     );
 }
