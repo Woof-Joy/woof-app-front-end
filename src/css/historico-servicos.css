@@ -1,0 +1,87 @@
+.container-historico-servicos {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.container-card-historico-servicos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2%;
+
+
+}
+
+
+
+.header-historico-servicos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    width: 100%;
+}
+
+.titulo-historico-servicos {
+    display: flex;
+    flex-direction: column;
+    margin-left: -10%;
+    width: 60%;
+
+}
+
+.foto-perfil-historico-servicos {
+    border-radius: 100%;
+}
+
+.icon-chat-historico-servicos {}
+
+.entradas-historico-servicos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 8%;
+    margin-right: -20%;
+    margin-left: 10%;
+    margin-top: -8%;
+}
+
+.img-pesquisa-historico-servicos {
+    margin-bottom: -1%;
+}
+
+.barra-pesquisa-historico-servicos {
+    margin-top: 2%;
+}
+
+.input-pesquisa-historico-servicos {
+    height: 50%;
+    width: 90%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+
+}
+
+.filtros-historico-servicos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%;
+    font-size: 20px;
+    margin-top: 3%;
+}
+
+.select-historico-servicos {
+    width: 150px;
+    padding: 2%;
+    border: none;
+    border-radius: 1% 10px 10px;
+    margin-bottom: 15%;
+
+}

@@ -3,19 +3,35 @@ import "../css/aguardando-confirmacao.css"
 import Button from "./button/button";
 
 
-function AguardandoConfirmacao() {
+function AguardandoConfirmacao(props) {
+    const {
+        status,
+        servico,
+        dataHoraAgendamento,
+        clienteNome,
+        petNome,
+        divFontColor,
+        cardBackColor,
+        //ATRIBUTOS BOTÕES
+        displayOn,
+        fontColor,
+        buttonBackColor,
+        buttonName,
+        textShadow
+    } = props
+
     return (
         <>
-            <div className="container-dados-card-meus-servicos">
+            <div style={{ backgroundColor: cardBackColor, color: divFontColor }} className="container-dados-card-meus-servicos">
                 <div className="informacoes-parceiro-card-meus-servicos">
-                    <h2>Aguardando Confirmação</h2>
-                    <h3>Dog Walker</h3>
-                    <h5>Início do Serviço: Data - Hora | Fim do Serviço: Data - Hora</h5>
-                    <h6 className="nome-prestador">Cliente: Filipe Silva</h6>
-                    <h6 className="nome-pet">Pet: Mata rindo hahahha </h6>
+                    <h2>{status}</h2>
+                    <h3>{servico}</h3>
+                    <h5>{dataHoraAgendamento}</h5>
+                    <h6 className="nome-prestador">Cliente: {clienteNome}</h6>
+                    <h6 className="nome-pet">Pet: {petNome}</h6>
                 </div>
                 <div className="botoes-status">
-                    <Button buttonName="Aceitar" fontColor="white" bgColor="#DB4B90" />
+                    <Button displayOn={displayOn} buttonName={buttonName} fontColor={fontColor} buttonBackColor={buttonBackColor} textShadow={textShadow} />
                 </div>
             </div>
         </>
