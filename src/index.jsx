@@ -7,8 +7,14 @@ import CadastroInicial from './components/cadastro-inicial'
 import Cadastro from "./components/cadastro"
 import LoginInicial from "./components/login-inicial"
 import Login from "./components/login"
-import HomeCliente from "./components/tela-provisoria-home"
+
+import FeedDoacao from './components/feed/feed-doacao'
+import FeedServico from './components/feed/feed-servicos'
+import FeedHistorico from './components/feed/historico-servicos'
+import MeusServicos from './components/feed/meus-servicos'
 import Chat from "./components/Chat"
+
+//-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
 
 // 1 - Configurando router
@@ -30,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "cadastro",
-        element: <Cadastro  />
+        element: <Cadastro />
       },
       {
         path: "login-inicial",
@@ -41,12 +47,24 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path: "home-cliente",
-        element: <HomeCliente />
+        path: "home",
+        element: <FeedServico />
+      },
+      {
+        path: "doacao",
+        element: <FeedDoacao />
       },
       {
         path: "chat",
         element: <Chat />
+      },
+      {
+        path: "historico",
+        element: <FeedHistorico />
+      },
+      {
+        path: "meus-servicos",
+        element: <MeusServicos/>
       }
     ]
   }
