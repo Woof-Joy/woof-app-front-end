@@ -4,7 +4,7 @@ import ContatoChat from "./ChatContato"
 import "../css/chat.css"
 
 function HistoricoChat() {
-    return(
+    return (
         <>
             <section className="hist-chat-container">
                 <p className="hist-chat-titulo">Histórico</p>
@@ -16,9 +16,15 @@ function HistoricoChat() {
                     <button className="hist-chat-btn-parceiro">Parceiro</button>
                     <button className="hist-chat-btn-doacao">Doação</button>
                 </div>
-                <ContatoChat/>
-                <ContatoChat/>
-                <ContatoChat/>
+                <div className="hist-chat-lista-contatos">
+                    <ContatoChat />
+                    <ContatoChat />
+                    <ContatoChat />
+                    <ContatoChat />
+                    <ContatoChat />
+                    <ContatoChat />
+                    <ContatoChat />
+                </div>
             </section>
         </>
     )

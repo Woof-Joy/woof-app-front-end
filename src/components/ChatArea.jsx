@@ -23,11 +23,14 @@ function AreaChat() {
                     <div className="area-chat-mensagens-enviadas">
                         <MensagemChat />
                         <MensagemChat />
+                        <MensagemChat />
+                        <MensagemChat />
+                        <MensagemChat />
                     </div>
                 </div>
                 <div className="area-chat-campo-envio">
                     <input className="area-chat-input-envio" type="text" />
-                    <img src={IconEnvio} alt="" />
+                    <img className="area-chat-icon-btn-envio" src={IconEnvio} alt="" />
                 </div>
             </section>
 
