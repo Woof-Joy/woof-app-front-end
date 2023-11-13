@@ -30,10 +30,12 @@ function Menu() {
                                 </a>
                             </li>
                             <li class="menu-item">
+                            <Link to="/chat">
                                 <a href="#">
                                     <span class="icon"><i class="bi bi-chat-dots-fill"></i></span>
                                     <span class="txt-link">Chat</span>
                                 </a>
+                            </Link>
                             </li>
                             <li class="menu-item">
                                 <a href="#">
