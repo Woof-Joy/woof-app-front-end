@@ -27,6 +27,7 @@ function Login() {
 
     });
 
+    var path = '';
 
     const loginUsuario = () => {
         woofJoyApi
@@ -37,11 +38,13 @@ function Login() {
                 alert("Login realizado com sucesso")
                 setSessiomStorage("email", resposta.email)
                 setSessiomStorage("token", resposta.token)
+                path = '/home-cliente'
             })
             .catch((erro) => {
                 console.log(erro)
                 alert(`Erro ao logar o usuário: ${erro.message}`);
-
+                path='/login'
+                console.log(path)
             });
     };
 
@@ -79,7 +82,7 @@ function Login() {
 
                             />
                         </label>
-                        <Link to="/home-cliente" className="button_entrar" onClick={loginUsuario}>Entrar</Link>
+                        <Link to={path} className="button_entrar" onClick={loginUsuario}>Entrar</Link>
                         <span className="span_cadastrase">Ainda não tem uma conta?<a className="a_cadastrase" href="cadastro.html" />
                             <Link to="/cadastro-inicial"><b>Cadastre-se</b></Link> </span>
                         <div className="div_botao_voltar">
