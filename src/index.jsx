@@ -12,7 +12,9 @@ import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
-import Chat from "./components/Chat"
+import ChatCliente from "./components/ChatCliente"
+
+import ChatParceiro from './components/ChatParceiro'
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
@@ -55,8 +57,12 @@ const router = createBrowserRouter([
         element: <FeedDoacao />
       },
       {
-        path: "chat",
-        element: <Chat />
+        path: "chat-cliente",
+        element: <ChatCliente />
+      },
+      {
+        path:"chat-parceiro",
+        element: <ChatParceiro/>
       },
       {
         path: "historico",
