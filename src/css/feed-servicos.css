@@ -1,0 +1,65 @@
+.container-feed-servico{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    
+}
+
+.container-card-feed-servico{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+margin-bottom: 2%;
+
+
+}
+
+.header-feed-servico{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 3%;
+    width: 80%;
+    margin-left: 6%;
+
+}
+
+
+.entradas-feed-servico{
+    display: flex;
+    flex-direction: column;
+    margin-top: 6%;
+    width: 60% ;
+
+}
+.img-pesquisa-feed-servico{
+margin-bottom: -1%;
+}
+.barra-pesquisa-feed-servico{
+    margin-top: 2%;
+}
+.input-pesquisa-feed-servico{
+    height: 50%;
+    width: 90%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+
+}
+
+.filtros-feed-servico{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.select-feed-servico{
+width: 150px;
+padding: 2%;
+border: none;
+border-radius: 1% 10px 10px;
+margin-bottom: 15%;
+
+}

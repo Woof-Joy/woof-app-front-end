@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 import Menu from "../MenuCliente";
-import "../../css/feed-servicos.css"
+import "../../css/feed-doacao.css"
 import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
 import point from "../../imgs/feed-parceiro/point-localizacao.png"
+import chat from "../../imgs/meus-servicos/icon-chat.png"
+import perfil from "../../imgs/meus-servicos/image 204.png"
 import CardParceiro from "./card-parceiro-feed";
+import ItemFeed from "./item-feed";
+import Button from "../button/button";
 
 
-function FeedServico() {
+function FeedDocao() {
 
 
     const [listaParceiros, setParceiros] = useState([])
@@ -41,46 +45,57 @@ function FeedServico() {
         <>
             <Menu />
 
-            <div className="container-feed-servico">
+            <div className="container-feed-doacao">
 
-                <div className="header-feed-servico">
-                    <div className="titulo-feed-servico">
-                        <h1>Feed</h1> <br />
-                        <h3> Os melhores DogWalkers e</h3>
-                        <h3>Pet Sitters perto de você!</h3>
+                <div className="header-feed-doacao">
+                    <div className="titulo-feed-doacao">
+                        <h1>Doação</h1> <br />
+                        <h3>Doe, receba doações e faça</h3>
+                        <h3>um cãozinho feliz!</h3>
                     </div>
-                    <div className="entradas-feed-servico">
+                    <div className="entradas-feed-doacao">
 
-                        <div className="barra-pesquisa-feed-servico">
-                            <img className="img-pesquisa-feed-servico" src={lupa} alt="ícone de pesquisa" />
-                            <input className="input-pesquisa-feed-servico" type="text" placeholder="pesquisar" />
+                        <div className="barra-pesquisa-feed-doacao">
+                            <img className="img-pesquisa-feed-doacao" src={lupa} alt="ícone de pesquisa" />
+                            <input className="input-pesquisa-feed-doacao" type="text" placeholder="pesquisar" />
                         </div>
-                        <div className="filtros-feed-servico">
+                        <div className="filtros-feed-doacao">
 
                             <h6>
                                 Sua Localização <br />
-                                <img className="point-feed-servico" src={point} alt="point" />
+                                <img className="point-feed-doacao" src={point} alt="point" />
                                 <p></p>
                             </h6>
 
-                            <h6>
-                                Tipo de Serviço <br />
-                                <select className="select-feed-servico" name="" id=""></select>
-                            </h6>
 
                             <h6>
                                 Ordenar Por <br />
-                                <select className="select-feed-servico" name="" id=""></select>
+                                <select className="select-feed-doacao" name="" id=""></select>
+                            </h6>
+                            <h6 className="button-doar-feed-doacao">
+
+                            <Button
+                                displayOn="flex"
+                                buttonBackColor="#DB4B90"
+                                fontColor="white"
+                                buttonName="Doar"
+                                buttonHeigth="60%"
+                            />
                             </h6>
 
-                        </div>
+                              </div>
+                    </div>
+                    <div className="links-feed-doacao">
+                        <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
+
+                        <img className="foto-perfil-historico-servicos" src={perfil} alt="foto do cara" />
                     </div>
 
                 </div>
-                <div className="container-card-feed-servico">
+                <div className="container-card-feed-doacao">
                     {listaParceiros?.map((parceiro) => (
                         <>
-                            <CardParceiro
+                            <ItemFeed
                                 key={parceiro.id}
                                 servicoWalker={parceiro.servicoWalker}
                                 servicoSitter={parceiro.servicoSitter}
@@ -100,4 +115,4 @@ function FeedServico() {
         </>
     );
 }
-export default FeedServico;
+export default FeedDocao;

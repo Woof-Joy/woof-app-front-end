@@ -1,0 +1,90 @@
+.container-feed-doacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.container-card-feed-doacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2%;
+
+
+}
+
+.titulo-feed-doacao {
+    margin-top: 5%;
+}
+
+.header-feed-doacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 9%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    width: 80%;
+}
+
+.button-doar-feed-doacao {
+    display: flex;
+    align-items: center;
+    width: 15%;
+    margin-left: -10%;
+
+}
+
+
+.entradas-feed-doacao {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6%;
+    width: 60%;
+
+}
+
+.links-feed-doacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 25px;
+    width: 7%;
+    margin-top: -2%;
+    margin-right: -5%;
+}
+
+.img-pesquisa-feed-doacao {
+    margin-bottom: -1%;
+}
+
+.barra-pesquisa-feed-doacao {
+    margin-top: 2%;
+}
+
+.input-pesquisa-feed-doacao {
+    height: 50%;
+    width: 90%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+
+}
+
+.filtros-feed-doacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.select-feed-doacao {
+    width: 150px;
+    padding: 2%;
+    border: none;
+    border-radius: 1% 10px 10px;
+    margin-bottom: 15%;
+
+}

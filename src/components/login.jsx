@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import woofJoyApi from "../woof-joy-api";
 import "../css/login.css"
 
@@ -6,14 +6,8 @@ import imgLogoWoffJoy from "../imgs/logo-branca-footer.png"
 import imgIconVoltar from "../imgs/icon-voltar.png"
 
 import customEnv from "../process";
-import SESSION_STORAGE from "../sessionStorage";
 
 import { Link } from 'react-router-dom';
-
-function setSessiomStorage(name, value) {
-    SESSION_STORAGE[name] = value;
-
-}
 
 const roleResult = customEnv.role
 
@@ -24,27 +18,23 @@ function Login() {
         email: "",
         senha: "",
         role: roleResult,
-
+        token: ""
     });
-
-    var path = '';
 
     const loginUsuario = () => {
         woofJoyApi
             .post(`/users/login`, usuarioLogin)
             .then((resposta) => {
                 console.log(resposta.data);
+                sessionStorage.email = usuarioLogin.email
+                sessionStorage.nome = usuarioLogin.nome
                 setUsuarioLogin(resposta.data)
                 alert("Login realizado com sucesso")
-                setSessiomStorage("email", resposta.email)
-                setSessiomStorage("token", resposta.token)
-                path = '/home-cliente'
             })
             .catch((erro) => {
                 console.log(erro)
                 alert(`Erro ao logar o usuário: ${erro.message}`);
-                path='/login'
-                console.log(path)
+                console.log(usuarioLogin.role)
             });
     };
 

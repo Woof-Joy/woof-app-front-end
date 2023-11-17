@@ -1,40 +1,50 @@
 import React from "react";
-import "../card-parceiro-feed.css";
+import "../../css/card-parceiro-feed.css";
+import point from "../../imgs/feed-parceiro/point-localizacao.png"
 
 
-function CardParceiro() {
+function CardParceiro(props) {
+    const {
+        servicoWalker,
+        servicoSitter,
+        nome,
+        endereco,
+        descricao,
+        avaliacao } = props;
     return (
         <>
             <div className="card-servico cards">
                 <div className="container-foto">
-                    <img classNameName="imagem-prestador" src="../src/imgs/img-dog-2.png" alt="foto prestador" />
+                    <img className="imagem-prestador" src="../src/imgs/img-dog-2.png" alt="foto prestador" />
                 </div>
                 <div className="container-dados">
                     <div className="informacoes-parceiro">
                         <section className="servicos">
-                            <label>#DogWalker</label>
-                            <label>#DogSitter </label>
+                            <strong className="servico-nome">🐕‍🦺{servicoWalker}</strong>
+                            <strong className="servico-nome">🐶{servicoSitter}</strong>
                         </section>
 
-                        <label className="nome-prestador">Homem Aranha</label>
+                        <label className="nome-prestador">{nome}</label>
                         <section className="endereco">
-                            <img className="imagem-localizacao" src="../src/imgs/Mask group.png" alt="ponto de localização" />
-                            <label className="cidade">São Bernoia do Campo, São Paulo </label>
+                            <img className="imagem-localizacao" src={point} alt="ponto de localização" />
+                            <label className="cidade">{endereco}</label>
                         </section>
 
 
-                        <label className="descricao">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit doloribus alias
-                            repudiandae, atque
-                            blanditiis id,
-                            maiores aliquam possimus laudantium earum eum! Voluptatum ullam ex quis voluptatem accusamus quos,
-                            expedita vitae.</label>
 
                     </div>
+                    <label className="descricao">
+                        <strong className="descricao-texto-card-parceiro">
+                            {descricao}
+                        </strong>
+                    </label>
+
 
                 </div>
+
+
                 <div className="container-estrelas">
-                    <img className="imagem-estrela" src="../src/imgs/Mask group.png" alt="estrela" />
-                    <div className="avaliacao">4,5</div>
+                    <div className="avaliacao">{avaliacao} ★</div>
                 </div>
 
             </div>

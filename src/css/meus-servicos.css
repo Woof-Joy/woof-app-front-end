@@ -1,0 +1,83 @@
+.container-meus-servicos{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    
+}
+
+.container-card-meus-servicos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+margin-bottom: 2%;
+
+
+}
+
+
+
+.header-meus-servicos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    width: 100%;
+}
+
+.titulo-meus-servicos{
+    display: flex;
+    flex-direction: column;
+    margin-left: -10%;
+    width: 60%;
+
+}
+
+.foto-perfil-meus-servicos{
+    border-radius: 100%;
+}
+
+
+.entradas-meus-servicos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 8%;
+    margin-right: -20%;
+    margin-left: 10%;
+    margin-top: -10%;
+}
+.img-pesquisa-meus-servicos{
+margin-bottom: -1%;
+}
+.barra-pesquisa-meus-servicos{
+    margin-top: 2%;
+}
+.input-pesquisa-meus-servicos{
+    height: 50%;
+    width: 90%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+
+}
+
+.filtros-meus-servicos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%;
+    font-size: 20px;
+    margin-top: 3%;
+}
+
+.select-meus-servicos{
+width: 150px;
+padding: 2%;
+border: none;
+border-radius: 1% 10px 10px;
+margin-bottom: 15%;
+
+}
