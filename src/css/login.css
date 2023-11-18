@@ -24,7 +24,7 @@
 
 /* TELA DE LOGIN */
 
-.container1 {
+.login-container1 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -38,7 +38,7 @@
 
 /* IMAGEM COMPLEMENTAR */
 
-.container2 {
+.login-container2 {
     background-color: #DB4B90;
     display: flex;
     background-image: url(../imgs/login/fundoCachorro.png);
@@ -49,23 +49,23 @@
     height: 100%;
 }
 
-.containerLogo {
+.login-containerLogo {
     display: flex;
     flex-direction: row-reverse;
 
 }
 
-.logo {
+.login-logo {
     margin: 10%;
 }
 
-.span_bem_vindo {
+.login-span_bem_vindo {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
 }
 
-.div_mensagem_erro {
+.login-div_mensagem_erro {
     margin-top: 20px;
     font-size: 16px;
     font-weight: medium;
@@ -80,7 +80,7 @@
 
 }
 
-.button_entrar {
+.login-button_entrar {
     background-color: #DB4B90;
     border-radius: 30px;
     width: 249px;
@@ -88,7 +88,6 @@
     color: white;
     border: none;
     font-size: 20px;
-    padding-top: 0.5vh;
     text-align: center;
 }
 
@@ -138,7 +137,7 @@
 
 /* TAGS PURAS */
 
-input {
+.login-input {
     outline: none;
     width: 467px;
     height: 47px;
@@ -157,26 +156,26 @@ input {
     transition: 0.2s;
 } */
 
-label {
+.login-label  {
     font-size: 22px;
     font-weight: medium;
     display: flex;
     flex-direction: column;
 }
 
-a {
+.a_cadastrase {
     color: #DB4B90;
     cursor: pointer;
     text-decoration: none;
 }
 
-button {
+.login-button_entrar {
     transition: 0.3s;
 }
 
 @media (max-width: 768px) {
 
-    .container2 {
+    .login-container2 {
         display: none;
 
     }
@@ -185,16 +184,16 @@ button {
 
 @media (min-width: 768px) {
 
-    .containerLogo {
+    .login-containerLogo {
         display: flex;
         flex-direction: row-reverse;
     }
 
-    .span_bem_vindo {
+    .login-span_bem_vindo {
         font-size: 24px;
     }
 
-    .button_entrar {
+    .login-button_entrar {
         font-size: 20px;
     }
 
@@ -203,19 +202,19 @@ button {
     }
 
 
-    input {
+    .login-input {
         width: 300px;
         height: 47px;
     }
 
-    label {
+    .login-label  {
         font-size: 20px;
     }
 }
 
 @media (min-width: 992px) {
 
-    .container1 {
+    .login-container1 {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -229,7 +228,7 @@ button {
     
     /* IMAGEM COMPLEMENTAR */
     
-    .container2 {
+    .login-container2 {
         background-color: #DB4B90;
         display: flex;
         background-image: url(../imgs/login/fundoCachorro.png);
@@ -240,23 +239,23 @@ button {
         height: 100%;
     }
     
-    .containerLogo {
+    .login-containerLogo {
         display: flex;
         flex-direction: row-reverse;
     
     }
     
-    .logo {
+    .login-logo {
         margin: 10%;
     }
     
-    .span_bem_vindo {
+    .login-span_bem_vindo {
         font-size: 32px;
         font-weight: bold;
         text-align: center;
     }
     
-    .div_mensagem_erro {
+    .login-div_mensagem_erro {
         margin-top: 20px;
         font-size: 16px;
         font-weight: medium;
@@ -271,7 +270,7 @@ button {
     
     }
     
-    .button_entrar {
+    .login-button_entrar {
         background-color: #DB4B90;
         border-radius: 30px;
         width: 249px;
@@ -279,6 +278,8 @@ button {
         color: white;
         border: none;
         font-size: 20px;
+        padding-top: 1vh;
+        text-align: center;
     }
     
     .span_cadastrase {
@@ -327,7 +328,7 @@ button {
     
     /* TAGS PURAS */
     
-    input {
+    .login-input {
         outline: none;
         width: 467px;
         height: 47px;
@@ -346,20 +347,20 @@ button {
         transition: 0.2s;
     } */
     
-    label {
+    .login-label {
         font-size: 22px;
         font-weight: medium;
         display: flex;
         flex-direction: column;
     }
     
-    a {
+    .a_cadastrase {
         color: #DB4B90;
         cursor: pointer;
         text-decoration: none;
     }
     
-    button {
+    .login-button_entrar {
         transition: 0.3s;
     }
 }

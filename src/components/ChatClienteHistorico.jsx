@@ -16,6 +16,8 @@ function HistoricoChat() {
                     <button className="hist-chat-btn-parceiro">Parceiro</button>
                     <button className="hist-chat-btn-doacao">Doação</button>
                 </div>
+            </section>
+            <section className="hist-chat-container-lista-contatos">
                 <div className="hist-chat-lista-contatos">
                     <ContatoChat />
                     <ContatoChat />
@@ -26,6 +28,7 @@ function HistoricoChat() {
                     <ContatoChat />
                 </div>
             </section>
+
         </>
     )
 } export default HistoricoChat;
