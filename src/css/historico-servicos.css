@@ -64,6 +64,13 @@
     width: 90%;
     margin-bottom: 4%;
     margin-left: 2%;
+    outline: none;
+    background-color: #E5E5E5;
+    border-style: none;
+    box-sizing: border-box;
+    box-shadow: rgb(142, 138, 138) 1px 4px 8px;
+    border-radius: 10px;
+    transition: 0.3s;
 
 }
 
