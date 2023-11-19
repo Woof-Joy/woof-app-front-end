@@ -12,6 +12,7 @@
 .meu-perfil-container{
     width: 100%;
     display: flex;
+    background-color: #fff;
 }
 
 .meu-perfil-menu{
