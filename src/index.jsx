@@ -18,6 +18,7 @@ import ChatParceiro from './components/ChatParceiro'
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
+import CadastroServico from './components/cadastro-servico'
 
 // 1 - Configurando router
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />
+      },
+      {
+        path: "home-cliente",
+        element: <HomeCliente />
       },
       {
         path: "home",

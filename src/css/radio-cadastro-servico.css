@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+
+}
+body{
+    width: 100%;
+    background-color:  #FFDEDF;
+    
+}
+.container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.teste-1{
+    display: flex;
+    padding-left: 5%;
+    padding-top: 6%;
+}
+
+/*componente CADASTRO SERVICO PAGINA*/
+.cadastro-servico-pagina{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.txt-pagina-servico{
+    font-weight: 700;
+    font-size: 30px;
+    color: #303030;
+}
+.txt-sub-titulo-servico, .sub-txt-sercivo{
+    padding-top: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #303030;
+}
+
+
+.txt-servico{
+    padding-top: 80px;
+    font-weight: 700;
+    font-size: 25px;
+    color: #303030;
+}
+
+.tipo-servicos-dog-walker-dog-siter{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.input-servico-walker, .input-servico-sitter{
+    display: flex;
+    padding-top: 20px;
+    gap: 10px;
+    align-items: center;
+}
+.radio-dog-walker{
+    width: 25px;
+    height: 20px;
+    box-shadow: none;
+    border-style: none;
+    accent-color: black;
+}
+
+.txt-dog-walker, .txt-dog-sitter{
+    font-weight: 700;
+    font-size: 26px;
+    color: #303030;
+}
+.duracao-e-recebe-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+}
+.input-duracao-walker{
+    display: flex;
+    padding-top: 20px;
+    margin-left: 35px;
+    gap: 20px;
+    align-items: center;
+}
+.input-duracao-sitter{
+    display: flex;
+    padding-top: 10px;
+    margin-left: 80px;
+    gap: 20px;
+    align-items: center;
+}
+.selecao-pets-duracao{
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    box-shadow: none;
+    border-style: none;
+    background-color: #E5E5E5;
+    font-size: 18px;
+}
+.txt-residencia{
+    font-weight: 400;
+    font-size: 18px;
+    color: #303030;  
+}
+.radio-componente{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+.teste-2{
+    display: flex;
+    flex-direction: column;
+    /*padding-left: 10%;*/
+    padding-top: 6%;
+}
+/*FORM-INFO*/
+.banner-informacoes-servico {
+    display: flex;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin-top: 30px;
+}
+.informacoes-servico{
+    width: 450px;
+}
+.titulo-info-servico{
+    display: flex;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 30px;
+    color: #303030;
+}
+.informacoes-quantidade-pet{
+    display: flex;
+    padding-left: 29px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.p-qtd-pet{
+    color: #303030;
+    font-size: 20px;
+    width: 400px;
+}
+.selecao-pets{
+    display: flex;
+    width: 100px;
+    height: 30px;
+    box-shadow: none;
+    border-style: none;
+    background-color: #E5E5E5;
+    font-size: 18px;
+    border-radius: 8px;
+
+}
+.sessao-perguntas{
+    display: flex;
+    flex-direction: column;
+
+}
+.p-das-selecoes{
+    display: flex;
+    align-items: end;
+    padding-left: 35px;
+    flex-direction: column;
+    color: #303030;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.sessao-2{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+/*componente radio*/
+.radio-cadastro-servico {
+    display: flex;
+    align-items:center;
+    margin-top: 10px;
+    gap: 10px;
+}
+.cadastro-input-radio-sim, .cadastro-input-radio-nao{
+    width: 25px;
+    height: 20px;
+    box-shadow: none;
+    border-style: none;
+    accent-color: #DB4B90;
+}
+.sim, .nao{
+    color: #303030;
+    font-size: 20px;
+}
+
+.passeio{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.valor-passeio, .valor-hora{
+    display: flex;
+    align-items: center;
+}
+.sifrao{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.txt-passeio{
+    text-decoration: none;
+    font-weight: 400;
+    padding-left: 20%;
+    font-size: 16px;
+    padding-top: 3px;
+}
+.input-passeio{
+    border-radius: 30px;
+    padding: 15px;
+    margin-top: 5px;
+    margin-right: 50px;
+    margin-left: 5px;
+    width: 100px;
+    height: 25px;
+    font-size: 18px;
+}
+.por-hora{
+    padding-left: 60px;
+}
+.por-passeio{
+    padding-left: 10px;
+}
+.caixa-descricao{
+    display: flex;
+
+}
+
+.descricao{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.descricao-titulo{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.textarea{
+    text-decoration: none;
+    color: #303030;
+    border-color: pink;
+    padding: 50px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+/*COMPONENTE BUTTON*/
+.cadastro-servico-button{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.cadastro-servico-btn{
+    display: flex;
+}
+
+.button-descartar {
+    background-color: #DB4B90;
+    width: 200%;
+    padding: 1vh;
+    margin-top: 5vh;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.button-salvar {
+    background-color: #DB4B90;
+    width: 200%;
+    padding: 1vh;
+    margin-top: 5vh;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.enviar-img{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+
+}
+.txt-img{
+    color: black;
+    font-size: 18px;
+    padding-bottom: 10px;
+    
+}
+.file-img{
+    width: 400px;
+    background-color: #FFDEDF;
+    box-shadow: none;
+    border-style: none;
+    font-size: 16px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding-left: 30%;
+}
+
+
+
