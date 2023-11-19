@@ -108,16 +108,16 @@ function MeuPerfilParceiro() {
                                             <input className="meu-perfil-input-campo" type="password" />
                                         </div>
                                     </div>
-                                    <div className="meu-perfil-btn-salvar">
-                                        <button className="meu-perfil-btn">Salvar</button>
-                                    </div>
                                 </div>
                             )}
+                            <div className="meu-perfil-btn-salvar">
+                                <button className="meu-perfil-btn">Salvar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="meu-perfil-bloco-2">
-                    <ModalMeusServicos/>
+                    <ModalMeusServicos />
                 </div>
             </section>
         </>

@@ -51,10 +51,6 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path: "home-cliente",
-        element: <HomeCliente />
-      },
-      {
         path: "home",
         element: <FeedServico />
       },
