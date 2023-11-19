@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+/*MeuPerfil*/
+.meu-perfil-container{
+    width: 100%;
+    display: flex;
+}
+
+.meu-perfil-menu{
+    width: 6%;
+}
+
+.meu-perfil-bloco-1{
+    margin: 2.5% 5%;
+    width: 55%;
+}
+
+.meu-perfil-titulo{
+    padding: 2vh 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.meu-perfil-foto-perfil{
+    display: flex;
+    align-items: center;
+    gap: 3vh;
+}
+
+.meu-perfil-img-foto{
+    border-radius: 50%;
+    width: 12%;
+}
+
+.meu-perfil-input-upload{
+    all: initial;
+    font-family: 'Nunito', sans-serif;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background-color: #DB4B90;
+    color: #fff;
+    border: 1px solid #DB4B90;
+    border-radius: 30px;
+  }
+  
+  /* Ocultar o input padrão */
+  input[type="file"] {
+    display: none;
+  }
