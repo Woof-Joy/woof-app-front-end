@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+
+}
+body{
+    width: 100%;
+    background-color:  #FFDEDF;
+}
+
+.primeira-parte{
+    display: inline-block;
+    width: 49%;
+    padding: 36px;
+}
+
+.txt-pagina-servico{
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+ .titulo-servico{
+    text-align:left;
+    padding-left: 30%;
+}
+.txt-servico{
+    text-align:left;
+    padding-left: 30%;
+}
+.sub-txt-sercivo{
+    text-align:left;
+    padding-left: 30%;
+}
+
+.txt-servico{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    color: #303030;
+}
+.sub-titulo-selecao-servico {
+    text-align:left;
+    margin-top: 30px;
+}
+.tipo-servicos-input{
+    padding-left: 30%;
+    margin-top: 80px;
+    margin-left: 5px;
+
+}
+
+.tipo-servicos-dog-walker{
+    display: inline-block;
+}
+.tipo-servicos-dog-sitter{
+    display: inline-block;
+}
+.duracao-e-recebe-input{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.duracao-e-recebe-input p{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 12px;
+}
+.duracao{
+    color: #303030;
+    border-radius: 8px;
+    border-color: palevioletred;
+}
+
+.passeio{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align:left;
+    margin-top: 30px;
+}
+.por-passeio{
+    text-align:left;
+    padding-left: 30%;
+}
+.valor-passeio{
+    display: flex;
+    align-items: center;
+}
+.valor-passeio p{
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.txt-passeio{
+    text-decoration: none;
+    font-weight: 400;
+    padding-left: 10%;
+    font-size: 14px;
+}
+.text{
+    color: #303030;
+    border-radius: 10px;
+    border-color: pink;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/*-------------------------------------------*/
+
+.por-hora{
+    text-align:left;
+    padding-left: 10%;
+
+}
+.valor-hora{
+    display: flex;
+    align-items: center;
+}
+.valor-hora p{
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.txt-hora{
+    text-decoration: none;
+    font-weight: 400;
+    padding-left: 10%;
+    font-size: 14px;
+}
+
+.descricao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 30%;
+}
+
+.descricao-titulo{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    text-align:left;
+    margin-top: 30px;
+}
+
+.textarea{
+    text-decoration: none;
+    color: #303030;
+    border-color: pink;
+    padding: 50px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.txt-img{
+    color: black;
+    margin-top: 10px;
+    
+}
+
+.file{
+    margin-top: 10px;
+}
+.btns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding-left: 30%;
+}
+/*------------------------PARTE DO FORMULARIO DIREITO-------------------------------*/
+
+.segunda-parte{
+    display: inline-block;
+    width: 49%;
+    padding: 36px;
+    padding-left: 8%;
+
+}
+.banner-informacoes-servico h3{
+    color: #303030;
+}
+
+.banner-informacoes-servico, .banner-informacoes-acomodacao {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin-top: 30px;
+}
+
+.banner-informacoes-servico, .banner-informacoes-acomodacao{
+    display: flex;
+}
+
+.selecao-pets{
+    gap: 10px;
+    background-color: rgb(223, 217, 217);
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.selecoes-1{
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.sim-nao{
+    display: flex;
+    margin-left: 50px;
+    align-items:center;
+    margin-top: 5px;
+}
+.sim-nao-bravo{
+    display: flex;
+    margin-left: 101px;
+    align-items:center;
+    margin-top: 5px;
+}
+.sim-nao-grande{
+    display: flex;
+    margin-left: 27px;
+    align-items:center;
+    margin-top: 5px;
+}
+.sim-nao-cio{
+    display: flex;
+    margin-left: 71px;
+    align-items:center;
+    margin-top: 5px;
+}
+
+.selecao-pets-acm{
+    gap: 10px;
+    background-color: rgb(223, 217, 217);
+    margin-top: 15px;
+    border-radius: 10px;
+}
+.sim-nao-acm{
+    display: flex;
+    margin-left: 90px;
+    align-items:center;
+    margin-top: 5px;
+}
+.sim-nao-tem{
+    display: flex;
+    margin-left: 142px;
+    align-items:center;
+    margin-top: 5px;
+}
+.sim-nao-crianca{
+    display: flex;
+    margin-left: 140px;
+    align-items:center;
+    margin-top: 5px;
+    gap: 10px;
+}
+
+.teste{
+    display: flex;
+    gap: 5px;
+}
+.sim-nao-fuga{
+    display: flex;
+    margin-left: 25px;
+    align-items:center;
+    margin-top: 5px;
+}
+.sim-nao-sofa-cama{
+    display: flex;
+    margin-left: 14px;
+    align-items:center;
+    margin-top: 5px;
+}
+
+.btn-descartar-slavar{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    padding-left: 40%;
+}
+
+.descartar-btn{
+    background-color: #DB4B90;
+    border-radius: 30px;
+    width: 120px;
+    color: white;
+    border: none;
+    font-size: 18px;
+    margin: 2vh 0;
+}
+.salvar-btn{
+    background-color: #DB4B90;
+    border-radius: 30px;
+    width: 100px;
+    color: white;
+    border: none;
+    font-size: 18px;
+    margin: 2vh 0;
+}
+

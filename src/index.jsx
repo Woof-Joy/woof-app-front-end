@@ -9,6 +9,7 @@ import LoginInicial from "./components/login-inicial"
 import Login from "./components/login"
 import HomeCliente from "./components/tela-provisoria-home"
 import ErrorPage from './components/ErrorPage'
+import CadastroServico from './components/cadastro-servico'
 
 // 1 - Configurando router
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "home-cliente",
         element: <HomeCliente />
+      },
+      {
+        path: "cadastro-servico",
+        element: <CadastroServico />
       }
 
     ]

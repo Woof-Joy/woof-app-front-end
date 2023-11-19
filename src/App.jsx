@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Outlet } from "react-router-dom";
-import MeusServicos from './components/feed/meus-servicos';
+import CadastroServico from './components/cadastro-servico';
 function App() {
   return (
     <>
-      <MeusServicos />
+      <CadastroServico />
     </>
   );
 }
