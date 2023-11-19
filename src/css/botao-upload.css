@@ -1,0 +1,14 @@
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background-color: #DB4B90;
+    color: #fff;
+    border: 1px solid #DB4B90;
+    border-radius: 30px;
+  }
+  
+  /* Ocultar o input padrão */
+  input[type="file"] {
+    display: none;
+  }
