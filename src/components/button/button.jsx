@@ -2,10 +2,15 @@ import React from "react";
 import "../../css/button.css"
 
 
-function Button({ buttonName, fontColor, bgColor }) {
+function Button({ buttonName, fontColor, buttonBackColor,displayOn, textShadow, buttonWidth, buttonHeigth }) {
     const buttonStyle = {
+      display: displayOn,
       color: fontColor,
-      backgroundColor: bgColor,
+      backgroundColor: buttonBackColor,
+      textShadow: textShadow,
+      width: buttonWidth,
+      height: buttonHeigth
+      
     };
 
     return (

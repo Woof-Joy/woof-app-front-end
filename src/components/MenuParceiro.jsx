@@ -2,6 +2,8 @@ import React from "react"
 import "../css/menu.css"
 
 import ImgLogoWoofJoy from "../imgs/logo-branca-footer.png"
+import IconServicos from "../imgs/iconServicos.png"
+import IconMinhaPagina from "../imgs/icon-minha-pagina.png"
 
 import { Link } from 'react-router-dom';
 
@@ -24,12 +26,6 @@ function Menu() {
                         <div class="space-menor"></div>
                         <div class="todos-menu-item">
                             <li class="menu-item">
-                                <a href="#">
-                                    <span class="icon"><i class="bi bi-house-heart-fill"></i></span>
-                                    <span class="txt-link">Feed</span>
-                                </a>
-                            </li>
-                            <li class="menu-item">
                             <Link to="/chat">
                                 <a href="#">
                                     <span class="icon"><i class="bi bi-chat-dots-fill"></i></span>
@@ -45,9 +41,15 @@ function Menu() {
                             </li>
                             <li class="menu-item">
                                 <a href="#">
-                                    <span class="icon"><i class="bi bi-clock-history"></i></span>
-                                    <span class="txt-link">Histórico</span>
+                                    <span class="icon"><img src={IconServicos} alt="" /></span>
+                                    <span class="txt-link">Serviços</span>
                                 </a>
+                            </li>
+                            <li class="menu-item">
+                            <a href="#">
+                                <span class="icon"><img src={IconMinhaPagina} alt="" /></span>
+                                <span class="txt-link">Minha Página</span>
+                            </a>
                             </li>
                         </div>
                         <div class="space"></div>

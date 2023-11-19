@@ -7,7 +7,16 @@ import CadastroInicial from './components/cadastro-inicial'
 import Cadastro from "./components/cadastro"
 import LoginInicial from "./components/login-inicial"
 import Login from "./components/login"
-import HomeCliente from "./components/tela-provisoria-home"
+
+import FeedDoacao from './components/feed/feed-doacao'
+import FeedServico from './components/feed/feed-servicos'
+import FeedHistorico from './components/feed/historico-servicos'
+import MeusServicos from './components/feed/meus-servicos'
+import ChatCliente from "./components/ChatCliente"
+
+import ChatParceiro from './components/ChatParceiro'
+
+//-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
 import CadastroServico from './components/cadastro-servico'
 
@@ -30,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "cadastro",
-        element: <Cadastro  />
+        element: <Cadastro />
       },
       {
         path: "login-inicial",
@@ -45,10 +54,29 @@ const router = createBrowserRouter([
         element: <HomeCliente />
       },
       {
-        path: "cadastro-servico",
-        element: <CadastroServico />
+        path: "home",
+        element: <FeedServico />
+      },
+      {
+        path: "doacao",
+        element: <FeedDoacao />
+      },
+      {
+        path: "chat-cliente",
+        element: <ChatCliente />
+      },
+      {
+        path:"chat-parceiro",
+        element: <ChatParceiro/>
+      },
+      {
+        path: "historico",
+        element: <FeedHistorico />
+      },
+      {
+        path: "meus-servicos",
+        element: <MeusServicos/>
       }
-
     ]
   }
 ])

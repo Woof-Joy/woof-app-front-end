@@ -8,9 +8,9 @@ function CardParceiro(props) {
         servicoWalker,
         servicoSitter,
         nome,
-        endereco,   
+        endereco,
         descricao,
-            avaliacao } = props;
+        avaliacao } = props;
     return (
         <>
             <div className="card-servico cards">

@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 import Menu from "../MenuCliente";
-import "../../css/meus-servicos.css"
+import "../../css/historico-servicos.css"
 import AguardandoConfirmacao from "../aguardando-confirmacao";
 import chat from "../../imgs/meus-servicos/icon-chat.png"
 import perfil from "../../imgs/meus-servicos/image 204.png"
 
 
-function MeusServicos() {
+function HistoricoServico() {
+
+    const parametrosComponentCard = {
+        displayOn: "flex",
+        fontColor: "#DB4B90",
+        divFontColor: "white",
+        buttonBackColor: "white",
+        cardBackColor: "#DB4B90",
+        buttonName: "Ver relatório",
+        status: "Finalizado",
+        servico: "Nome do Serviço",
+        dataHoraAgendamento: "2023-11-05T12:00:00",
+        clienteNome: "Nome do Cliente",
+        petNome: "Nome do Pet",
+        textShadow: "black"
+      };
 
 
     const [listaParceiros, setParceiros] = useState([])
@@ -41,33 +56,30 @@ function MeusServicos() {
         <>
             <Menu />
 
-            <div className="container-meus-servicos">
+            <div className="container-historico-servicos">
 
-                <div className="header-meus-servicos">
-                    <div className="titulo-meus-servicos">
-                        <h1>Meus Serviços</h1>
-                        <h4>Consulte as solicitações dos seus clientes e os serviços prestados.</h4>
+                <div className="header-historico-servicos">
+                    <div className="titulo-historico-servicos">
+                        <h1>Histórico de Serviços</h1>
+                        <h4>Consulte os serviços solicitados.</h4>
 
-                        <div className="filtros-meus-servicos">
-                            <h6>
-                                Status <br />
-                                <select className="select-meus-servicos" name="" id=""></select>
-                            </h6>
+                        <div className="filtros-historico-servicos">
+                            
 
                         </div>
                     </div>
 
-                    <div className="entradas-meus-servicos">
-                        <img className="icon-chat-meus-servicos" src={chat} alt="icon-chat" />
+                    <div className="entradas-historico-servicos">
+                        <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
 
-                        <img className="foto-perfil-meus-servicos" src={perfil} alt="foto do cara" />
+                        <img className="foto-perfil-historico-servicos" src={perfil} alt="foto do cara" />
                     </div>
 
                 </div>
-                <div className="container-card-meus-servicos">
+                <div className="container-card-historico-servicos">
                     {listaParceiros?.map((parceiro) => (
                         <>
-                        <AguardandoConfirmacao/>
+                        <AguardandoConfirmacao {...parametrosComponentCard}  />
 
                         </>
                     ))}
@@ -79,4 +91,4 @@ function MeusServicos() {
         </>
     );
 }
-export default MeusServicos;
+export default HistoricoServico;
