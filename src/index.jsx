@@ -14,7 +14,7 @@ import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
 import ChatCliente from "./components/ChatCliente"
 import ChatParceiro from './components/ChatParceiro'
-import MeuPerfilCliente from './components/MeuPerfilCliente'
+import MeuPerfilCliente from './components/meu-perfil/MeuPerfilCliente'
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
