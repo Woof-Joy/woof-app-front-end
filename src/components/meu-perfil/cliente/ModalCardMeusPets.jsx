@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import "../../css/meu-perfil.css"
-import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
+import "../../../css/meu-perfil.css"
+import ExemploFotoPerfilPet from "../../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
 
 
 function CardMeusPets() {

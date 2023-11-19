@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import "../../css/meu-perfil.css"
-import CardMeusPets from './CardMeusPets';
+import "../../../css/meu-perfil.css"
+import CardMeusPets from './ModalCardMeusPets';
 
 
 function ModalMeusPets() {

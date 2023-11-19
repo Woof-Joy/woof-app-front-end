@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import MenuCliente from "../MenuCliente"
-import BotaoUpload from "../BotaoUpload"
-import ModalMeusPets from "./ModalMeusPets"
-import "../../css/meu-perfil.css"
-import ExemploFoto from "../../imgs/chat/exemplo-foto-contato.png"
-import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
-import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
+import MenuCliente from "../../MenuCliente"
+import BotaoUpload from "../../BotaoUpload"
+import ModalMeusServicos from './ModalMeusServicos';
+import "../../../css/meu-perfil.css"
+import ExemploFoto from "../../../imgs/chat/exemplo-foto-contato.png"
+import IconLixeira from "../../../imgs/meu-perfil/lixeira.png"
+import IconEditar from "../../../imgs/meu-perfil/icon-editar.png"
 
 
-function MeuPerfilCliente() {
+function MeuPerfilParceiro() {
     const [mostrarAlteracaoSenha, setMostrarAlteracaoSenha] = useState(false);
 
     const handleMostrarAlteracaoSenha = () => {
@@ -117,16 +117,10 @@ function MeuPerfilCliente() {
                     </div>
                 </div>
                 <div className="meu-perfil-bloco-2">
-                    <div className='meu-perfil-modal-meus-pets'>
-                        <ModalMeusPets />
-                    </div>
-
-                    <div className='meu-perfil-btn-cadastrar-pet'>
-                        <button className="meu-perfil-btn">Cadastrar Pet</button>
-                    </div>
+                    <ModalMeusServicos/>
                 </div>
             </section>
         </>
     )
 }
-export default MeuPerfilCliente;
+export default MeuPerfilParceiro;

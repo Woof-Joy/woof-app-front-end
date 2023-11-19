@@ -194,4 +194,8 @@
 }
 
 /*---------------------------- Parceiro --------------------------*/
-
+/*ModalMeusServicos*/
+.modal-meus-servicos-container{
+    width: 75%;
+    background-color: #FFDEDF;
+}

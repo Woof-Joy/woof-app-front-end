@@ -14,7 +14,8 @@ import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
 import ChatCliente from "./components/ChatCliente"
 import ChatParceiro from './components/ChatParceiro'
-import MeuPerfilCliente from './components/meu-perfil/MeuPerfilCliente'
+import MeuPerfilCliente from './components/meu-perfil/cliente/MeuPerfilCliente'
+import MeuPerfilParceiro from './components/meu-perfil/parceiro/MeuPerfilParceiro'
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "perfil-cliente",
         element: <MeuPerfilCliente />
+      },
+      {
+        path: "perfil-parceiro",
+        element: <MeuPerfilParceiro />
       }
     ]
   }
