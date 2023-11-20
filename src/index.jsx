@@ -14,8 +14,9 @@ import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
 import ChatCliente from "./components/ChatCliente"
-
 import ChatParceiro from './components/ChatParceiro'
+import MeuPerfilCliente from './components/meu-perfil/cliente/MeuPerfilCliente'
+import MeuPerfilParceiro from './components/meu-perfil/parceiro/MeuPerfilParceiro'
 
 import CadastroServico from './components/cadastro-servico'
 
@@ -77,12 +78,21 @@ const router = createBrowserRouter([
         element: <MeusServicos/>
       },
       {
+
         path: "cadastro-servico",
         element: <CadastroServico/>
       },
       {
         path: "feed-parceiro",
         element: <FeedParceiro/>
+       },
+        path: "perfil-cliente",
+        element: <MeuPerfilCliente />
+      },
+      {
+        path: "perfil-parceiro",
+        element: <MeuPerfilParceiro />
+
       }
     ]
   }
