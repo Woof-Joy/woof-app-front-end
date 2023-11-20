@@ -1,20 +1,13 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
 
-import CadastroServico from './components/cadastro-servico';
-function App() {
-  return (
-    <>
-      
-    </>
-   );
-}
-export default CadastroServico
+import FeedParceiro from "./components/feed-parceiro.jsx"
+
 
 function App() {
   return (
     <>
-      <Outlet />
+      <Outlet/>
 
     </>
   );

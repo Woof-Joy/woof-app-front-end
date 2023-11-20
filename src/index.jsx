@@ -8,6 +8,7 @@ import Cadastro from "./components/cadastro"
 import LoginInicial from "./components/login-inicial"
 import Login from "./components/login"
 
+import FeedParceiro from './components/feed-parceiro'
 import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
@@ -16,9 +17,11 @@ import ChatCliente from "./components/ChatCliente"
 
 import ChatParceiro from './components/ChatParceiro'
 
+import CadastroServico from './components/cadastro-servico'
+
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
-import CadastroServico from './components/cadastro-servico'
+
 
 // 1 - Configurando router
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -50,10 +53,6 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path: "home-cliente",
-        element: <HomeCliente />
-      },
-      {
         path: "home",
         element: <FeedServico />
       },
@@ -76,6 +75,14 @@ const router = createBrowserRouter([
       {
         path: "meus-servicos",
         element: <MeusServicos/>
+      },
+      {
+        path: "cadastro-servico",
+        element: <CadastroServico/>
+      },
+      {
+        path: "feed-parceiro",
+        element: <FeedParceiro/>
       }
     ]
   }
