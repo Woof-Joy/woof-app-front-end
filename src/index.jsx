@@ -66,8 +66,8 @@ const router = createBrowserRouter([
         element: <ChatCliente />
       },
       {
-        path:"chat-parceiro",
-        element: <ChatParceiro/>
+        path: "chat-parceiro",
+        element: <ChatParceiro />
       },
       {
         path: "historico",
@@ -75,17 +75,18 @@ const router = createBrowserRouter([
       },
       {
         path: "meus-servicos",
-        element: <MeusServicos/>
+        element: <MeusServicos />
       },
       {
 
         path: "cadastro-servico",
-        element: <CadastroServico/>
+        element: <CadastroServico />
       },
       {
         path: "feed-parceiro",
-        element: <FeedParceiro/>
-       },
+        element: <FeedParceiro />
+      },
+      {
         path: "perfil-cliente",
         element: <MeuPerfilCliente />
       },
