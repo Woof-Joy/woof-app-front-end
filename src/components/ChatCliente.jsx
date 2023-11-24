@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 function ChatCliente() {
     return (
-        <>
             <section className="chat-container">
                 <div className="chat-menu-cliente">
                     <MenuCliente />
@@ -20,6 +19,5 @@ function ChatCliente() {
                     <AreaChat />
                 </div>
             </section>
-        </>
     )
 } export default ChatCliente;

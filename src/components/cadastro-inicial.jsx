@@ -38,7 +38,7 @@ function setEnvVar(name, value) {
             <Link to="/cadastro" className="item item-3"  onClick={() => EscolherTipo(0)}>
               <div className="container-card">
                 <img className="icon" src={imgIconCliente} alt="" />
-                <div className="card">
+                <div className="card-login-cadastro-inicial">
                   <div className="card-border">
                     <p className="title">Cliente</p>
                     <p className="content">Quero encontrar os melhores dog walkers e pet sitters para cuidar do meu
@@ -50,7 +50,7 @@ function setEnvVar(name, value) {
             <Link to="/cadastro" className="item item-4" onClick={() => EscolherTipo(1)}>
               <div className="container-card">
                 <img className="icon" src={imgIconParceiro} alt="" />
-                <div className="card">
+                <div className="card-login-cadastro-inicial">
                   <div className="card-border">
                     <p className="title">Parceiro</p>
                     <p className="content">Quero me conectar a donos de cães que precisam dos meus serviços.</p>

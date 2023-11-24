@@ -49,24 +49,20 @@ function Menu() {
                                     <span class="txt-link">Histórico</span>
                                 </a>
                             </li>
-                        </div>
-                        <div class="space"></div>
-                        <div class="menu-item-meu-perfil">
+                            <li className="menu-item">
                             <a href="#">
                                 <span class="icon"><i class="bi bi-person-circle"></i></span>
                                 <span class="txt-link">Meu Perfil</span>
                             </a>
+                            </li>
                         </div>
-                        <div class="space-menor"></div>
-                        <hr></hr>
-                        <div class="space"></div>
+                        <hr className="line"></hr>
                         <Link to="/" class="menu-item-sair" onClick={cleanSessionStorage}>
                             <a href="#">
                                 <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
                                 <span class="txt-link" >Sair</span>
                             </a>
                         </Link>
-                        <div class="space"></div>
                     </ul>
                 </nav>
             </header>

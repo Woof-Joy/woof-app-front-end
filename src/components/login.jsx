@@ -57,7 +57,7 @@ function Login() {
                         <div id="mensagemErro" className="login-div_mensagem_erro"> Usuário ou senha incorretos! Por favor, tente novamente.
                         </div>
                         <label className="login-label" for="email">E-mail
-                            <input className="login-input" type="text" id="email" placeholder=""
+                            <input className="login-input" type="email" id="email" placeholder=""
                                 name="email"
                                 value={usuarioLogin.email}
                                 onChange={handleInputChange}
@@ -65,7 +65,7 @@ function Login() {
                             />
                         </label>
                         <label className="login-label" for="senha">Senha
-                            <input className="login-input" type="text" id="senha" placeholder=""
+                            <input className="login-input" type="password" id="senha" placeholder=""
                                 name="senha"
                                 value={usuarioLogin.senha}
                                 onChange={handleInputChange}
@@ -74,7 +74,7 @@ function Login() {
                         </label>
                         <Link to={"/home"} className="login-button_entrar" onClick={loginUsuario}>Entrar</Link>
                         <span className="span_cadastrase">Ainda não tem uma conta?<a className="a_cadastrase" href="cadastro.html" />
-                            <Link to="/cadastro-inicial"><b>Cadastre-se</b></Link> </span>
+                            <Link className="login-cadastre-se-link" to="/cadastro-inicial"><b>Cadastre-se</b></Link> </span>
                         <div className="div_botao_voltar">
                             <Link to="/" className="button_voltar">
                                 <img src={imgIconVoltar} alt="Ícone de curtir" />

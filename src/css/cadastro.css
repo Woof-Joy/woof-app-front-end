@@ -1,5 +1,6 @@
 .cadastro-body {
     /* overflow: hidden; */
+    background-color: #FFF;
 }
 
 .cadastro-main {
@@ -60,6 +61,7 @@
     align-items: center;
     cursor: pointer;
     gap: 1vh;
+    text-decoration: none;
 }
 
 .cadastro-sessionForm {
@@ -148,6 +150,11 @@
     height: 35px;
 }
 
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+
 .cadastro-campoForm input {
     background-color: rgba(229, 229, 229, 1);
     border: none;
@@ -185,6 +192,7 @@
     border: none;
     font-size: 20px;
     margin: 2vh 0;
+    text-decoration: none;
 }
 
 .cadastro-linkForm {

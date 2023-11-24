@@ -174,7 +174,7 @@ function Cadastro() {
                                         <label htmlFor="dataNasc">Data de nascimento</label>
                                         <input
                                             className="cadastro-inputOutros"
-                                            type="text"
+                                            type="date"
                                             name="dataNasc"
                                             value={usuario.dataNasc}
                                             onChange={handleInputChange}
@@ -206,7 +206,7 @@ function Cadastro() {
                                         <label htmlFor="numero">Número</label>
                                         <input
                                             className="cadastro-inputOutros"
-                                            type="text"
+                                            type="number"
                                             name="numero"
                                             value={usuario.numero}
                                             onChange={handleInputChange}

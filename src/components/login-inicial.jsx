@@ -37,7 +37,7 @@ function LoginInicial() {
           <Link to="/login" className="item item-3" onClick={() => EscolherTipo("C")}>
             <div className="container-card">
               <img className="icon" src={imgIconCliente} alt="" />
-              <div className="card">
+              <div className="card-login-cadastro-inicial">
                 <div className="card-border">
                   <p className="title">Cliente</p>
                   <p className="content">Quero encontrar os melhores dog walkers e pet sitters para cuidar do meu
@@ -49,7 +49,7 @@ function LoginInicial() {
           <Link to="/login" className="item item-4" onClick={() => EscolherTipo("P")}>
             <div className="container-card">
               <img className="icon" src={imgIconParceiro} alt="" />
-              <div className="card">
+              <div className="card-login-cadastro-inicial">
                 <div className="card-border">
                   <p className="title">Parceiro</p>
                   <p className="content">Quero me conectar a donos de cães que precisam dos meus serviços.</p>

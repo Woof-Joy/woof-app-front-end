@@ -85,7 +85,8 @@ const router = createBrowserRouter([
       {
         path: "feed-parceiro",
         element: <FeedParceiro/>
-       },
+      },
+      {
         path: "perfil-cliente",
         element: <MeuPerfilCliente />
       },
@@ -97,6 +98,7 @@ const router = createBrowserRouter([
     ]
   }
 ])
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

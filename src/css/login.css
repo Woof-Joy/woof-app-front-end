@@ -89,6 +89,7 @@
     border: none;
     font-size: 20px;
     text-align: center;
+    text-decoration: none;
 }
 
 .span_cadastrase {
@@ -97,7 +98,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+}
 
+.login-cadastre-se-link{
+    text-decoration: none;
 }
 
 .a_cadastrase {
@@ -111,7 +116,6 @@
     display: flex;
     margin-bottom: -10vh;
     margin-left: -40vw;
-
 }
 
 .button_botao_voltar {
@@ -125,6 +129,10 @@
     cursor: pointer;
     margin-left: -80%;
     margin-bottom: -70px;
+}
+
+.button_voltar{
+    text-decoration: none;
 }
 
 .img_botao_voltar {
@@ -288,7 +296,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    
+        text-decoration: none;
     }
     
     .a_cadastrase {
