@@ -38,7 +38,6 @@ function Cadastro() {
         bairro: "",
         localidade: "",
         uf: "",
-        usuario: null
     });
 
     const userID = customEnv.tipo;
@@ -68,7 +67,6 @@ function Cadastro() {
                     bairro: resposta.data.bairro,
                     localidade: resposta.data.localidade,
                     uf: resposta.data.uf,
-                    usuario: null
                 });
                 setMensagemErro({
                     texto: "Cep Encontrado",
