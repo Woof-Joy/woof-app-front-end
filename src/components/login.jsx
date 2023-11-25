@@ -15,9 +15,10 @@ const roleResult = customEnv.role
 function Login() {
 
     const [usuarioLogin, setUsuarioLogin] = useState({
+        userId: "",
         email: "",
         senha: "",
-        role: roleResult,
+        role: "C",
         token: ""
     });
 
@@ -26,8 +27,10 @@ function Login() {
             .post(`/users/login`, usuarioLogin)
             .then((resposta) => {
                 console.log(resposta.data);
-                sessionStorage.email = usuarioLogin.email
-                sessionStorage.nome = usuarioLogin.nome
+                sessionStorage.setItem("userId",usuarioLogin.userId)
+                sessionStorage.setItem("email",usuarioLogin.email)
+                sessionStorage.setItem("nome",usuarioLogin.nome)
+                sessionStorage.setItem("token",usuarioLogin.token)
                 setUsuarioLogin(resposta.data)
                 alert("Login realizado com sucesso")
             })

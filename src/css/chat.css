@@ -197,6 +197,16 @@
     gap: 10%;
 }
 
+.default-mensagem-area-chat-mensagens{
+    margin-top: 15%;
+    opacity: 60%;
+    width: 70%;
+    font-size: 30px;
+    text-shadow: rgb(39, 39, 39) 2px 2px 3px;
+    color: rgb(104, 104, 104);
+    text-align: center;
+}
+
 .area-chat-mensagens-recebidas, .area-chat-mensagens-enviadas{
     display: flex;
     width: 70%;

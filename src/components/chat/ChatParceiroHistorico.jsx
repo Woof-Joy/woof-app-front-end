@@ -1,7 +1,7 @@
 import React from "react"
-import IconSearch from "../imgs/chat/icon-search.png"
+import IconSearch from "../../imgs/chat/icon-search.png"
 import ContatoChat from "./ChatContato"
-import "../css/chat.css"
+import "../../css/chat.css"
 
 function HistoricoChat() {
     return (
@@ -13,11 +13,9 @@ function HistoricoChat() {
                     <input className="hist-chat-input-search" type="text" />
                 </div>
                 <div className="hist-chat-buttons">
-                    <button className="hist-chat-btn-parceiro">Parceiro</button>
+                    <button className="hist-chat-btn-parceiro">Cliente</button>
                     <button className="hist-chat-btn-doacao">Doação</button>
                 </div>
-            </section>
-            <section className="hist-chat-container-lista-contatos">
                 <div className="hist-chat-lista-contatos">
                     <ContatoChat />
                     <ContatoChat />
@@ -28,7 +26,6 @@ function HistoricoChat() {
                     <ContatoChat />
                 </div>
             </section>
-
         </>
     )
 } export default HistoricoChat;

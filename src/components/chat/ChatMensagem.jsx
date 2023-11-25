@@ -1,11 +1,15 @@
 import React from "react"
-import "../css/chat.css"
+import "../../css/chat.css"
 
-function MensagemChat() {
+function MensagemChat(props) {
+    const {
+        conteudoMensagem = "props mensag em"
+    } = props
+
     return (
         <>
             <section className="mensagem-chat-container">
-                <p>Exemplo de Mensagem</p>
+                <p>{conteudoMensagem}</p>
             </section>
         </>
     )

@@ -1,17 +1,17 @@
 import React from "react"
-import MenuParceiro from "./MenuParceiro"
-import HistoricoChat from "./ChatParceiroHistorico";
-import AreaChat from "./ChatParceiroArea";
-import "../css/chat.css"
+import MenuCliente from "../MenuCliente"
+import HistoricoChat from "./ChatClienteHistorico";
+import AreaChat from "./ChatClienteArea";
+import "../../css/chat.css"
 
 import { Link } from 'react-router-dom';
 
-function ChatParceiro() {
+function ChatCliente() {
     return (
         <>
             <section className="chat-container">
                 <div className="chat-menu-cliente">
-                    <MenuParceiro />
+                    <MenuCliente />
                 </div>
                 <div className="chat-hist-chat">
                     <HistoricoChat />
@@ -22,4 +22,4 @@ function ChatParceiro() {
             </section>
         </>
     )
-} export default ChatParceiro;
+} export default ChatCliente;

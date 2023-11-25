@@ -1,22 +1,15 @@
 import React from 'react';
+
 import { Outlet } from "react-router-dom";
-
-import CadastroServico from './components/cadastro-servico';
+import ChatCliente from './components/chat/ChatCliente';
+import Login from './components/login';
+import Topicos from './components/chat/topicos';
+import TelaProvisoria from './components/chat/topicos';
 function App() {
   return (
     <>
-      
-    </>
-   );
-}
-export default CadastroServico
-
-function App() {
-  return (
-    <>
-      <Outlet />
-
+      <ChatCliente />
     </>
   );
 }
-export default App
+export default App;
