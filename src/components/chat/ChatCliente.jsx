@@ -7,6 +7,8 @@ import "../../css/chat.css"
 import { Link } from 'react-router-dom';
 
 function ChatCliente() {
+
+    
     return (
         <>
             <section className="chat-container">

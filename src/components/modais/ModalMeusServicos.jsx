@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../../css/meu-perfil.css"
+import "../../css/meu-perfil.css"
 
 
 function ModalMeusServicos() {

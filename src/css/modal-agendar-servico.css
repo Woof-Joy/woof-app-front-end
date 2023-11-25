@@ -1,0 +1,68 @@
+.container-modal-agendar-servico {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: self-start;
+    justify-content: space-around;
+    width: 40%;
+    padding: 3%;
+    margin-left: 13%;
+    margin-top: -3%;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: rgb(133, 133, 133) 0px 0px 5px 4px;
+    transition: 0.3s;
+    opacity: 0%;
+}
+
+.select-modal-agendar-servico {
+    width: 80%;
+    padding: 0.5%;
+    border: none;
+    margin-bottom: 15%;
+    border-radius: 1% 10px 10px;
+
+
+}
+
+.container-dados-modal-agendar-servico {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+    margin-top: -10%;
+    height: 50px;
+    margin-bottom: 3%;
+
+}
+
+.container-inputs-modal-agendar-servico{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1%;
+    width: 90%;
+
+}
+.div-inputs-modal-agendar-servico{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-bottom: 2%;
+width: 80%;
+}
+
+.inputs-modal-agendar-servico{
+border: none;
+margin-bottom: 4%;
+border-radius: 5px;
+margin-left: 1%;
+width: 100%;
+background-color: #E5E5E5;
+}
+
+.botoes-modal-agendar-servico {
+    display: flex;
+    flex-direction: row;
+    margin-top: -8%;
+    justify-content: space-between;
+    width: 100%;
+}

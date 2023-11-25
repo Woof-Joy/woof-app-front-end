@@ -5,39 +5,44 @@ import "../../css/chat.css"
 import woofJoyApi from "../../woof-joy-api"
 
 function HistoricoChat() {
-    const userIdLogado = 22
+    const userIdLogado = 6;
+    const token =
+        "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjaGF0ZUBlbWFpbC5jb20iLCJyb2xlIjoiQyIsImlhdCI6MTcwMDUxMDkyMCwiZXhwIjoxNzA0MTEwOTIwfQ.zUJ0ofjvljd0bDxmUaGtrWXGvqnlh72e9p0EUrSp-wZ2c35CODa2AewD1eSGmxe6";
+
 
     const [contatoInfo, setContatoInfo] = useState({
-        id: "",
-        userId: 1,
-        nome: "front",
+        id: 3,
+        nome: "Teste historico",
         imagem: ""
     })
 
-    // useEffect(() => {
-    //     listar();
+    const [historicoBody, sethistoricoBody] = useState([]);
 
-    //     const intervalId = setInterval(() => {
-    //         listar();
-    //     }, 1 * 60 * 1000);  
+    function getMensagensHistory() {
+        woofJoyApi
+            .get(`/notification/doacao/${userIdLogado}/3`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                console.log(response.status);
+                sethistoricoBody(response.data);
+            })
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido.mensagem);
+            });
+    }
 
-    //     return () => clearInterval(intervalId);
-    // }, []);
+    useEffect(() => {
+        getMensagensHistory();
+        const intervalId = setInterval(() => {
+            getMensagensHistory();
+        }, 0.01 * 60 * 1000);
+        return () => clearInterval(intervalId);
+    }, []);
 
-    // function listar() {
-    //     woofJoyApi
-    //         .get('/notification/${userIdLogado}')
-    //         .then((response) => {
-    //             console.log(response.data);
-    //             alert("acerto")
-    //             setContatoInfo(response.data);
-    //         })
-    //         .catch((erroOcorrido) => {
-    //             console.log(erroOcorrido);
-    //             alert("erro")
-
-    //         });
-    // }
 
 
     return (
@@ -48,17 +53,18 @@ function HistoricoChat() {
                     <img className="hist-chat-icon-search" src={IconSearch} alt="" />
                     <input className="hist-chat-input-search" type="text" />
                 </div>
-                <div className="hist-chat-buttons">
-                    <button className="hist-chat-btn-parceiro">Parceiro</button>
-                    <button className="hist-chat-btn-doacao">Doação</button>
-                </div>
             </section>
             <section className="hist-chat-container-lista-contatos">
                 <div className="hist-chat-lista-contatos">
-                    <ContatoChat
-                        key={contatoInfo.userId}
-                        nome={contatoInfo.nome}
-                    />
+                    {historicoBody.map((h) =>
+
+                        <ContatoChat
+                            key={h.id}
+                            id={h.id}
+                            nome={h.mensagem}
+                        />
+                    )}
+
                 </div>
             </section>
 
