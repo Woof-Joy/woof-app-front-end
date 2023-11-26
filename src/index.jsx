@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 
-import Index from "./components/index"
-import CadastroInicial from './components/cadastro-inicial'
-import Cadastro from "./components/cadastro"
-import LoginInicial from "./components/login-inicial"
-import Login from "./components/login"
+import Index from "./components/institucional/index"
+import CadastroInicial from './components/institucional/cadastro-inicial'
+import Cadastro from "./components/institucional/cadastro"
+import LoginInicial from "./components/institucional/login-inicial"
+import Login from "./components/institucional/login"
 
-import FeedParceiro from './components/feed-parceiro'
+import FeedParceiro from './components/pagina-servico-prestador/feed-parceiro'
 import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
@@ -54,12 +54,8 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login />
       },
-      // {
-      //   path: "home-cliente",
-      //   element: <HomeCliente />
-      // },
       {
-        path: "home",
+        path: "home-cliente",
         element: <FeedServico />
       },
       {

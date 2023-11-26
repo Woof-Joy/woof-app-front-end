@@ -1,5 +1,5 @@
 import "../../css/modal-agendar-servico.css"
-import Button from "../button/button";
+import Button from "../componentes-gerais/button";
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 

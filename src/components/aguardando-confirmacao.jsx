@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/aguardando-confirmacao.css"
-import Button from "./button/button";
+import Button from "./componentes-gerais/button";
 
 
 function AguardandoConfirmacao(props) {

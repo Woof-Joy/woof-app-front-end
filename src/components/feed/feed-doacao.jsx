@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
-import Menu from "../MenuCliente";
+import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/feed-doacao.css"
 import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
 import point from "../../imgs/feed-parceiro/point-localizacao.png"
@@ -8,7 +8,7 @@ import chat from "../../imgs/meus-servicos/icon-chat.png"
 import perfil from "../../imgs/meus-servicos/image 204.png"
 import CardParceiro from "./card-parceiro-feed";
 import ItemFeed from "./item-feed";
-import Button from "../button/button";
+import Button from "../componentes-gerais/button";
 
 
 function FeedDocao() {

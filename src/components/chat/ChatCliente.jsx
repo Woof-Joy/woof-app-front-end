@@ -1,5 +1,5 @@
 import React from "react"
-import MenuCliente from "../MenuCliente"
+import MenuCliente from "../componentes-gerais/MenuCliente"
 import HistoricoChat from "./ChatClienteHistorico";
 import AreaChat from "./ChatClienteArea";
 import "../../css/chat.css"

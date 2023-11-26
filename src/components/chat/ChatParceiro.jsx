@@ -1,5 +1,5 @@
 import React from "react"
-import MenuParceiro from "../MenuParceiro"
+import MenuParceiro from "../componentes-gerais/MenuParceiro"
 import HistoricoChat from "./ChatParceiroHistorico";
 import AreaChat from "./ChatParceiroArea";
 import "../../css/chat.css"
