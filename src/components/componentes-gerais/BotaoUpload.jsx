@@ -1,5 +1,5 @@
 import React from "react"
-import "../css/botao-upload.css"
+import "../../css/botao-upload.css"
 
 function BotaoUpload() {
     return (

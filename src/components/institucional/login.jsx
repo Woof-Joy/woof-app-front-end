@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import woofJoyApi from "../woof-joy-api";
-import "../css/login.css"
+import woofJoyApi from "../../woof-joy-api";
+import "../../css/login.css"
 
-import imgLogoWoffJoy from "../imgs/logo-branca-footer.png"
-import imgIconVoltar from "../imgs/icon-voltar.png"
+import imgLogoWoffJoy from "../../imgs/logo-branca-footer.png"
+import imgIconVoltar from "../../imgs/icon-voltar.png"
 
-import customEnv from "../process";
+import customEnv from "../../process";
 
 import { Link } from 'react-router-dom';
 

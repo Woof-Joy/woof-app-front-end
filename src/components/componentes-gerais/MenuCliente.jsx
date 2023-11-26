@@ -1,7 +1,7 @@
 import React from "react"
-import "../css/menu.css"
+import "../../css/menu.css"
 
-import ImgLogoWoofJoy from "../imgs/logo-branca-footer.png"
+import ImgLogoWoofJoy from "../../imgs/logo-branca-footer.png"
 
 import { Link } from 'react-router-dom';
 
@@ -23,24 +23,28 @@ function Menu() {
                         <div class="space-menor"></div>
                         <div class="todos-menu-item">
                             <li class="menu-item">
-                                <a href="#">
-                                    <span class="icon"><i class="bi bi-house-heart-fill"></i></span>
-                                    <span class="txt-link">Feed</span>
-                                </a>
+                                <Link to="/home-cliente">
+                                    <a href="#">
+                                        <span class="icon"><i class="bi bi-house-heart-fill"></i></span>
+                                        <span class="txt-link">Feed</span>
+                                    </a>
+                                </Link>
                             </li>
                             <li class="menu-item">
-                            <Link to="/chat">
-                                <a href="#">
-                                    <span class="icon"><i class="bi bi-chat-dots-fill"></i></span>
-                                    <span class="txt-link">Chat</span>
-                                </a>
-                            </Link>
+                                <Link to="/chat-cliente">
+                                    <a href="#">
+                                        <span class="icon"><i class="bi bi-chat-dots-fill"></i></span>
+                                        <span class="txt-link">Chat</span>
+                                    </a>
+                                </Link>
                             </li>
                             <li class="menu-item">
-                                <a href="#">
-                                    <span class="icon"><i class="bi bi-bag-heart-fill"></i></span>
-                                    <span class="txt-link">Doação</span>
-                                </a>
+                                <Link to="/doacao">
+                                    <a href="#">
+                                        <span class="icon"><i class="bi bi-bag-heart-fill"></i></span>
+                                        <span class="txt-link">Doação</span>
+                                    </a>
+                                </Link>
                             </li>
                             <li class="menu-item">
                                 <a href="#">
@@ -49,10 +53,12 @@ function Menu() {
                                 </a>
                             </li>
                             <li className="menu-item">
-                            <a href="#">
-                                <span class="icon"><i class="bi bi-person-circle"></i></span>
-                                <span class="txt-link">Meu Perfil</span>
-                            </a>
+                                <Link to="/perfil-cliente">
+                                    <a href="#">
+                                        <span class="icon"><i class="bi bi-person-circle"></i></span>
+                                        <span class="txt-link">Meu Perfil</span>
+                                    </a>
+                                </Link>
                             </li>
                         </div>
                         <div class="space-menor"></div>

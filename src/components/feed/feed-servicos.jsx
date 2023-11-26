@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
-import Menu from "../MenuCliente";
+import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/feed-servicos.css"
 import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
 import point from "../../imgs/feed-parceiro/point-localizacao.png"

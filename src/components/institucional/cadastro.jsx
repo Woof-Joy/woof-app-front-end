@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Style from "../css/cadastro.css";
-import AllStyle from "../css/styleAll.css";
-import woofJoyApi from "../woof-joy-api";
-import customEnv from "../process";
+import "../../css/cadastro.css";
+import woofJoyApi from "../../woof-joy-api";
+import customEnv from "../../process";
 
-import imgLogoWoofJoy from "../imgs/logo-branca-footer.png"
-import imgIconBtnVoltar from "../imgs/icon-voltar.png"
+import imgLogoWoofJoy from "../../imgs/logo-branca-footer.png"
+import imgIconBtnVoltar from "../../imgs/icon-voltar.png"
 
 import { Link } from 'react-router-dom';
 

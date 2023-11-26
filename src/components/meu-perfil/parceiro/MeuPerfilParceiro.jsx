@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import MenuCliente from "../../MenuCliente"
-import BotaoUpload from "../../BotaoUpload"
+import MenuCliente from "../../componentes-gerais/MenuCliente"
+import BotaoUpload from "../../componentes-gerais/BotaoUpload"
 import ModalMeusServicos from './ModalMeusServicos';
 import "../../../css/meu-perfil.css"
 import ExemploFoto from "../../../imgs/chat/exemplo-foto-contato.png"

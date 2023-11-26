@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../css/react-feed-parceiro.css";
-import woofJoyApi from "../woof-joy-api";
+import "../../css/react-feed-parceiro.css";
+import woofJoyApi from "../../woof-joy-api";
 
 function FeedParceiroCard({
     imagem,

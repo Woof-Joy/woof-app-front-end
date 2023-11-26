@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../css/cadastra-edita-doacao.css";
 import Textarea from "../components/cadastro-servico-textarea";
-import Menu from "../components/MenuCliente";
-import UpdateImg from "./BotaoUpload";
+import Menu from "./componentes-gerais/MenuCliente";
+import UpdateImg from "./componentes-gerais/BotaoUpload";
 import SimNao from "./cadastro-servico-sim-nao";
 import woofJoyApi from "../woof-joy-api";
 import Button from "../components/cadastro-servico-button";

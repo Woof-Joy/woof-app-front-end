@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
-import Menu from "../MenuCliente";
+import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/meus-servicos.css"
 import AguardandoConfirmacao from "../aguardando-confirmacao";
 import chat from "../../imgs/meus-servicos/icon-chat.png"

@@ -4,7 +4,7 @@ import Radio from '../components/cadastro-servico-sim-nao'
 import Perguntas from '../components/cadastro-servico-perguntas'
 import FormInfo from '../components/cadastro-servico-form-informacoes'
 import Button from '../components/cadastro-servico-button'
-import Menu from '../components/MenuCliente'
+import Menu from './componentes-gerais/MenuCliente'
 
 
 

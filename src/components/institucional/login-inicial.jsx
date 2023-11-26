@@ -1,10 +1,10 @@
-import "../css/cadastro-inicial.css"
-import customEnv from "../process";
+import "../../css/cadastro-inicial.css"
+import customEnv from "../../process";
 
-import imgBgTop from '../imgs/cadastro-inicial/bg-top-cadastro-inicial.png'
-import imgIconCliente from '../imgs/cadastro-inicial/icon-cliente.png'
-import imgIconParceiro from '../imgs/cadastro-inicial/icon-parceiro.png'
-import imgBgBot from '../imgs/cadastro-inicial/bg-bot-cadastro-inicial.png'
+import imgBgTop from '../../imgs/cadastro-inicial/bg-top-cadastro-inicial.png'
+import imgIconCliente from '../../imgs/cadastro-inicial/icon-cliente.png'
+import imgIconParceiro from '../../imgs/cadastro-inicial/icon-parceiro.png'
+import imgBgBot from '../../imgs/cadastro-inicial/bg-bot-cadastro-inicial.png'
 
 import { Link } from 'react-router-dom';
 

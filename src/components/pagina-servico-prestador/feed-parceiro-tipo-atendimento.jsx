@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../css/react-feed-parceiro.css";
-import woofJoyApi from "../woof-joy-api";
-import IconDoisPet from "../imgs/feed-parceiro/icon-two-pet.png";
-import IconPetEspecial from "../imgs/feed-parceiro/icon-pet-especial.png";
+import "../../css/react-feed-parceiro.css";
+import woofJoyApi from "../../woof-joy-api";
+import IconDoisPet from "../../imgs/feed-parceiro/icon-two-pet.png";
+import IconPetEspecial from "../../imgs/feed-parceiro/icon-pet-especial.png";
 
 function FeedParceiroTipoAtendimento({icon, descricao, icon2,descricao2}) {
   
