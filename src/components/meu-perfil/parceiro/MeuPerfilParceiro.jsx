@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MenuCliente from "../../MenuCliente"
 import BotaoUpload from "../../BotaoUpload"
-import ModalMeusServicos from '../../modais/ModalMeusServicos';
+import ModalMeusServicos from './ModalMeusServicos';
 import "../../../css/meu-perfil.css"
 import ExemploFoto from "../../../imgs/chat/exemplo-foto-contato.png"
 import IconLixeira from "../../../imgs/meu-perfil/lixeira.png"
@@ -11,7 +11,7 @@ import woofJoyApi from "../../../woof-joy-api";
 
 
 function MeuPerfilParceiro() {
-const userID = 10
+    const userID = 10
 
     const [parceiro, setParceiro] = useState({
         nome: "pedro",
@@ -51,13 +51,6 @@ const userID = 10
     //         });
     // };
 
-    
-    
-    
-    
-    
-    
-    
     const [mostrarAlteracaoSenha, setMostrarAlteracaoSenha] = useState(false);
 
     const handleMostrarAlteracaoSenha = () => {
@@ -97,11 +90,11 @@ const userID = 10
                             <div className="meu-perfil-input-campos-juntos">
                                 <div className="meu-perfil-input-campo-junto">
                                     <label className="meu-perfil-label-campo" htmlFor="">CPF</label>
-                                    <input className="meu-perfil-input-campo" value={parceiro.nome}type="text" />
+                                    <input className="meu-perfil-input-campo" value={parceiro.nome} type="text" />
                                 </div>
                                 <div className="meu-perfil-input-campo-junto">
                                     <label className="meu-perfil-label-campo" htmlFor="">Data de Nascimento</label>
-                                    <input className="meu-perfil-input-campo" value={parceiro.nome}type="date" />
+                                    <input className="meu-perfil-input-campo" value={parceiro.nome} type="date" />
                                 </div>
                             </div>
                         </div>
@@ -113,7 +106,7 @@ const userID = 10
                             <div className="meu-perfil-input-campos-juntos">
                                 <div className="meu-perfil-input-campo-junto">
                                     <label className="meu-perfil-label-campo" htmlFor="">CEP</label>
-                                    <input className="meu-perfil-input-campo" value={parceiro.nome}type="text" />
+                                    <input className="meu-perfil-input-campo" value={parceiro.nome} type="text" />
                                 </div>
                                 <div className="meu-perfil-input-campo-junto">
                                     <label className="meu-perfil-label-campo" htmlFor="">Número</label>
@@ -160,7 +153,7 @@ const userID = 10
                                 </div>
                             )}
                             <div className="meu-perfil-btn-salvar">
-                                <button  className="meu-perfil-btn">Salvar</button>
+                                <button className="meu-perfil-btn">Salvar</button>
                             </div>
                         </div>
                     </div>
