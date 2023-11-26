@@ -13,22 +13,21 @@ function HistoricoChat() {
                     <input className="hist-chat-input-search" type="text" />
                 </div>
                 <div className="hist-chat-buttons">
-                    <button className="hist-chat-btn-parceiro">Parceiro</button>
+                    <button className="hist-chat-btn-parceiro">Cliente</button>
                     <button className="hist-chat-btn-doacao">Doação</button>
                 </div>
-            </section>
-            <section className="hist-chat-container-lista-contatos">
-                <div className="hist-chat-lista-contatos">
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
+                <div className="hist-chat-container-lista-contatos">
+                    <div className="hist-chat-lista-contatos">
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                    </div>
                 </div>
             </section>
-
         </>
     )
 } export default HistoricoChat;
