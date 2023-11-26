@@ -53,21 +53,20 @@ function HistoricoChat() {
                     <img className="hist-chat-icon-search" src={IconSearch} alt="" />
                     <input className="hist-chat-input-search" type="text" />
                 </div>
-            </section>
-            <section className="hist-chat-container-lista-contatos">
-                <div className="hist-chat-lista-contatos">
-                    {historicoBody.map((h) =>
+                <div className="hist-chat-container-lista-contatos">
+                    <div className="hist-chat-lista-contatos">
+                        {historicoBody.map((h) =>
 
-                        <ContatoChat
-                            key={h.id}
-                            id={h.id}
-                            nome={h.mensagem}
-                        />
-                    )}
+                            <ContatoChat
+                                key={h.id}
+                                id={h.id}
+                                nome={h.mensagem}
+                            />
+                        )}
 
+                    </div>
                 </div>
             </section>
-
         </>
     )
 } export default HistoricoChat;

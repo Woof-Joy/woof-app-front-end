@@ -95,23 +95,23 @@ function AreaChat() {
 
     return (
         <>
-            <section className="area-chat-container">
-                <div className="area-chat-cabecalho">
-                    <div className="area-chat-cabecalho-contato">
-                        <img
-                            className="area-chat-foto-contato"
-                            src={ExemploFotoContato}
-                            alt=""
-                        />
-                        <p className="area-chat-nome-contato">{contatoNome} + {contatoIdAtual}</p>
-                    </div>
-                    <button
-                        className="area-chat-btn-agendar-servico"
-                        onClick={setDisplayFlex}
-                    >
-                        Agendar Serviço
-                    </button>
+            <section className="area-chat-cabecalho">
+                <div className="area-chat-cabecalho-contato">
+                    <img
+                        className="area-chat-foto-contato"
+                        src={ExemploFotoContato}
+                        alt=""
+                    />
+                    <p className="area-chat-nome-contato">{contatoNome} + {contatoIdAtual}</p>
                 </div>
+                <button
+                    className="area-chat-btn-agendar-servico"
+                    onClick={setDisplayFlex}
+                >
+                    Agendar Serviço
+                </button>
+            </section>
+            <section className="area-chat-container">
                 <div className="area-chat-mensagens">
                     {mensagemBody && mensagemBody.length > 0 ? (
                         mensagemBody?.map((m) => (
@@ -135,26 +135,26 @@ function AreaChat() {
                     )}
                     <ModalAgendarServico opacityOn={modalDisplay} idParceiro={userIdLogado} cancelarOn={setModelCancelar} sendOn={sendMensage} />
                 </div>
-                <div className="area-chat-campo-envio">
-                    <input
-                        className="area-chat-input-envio"
-                        type="text"
-                        value={sendBody.message}
-                        name="message"
-                        onChange={handleInputChange}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                sendMensage();
-                            }
-                        }}
-                    />
-                    <img
-                        className="area-chat-icon-btn-envio"
-                        onClick={sendMensage}
-                        src={IconEnvio}
-                        alt=""
-                    />
-                </div>
+            </section>
+            <section className="area-chat-campo-envio">
+                <input
+                    className="area-chat-input-envio"
+                    type="text"
+                    value={sendBody.message}
+                    name="message"
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            sendMensage();
+                        }
+                    }}
+                />
+                <img
+                    className="area-chat-icon-btn-envio"
+                    onClick={sendMensage}
+                    src={IconEnvio}
+                    alt=""
+                />
             </section>
         </>
     );

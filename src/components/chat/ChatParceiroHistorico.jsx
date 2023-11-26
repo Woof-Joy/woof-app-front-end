@@ -16,14 +16,16 @@ function HistoricoChat() {
                     <button className="hist-chat-btn-parceiro">Cliente</button>
                     <button className="hist-chat-btn-doacao">Doação</button>
                 </div>
-                <div className="hist-chat-lista-contatos">
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
-                    <ContatoChat />
+                <div className="hist-chat-container-lista-contatos">
+                    <div className="hist-chat-lista-contatos">
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                        <ContatoChat />
+                    </div>
                 </div>
             </section>
         </>
