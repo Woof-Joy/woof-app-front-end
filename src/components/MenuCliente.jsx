@@ -16,7 +16,6 @@ function Menu() {
             <header>
                 <nav class="cabecalho-menu">
                     <ul class="menu-navbar">
-
                         <div class="btn-lateral-menu">
                             <i class="bi bi-list"></i>
                             <img class="logo-img-navbar" src={ImgLogoWoofJoy} alt="logo branca da Woof Joy"></img>
@@ -49,24 +48,22 @@ function Menu() {
                                     <span class="txt-link">Histórico</span>
                                 </a>
                             </li>
-                        </div>
-                        <div class="space"></div>
-                        <div class="menu-item-meu-perfil">
+                            <li className="menu-item">
                             <a href="#">
                                 <span class="icon"><i class="bi bi-person-circle"></i></span>
                                 <span class="txt-link">Meu Perfil</span>
                             </a>
+                            </li>
                         </div>
                         <div class="space-menor"></div>
-                        <hr></hr>
-                        <div class="space"></div>
+                        <hr className="line"></hr>
+                        <div class="space-menor"></div>
                         <Link to="/" class="menu-item-sair" onClick={cleanSessionStorage}>
                             <a href="#">
                                 <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
                                 <span class="txt-link" >Sair</span>
                             </a>
                         </Link>
-                        <div class="space"></div>
                     </ul>
                 </nav>
             </header>

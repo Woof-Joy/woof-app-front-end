@@ -19,8 +19,13 @@
     transition: 0.3s;
 }
 
+.space-menor{
+    height: 3%;
+}
+
 .menu-navbar{
     height: 100%;
+    padding: 0;
 }
 
 .cabecalho-menu:hover{
@@ -42,7 +47,7 @@
 .btn-lateral-menu{
     display: flex;
     height: 8%;
-    width: 90%;
+    width: 100%;
     padding-left: 20px;
     padding-top: 20px;
     gap: 10%;
@@ -70,7 +75,7 @@ ul{
 }
 
 .todos-menu-item{
-    height: 50%;
+    height: 67%;
     margin-top: 10%;
     display: flex;
     flex-direction: column;
@@ -83,7 +88,7 @@ ul{
 .menu-item{
     display: flex;
     align-items: center;
-    height: 41%;
+    height: 40%;
     width: 100%;
     padding: 0 25px;
 }
@@ -116,10 +121,11 @@ ul li.menu-item a .txt-link{
 .txt-link{
     display: none;
     font-weight: 600;
+    text-decoration: none;
 }
 
 
-hr{
+.line{
     width: 85%;
     border-top: 2px solid white;
     background-color: #dddddd;
@@ -151,8 +157,9 @@ hr{
 .menu-item-sair{
     display: flex;
     align-items: center;
-    height: 10%;
+    height: 8%;
     padding-left: 20px;
+    text-decoration: none;
 }
 
 .menu-item-sair:hover{
@@ -172,16 +179,3 @@ hr{
 .menu-item-meu-perfil a .txt-link, .menu-item-sair a .txt-link{
     margin-left: 20px;
 }
-
-.space-menor{
-    height: 3%;
-}
-
-.space{
-    height: 5%;
-}
-
-
-/*tela feed-parceiro*/
-
-
