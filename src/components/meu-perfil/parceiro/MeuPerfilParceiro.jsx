@@ -20,8 +20,6 @@ function MeuPerfilParceiro() {
                 <div className="meu-perfil-menu">
                     <MenuCliente />
                 </div>
-                <div>
-                </div>
                 <div className="meu-perfil-bloco-1">
                     <p className="meu-perfil-titulo">Meu perfil</p>
                     <div className="meu-perfil-foto-perfil">
