@@ -12,7 +12,7 @@
     border-radius: 10px;
     box-shadow: rgb(133, 133, 133) 0px 0px 5px 4px;
     transition: 0.3s;
-    opacity: 0%;
+    opacity: 1;
 }
 
 .select-modal-agendar-servico {

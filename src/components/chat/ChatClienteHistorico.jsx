@@ -10,17 +10,17 @@ function HistoricoChat() {
         "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjaGF0ZUBlbWFpbC5jb20iLCJyb2xlIjoiQyIsImlhdCI6MTcwMDUxMDkyMCwiZXhwIjoxNzA0MTEwOTIwfQ.zUJ0ofjvljd0bDxmUaGtrWXGvqnlh72e9p0EUrSp-wZ2c35CODa2AewD1eSGmxe6";
 
 
-    const [contatoInfo, setContatoInfo] = useState({
-        id: 3,
-        nome: "Teste historico",
-        imagem: ""
-    })
+    // const [contatoInfo, setContatoInfo] = useState({
+    //     id: 3,
+    //     nome: "Teste historico",
+    //     imagem: ""
+    // })
 
-    const [historicoBody, sethistoricoBody] = useState([]);
+    const [contatoInfo, setContatoInfo] = useState([]);
 
     function getMensagensHistory() {
         woofJoyApi
-            .get(`/notification/doacao/${userIdLogado}/3`, {
+            .get(`/notification/${userIdLogado}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -28,7 +28,7 @@ function HistoricoChat() {
             .then((response) => {
                 console.log(response.data);
                 console.log(response.status);
-                sethistoricoBody(response.data);
+                setContatoInfo(response.data);
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido.mensagem);
@@ -55,12 +55,12 @@ function HistoricoChat() {
                 </div>
                 <div className="hist-chat-container-lista-contatos">
                     <div className="hist-chat-lista-contatos">
-                        {historicoBody.map((h) =>
+                        {contatoInfo.map((contato) =>
 
                             <ContatoChat
-                                key={h.id}
-                                id={h.id}
-                                nome={h.mensagem}
+                                key={contato.id}
+                                id={contato.usuario2.id}
+                                nome={contato.usuario2.nomeCompleto}
                             />
                         )}
 

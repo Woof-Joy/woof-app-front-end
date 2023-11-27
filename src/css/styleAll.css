@@ -60,7 +60,7 @@ a {
 
 /* INPUTS */
 input {
-    padding: 7px 30px 7px 30px;
+    padding: 4px;
     outline: none;
     box-shadow: rgb(142, 138, 138) 1px 4px 8px;
 }

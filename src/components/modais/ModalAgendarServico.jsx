@@ -33,9 +33,11 @@ function ModalAgendarServico({opacityOn, widthOn, idParceiro, cancelarOn, sendOn
 
     }
 
-
-
-
+    const dogList = ["dog1", "dog2"];
+    sessionStorage.setItem("dogList", JSON.stringify(dogList));
+    
+    var list = [];
+    list = JSON.parse(sessionStorage.getItem("dogList"))
 
 
     return (
@@ -68,9 +70,9 @@ function ModalAgendarServico({opacityOn, widthOn, idParceiro, cancelarOn, sendOn
                 </div>
 
                 <h5>Selecione o pet:</h5>
-                <select placeholder="Serviços disponíveis" className="select-modal-agendar-servico" name="" id="">
+                <select placeholder="seus pets" className="select-modal-agendar-servico" name="" id="">
                     <option value="" disabled>Escolha...</option>
-                    {servicos.map((s) => (
+                    {list.map((s) => (
                         <option value="">{s}</option>
                     ))
                     }

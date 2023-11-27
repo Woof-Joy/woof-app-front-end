@@ -8,10 +8,8 @@ import ModalAgendarServico from "../modais/ModalAgendarServico";
 
 function AreaChat() {
     // const userIdLogado = sessionStorage.getItem("userId")
-    // const contatoIdAtual = sessionStorage.getItem("contatoId")
-
-    const userIdLogado = 6;
-    const contatoIdAtual = 3;
+     const contatoIdAtual = sessionStorage.getItem("contatoId")
+     const userIdLogado = 6;
     const contatoNome = sessionStorage.getItem("contatoName")
     const token =
         "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjaGF0ZUBlbWFpbC5jb20iLCJyb2xlIjoiQyIsImlhdCI6MTcwMDUxMDkyMCwiZXhwIjoxNzA0MTEwOTIwfQ.zUJ0ofjvljd0bDxmUaGtrWXGvqnlh72e9p0EUrSp-wZ2c35CODa2AewD1eSGmxe6";
@@ -28,7 +26,7 @@ function AreaChat() {
 
     function getMensagensHistory() {
         woofJoyApi
-            .get(`/notification/doacao/${userIdLogado}/${contatoIdAtual}`, {
+            .get(`/notification/${userIdLogado}/${contatoIdAtual}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -60,7 +58,7 @@ function AreaChat() {
                     idDestinatario: 3,
                     tipo: "doacao",
                 });
-                setModelCancelar()
+                
 
             })
             .catch((erroOcorrido) => {
@@ -91,7 +89,7 @@ function AreaChat() {
             getMensagensHistory();
         }, 0.01 * 60 * 1000);
         return () => clearInterval(intervalId);
-    }, []);
+    },[userIdLogado, contatoIdAtual]);
 
     return (
         <>
@@ -102,7 +100,7 @@ function AreaChat() {
                         src={ExemploFotoContato}
                         alt=""
                     />
-                    <p className="area-chat-nome-contato">{contatoNome} + {contatoIdAtual}</p>
+                    <p className="area-chat-nome-contato">{contatoNome}</p>
                 </div>
                 <button
                     className="area-chat-btn-agendar-servico"
