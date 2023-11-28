@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+.cadastro-pet-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8vh;
+}
+
+.cadastro-pet-menu {
+    width: 6%;
+}
+
+.cadastro-pet-conteudo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.cadastro-pet-bloco-1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    gap: 50%;
+}
+
+.cadastro-pet-foto-perfil {
+    display: flex;
+    align-items: center;
+    gap: 3vh;
+    margin-bottom: 5vh;
+}
+
+.cadastro-pet-img-foto {
+    border-radius: 50%;
+}
+
+.cadastro-pet-btn-editar {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    cursor: pointer;
+}
+
+.cadastro-pet-txt-editar {
+    font-size: 16px;
+    color: #DB4B90;
+    font-weight: 700;
+}
+
+.cadastro-pet-bloco-2 {
+    width: 80%;
+    margin-left: 15%;
+    display: flex;
+    gap: 5%;
+}
+
+.cadastro-pet-txt-guia-div{
+    width: 18vh;
+    display: flex;
+    justify-content: end;
+}
+
+.cadastro-pet-txt-guia {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: end;
+}
+
+.cadastro-pet-inputs-container {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.cadastro-pet-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+}
+
+.cadastro-pet-label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cadastro-pet-input-campo {
+    height: 4.5vh;
+    font-size: 16px;
+    padding-left: 1vh;
+    background-color: rgba(229, 229, 229, 1);
+    border: none;
+    overflow: none;
+    border-radius: 10px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.cadastro-pet-radio{
+    display: flex;
+    align-items: center;
+}
+
+.cadastro-pet-input-peso-porte {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cadastro-pet-peso, .cadastro-pet-porte {
+    width: 100%;
+}
+
+.cadastro-pet-input-peso-porte-kg {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    margin-right: 3vh;
+}
+
+.cadastro-pet-input-radio{
+    margin-right: 0.5vh;
+    margin-left: 1vh;
+}
+
+.cadastro-pet-bloco-3{
+    margin-top: 2vh;
+    margin-left: 15%;
+    display: flex;
+    gap: 5%;
+}
+
+.cadastro-pet-bloco-4{
+    width: 80%;
+    margin-left: 28%;
+    display: flex;
+    gap: 5%;
+}
