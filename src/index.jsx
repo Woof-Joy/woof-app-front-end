@@ -20,7 +20,8 @@ import MeuPerfilParceiro from './components/meu-perfil/parceiro/MeuPerfilParceir
 
 import CadastroServico from './components/cadastro-servico'
 import CadastraEditaDoacao from './components/cadastra-edita-doacao'
-import PublicacaoDoacao from './components/publicacao-doacao'
+import CadastroPet from "./components/pets/CadastroPet"
+
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "cadastra-edita-doacao",
         element: <CadastraEditaDoacao />
+      },
+      {
+        path: "cadastro-pet",
+        element: <CadastroPet />
       }
 
     ]
