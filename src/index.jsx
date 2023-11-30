@@ -22,6 +22,7 @@ import CadastroServico from './components/cadastro-servico'
 import CadastraEditaDoacao from './components/cadastra-edita-doacao'
 import CadastroPet from "./components/pets/CadastroPet"
 
+
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
 
@@ -105,6 +106,7 @@ const router = createBrowserRouter([
         path: "cadastro-pet",
         element: <CadastroPet />
       }
+
     ]
   }
 ])

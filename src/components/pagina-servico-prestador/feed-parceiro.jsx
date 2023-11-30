@@ -80,7 +80,6 @@ function FeedParceiro() {
 
   return (
     <>
-
       <div className="container">
         < MenuCliente />
         <header className="footer-feed">

@@ -7,12 +7,15 @@ import imgIconVoltar from "../../imgs/icon-voltar.png"
 
 import customEnv from "../../process";
 
+// import { Link, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const roleResult = customEnv.role
 
 
 function Login() {
+
+    // const navigate = useNavigate();
 
     const [usuarioLogin, setUsuarioLogin] = useState({
         userId: "",
@@ -33,6 +36,7 @@ function Login() {
                 sessionStorage.setItem("token",usuarioLogin.token)
                 setUsuarioLogin(resposta.data)
                 alert("Login realizado com sucesso")
+                // navigate("/")
             })
             .catch((erro) => {
                 console.log(erro)
