@@ -111,6 +111,13 @@
     align-items: center;
 }
 
+.cadastro-pet-group-of-inputs{
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    margin: 1.5vh 0;
+}
+
 .cadastro-pet-input-peso-porte {
     width: 100%;
     display: flex;

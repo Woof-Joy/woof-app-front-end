@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 
-function GrupoDeRadioButtons({ id }) {
+function TelaComInputRadio() {
   const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
+  const [valorInput, setValorInput] = useState('');
 
   const handleRadioChange = (event) => {
     setOpcaoSelecionada(event.target.value);
   };
 
+  const handleInputChange = (event) => {
+    setValorInput(event.target.value);
+  };
+
   return (
     <div>
-      <p>Grupo {id} - Opção Selecionada: {opcaoSelecionada}</p>
       <label>
         <input
           type="radio"
-          name={`opcao-${id}`}
+          name="opcao"
           value="sim"
           onChange={handleRadioChange}
           checked={opcaoSelecionada === 'sim'}
@@ -24,25 +28,26 @@ function GrupoDeRadioButtons({ id }) {
       <label>
         <input
           type="radio"
-          name={`opcao-${id}`}
+          name="opcao"
           value="nao"
           onChange={handleRadioChange}
           checked={opcaoSelecionada === 'nao'}
         />
         Não
       </label>
+
+      {opcaoSelecionada === 'sim' && (
+        <div>
+          <label>Digite algo:</label>
+          <input
+            type="text"
+            value={valorInput}
+            onChange={handleInputChange}
+          />
+        </div>
+      )}
     </div>
   );
 }
 
-function Teste() {
-  return (
-    <div>
-      <GrupoDeRadioButtons id={1} />
-      <GrupoDeRadioButtons id={2} />
-      <GrupoDeRadioButtons id={3} />
-    </div>
-  );
-}
-
-export default Teste;
+export default TelaComInputRadio;

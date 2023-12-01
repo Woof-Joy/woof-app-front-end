@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import IconRemoverInput from "../../imgs/cadastro-pet/IconRemoverInput.png"
+import IconAdicionarInput from "../../imgs/cadastro-pet/IconAdicionarInput.png"
 
 function GroupOfInputs() {
     const [inputs, setInputs] = useState([{ id: 1, value: '' }]);
@@ -25,16 +27,16 @@ function GroupOfInputs() {
     return (
         <div>
             {inputs.map((input) => (
-                <div key={input.id}>
+                <div className='cadastro-pet-group-of-inputs' key={input.id}>
                     <input className="cadastro-pet-input-campo"
                         type="text"
                         value={input.value}
                         onChange={(e) => handleInputChange(input.id, e.target.value)}
                     />
-                    <button onClick={() => handleRemoveInput(input.id)}>Remover</button>
+                    <img src={IconRemoverInput} alt="" onClick={() => handleRemoveInput(input.id)} />
                 </div>
             ))}
-            <button onClick={handleAddInput}>Adicionar Input</button>
+            <img onClick={handleAddInput} src={IconAdicionarInput} alt="" />
         </div>
     );
 }
