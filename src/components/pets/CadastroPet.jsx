@@ -6,6 +6,7 @@ import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
 import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
 import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
 import GroupOfInputs from './GroupOfInputs';
+import Teste from './Teste'
 
 function CadastroPet() {
 
@@ -18,6 +19,12 @@ function CadastroPet() {
 
     const handleInputChange = (event) => {
         setValorInput(event.target.value);
+    };
+
+    const [mostrarInputsConvenio, setMostrarInputsConvenio] = useState(false);
+
+    const handleRadioChangeConvenio = (event) => {
+        setMostrarInputsConvenio(event.target.value === 'simConvenio');
     };
 
     return (
@@ -116,9 +123,12 @@ function CadastroPet() {
                             </div>
                             <div className="cadastro-pet-radio">
                                 <label className="cadastro-pet-label" htmlFor="">Possui Convênio?</label>
-                                <input className="cadastro-pet-input-radio" name="possuiConvenio" type="radio" /> Sim
-                                <input className="cadastro-pet-input-radio" name="possuiConvenio" type="radio" /> Não
+                                <input className="cadastro-pet-input-radio" name="possuiConvenio" value='simCovenio' type="radio" onChange={handleRadioChangeConvenio}
+                                    checked={mostrarInputsConvenio} /> Sim
+                                <input className="cadastro-pet-input-radio" name="possuiConvenio" value="naoConvenio" type="radio" onChange={handleRadioChangeConvenio}
+                                    checked={!mostrarInputsConvenio} /> Não
                             </div>
+                            {mostrarInputsConvenio && <Teste />}
                         </div>
                     </div>
                     <div className="cadastro-pet-bloco-3">

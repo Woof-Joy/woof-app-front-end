@@ -1,53 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function TelaComInputRadio() {
-  const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
-  const [valorInput, setValorInput] = useState('');
-
-  const handleRadioChange = (event) => {
-    setOpcaoSelecionada(event.target.value);
-  };
-
-  const handleInputChange = (event) => {
-    setValorInput(event.target.value);
-  };
-
+function InputComponent() {
   return (
     <div>
       <label>
-        <input
-          type="radio"
-          name="opcao"
-          value="sim"
-          onChange={handleRadioChange}
-          checked={opcaoSelecionada === 'sim'}
-        />
-        Sim
+        Input 1:
+        <input type="text" />
       </label>
-
+      <br />
       <label>
-        <input
-          type="radio"
-          name="opcao"
-          value="nao"
-          onChange={handleRadioChange}
-          checked={opcaoSelecionada === 'nao'}
-        />
-        Não
+        Input 2:
+        <input type="text" />
       </label>
-
-      {opcaoSelecionada === 'sim' && (
-        <div>
-          <label>Digite algo:</label>
-          <input
-            type="text"
-            value={valorInput}
-            onChange={handleInputChange}
-          />
-        </div>
-      )}
     </div>
   );
 }
 
-export default TelaComInputRadio;
+export default InputComponent;
