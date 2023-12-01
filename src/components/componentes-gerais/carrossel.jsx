@@ -20,23 +20,9 @@ const BootstrapCarousel = () => {
   function irAteAlgo(navegacao) {
     navigate(navegacao);
   }
+  navigate("/doacao");
 
-//   function logar() {
-    // const objetoParaLogar = {
-    //     nome: "braian",
-    //     email: "braian.braga@gmail.com"
-    // }
 
-    // "api".post("/parceiro")({
-    //     nome: "Braian",
-    //     email: "braian.braga@sptech.school"
-    // }).then((resposta) => {
-    //     console.log("ele fez o login")
-    //     navigate("/doacao");
-    // }).catch((error) => {
-    //     console.error(error);
-    // })
-//   }
 
   return (
     <div className="container-carrossel">

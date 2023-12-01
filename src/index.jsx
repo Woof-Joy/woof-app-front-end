@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import '../src/css/styleAll.css';
 
 import Index from "./components/institucional/index"
 import CadastroInicial from './components/institucional/cadastro-inicial'
@@ -13,8 +14,8 @@ import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
-import ChatCliente from "./components/chat/ChatCliente"
-import ChatParceiro from './components/chat/ChatParceiro'
+import ChatCliente from "./components/chat/cliente/ChatCliente"
+import ChatParceiro from './components/chat/parceiro/ChatParceiro'
 import MeuPerfilCliente from './components/meu-perfil/cliente/MeuPerfilCliente'
 import MeuPerfilParceiro from './components/meu-perfil/parceiro/MeuPerfilParceiro'
 

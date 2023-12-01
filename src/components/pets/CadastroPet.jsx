@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import woofJoyApi from "../../woof-joy-api";
 import "../../css/cadastro-pet.css"
+import "../../css/botao-upload.css"
 import MenuCliente from "../componentes-gerais/MenuCliente"
 import BotaoUpload from "../componentes-gerais/BotaoUpload"
 import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
 import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
-import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
+import { useNavigate } from 'react-router-dom';
+
 
 function CadastroPet() {
-
+    const userId = sessionStorage.getItem("userId")
+    const token = sessionStorage.getItem("token")
     const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
     const [valorInput, setValorInput] = useState('');
 
@@ -18,6 +22,60 @@ function CadastroPet() {
     const handleInputChange = (event) => {
         setValorInput(event.target.value);
     };
+
+    const [dogBody, setDog] = useState({
+        nome: "Fido",
+        dtNasc: "2020-01-01",
+        imgCachorro: "url_da_imagem",
+        rga: true,
+        peso: 20.5,
+        raca: "Labrador",
+        porte: "médio",
+        convenio: false,
+        carteirinha: "123456",
+        genero: "M",
+        agressivo: 2,
+        deficiencia: false,
+        fkDono: {
+            "id": 1
+        },
+        observacaoList: [
+            {
+                "descricao": "Observação sobre o cachorro",
+                "dataObservacao": "2023-11-26"
+            }
+        ]
+    }
+
+    )
+    const navigate = useNavigate();
+
+    function cadastrarPet() {
+        woofJoyApi
+            .post(`/dogs/${userId}`, dogBody, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                console.log(response.status);
+                setDog(response.data)
+                alert("pet cadastrado")
+                navigate("/perfil-cliente")
+
+            })
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido.mensagem);
+                alert("complete as informações")
+
+
+            });
+
+
+    }
+
+
 
     return (
         <>
@@ -32,10 +90,7 @@ function CadastroPet() {
                             <BotaoUpload />
                             <img src={IconLixeira} alt="" />
                         </div>
-                        <div className="cadastro-pet-btn-editar">
-                            <p className="cadastro-pet-txt-editar">Editar</p>
-                            <img src={IconEditar} alt="" />
-                        </div>
+
                     </div>
                     <div className="cadastro-pet-bloco-2">
                         <div className="cadastro-pet-txt-guia-div">
@@ -176,6 +231,10 @@ function CadastroPet() {
                                     </div>
                                 )}
                             </div>
+                            <button onClick={cadastrarPet} class="custom-file-upload">
+                                Cadastrar Pet
+                            </button>
+
                         </div>
                     </div>
                 </div>

@@ -46,12 +46,12 @@ function Menu() {
                                     </a>
                                 </Link>
                             </li>
-                            <li class="menu-item">
+                            {/* <li class="menu-item">
                                 <a href="#">
                                     <span class="icon"><i class="bi bi-clock-history"></i></span>
                                     <span class="txt-link">Histórico</span>
                                 </a>
-                            </li>
+                            </li> */}
                             <li className="menu-item">
                                 <Link to="/perfil-cliente">
                                     <a href="#">

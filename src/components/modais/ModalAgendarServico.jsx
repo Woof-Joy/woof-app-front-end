@@ -39,6 +39,46 @@ function ModalAgendarServico({opacityOn, widthOn, idParceiro, cancelarOn, sendOn
     var list = [];
     list = JSON.parse(sessionStorage.getItem("dogList"))
 
+    const [servico, setServico] = useState({
+        id: 1,
+        inicioDoServico: "",
+        fimDoServico: "",
+        status: "aguardandoConfirmacao",
+        relatorio: {
+            id:"",
+            conteudo:"",
+            fkServico:""
+
+        },
+        avaliacao: {
+            id:"",
+            nota:"",
+            comentario:"",
+            fkServico:""
+        },
+        fkFichaServico: {
+            id:"",
+            tipoServico:"ambos",
+            valor:20.00,
+            servicos:[]
+        },
+        cachorros: [],
+      });
+
+
+    const agendarServico = () => {    
+        woofJoyApi
+            .post(`/servicos`, servico)
+            .then((resposta) => {
+                alert(resposta.status);
+            })
+            .catch((erro) => {
+                alert(`Erro ao criar o usuário: ${erro.message}`);
+            });
+    };
+
+    
+
 
     return (
         <>

@@ -9,7 +9,6 @@ function ContatoChat(props) {
   function contatoDados(props) {
     sessionStorage.setItem("contatoName", props.nome);
     sessionStorage.setItem("contatoId", props.id);
-    // window.location.reload();
   }
 
   return (

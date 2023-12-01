@@ -97,7 +97,6 @@ const Topicos = () => {
 
             // Enviar uma mensagem para o tópico (para teste)
             stompClient.send('/topic/doacao/22/20', {}, JSON.stringify({ 'message': mensagemBody.message }));
-            sendMensage()
 
             //   });
         };

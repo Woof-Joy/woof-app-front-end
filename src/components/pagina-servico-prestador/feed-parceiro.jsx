@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import woofJoyApi from "../../woof-joy-api";
 import MenuCliente from "../componentes-gerais/MenuCliente.jsx";
 import BootstrapCarousel from '../componentes-gerais/carrossel.jsx'
 import Avaliacao from './feed-parceiro-card-avaliacoes.jsx'
@@ -7,6 +8,7 @@ import ImgParceiro from '../../imgs/feed-parceiro/foto-colaborador.png'
 import ImgDamares from '../../imgs/feed-parceiro/foto-damares.png'
 import ImgRichard from '../../imgs/feed-parceiro/foto-richard.png'
 import ImgLucca from '../../imgs/feed-parceiro/foto-lucca.png'
+import chat from "../../imgs/meus-servicos/icon-chat.png"
 
 import IconDogWalker from '../../imgs/feed-parceiro/icon-dog-walker.png'
 import IconDogSitter from '../../imgs/feed-parceiro/icon-dog-sitter.png'
@@ -26,6 +28,7 @@ import IconTemAnimais from '../../imgs/feed-parceiro/icon-dog-tem-animal.png'
 import IconCrianca from '../../imgs/feed-parceiro/icon-dog-sem-crianca.png'
 import IconRotasFuga from '../../imgs/feed-parceiro/icon-dog-sem-fuga.png'
 import IconSobeSofa from '../../imgs/feed-parceiro/icon-dog-sobe-sofa.png'
+import { Link } from "react-router-dom";
 
 
 function FeedParceiro() {
@@ -77,19 +80,52 @@ function FeedParceiro() {
   const descricaoServico3 = ["5,0 - Serviço utilizado:  Dog Walker"]
   const descricaoAvaliacao3 = ["Adorei o atendimento dele, meu pet fica muito feliz com os passeios e a plataforma achei pratica"]
 
+  const userId = sessionStorage.getItem("userId")
+  const token = sessionStorage.getItem("token")
+  const idParceiro = sessionStorage.getItem("idParceiroFeed")
+  const cidade = sessionStorage.getItem("cidadeParceiroFeed")
+  const estado = sessionStorage.getItem("estadoParceiroFeed")
+  const nome = sessionStorage.getItem("nomeParceiroFeed")
+  const estrelas = sessionStorage.getItem("estrelasParceiroFeed")
+  const qtdServicos =sessionStorage.getItem("qtdServicosParceiroFeed")
+  const descricao = sessionStorage.getItem("descricaoParceiroFeed")
+  const servicos = sessionStorage.getItem("servicosParceiroFeed")
+
+
+  function getInfoPrestador() {
+    woofJoyApi
+        .put(`/users/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then((response) => {
+            console.log(response.data);
+            console.log(response.status);
+        })
+        .catch((erroOcorrido) => {
+            console.log(erroOcorrido.mensagem);
+        });
+}
+
+function contatoDados() {
+  sessionStorage.setItem("contatoName", nome);
+  sessionStorage.setItem("contatoId", idParceiro);
+}
+
 
   return (
     <>
       <div className="container">
         < MenuCliente />
-        <header className="footer-feed">
-          <img className="feed-parceiro-img-damares" src={ImgDamares} alt="imagem do cliente"></img>
-        </header>
+        <Link to={"/chat-cliente"} onClick={() => contatoDados()} className="footer-feed">
+        <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
+        </Link>
 
         <section className="container-info-parceiro">
           <img className="feed-parceiro-img" src={ImgParceiro} alt="imagem do parceiro"></img>
           <div className="conteudo-info-parceiro">
-            <p className="nome-parceiro">Rafael Marcos</p>
+            <p className="nome-parceiro">{nome}</p>
 
             <div className="conteudo-local-data-avaliacao">
               <div className="local">
@@ -125,14 +161,15 @@ function FeedParceiro() {
             </div>
             <div className="txt-apresentacao">
               <p>
-                Lorem ipsum dolor sit amet. Sed nemo amet et quibusdam amet et
-                iste voluptas.
+                {descricao}
 
               </p>
             </div>
             <button className="btn-agendar-servico" type="button">
               Agendar Serviço
             </button>
+
+
           </div>
         </section>
 

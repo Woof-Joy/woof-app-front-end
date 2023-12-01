@@ -5,30 +5,44 @@ import "../../css/feed-servicos.css"
 import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
 import point from "../../imgs/feed-parceiro/point-localizacao.png"
 import CardParceiro from "./card-parceiro-feed";
+import { Link } from 'react-router-dom';
+
 
 
 function FeedServico() {
 
-
+    const userId = sessionStorage.getItem("userId")
+    const token = sessionStorage.getItem("token")
     const [listaParceiros, setParceiros] = useState([])
+
+    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome, cidade, estado, estrelas, qtdServicos, descricao, servicos) {
+        sessionStorage.setItem("idParceiroFeed", parceiroId)
+        sessionStorage.setItem("cidadeParceiroFeed", cidade)
+        sessionStorage.setItem("estadoParceiroFeed", estado)
+        sessionStorage.setItem("nomeParceiroFeed", nome)
+        sessionStorage.setItem("estrelasParceiroFeed", estrelas)
+        sessionStorage.setItem("qtdServicosParceiroFeed", qtdServicos)
+        sessionStorage.setItem("descricaoParceiroFeed", descricao)
+        sessionStorage.setItem("servicosParceiroFeed", servicos)
+    }
 
 
     useEffect(() => {
-        // Chama a função listar() imediatamente
         listar();
 
-        // Define um intervalo para chamar a função listar() 
         const intervalId = setInterval(() => {
             listar();
-        }, 1 * 60 * 1000);//minutos em milisegundos(O numero primario determina, exemplo: Se 1 então 1 minuto)   
-
-        // Limpa o intervalo quando o componente for desmontado
+        }, 1 * 60 * 1000);
         return () => clearInterval(intervalId);
-    }, []);
+    });
 
     function listar() {
         woofJoyApi
-            .get('/parceiros')
+            .get('/parceiros', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((response) => {
                 console.log(response.data);
                 setParceiros(response.data);
@@ -68,18 +82,24 @@ function FeedServico() {
                                 <select className="select-feed-servico" name="" id=""></select>
                             </h6>
 
-                            <h6>
-                                Ordenar Por <br />
-                                <select className="select-feed-servico" name="" id=""></select>
-                            </h6>
-
                         </div>
                     </div>
 
                 </div>
-                <div className="container-card-feed-servico">
-                    {listaParceiros?.map((parceiro) => (
-                        <>
+                {listaParceiros?.map((parceiro) => (
+
+                    <>
+                        <Link to={"/feed-parceiro"} onClick={() => guardarIdParaCaminhoFeedParceiro(
+                            6,
+                            parceiro.nome,
+                            parceiro.cidade,
+                            parceiro.estado,
+                            parceiro.estrelas,
+                            parceiro.qtdServicos,
+                            parceiro.descricao,
+                            parceiro.servicos
+                            )} className="container-card-feed-servico">
+
                             <CardParceiro
                                 key={parceiro.id}
                                 servicoWalker={parceiro.servicoWalker}
@@ -89,11 +109,11 @@ function FeedServico() {
                                 descricao={parceiro.descricao}
                                 avaliacao={parceiro.avaliacao}
                             />
+                        </Link>
 
-                        </>
-                    ))}
+                    </>
+                ))}
 
-                </div>
 
             </div>
 
