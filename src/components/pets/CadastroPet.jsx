@@ -4,6 +4,10 @@ import MenuCliente from "../componentes-gerais/MenuCliente"
 import BotaoUpload from "../componentes-gerais/BotaoUpload"
 import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
 import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
+import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
+import GroupOfInputs from './GroupOfInputs';
+import InputComponent from './InputComponent'
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -174,12 +178,9 @@ function CadastroPet() {
                             </div>
                             <div className="cadastro-pet-radio">
                                 <label className="cadastro-pet-label" htmlFor="">Possui Convênio?</label>
-                                <input className="cadastro-pet-input-radio" name="possuiConvenio" value='simCovenio' type="radio" onChange={handleRadioChangeConvenio}
-                                    checked={mostrarInputsConvenio} /> Sim
-                                <input className="cadastro-pet-input-radio" name="possuiConvenio" value="naoConvenio" type="radio" onChange={handleRadioChangeConvenio}
-                                    checked={!mostrarInputsConvenio} /> Não
                             </div>
-                            {mostrarInputsConvenio && <Teste />}
+                            <GroupOfRadioButtonConvenio id={1} />
+                            
                         </div>
                     </div>
                     <div className="cadastro-pet-bloco-3">
@@ -277,6 +278,45 @@ function GroupOfRadioButtons({ id }) {
             </label>
 
             {shouldShowGroup && <GroupOfInputs />}
+        </div>
+    );
+}
+
+function GroupOfRadioButtonConvenio({ id }) {
+
+    const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
+
+    const handleRadioChange = (event) => {
+        setOpcaoSelecionada(event.target.value);
+    };
+
+    const shouldShowGroup = opcaoSelecionada === 'sim';
+
+    return (
+        <div>
+            <label>
+                <input className="cadastro-pet-input-radio"
+                    type="radio"
+                    name={`opcao-${id}`}
+                    value="sim"
+                    onChange={handleRadioChange}
+                    checked={opcaoSelecionada === 'sim'}
+                />
+                Sim
+            </label>
+
+            <label>
+                <input className="cadastro-pet-input-radio"
+                    type="radio"
+                    name={`opcao-${id}`}
+                    value="nao"
+                    onChange={handleRadioChange}
+                    checked={opcaoSelecionada === 'nao'}
+                />
+                Não
+            </label>
+
+            {shouldShowGroup && <InputComponent />}
         </div>
     );
 }
