@@ -23,6 +23,8 @@ import CadastroServico from './components/cadastro-servico'
 import CadastraEditaDoacao from './components/cadastra-edita-doacao'
 import CadastroPet from "./components/pets/CadastroPet"
 
+import ModalCadastroAvalicao from "./components/modais/ModalCadastrarAvaliacao"
+
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
 
@@ -69,8 +71,8 @@ const router = createBrowserRouter([
         element: <ChatCliente />
       },
       {
-        path:"chat-parceiro",
-        element: <ChatParceiro/>
+        path: "chat-parceiro",
+        element: <ChatParceiro />
       },
       {
         path: "historico",
@@ -105,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: "cadastro-pet",
         element: <CadastroPet />
+      },
+      {
+        path: "cadastrar-avaliacao",
+        element: <ModalCadastroAvalicao />
       }
     ]
   }
