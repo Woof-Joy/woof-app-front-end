@@ -24,6 +24,7 @@ import CadastraEditaDoacao from './components/cadastra-edita-doacao'
 import CadastroPet from "./components/pets/CadastroPet"
 
 import ModalCadastroAvalicao from "./components/modais/ModalCadastrarAvaliacao"
+import ModalCadastrarRelatorio from './components/modais/ModalCadastrarRelatorio';
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
       {
         path: "cadastrar-avaliacao",
         element: <ModalCadastroAvalicao />
+      },
+      {
+        path: "cadastrar-relatorio",
+        element: <ModalCadastrarRelatorio/>
       }
     ]
   }
