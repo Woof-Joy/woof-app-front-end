@@ -5,8 +5,9 @@ import BotaoUpload from "../componentes-gerais/BotaoUpload"
 import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
 import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
 import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
-import GroupOfInputs from './GroupOfInputs';
+import GroupOfInputs from './GroupOfInputs'
 import InputComponent from './InputComponent'
+import woofJoyApi from "../../woof-joy-api"
 
 import { useNavigate } from 'react-router-dom';
 
