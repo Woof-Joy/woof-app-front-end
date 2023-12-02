@@ -55,12 +55,15 @@ a {
     color: #DB4B90;
     cursor: pointer;
     text-decoration: none;
+
 }
+
+
 
 
 /* INPUTS */
 input {
-    padding: 4px;
+    padding: px;
     outline: none;
     box-shadow: rgb(142, 138, 138) 1px 4px 8px;
 }

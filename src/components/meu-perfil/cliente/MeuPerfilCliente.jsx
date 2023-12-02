@@ -4,7 +4,7 @@ import MenuCliente from "../../componentes-gerais/MenuCliente"
 import BotaoUpload from "../../componentes-gerais/BotaoUpload"
 import ModalMeusPets from "./ModalMeusPets"
 import "../../../css/meu-perfil.css"
-import ExemploFoto from "../../../imgs/chat/exemplo-foto-contato.png"
+import ExemploFoto from "../../../imgs/chat/exemplo-foto-contato.png";
 import IconLixeira from "../../../imgs/meu-perfil/lixeira.png"
 import IconEditar from "../../../imgs/meu-perfil/icon-editar.png"
 
@@ -15,83 +15,95 @@ function MeuPerfilCliente() {
     const [userData, setUser] = useState({
         id: 3,
         nomeCompleto: "Nome do Usuário Sobrenome do Usuário",
-        cpf: null,
-        cep: "12345678",
-        numero: "12345",
-        email: "usuario@email.com",
+        cpf: "470102118-09",
+        cep: "09791160",
+        rua: "rua teles de menezes",
+        cidade: "São Bernardo do Campo",
+        estado: "SP",
+        numero: "566",
+        email: "filipe@sptech.com",
         senha: "$2a$10$7RsGlcACgYcSQyTYvQHNiuOwh5laKloEreLn6JVri1YdY6JpegTZi",
         dataNasc: "1990-01-01",
         imgUsuario: null,
         descricao: "Alguma descrição do usuário",
         parceiro: {
-          nome: "Nome do Usuário",
-          sobrenome: "Sobrenome do Usuário",
-          cep: "12345678",
-          numero: null,
-          email: "usuario@email.com",
-          dataNasc: "1990-01-01",
-          endereco: null,
-          dataEntrada: null,
-          estrelas: null,
-          qtdServicosPrestados: 0,
-          servicos: []
+            nome: "Nome do Usuário",
+            sobrenome: "Sobrenome do Usuário",
+            cep: "12345678",
+            numero: null,
+            email: "usuario@email.com",
+            dataNasc: "1990-01-01",
+            endereco: null,
+            dataEntrada: null,
+            estrelas: null,
+            qtdServicosPrestados: 0,
+            servicos: []
         },
         cliente: {
-          idCliente: 11,
-          dogList: []
+            idCliente: 11,
+            dogList: []
         },
         listaItens: []
-      })
-      
-      
+    })
+
+
 
 
     const [mostrarAlteracaoSenha, setMostrarAlteracaoSenha] = useState(false);
+
+
+    function getInfoUser() {
+        woofJoyApi
+            .get(`/users/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                console.log(response.status);
+                setUser(response.data)
+            })
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido.mensagem);
+            });
+    }
+
+    function putPerfil() {
+        woofJoyApi
+            .put(`/users/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                console.log(response.status);
+                setUser(response.data)
+                getInfoUser()
+
+            })
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido.mensagem);
+            });
+    }
+
+    useEffect(() => {
+        getInfoUser();
+
+        const intervalId = setInterval(() => {
+            getInfoUser();
+        }, 1 * 60 * 1000);
+        return () => clearInterval(intervalId);
+    }, []);
+
     const handleMostrarAlteracaoSenha = () => {
+        if(mostrarAlteracaoSenha === true){
+            setMostrarAlteracaoSenha(false);
+
+        }else{
         setMostrarAlteracaoSenha(true);
-
-        function getInfoUser() {
-            woofJoyApi
-                .get(`/users/${userId}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    console.log(response.data);
-                    console.log(response.status);
-                    setUser(response.data)
-                })
-                .catch((erroOcorrido) => {
-                    console.log(erroOcorrido.mensagem);
-                });
         }
-
-        function putPerfil() {
-            woofJoyApi
-                .put(`/users/${userId}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    console.log(response.data);
-                    console.log(response.status);
-                    setUser(response.data)
-                })
-                .catch((erroOcorrido) => {
-                    console.log(erroOcorrido.mensagem);
-                });
-        }
-
-
-
-      
-
-        
-
-
-
     };
     return (
         <>
@@ -119,7 +131,7 @@ function MeuPerfilCliente() {
                                     <label className="meu-perfil-label-campo" htmlFor="">Nome</label>
                                     <input className="meu-perfil-input-campo" value={userData.nomeCompleto} type="text" />
                                 </div>
-                              
+
                             </div>
                             <div className="meu-perfil-input-campos-juntos">
                                 <div className="meu-perfil-input-campo-junto">
@@ -184,11 +196,12 @@ function MeuPerfilCliente() {
                                             <input className="meu-perfil-input-campo" type="password" />
                                         </div>
                                     </div>
+                                    <div className="meu-perfil-btn-salvar">
+                                        <button className="meu-perfil-btn">Salvar</button>
+                                    </div>
                                 </div>
                             )}
-                            <div className="meu-perfil-btn-salvar">
-                                <button className="meu-perfil-btn">Salvar</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>

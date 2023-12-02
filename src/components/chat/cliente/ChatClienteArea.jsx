@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
-import woofJoyApi from "../../woof-joy-api";
-import "../../css/chat.css";
-import MensagemChat from "./ChatMensagem";
-import ExemploFotoContato from "../../imgs/chat/exemplo-foto-contato.png";
-import IconEnvio from "../../imgs/chat/icon-envio.png";
-import ModalAgendarServico from "../modais/ModalAgendarServico";
+import woofJoyApi from "../../../woof-joy-api";
+import "../../../css/chat.css";
+import MensagemChat from "../ChatMensagem";
+import ExemploFotoContato from "../../../imgs/chat/exemplo-foto-contato.png";
+import IconEnvio from "../../../imgs/chat/icon-envio.png";
+import ModalAgendarServico from "../../modais/ModalAgendarServico";
 
 function AreaChat() {
-    // const userIdLogado = sessionStorage.getItem("userId")
-     const contatoIdAtual = sessionStorage.getItem("contatoId")
-     const userIdLogado = 6;
+    const contatoIdAtual = sessionStorage.getItem("contatoId")
+    const userId = sessionStorage.getItem("userId")
+    const token = sessionStorage.getItem("token")
     const contatoNome = sessionStorage.getItem("contatoName")
-    const token =
-        "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjaGF0ZUBlbWFpbC5jb20iLCJyb2xlIjoiQyIsImlhdCI6MTcwMDUxMDkyMCwiZXhwIjoxNzA0MTEwOTIwfQ.zUJ0ofjvljd0bDxmUaGtrWXGvqnlh72e9p0EUrSp-wZ2c35CODa2AewD1eSGmxe6";
 
     const [sendBody, setsendBody] = useState({
         message: "olá",
-        idRemetente: userIdLogado,
+        idRemetente: userId,
         idDestinatario: contatoIdAtual,
         tipo: "doacao",
     });
@@ -26,7 +24,7 @@ function AreaChat() {
 
     function getMensagensHistory() {
         woofJoyApi
-            .get(`/notification/${userIdLogado}/${contatoIdAtual}`, {
+            .get(`/notification/${userId}/${contatoIdAtual}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -54,11 +52,11 @@ function AreaChat() {
 
                 setsendBody({
                     message: "",
-                    idRemetente: userIdLogado,
+                    idRemetente: userId,
                     idDestinatario: 3,
                     tipo: "doacao",
                 });
-                
+
 
             })
             .catch((erroOcorrido) => {
@@ -89,33 +87,35 @@ function AreaChat() {
             getMensagensHistory();
         }, 0.01 * 60 * 1000);
         return () => clearInterval(intervalId);
-    },[userIdLogado, contatoIdAtual]);
+    }, [userId, contatoIdAtual]);
 
     return (
         <>
-            <section className="area-chat-cabecalho">
-                <div className="area-chat-cabecalho-contato">
-                    <img
-                        className="area-chat-foto-contato"
-                        src={ExemploFotoContato}
-                        alt=""
-                    />
-                    <p className="area-chat-nome-contato">{contatoNome}</p>
-                </div>
-                <button
-                    className="area-chat-btn-agendar-servico"
-                    onClick={setDisplayFlex}
-                >
-                    Agendar Serviço
-                </button>
-            </section>
+            {contatoIdAtual === null || contatoIdAtual === "" ? null : (
+                <section className="area-chat-cabecalho">
+                    <div className="area-chat-cabecalho-contato">
+                        <img
+                            className="area-chat-foto-contato"
+                            src={ExemploFotoContato}
+                            alt=""
+                        />
+                        <p className="area-chat-nome-contato">{contatoNome}</p>
+                    </div>
+                    <button
+                        className="area-chat-btn-agendar-servico"
+                        onClick={setDisplayFlex}
+                    >
+                        Agendar Serviço
+                    </button>
+                </section>
+            )}
             <section className="area-chat-container">
                 <div className="area-chat-mensagens">
                     {mensagemBody && mensagemBody.length > 0 ? (
                         mensagemBody?.map((m) => (
                             <div
                                 className={
-                                    m.fkRemetente == userIdLogado
+                                    m.fkRemetente == userId
                                         ? "area-chat-mensagens-enviadas"
                                         : "area-chat-mensagens-recebidas"
                                 }
@@ -131,7 +131,7 @@ function AreaChat() {
                             Seja o primeiro a enviar uma mensagem
                         </div>
                     )}
-                    <ModalAgendarServico opacityOn={modalDisplay} idParceiro={userIdLogado} cancelarOn={setModelCancelar} sendOn={sendMensage} />
+                    <ModalAgendarServico opacityOn={modalDisplay} idParceiro={userId} cancelarOn={setModelCancelar} sendOn={sendMensage} />
                 </div>
             </section>
             <section className="area-chat-campo-envio">

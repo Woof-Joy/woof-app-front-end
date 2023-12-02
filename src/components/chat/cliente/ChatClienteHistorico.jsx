@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import IconSearch from "../../imgs/chat/icon-search.png"
-import ContatoChat from "./ChatContato"
-import "../../css/chat.css"
-import woofJoyApi from "../../woof-joy-api"
+import IconSearch from "../../../imgs/chat/icon-search.png"
+import ContatoChat from "../ChatContato"
+import "../../../css/chat.css"
+import woofJoyApi from "../../../woof-joy-api"
 
 function HistoricoChat() {
-    const userIdLogado = 6;
-    const token =
-        "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJjaGF0ZUBlbWFpbC5jb20iLCJyb2xlIjoiQyIsImlhdCI6MTcwMDUxMDkyMCwiZXhwIjoxNzA0MTEwOTIwfQ.zUJ0ofjvljd0bDxmUaGtrWXGvqnlh72e9p0EUrSp-wZ2c35CODa2AewD1eSGmxe6";
-
+    const userId = sessionStorage.getItem("userId")
+    const token = sessionStorage.getItem("token")
 
     // const [contatoInfo, setContatoInfo] = useState({
     //     id: 3,
@@ -20,7 +18,7 @@ function HistoricoChat() {
 
     function getMensagensHistory() {
         woofJoyApi
-            .get(`/notification/${userIdLogado}`, {
+            .get(`/notification/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -32,6 +30,7 @@ function HistoricoChat() {
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido.mensagem);
+                console.log(userId)
             });
     }
 

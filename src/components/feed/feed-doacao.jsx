@@ -9,31 +9,32 @@ import perfil from "../../imgs/meus-servicos/image 204.png"
 import CardParceiro from "./card-parceiro-feed";
 import ItemFeed from "./item-feed";
 import Button from "../componentes-gerais/button";
+import { Link } from "react-router-dom";
 
 
 function FeedDocao() {
 
 
+    const userId = sessionStorage.getItem("userId")
+    const token = sessionStorage.getItem("token")
     const [listaParceiros, setParceiros] = useState([])
 
 
     useEffect(() => {
-        // Chama a função listar() imediatamente
         listar();
-
-        // Define um intervalo para chamar a função listar() 
         const intervalId = setInterval(() => {
             listar();
-        }, 1 * 60 * 1000);//minutos em milisegundos(O numero primario determina, exemplo: Se 1 então 1 minuto)   
-
-        // Limpa o intervalo quando o componente for desmontado
+        }, 1 * 60 * 1000);
         return () => clearInterval(intervalId);
     }, []);
 
     function listar() {
         woofJoyApi
-            .get('/parceiros')
-            .then((response) => {
+            .get('/itens', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }).then((response) => {
                 console.log(response.data);
                 setParceiros(response.data);
             })
@@ -74,16 +75,16 @@ function FeedDocao() {
                             </h6>
                             <h6 className="button-doar-feed-doacao">
 
-                            <Button
-                                displayOn="flex"
-                                buttonBackColor="#DB4B90"
-                                fontColor="white"
-                                buttonName="Doar"
-                                buttonHeigth="60%"
-                            />
+                                <Button
+                                    displayOn="flex"
+                                    buttonBackColor="#DB4B90"
+                                    fontColor="white"
+                                    buttonName="Doar"
+                                    buttonHeigth="60%"
+                                />
                             </h6>
 
-                              </div>
+                        </div>
                     </div>
                     <div className="links-feed-doacao">
                         <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
@@ -92,9 +93,10 @@ function FeedDocao() {
                     </div>
 
                 </div>
-                <div className="container-card-feed-doacao">
-                    {listaParceiros?.map((parceiro) => (
-                        <>
+                {listaParceiros?.map((parceiro) => (
+                    <>
+                        <Link to={"/"} className="container-card-feed-doacao">
+
                             <ItemFeed
                                 key={parceiro.id}
                                 servicoWalker={parceiro.servicoWalker}
@@ -104,11 +106,11 @@ function FeedDocao() {
                                 descricao={parceiro.descricao}
                                 avaliacao={parceiro.avaliacao}
                             />
+                        </Link>
 
-                        </>
-                    ))}
+                    </>
+                ))}
 
-                </div>
 
             </div>
 

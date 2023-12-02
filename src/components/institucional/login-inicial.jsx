@@ -1,23 +1,29 @@
+import React, { useEffect, useState } from "react";
 import "../../css/cadastro-inicial.css"
-import customEnv from "../../process";
-
 import imgBgTop from '../../imgs/cadastro-inicial/bg-top-cadastro-inicial.png'
 import imgIconCliente from '../../imgs/cadastro-inicial/icon-cliente.png'
 import imgIconParceiro from '../../imgs/cadastro-inicial/icon-parceiro.png'
 import imgBgBot from '../../imgs/cadastro-inicial/bg-bot-cadastro-inicial.png'
-
 import { Link } from 'react-router-dom';
 
-function setEnvVar(name, value) {
-  customEnv[name] = value;
-}
+
 
 
 function LoginInicial() {
 
-  function EscolherTipo(numero) {
-    setEnvVar("role", numero);
-    console.log(customEnv.role);
+  const [role, setRole] = useState()
+
+   function EscolherCliente() {
+    setRole("C")
+    sessionStorage.setItem("role", "C")
+
+  };
+
+  function EscolherParceiro() {
+    setRole("P")
+    sessionStorage.setItem("role", "P")
+
+
   };
 
   return (
@@ -34,19 +40,19 @@ function LoginInicial() {
         </section>
 
         <section className="grid grid-row-2">
-          <Link to="/login" className="item item-3" onClick={() => EscolherTipo("C")}>
+          <Link to="/login" className="item item-3" onClick={EscolherCliente}>
             <div className="container-card">
               <img className="icon" src={imgIconCliente} alt="" />
               <div className="card">
                 <div className="card-border">
                   <p className="title">Cliente</p>
                   <p className="content">Quero encontrar os melhores dog walkers e pet sitters para cuidar do meu
-                      cachorro.</p>
+                    cachorro.</p>
                 </div>
               </div>
             </div>
           </Link>
-          <Link to="/login" className="item item-4" onClick={() => EscolherTipo("P")}>
+          <Link to="/login" className="item item-4" onClick={EscolherParceiro}>
             <div className="container-card">
               <img className="icon" src={imgIconParceiro} alt="" />
               <div className="card">

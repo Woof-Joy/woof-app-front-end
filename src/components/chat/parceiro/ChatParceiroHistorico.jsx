@@ -1,7 +1,7 @@
 import React from "react"
-import IconSearch from "../../imgs/chat/icon-search.png"
-import ContatoChat from "./ChatContato"
-import "../../css/chat.css"
+import IconSearch from "../../../imgs/chat/icon-search.png"
+import ContatoChat from "../ChatContato"
+import "../../../css/chat.css"
 
 function HistoricoChat() {
     return (

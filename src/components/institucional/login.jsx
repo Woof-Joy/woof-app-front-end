@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 import "../../css/login.css"
-
 import imgLogoWoffJoy from "../../imgs/logo-branca-footer.png"
 import imgIconVoltar from "../../imgs/icon-voltar.png"
-
 import customEnv from "../../process";
-
-// import { Link, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const roleResult = customEnv.role
 
 
 function Login() {
+    const roleResult = sessionStorage.getItem("role")
+    const navigate = useNavigate();
 
-    // const navigate = useNavigate();
 
     const [usuarioLogin, setUsuarioLogin] = useState({
         userId: "",
         email: "",
         senha: "",
-        role: "C",
+        role: roleResult,
         token: ""
     });
 
@@ -30,18 +27,23 @@ function Login() {
             .post(`/users/login`, usuarioLogin)
             .then((resposta) => {
                 console.log(resposta.data);
-                sessionStorage.setItem("userId",usuarioLogin.userId)
-                sessionStorage.setItem("email",usuarioLogin.email)
-                sessionStorage.setItem("nome",usuarioLogin.nome)
-                sessionStorage.setItem("token",usuarioLogin.token)
                 setUsuarioLogin(resposta.data)
+                sessionStorage.setItem("userId", resposta.data.userId)
+                sessionStorage.setItem("email",  resposta.data.email)
+                sessionStorage.setItem("nome",   resposta.data.nome)
+                sessionStorage.setItem("token",  resposta.data.token)
                 alert("Login realizado com sucesso")
-                // navigate("/")
+
+                if (roleResult === "C") {
+                    navigate("/home-cliente")
+                } else {
+                    navigate("/chat-parceiro")
+                }
+
             })
             .catch((erro) => {
                 console.log(erro)
                 alert(`Erro ao logar o usuário: ${erro.message}`);
-                console.log(usuarioLogin.role)
             });
     };
 
@@ -63,7 +65,7 @@ function Login() {
                         </span>
                         <div id="mensagemErro" className="login-div_mensagem_erro"> Usuário ou senha incorretos! Por favor, tente novamente.
                         </div>
-                        <label className="login-label" for="email">E-mail
+                        <label className="login-label" htmlFor="email">E-mail
                             <input className="login-input" type="text" id="email" placeholder=""
                                 name="email"
                                 value={usuarioLogin.email}
@@ -71,7 +73,7 @@ function Login() {
 
                             />
                         </label>
-                        <label className="login-label" for="senha">Senha
+                        <label className="login-label" htmlFor="senha">Senha
                             <input className="login-input" type="text" id="senha" placeholder=""
                                 name="senha"
                                 value={usuarioLogin.senha}
@@ -79,7 +81,7 @@ function Login() {
 
                             />
                         </label>
-                        <Link to={"/home"} className="login-button_entrar" onClick={loginUsuario}>Entrar</Link>
+                        <button className="login-button_entrar" onClick={loginUsuario}>Entrar</button>
                         <span className="span_cadastrase">Ainda não tem uma conta?<a className="a_cadastrase" href="cadastro.html" />
                             <Link to="/cadastro-inicial"><b>Cadastre-se</b></Link> </span>
                         <div className="div_botao_voltar">
@@ -90,7 +92,7 @@ function Login() {
                         </div>
                     </div>
                     <div className="login-container2">
-                        <div calss="login-containerLogo">
+                        <div className="login-containerLogo">
                             <img src={imgLogoWoffJoy} alt="Logo da WoofJoy" className="login-logo" />
                         </div>
                     </div>
