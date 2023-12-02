@@ -40,7 +40,7 @@ function ModalCadastrarAvaliacao({ onClose }) {
                 </div>
                 <div className='modal-avaliacao-btn'>
                     <button className='modal-avaliacao-btn-enviar' onClick={handleSubmit}>Enviar</button>
-                    <Link className='modal-avaliacao-btn-voltar' to="/meus-servicos">Não, obrigado(a)!</Link>
+                    <Link className='modal-avaliacao-btn-voltar' to="/historico">Não, obrigado(a)!</Link>
                 </div>
             </div>
         </section>
