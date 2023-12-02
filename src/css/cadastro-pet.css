@@ -140,6 +140,21 @@
     margin-left: 1vh;
 }
 
+.cadastro-pet-input-component-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro-pet-input-component{
+    display: flex;
+    margin-top: 1vh;
+}
+
+.input-component{
+    width: 100%;
+    padding-left: 2vh;
+}
+
 .cadastro-pet-bloco-3{
     margin-top: 2vh;
     margin-left: 15%;
