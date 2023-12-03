@@ -2,9 +2,9 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../css/react-feed-parceiro.css";
 import { Carousel } from "react-bootstrap";
-import img1 from "../../imgs/img-dog-4.png";
-import img2 from "../../imgs/img-dog-1.png";
-import img3 from "../../imgs/img-dog-6.png";
+import img1 from "../../imgs/carrossel/hannah-lim-U6nlG0Y5sfs-unsplash.jpg";
+import img2 from "../../imgs/carrossel/darinka-kievskaya-ff221Bu56mI-unsplash.jpg";
+import img3 from "../../imgs/carrossel/matt-nelson-aI3EBLvcyu4-unsplash.jpg";
 import { useNavigate } from "react-router-dom";
 
 const BootstrapCarousel = () => {

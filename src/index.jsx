@@ -112,10 +112,11 @@ const router = createBrowserRouter([
         element: <CadastroPet />
       },
       {
-        publicacao-item-doacao
+        
         path: "publicacao-doacao",
         element: <PublicacaoDoacao />
-
+      },
+      {
         path: "cadastrar-avaliacao",
         element: <ModalCadastroAvalicao />
       },
