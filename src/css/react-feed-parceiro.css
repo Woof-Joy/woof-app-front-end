@@ -19,9 +19,10 @@ body{
     font-size: 100%;
 }
 
-.container{
+.feed-parceiro-container{
     display: flex;
     flex-direction: column;
+    width: 100%;
     background-color: #FFDEDF;
     padding-left: 21%;
     padding-right: 10%;
@@ -41,11 +42,12 @@ body{
     height: 60px;
 }
 .container-info-parceiro{
+    width: 50%;
     display: flex;
     flex-direction:row;
     align-items:center;
-    padding-left: 10%;
-    height: 318px;
+    padding-left: 5%;
+    height: 200px;
 }
 .container-info-parceiro{
     display: flex;
@@ -94,10 +96,10 @@ body{
     cursor: pointer;
 }
 .carrossel-servicos{
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 18%;
-    height: 550px;
+    gap: 20%;
 
 }
 .conteudo-local-data-avaliacao{
@@ -105,22 +107,29 @@ body{
     align-items: center;
 }
 .conteudo-carrossel{
-    margin-left: 60px;
+    width: 40%;
 }
+.conteudo-servicos{
+    width: 40%;
+}
+
+.modal-meus-servicos-feed-parceiro{
+    background-color: #ffffff;
+}
+
 /*COMPONENTE CARROSSEL*/
 .carrossel{
-    width: 600px;
+    width: 500px;
     height: 400px;
 }
 /*FIM Carrossel*/
 
 .info-servicos-prestados{
     background-color: white;
-    padding: 15px;
     padding-left: 30px;
     padding-bottom: 30px;
     border-radius: 30px;
-    width: 450px;
+    width: 100%;
 }
 .teste-servico {
     padding-top: 20px;
