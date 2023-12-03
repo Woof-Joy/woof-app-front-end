@@ -24,6 +24,10 @@ import CadastraEditaDoacao from './components/cadastra-edita-doacao'
 import PublicacaoDoacao from './components/publicacao-doacao'
 import CadastroPet from "./components/pets/CadastroPet"
 
+import ModalCadastroAvalicao from "./components/modais/ModalCadastrarAvaliacao"
+import ModalCadastrarRelatorio from './components/modais/ModalCadastrarRelatorio';
+import ModalLeituraRelatorio from "./components/modais/ModalLeituraRelatorio"
+
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
 
@@ -70,8 +74,8 @@ const router = createBrowserRouter([
         element: <ChatCliente />
       },
       {
-        path:"chat-parceiro",
-        element: <ChatParceiro/>
+        path: "chat-parceiro",
+        element: <ChatParceiro />
       },
       {
         path: "historico",
@@ -108,8 +112,21 @@ const router = createBrowserRouter([
         element: <CadastroPet />
       },
       {
+        publicacao-item-doacao
         path: "publicacao-doacao",
         element: <PublicacaoDoacao />
+
+        path: "cadastrar-avaliacao",
+        element: <ModalCadastroAvalicao />
+      },
+      {
+        path: "cadastrar-relatorio",
+        element: <ModalCadastrarRelatorio/>
+      },
+      {
+        path: "visualizar-relatorio",
+        element: <ModalLeituraRelatorio />
+
       }
     ]
   }
