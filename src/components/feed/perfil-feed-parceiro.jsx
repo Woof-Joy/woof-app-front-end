@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import Menu from "../menu";
 import Carrossel from "../carrossel";
 
@@ -162,4 +162,4 @@ function FeedParceiro(){
         </>
     )
 }
-export default FeedParceiro();
+export default FeedParceiro();*/

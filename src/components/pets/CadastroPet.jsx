@@ -6,11 +6,7 @@ import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
 import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
 
 import GroupOfInputs from './GroupOfInputs'
-import woofJoyApi from "../../woof-joy-api"
-import Teste from './Teste'
 
-import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
-import GroupOfInputs from './GroupOfInputs'
 import InputComponent from './InputComponent'
 import woofJoyApi from "../../woof-joy-api"
 
