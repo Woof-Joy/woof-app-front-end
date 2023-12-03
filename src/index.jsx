@@ -21,6 +21,7 @@ import MeuPerfilParceiro from './components/meu-perfil/parceiro/MeuPerfilParceir
 
 import CadastroServico from './components/cadastro-servico'
 import CadastraEditaDoacao from './components/cadastra-edita-doacao'
+import PublicacaoDoacao from './components/publicacao-doacao'
 import CadastroPet from "./components/pets/CadastroPet"
 
 import ModalCadastroAvalicao from "./components/modais/ModalCadastrarAvaliacao"
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
         element: <CadastroPet />
       },
       {
+        publicacao-item-doacao
+        path: "publicacao-doacao",
+        element: <PublicacaoDoacao />
+
         path: "cadastrar-avaliacao",
         element: <ModalCadastroAvalicao />
       },
@@ -121,6 +126,7 @@ const router = createBrowserRouter([
       {
         path: "visualizar-relatorio",
         element: <ModalLeituraRelatorio />
+
       }
     ]
   }
