@@ -4,6 +4,9 @@ import MenuCliente from "../componentes-gerais/MenuCliente"
 import BotaoUpload from "../componentes-gerais/BotaoUpload"
 import IconLixeira from "../../imgs/meu-perfil/lixeira.png"
 import ExemploFotoPerfilPet from "../../imgs/meu-perfil/foto-perfil-pet-exemplo.png"
+import GroupOfInputs from './GroupOfInputs'
+import woofJoyApi from "../../woof-joy-api"
+import Teste from './Teste'
 import { useNavigate } from 'react-router-dom';
 
 

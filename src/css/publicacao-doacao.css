@@ -1,3 +1,145 @@
-.teste-da-gi{
-background-color: paleturquoise;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+.pricipal-publicacao-doacao{
+background-color: white;
+padding-left: 21%;
+}
+.chat-e-perfil-cliente{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 2%;
+    padding-top: 2%;
+    gap: 30px;
+    font-size: 25px;
+}
+
+.doador-item-img{
+    height: 50px;
+}
+.produto-local-editar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+}
+.nome-do-produto{
+    padding-right: 30%;
+}
+.titulo-produto-doado{
+    font-weight: 700;
+    font-size: 32px;
+    color: #303030;
+    
+}
+.nome-regiao-doacao{
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+
+}
+.txt-localizacao-produto{
+    font-weight: 700;
+    font-size: 20px;
+    color: #303030;
+}
+.parte-editar-pagina-doacao{
+    display: flex;
+    padding-right: 25%;
+    gap: 10px;
+}
+.editar-doacao-txt{
+    font-weight: 700;
+    font-size: 20px;
+    color: #DB4B90;
+}
+
+.parte-carrossel-e-detalhes{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    justify-content: space-between;
+    
+}
+
+.componente-carrossel-doacao{
+    display: flex;
+    padding-right: 20px;
+    width: 30%;
+}
+.responssavel-pela-doacao{
+    font-weight: 500;
+    font-size: 20px;
+    color: #303030;
+    font-size: 20px;
+}
+.detalhes-da-doacao{
+    display: flex;
+    flex-direction: column;
+    padding-right: 15%;
+}
+.doador-chat{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+.txt-nome-doador{
+    margin-top: 10px;
+    padding-left: 100px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #303030; 
+}
+.caixa-rosa{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFDEDF;
+    padding: 20px;
+    border-radius: 30px;
+    width: 70%;
+}
+.titulo-detalhes-doacao{
+    font-weight: 700;
+    font-size: 24px;
+    color: #DB4B90; 
+}
+.categoria-estado-doacao{
+    font-size: 20px;
+    font-weight: 600;
+}
+.conteudo-retirada{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    
+}
+.titulo-retirada{
+    font-weight: 700;
+    font-size: 21px;
+    color: #303030; 
+}
+.retirada1, .retirada2, .retirada3, .retirada4{
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.parte-descricao-doacao{
+    display: flex;
+    flex-direction: column;
+    padding-left: 2%;
+    width: 60%;
+    padding-top: 3%;
+}
+.titulo-descricao-doacao{
+    font-weight: 700;
+    font-size: 24px;
+    color: #DB4B90; 
+}
+.texto-descricao-doacao{
+    font-weight: 500;
+    font-size: 18px;
+    color: #303030;
 }
