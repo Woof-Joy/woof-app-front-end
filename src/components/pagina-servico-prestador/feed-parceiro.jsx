@@ -83,13 +83,14 @@ function FeedParceiro() {
   const userId = sessionStorage.getItem("userId")
   const token = sessionStorage.getItem("token")
   const idParceiro = sessionStorage.getItem("idParceiroFeed")
-  const cidade = sessionStorage.getItem("cidadeParceiroFeed")
-  const estado = sessionStorage.getItem("estadoParceiroFeed")
+  const logradouro = sessionStorage.getItem("cidadeParceiroFeed")
+  const uf = sessionStorage.getItem("estadoParceiroFeed")
   const nome = sessionStorage.getItem("nomeParceiroFeed")
   const estrelas = sessionStorage.getItem("estrelasParceiroFeed")
   const qtdServicos =sessionStorage.getItem("qtdServicosParceiroFeed")
   const descricao = sessionStorage.getItem("descricaoParceiroFeed")
   const servicos = sessionStorage.getItem("servicosParceiroFeed")
+  const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
 
 
   function getInfoPrestador() {
@@ -134,7 +135,7 @@ function contatoDados() {
                 </span>
                 <span className="txt-local">
                   <p>
-                    <b>Zona Sul, São Paulo</b>
+                    <b>{logradouro}, {uf}</b>
                   </p>
                 </span>
               </div>
@@ -144,7 +145,7 @@ function contatoDados() {
                 </span>
                 <span className="txt-data">
                   <p>
-                    <b>Desde 01/01/2023</b>
+                    <b>Desde {dataEntrada}</b>
                   </p>
                 </span>
               </div>
@@ -154,7 +155,7 @@ function contatoDados() {
                 </span>
                 <span className="txt-avaliacao">
                   <p>
-                    <b>4,5(12)</b>
+                    <b>{estrelas}</b>
                   </p>
                 </span>
               </div>
@@ -162,16 +163,10 @@ function contatoDados() {
             <div className="txt-apresentacao">
               <p>
                 {descricao}
-
               </p>
             </div>
-            
-            <button className="btn-agendar-servico" type="button">
-              Agendar Serviço
-            </button>
-            
-
-
+        
+          
           </div>
         </section>
 
@@ -186,7 +181,7 @@ function contatoDados() {
           <div className="conteudo-servicos">
             <div className="info-servicos-prestados">
               <p className="teste-servico">Serviços</p>
-              <p className="txt-descricao-servico">Qtd. Serviços Prestados: 20</p>
+              <p className="txt-descricao-servico">Qtd. Serviços Prestados: {qtdServicos}</p>
               <div className="tipo-servicos">
                 <div className="dog-walker">
                   <img className="feed-parceiro-img" src={IconDogWalker} alt="icon dog walker"></img>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import woofJoyApi from "../../woof-joy-api";
 import "../../css/cadastro-pet.css"
 import MenuCliente from "../componentes-gerais/MenuCliente"
 import BotaoUpload from "../componentes-gerais/BotaoUpload"

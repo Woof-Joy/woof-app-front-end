@@ -15,7 +15,7 @@ function FeedServico() {
     const token = sessionStorage.getItem("token")
     const [listaParceiros, setParceiros] = useState([])
 
-    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome, cidade, estado, estrelas, qtdServicos, descricao, servicos) {
+    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome, cidade, estado, estrelas, qtdServicos, descricao, servicos, dataEntrada) {
         sessionStorage.setItem("idParceiroFeed", parceiroId)
         sessionStorage.setItem("cidadeParceiroFeed", cidade)
         sessionStorage.setItem("estadoParceiroFeed", estado)
@@ -24,6 +24,7 @@ function FeedServico() {
         sessionStorage.setItem("qtdServicosParceiroFeed", qtdServicos)
         sessionStorage.setItem("descricaoParceiroFeed", descricao)
         sessionStorage.setItem("servicosParceiroFeed", servicos)
+        sessionStorage.setItem("dataEntradaParceiroFeed", dataEntrada)
     }
 
 
@@ -90,26 +91,31 @@ function FeedServico() {
 
                     <>
                         <Link to={"/feed-parceiro"} onClick={() => guardarIdParaCaminhoFeedParceiro(
-                            6,
+                            parceiro.idUsuario,
                             parceiro.nome,
-                            parceiro.cidade,
-                            parceiro.estado,
+                            "São Bernardo do Campo",
+                            "SP",
                             parceiro.estrelas,
-                            parceiro.qtdServicos,
+                            parceiro.qtdServicosPrestados,
                             parceiro.descricao,
-                            parceiro.servicos
+                            parceiro.servicos,
+                            parceiro.dataEntrada
                             )} className="container-card-feed-servico">
 
                             <CardParceiro
                                 key={parceiro.id}
-                                servicoWalker={parceiro.servicoWalker}
-                                servicoSitter={parceiro.servicoSitter}
+                                servicoWalker="DogWalker"
+                                servicoSitter="DogSitter"
                                 nome={parceiro.nome}
-                                endereco={parceiro.endereco}
+                                sobrenome={parceiro.sobrenome}
+                                logradouro="São Bernardo do Campo"
+                                uf ="SP"
                                 descricao={parceiro.descricao}
-                                avaliacao={parceiro.avaliacao}
+                                avaliacao={parceiro.estrelas}
+                            
                             />
                         </Link>
+	
 
                     </>
                 ))}

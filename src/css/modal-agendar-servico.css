@@ -5,9 +5,9 @@
     align-items: self-start;
     justify-content: space-around;
     width: 40%;
-    padding: 3%;
+    padding: 2%;
     margin-left: 13%;
-    margin-top: -3%;
+    margin-top: -6%;
     position: fixed;
     border-radius: 10px;
     box-shadow: rgb(133, 133, 133) 0px 0px 5px 4px;
@@ -31,14 +31,12 @@
     justify-content: space-between;    
     margin-top: -10%;
     height: 50px;
-    margin-bottom: 3%;
 
 }
 
 .container-inputs-modal-agendar-servico{
     display: flex;
     flex-direction: column;
-    margin-top: 1%;
     width: 90%;
 
 }

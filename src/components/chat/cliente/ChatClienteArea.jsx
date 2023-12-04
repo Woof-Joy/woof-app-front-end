@@ -53,15 +53,12 @@ function AreaChat() {
                 setsendBody({
                     message: "",
                     idRemetente: userId,
-                    idDestinatario: 3,
+                    idDestinatario: contatoIdAtual,
                     tipo: "doacao",
                 });
-
-
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido.mensagem);
-
             });
     }
 
@@ -131,7 +128,13 @@ function AreaChat() {
                             Seja o primeiro a enviar uma mensagem
                         </div>
                     )}
-                    <ModalAgendarServico opacityOn={modalDisplay} idParceiro={userId} cancelarOn={setModelCancelar} sendOn={sendMensage} />
+                    <ModalAgendarServico
+                      opacityOn={modalDisplay}
+                      idParceiro={userId} 
+                      cancelarOn={setModelCancelar}
+                      sendOn={sendMensage}
+                      parceiroWoofJoy={contatoNome} 
+                      />
                 </div>
             </section>
             <section className="area-chat-campo-envio">

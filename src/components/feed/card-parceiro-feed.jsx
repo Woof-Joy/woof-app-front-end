@@ -8,7 +8,9 @@ function CardParceiro(props) {
         servicoWalker,
         servicoSitter,
         nome,
-        endereco,
+        sobrenome,
+        logradouro,
+        uf,
         descricao,
         avaliacao } = props;
     return (
@@ -24,10 +26,10 @@ function CardParceiro(props) {
                             <strong className="servico-nome">🐶{servicoSitter}</strong>
                         </section>
 
-                        <label className="nome-prestador">{nome}</label>
+                        <label className="nome-prestador">{nome} {sobrenome}</label>
                         <section className="endereco">
                             <img className="imagem-localizacao" src={point} alt="ponto de localização" />
-                            <label className="cidade">{endereco}</label>
+                            <label className="cidade">{logradouro},{uf}</label>
                         </section>
 
 

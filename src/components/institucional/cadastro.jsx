@@ -7,27 +7,28 @@ import imgLogoWoofJoy from "../../imgs/logo-branca-footer.png"
 import imgIconBtnVoltar from "../../imgs/icon-voltar.png"
 
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 
 function Cadastro() {
+    const navigate = useNavigate()
     const [mensagemErro, setMensagemErro] = useState({
         texto: "",
         style: { color: "red" }
     });
 
     const [usuario, setUsuario] = useState({
-        nome: "",
-        sobrenome: "",
-        cpf: "",
-        dataNasc: "",
-        cep: "",
-        estado: "",
-        cidade: "",
-        rua: "",
-        numero: "",
-        email: "",
-        senha: "",
-        confirmacaoSenha: ""
+	    nome: "filipe",
+	    sobrenome: "ricardo",
+	    cpf: "47010211809",
+	    cep: "09791160",
+	    email: "fi@sptech.com",
+	    senha: "senha1234",
+	    dataNasc: "2001-12-18",
+	    numero: "566",
+	    rua: "",
+	    cidade: "",
+	    estado: ""
     });
 
     const [cepResultado, setCepResultado] = useState({
@@ -48,10 +49,14 @@ function Cadastro() {
             .post(`/users/${userID}`, usuario)
             .then((resposta) => {
                 alert(resposta.status);
-                setUsuario(resposta.data);
+                navigate("/login-inicial")
+
             })
             .catch((erro) => {
                 alert(`Erro ao criar o usuário: ${erro.message}`);
+                alert(usuario);
+                console.log(usuario)
+
             });
     };
 
@@ -73,6 +78,12 @@ function Cadastro() {
                 });
                 console.log(resposta.message)
                 console.log(resposta.status)
+
+                setUsuario({
+                    rua: resposta.data.logradouro,
+                    cidade: resposta.data.localidade,
+                    estado: resposta.data.uf
+                })
             })
             .catch((erro) => {
                 console.log(`${erro.message}`);
@@ -99,7 +110,7 @@ function Cadastro() {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUsuario({
-            ...usuario,
+             ...usuario,
             [name]: value
         });
     };
@@ -171,7 +182,7 @@ function Cadastro() {
                                         <label htmlFor="dataNasc">Data de nascimento</label>
                                         <input
                                             className="cadastro-inputOutros"
-                                            type="text"
+                                            type="date"
                                             name="dataNasc"
                                             value={usuario.dataNasc}
                                             onChange={handleInputChange}
@@ -297,7 +308,7 @@ function Cadastro() {
                         </div>
                     </div>
                     <div className="cadastro-campoCadastre">
-                        <Link to="/login-inicial" className="cadastro-button_entrar" onClick={criarUsuario}>Criar Conta</Link>
+                        <button  className="cadastro-button_entrar" onClick={criarUsuario}>Criar Conta</button>
                         <span className="cadastro-span-chamativo-login">Já tem uma conta?
                         <Link to="/login-inicial" className="cadastro-linkForm"><b>Conecte-se</b></Link>
                         </span>

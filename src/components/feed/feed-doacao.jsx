@@ -19,6 +19,11 @@ function FeedDocao() {
     const token = sessionStorage.getItem("token")
     const [listaItens, setParceiros] = useState([])
 
+    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome) {
+        sessionStorage.setItem("idParceiroFeed", parceiroId)
+        sessionStorage.setItem("nomeParceiroFeed", nome)
+    }
+
 
     useEffect(() => {
         listar();
@@ -95,17 +100,18 @@ function FeedDocao() {
                 </div>
                 {listaItens?.map((item) => (
                     <>
-                        <Link to={"/"} className="container-card-feed-doacao">
+                        <Link to={"/chat-cliente"} onClick={() => guardarIdParaCaminhoFeedParceiro(
+                            3,
+                            "Filipe",
+                            )} className="container-card-feed-doacao">
 
                             <ItemFeed
                                 key={item.id}
-                                clienteNome={item}
-                                categoria={item}
-                                nome={item}
-                                endereco={item}
-                                descricao={item}
-                                avaliacao={item}
-                                // image
+                                titulo={item.titulo}
+                                categoria={item.categoria}
+                                logradouro={item.endereco.logradouro}
+                                descricao={item.descricao}
+                                uf={item.endereco.uf}
                             />
                         </Link>
 
