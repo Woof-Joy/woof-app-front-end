@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/item-feed.css"
 import point from "../../imgs/feed-parceiro/point-localizacao.png"
-import osso from "../../imgs/item-doacao/osso-foto.png"
+import foto from "../../imgs/mock/casa.jpg";
 
 
 
@@ -21,7 +21,7 @@ function ItemFeed(props) {
         <>
 
             <div className="card-item-doacao">
-                <div style={{ backgroundImage: `url(${osso})` }} className="container-imagem-item-doacao">
+                <div style={{ backgroundImage: `url(${foto})` }} className="container-imagem-item-doacao">
                 </div>
 
 

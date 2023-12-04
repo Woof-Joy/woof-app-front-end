@@ -51,7 +51,7 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
     const [servicoBody, setServicoBody] = useState({
         inicioDoServico: "2020-12-12T12:12:12",
         fimDoServico: "2025-12-12T12:12:12",
-        idCachorros: [2],
+        idCachorros: [1],
         idParceiro: contatoIdAtual,
         tipoServico: "dogWalker"
     });

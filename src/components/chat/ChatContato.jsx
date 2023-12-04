@@ -1,6 +1,7 @@
 import React from "react";
 import ExemploFotoContato from "../../imgs/chat/exemplo-foto-contato.png";
 import "../../css/chat.css";
+import foto from "../../imgs/mock/semfoto.jpg";
 
 function ContatoChat(props) {
   const { 
@@ -17,7 +18,7 @@ function ContatoChat(props) {
         onClick={() => contatoDados(props)}  
         className="contato-chat-container"
       >
-        <img className="contato-chat-foto" src={imagem} alt="hist-chat-foto-contato" />
+        <img className="contato-chat-foto" src={foto} alt="hist-chat-foto-contato" />
         <p className="contato-chat-nome">{nome}</p>
       </section>
     </>

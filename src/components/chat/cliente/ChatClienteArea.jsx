@@ -5,6 +5,7 @@ import MensagemChat from "../ChatMensagem";
 import ExemploFotoContato from "../../../imgs/chat/exemplo-foto-contato.png";
 import IconEnvio from "../../../imgs/chat/icon-envio.png";
 import ModalAgendarServico from "../../modais/ModalAgendarServico";
+import foto from "../../../imgs/mock/semfoto.jpg";
 
 function AreaChat() {
     const contatoIdAtual = sessionStorage.getItem("contatoId")

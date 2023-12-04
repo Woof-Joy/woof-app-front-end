@@ -10,6 +10,7 @@ import CardParceiro from "./card-parceiro-feed";
 import ItemFeed from "./item-feed";
 import Button from "../componentes-gerais/button";
 import { Link } from "react-router-dom";
+import foto from "../../imgs/mock/item.png";
 
 
 function FeedDocao() {

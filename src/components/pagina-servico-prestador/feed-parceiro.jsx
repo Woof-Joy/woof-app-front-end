@@ -9,6 +9,8 @@ import ImgDamares from '../../imgs/feed-parceiro/foto-damares.png'
 import ImgRichard from '../../imgs/feed-parceiro/foto-richard.png'
 import ImgLucca from '../../imgs/feed-parceiro/foto-lucca.png'
 import chat from "../../imgs/meus-servicos/icon-chat.png"
+import foto from "../../imgs/mock/semfoto.jpg";
+
 
 import IconDogWalker from '../../imgs/feed-parceiro/icon-dog-walker.png'
 import IconDogSitter from '../../imgs/feed-parceiro/icon-dog-sitter.png'
@@ -86,9 +88,9 @@ function FeedParceiro() {
   const logradouro = sessionStorage.getItem("cidadeParceiroFeed")
   const uf = sessionStorage.getItem("estadoParceiroFeed")
   const nome = sessionStorage.getItem("nomeParceiroFeed")
-  const estrelas = sessionStorage.getItem("estrelasParceiroFeed")
+  const estrelas = 4.7
   const qtdServicos =sessionStorage.getItem("qtdServicosParceiroFeed")
-  const descricao = sessionStorage.getItem("descricaoParceiroFeed")
+  const descricao = "Descrição do parceiro"
   const servicos = sessionStorage.getItem("servicosParceiroFeed")
   const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
 

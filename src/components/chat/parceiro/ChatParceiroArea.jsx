@@ -1,7 +1,7 @@
 import React from "react"
 import "../../../css/chat.css"
 import MensagemChat from "../ChatMensagem"
-import ExemploFotoContato from "../../../imgs/chat/exemplo-foto-contato.png";
+import foto from "../../../imgs/mock/semfoto.jpg";
 import IconEnvio from "../../../imgs/chat/icon-envio.png";
 
 function AreaChat() {
@@ -9,7 +9,7 @@ function AreaChat() {
         <>
             <section className="area-chat-cabecalho">
                 <div className="area-chat-cabecalho-contato">
-                    <img className="area-chat-foto-contato" src={ExemploFotoContato} alt="" />
+                    <img className="area-chat-foto-contato" src={foto} alt="" />
                     <p className="area-chat-nome-contato">Rafael Marcos</p>
                 </div>
             </section>
