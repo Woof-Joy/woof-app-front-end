@@ -51,17 +51,15 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
     const [servicoBody, setServicoBody] = useState({
         inicioDoServico: "2020-12-12T12:12:12",
         fimDoServico: "2025-12-12T12:12:12",
-        idCachorros: [2, 3],
+        idCachorros: [2],
         idParceiro: contatoIdAtual,
         tipoServico: "dogWalker"
     });
 
     const [sendBody, setsendBody] = useState({
-        message: `Serviço Solicitado para com início: ${servicoBody.inicioDoServico},
-                  sendo finalizado na data: ${servicoBody.inicioDoServico}.
-                  Para o pet: ${servicoBody.idCachorros},
-                  Tipo de serviço: ${servicoBody.tipoServico}`,
-
+        message: `Serviço Solicitado para com início: ${servicoBody.inicioDoServico},`+
+                  `sendo finalizado na data: ${servicoBody.inicioDoServico}.\n`+
+                  `Tipo de serviço: ${servicoBody.tipoServico}`,
         idRemetente: userId,
         idDestinatario: contatoIdAtual,
         tipo: "doacao",

@@ -6,7 +6,7 @@ import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
 import point from "../../imgs/feed-parceiro/point-localizacao.png"
 import CardParceiro from "./card-parceiro-feed";
 import { Link } from 'react-router-dom';
-
+import foto from "../../imgs/mock/semfoto.jpg";
 
 
 function FeedServico() {
@@ -47,6 +47,7 @@ function FeedServico() {
             .then((response) => {
                 console.log(response.data);
                 setParceiros(response.data);
+                console.log(response.data[4].imagem)
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
@@ -112,7 +113,7 @@ function FeedServico() {
                                 uf ="SP"
                                 descricao={parceiro.descricao}
                                 avaliacao={parceiro.estrelas}
-                            
+                                imagem={foto}
                             />
                         </Link>
 	

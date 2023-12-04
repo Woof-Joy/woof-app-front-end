@@ -2,7 +2,6 @@ import React from "react";
 import "../../css/card-parceiro-feed.css";
 import point from "../../imgs/feed-parceiro/point-localizacao.png"
 
-
 function CardParceiro(props) {
     const {
         servicoWalker,
@@ -12,12 +11,14 @@ function CardParceiro(props) {
         logradouro,
         uf,
         descricao,
-        avaliacao } = props;
+        avaliacao,
+        imagem } = props;
     return (
         <>
             <div className="card-servico cards">
-                <div className="container-foto">
-                    <img className="imagem-prestador" src="../src/imgs/img-dog-2.png" alt="foto prestador" />
+                <div className="container-foto" style={{ 
+      backgroundImage: `url("${imagem}")` 
+    }}>
                 </div>
                 <div className="container-dados">
                     <div className="informacoes-parceiro">
@@ -31,8 +32,6 @@ function CardParceiro(props) {
                             <img className="imagem-localizacao" src={point} alt="ponto de localização" />
                             <label className="cidade">{logradouro},{uf}</label>
                         </section>
-
-
 
                     </div>
                     <label className="descricao">
