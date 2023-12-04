@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import woofJoyApi from "../../woof-joy-api";
 import "../../css/cadastro-pet.css"
 import MenuCliente from "../componentes-gerais/MenuCliente"
 import BotaoUpload from "../componentes-gerais/BotaoUpload"
@@ -182,7 +183,7 @@ function CadastroPet() {
                                 <label className="cadastro-pet-label" htmlFor="">Possui Convênio?</label>
                             </div>
                             <GroupOfRadioButtonConvenio id={1} />
-                            
+
                         </div>
                     </div>
                     <div className="cadastro-pet-bloco-3">

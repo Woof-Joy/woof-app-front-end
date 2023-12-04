@@ -60,6 +60,7 @@ function HistoricoChat() {
                                 key={contato.id}
                                 id={contato.usuario2.id}
                                 nome={contato.usuario2.nomeCompleto}
+                                // image={}
                             />
                         )}
 

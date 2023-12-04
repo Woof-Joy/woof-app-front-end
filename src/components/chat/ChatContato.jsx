@@ -17,7 +17,7 @@ function ContatoChat(props) {
         onClick={() => contatoDados(props)}  
         className="contato-chat-container"
       >
-        <img className="contato-chat-foto" src={ExemploFotoContato} alt="hist-chat-foto-contato" />
+        <img className="contato-chat-foto" src={imagem} alt="hist-chat-foto-contato" />
         <p className="contato-chat-nome">{nome}</p>
       </section>
     </>

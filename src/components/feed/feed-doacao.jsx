@@ -17,7 +17,7 @@ function FeedDocao() {
 
     const userId = sessionStorage.getItem("userId")
     const token = sessionStorage.getItem("token")
-    const [listaParceiros, setParceiros] = useState([])
+    const [listaItens, setParceiros] = useState([])
 
 
     useEffect(() => {
@@ -93,18 +93,19 @@ function FeedDocao() {
                     </div>
 
                 </div>
-                {listaParceiros?.map((parceiro) => (
+                {listaItens?.map((item) => (
                     <>
                         <Link to={"/"} className="container-card-feed-doacao">
 
                             <ItemFeed
-                                key={parceiro.id}
-                                servicoWalker={parceiro.servicoWalker}
-                                servicoSitter={parceiro.servicoSitter}
-                                nome={parceiro.nome}
-                                endereco={parceiro.endereco}
-                                descricao={parceiro.descricao}
-                                avaliacao={parceiro.avaliacao}
+                                key={item.id}
+                                clienteNome={item}
+                                categoria={item}
+                                nome={item}
+                                endereco={item}
+                                descricao={item}
+                                avaliacao={item}
+                                // image
                             />
                         </Link>
 

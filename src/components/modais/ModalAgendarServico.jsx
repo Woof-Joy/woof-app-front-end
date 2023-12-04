@@ -32,7 +32,7 @@ function ModalAgendarServico({opacityOn, widthOn, idParceiro, cancelarOn, sendOn
         servicos.push(dogSitter)
 
     }
-
+    
     const dogList = ["dog1", "dog2"];
     sessionStorage.setItem("dogList", JSON.stringify(dogList));
     
