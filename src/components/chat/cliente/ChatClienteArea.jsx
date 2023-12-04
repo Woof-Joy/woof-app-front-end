@@ -94,7 +94,7 @@ function AreaChat() {
                     <div className="area-chat-cabecalho-contato">
                         <img
                             className="area-chat-foto-contato"
-                            src={ExemploFotoContato}
+                            src={foto}
                             alt=""
                         />
                         <p className="area-chat-nome-contato">{contatoNome}</p>

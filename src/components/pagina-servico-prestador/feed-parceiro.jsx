@@ -125,8 +125,11 @@ function contatoDados() {
         <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
         </Link>
 
+            <img className="foto-perfil-image-feed" src={foto} alt="" />
+
         <section className="container-info-parceiro">
-          <img className="feed-parceiro-img" src={ImgParceiro} alt="imagem do parceiro"></img>
+          
+          
           <div className="conteudo-info-parceiro">
             <p className="nome-parceiro">{nome}</p>
 
@@ -164,7 +167,7 @@ function contatoDados() {
             </div>
             <div className="txt-apresentacao">
               <p>
-                {descricao}
+                {/* {descricao} */}
               </p>
             </div>
         

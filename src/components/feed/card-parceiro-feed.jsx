@@ -16,8 +16,8 @@ function CardParceiro(props) {
     return (
         <>
             <div className="card-servico cards">
-                <div className="container-foto" style={{ 
-      backgroundImage: `url("${imagem}")` 
+                <div className="container-foto" style={{
+      backgroundImage: `url("${imagem}")`
     }}>
                 </div>
                 <div className="container-dados">
