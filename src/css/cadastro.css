@@ -7,6 +7,10 @@
     display: flex;
     flex-direction: row;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 .cadastro-sessionImg {
     width: 40%;

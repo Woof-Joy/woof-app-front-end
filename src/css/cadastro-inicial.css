@@ -136,3 +136,7 @@ a{
     font-size: 16px;
     padding: 2vh 4vh;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }

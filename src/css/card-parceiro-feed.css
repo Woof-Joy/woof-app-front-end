@@ -110,6 +110,10 @@
     font-size: 15px;
     margin-left: 1%;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 .descricao {
     display: flex;

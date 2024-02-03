@@ -85,6 +85,10 @@
     justify-content: space-around;
     font-size: 20px;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 .select-feed-doacao {
     width: 150px;

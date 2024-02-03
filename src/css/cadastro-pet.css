@@ -168,3 +168,7 @@
     display: flex;
     gap: 5%;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }

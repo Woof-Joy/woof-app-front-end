@@ -33,6 +33,10 @@
     height: 90%;
     background-color: rgb(255, 255, 255);
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 /*  */
 

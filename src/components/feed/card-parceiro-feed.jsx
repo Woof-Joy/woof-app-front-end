@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/card-parceiro-feed.css";
-import point from "../../imgs/feed-parceiro/point-localizacao.png"
+import point from "../../imgs/feed-parceiro/point-localizacao.png";
 
 function CardParceiro(props) {
     const {
@@ -12,19 +12,22 @@ function CardParceiro(props) {
         uf,
         descricao,
         avaliacao,
-        imagem } = props;
+        imagem
+    } = props;
+
     return (
         <>
             <div className="card-servico cards">
-                <div className="container-foto" style={{
-      backgroundImage: `url("${imagem}")`
-    }}>
-                </div>
+                <div className="container-foto" style={{ backgroundImage: `url("${imagem}")` }}></div>
                 <div className="container-dados">
                     <div className="informacoes-parceiro">
                         <section className="servicos">
-                            <strong className="servico-nome">🐕‍🦺{servicoWalker}</strong>
-                            <strong className="servico-nome">🐶{servicoSitter}</strong>
+                            {servicoWalker !== "" && (
+                                <strong className="servico-nome">🐕‍🦺{servicoWalker}</strong>
+                            )}
+                            {servicoSitter !== "" && (
+                                <strong className="servico-nome">🐶{servicoSitter}</strong>
+                            )}
                         </section>
 
                         <label className="nome-prestador">{nome} {sobrenome}</label>
@@ -32,24 +35,20 @@ function CardParceiro(props) {
                             <img className="imagem-localizacao" src={point} alt="ponto de localização" />
                             <label className="cidade">{logradouro},{uf}</label>
                         </section>
-
                     </div>
                     <label className="descricao">
                         <strong className="descricao-texto-card-parceiro">
                             {descricao}
                         </strong>
                     </label>
-
-
                 </div>
-
 
                 <div className="container-estrelas">
                     <div className="avaliacao">{avaliacao} ★</div>
                 </div>
-
             </div>
         </>
     );
 }
+
 export default CardParceiro;

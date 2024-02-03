@@ -29,10 +29,22 @@ function Login() {
                 console.log(resposta.data);
                 setUsuarioLogin(resposta.data)
                 sessionStorage.setItem("userId", resposta.data.userId)
-                sessionStorage.setItem("email",  resposta.data.email)
-                sessionStorage.setItem("nome",   resposta.data.nome)
-                sessionStorage.setItem("token",  resposta.data.token)
+                sessionStorage.setItem("email", resposta.data.email)
+                sessionStorage.setItem("nome", resposta.data.nome)
+                sessionStorage.setItem("token", resposta.data.token)
                 alert("Login realizado com sucesso")
+                woofJoyApi
+                    .get(`/users/${resposta.data.userId}`)
+                    .then((subResponse) => {
+                        console.log(resposta.data)
+                        sessionStorage.setItem("endereco", `${subResponse.data.endereco.localidade}, ${subResponse.data.endereco.uf}`)
+                        alert("Requisito de dados do cliente logado")
+
+                    })
+                    .catch((erro) => {
+                        console.log(erro)
+                        alert("Erro ao requisitar dados do cliente logado" + erro)
+                    })
 
                 if (roleResult === "C") {
                     navigate("/home-cliente")
@@ -54,6 +66,8 @@ function Login() {
             [name]: value
         });
     };
+
+
 
     return (
         <>

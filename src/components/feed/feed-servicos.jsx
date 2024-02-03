@@ -3,39 +3,38 @@ import woofJoyApi from "../../woof-joy-api";
 import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/feed-servicos.css"
 import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
-import point from "../../imgs/feed-parceiro/point-localizacao.png"
 import CardParceiro from "./card-parceiro-feed";
 import { Link } from 'react-router-dom';
 import foto from "../../imgs/mock/semfoto.jpg";
 
-
 function FeedServico() {
+    const userId = sessionStorage.getItem("userId");
+    const token = sessionStorage.getItem("token");
+    const enderecoLogado = sessionStorage.getItem("endereco");
 
-    const userId = sessionStorage.getItem("userId")
-    const token = sessionStorage.getItem("token")
-    const [listaParceiros, setParceiros] = useState([])
+    const [listaParceiros, setParceiros] = useState([]);
+    const [endereco, setEndereco] = useState({ cidade: "", uf: "" });
 
-    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome, cidade, estado, estrelas, qtdServicos, descricao, servicos, dataEntrada) {
-        sessionStorage.setItem("idParceiroFeed", parceiroId)
-        sessionStorage.setItem("cidadeParceiroFeed", cidade)
-        sessionStorage.setItem("estadoParceiroFeed", estado)
-        sessionStorage.setItem("nomeParceiroFeed", nome)
-        sessionStorage.setItem("estrelasParceiroFeed", estrelas)
-        sessionStorage.setItem("qtdServicosParceiroFeed", qtdServicos)
-        sessionStorage.setItem("descricaoParceiroFeed", descricao)
-        sessionStorage.setItem("servicosParceiroFeed", servicos)
-        sessionStorage.setItem("dataEntradaParceiroFeed", dataEntrada)
+    function guardarIdParaCaminhoFeedParceiro(parceiroId, nome, cidade, estado, estrelas, qtdServicos, descricao, servicos, dataEntrada) {
+        sessionStorage.setItem("idParceiroFeed", parceiroId);
+        sessionStorage.setItem("cidadeParceiroFeed", cidade);
+        sessionStorage.setItem("estadoParceiroFeed", estado);
+        sessionStorage.setItem("nomeParceiroFeed", nome);
+        sessionStorage.setItem("estrelasParceiroFeed", estrelas);
+        sessionStorage.setItem("qtdServicosParceiroFeed", qtdServicos);
+        sessionStorage.setItem("descricaoParceiroFeed", descricao);
+        sessionStorage.setItem("servicosParceiroFeed", servicos);
+        sessionStorage.setItem("dataEntradaParceiroFeed", dataEntrada);
     }
-
 
     useEffect(() => {
         listar();
 
         const intervalId = setInterval(() => {
             listar();
-        }, 1 * 60 * 1000);
+        }, 10 * 60 * 1000); // Ajuste para 10 minutos
         return () => clearInterval(intervalId);
-    });
+    }, []);
 
     function listar() {
         woofJoyApi
@@ -45,14 +44,37 @@ function FeedServico() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 setParceiros(response.data);
-                console.log(response.data[4].imagem)
+                console.log(response.data)
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
             });
     }
+
+    function getById(userId, endereco) {
+        woofJoyApi
+            .get(`/users/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                const novoEndereco = {
+                    cidade: response.data.endereco.localidade,
+                    uf: response.data.endereco.uf
+                };
+
+                setEndereco(novoEndereco);
+            })
+            .catch((erro) => {
+                console.log(erro);
+            });
+
+        return endereco;
+    }
+
     return (
         <>
             <Menu />
@@ -74,23 +96,29 @@ function FeedServico() {
                         <div className="filtros-feed-servico">
 
                             <h6>
-                                Sua Localização <br />
-                                <img className="point-feed-servico" src={point} alt="point" />
-                                <p></p>
+                                Sua Localização: <br />
+                                <b className="feed-servicos-localidade">
+                                    📍 <p>{enderecoLogado}</p>
+                                </b>
                             </h6>
 
                             <h6>
                                 Tipo de Serviço <br />
-                                <select className="select-feed-servico" name="" id=""></select>
+                                <select className="select-feed-servico" name="" id="">
+                                    <option value="T">Todos</option>
+                                    <option value="W">Dog Walker</option>
+                                    <option value="S">Dog Sitter</option>
+                                </select>
                             </h6>
 
                         </div>
                     </div>
 
                 </div>
-                {listaParceiros?.map((parceiro) => (
+                {listaParceiros?.map((parceiro) => {
+                    const enderecoIndex = getById(parceiro.userId, endereco);
 
-                    <>
+                    return (
                         <Link to={"/feed-parceiro"} onClick={() => guardarIdParaCaminhoFeedParceiro(
                             parceiro.idUsuario,
                             parceiro.nome,
@@ -101,30 +129,29 @@ function FeedServico() {
                             parceiro.descricao,
                             parceiro.servicos,
                             parceiro.dataEntrada
-                            )} className="container-card-feed-servico">
-
-                            <CardParceiro
-                                key={parceiro.id}
-                                servicoWalker="DogWalker"
-                                servicoSitter="DogSitter"
-                                nome={parceiro.nome}
-                                sobrenome={parceiro.sobrenome}
-                                logradouro="São Bernardo do Campo"
-                                uf ="SP"
-                                descricao={parceiro.descricao}
-                                avaliacao={parceiro.estrelas}
-                                imagem={foto}
-                            />
+                        )} className="container-card-feed-servico">
+                            {enderecoIndex && parceiro.servicos.length > 0 && (
+                                <CardParceiro
+                                    key={parceiro.id}
+                                    servicoWalker={parceiro.servicos[0].tipoServico}
+                                    servicoSitter={parceiro.servicos[1].tipoServico}
+                                    nome={parceiro.nome}
+                                    sobrenome={parceiro.sobrenome}
+                                    logradouro={enderecoIndex.cidade}
+                                    uf={enderecoIndex.uf}
+                                    descricao={parceiro.descricao}
+                                    avaliacao={parceiro.estrelas}
+                                    imagem={foto}
+                                />
+                            )}
                         </Link>
-	
-
-                    </>
-                ))}
+                    );
+                })}
 
 
             </div>
-
         </>
     );
 }
+
 export default FeedServico;

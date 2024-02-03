@@ -123,6 +123,10 @@ ul li.menu-item a .txt-link{
     font-weight: 600;
     text-decoration: none;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 
 .line{

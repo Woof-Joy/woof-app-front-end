@@ -30,6 +30,10 @@
     color: black;
 
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 .descricao-item-doacao{
     display: flex;

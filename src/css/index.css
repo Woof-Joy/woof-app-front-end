@@ -19,6 +19,10 @@ html{
     width: 100%;
     color: #303030;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 
 /*-------------------------------------------NAVBAR-----------------------------------------*/
@@ -92,6 +96,9 @@ html{
 }
 
 .index-btn-cadastrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #DB4B90;
     width: 60%;
     border: none;

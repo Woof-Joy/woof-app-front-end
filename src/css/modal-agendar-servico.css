@@ -24,6 +24,10 @@
 
 
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 .container-dados-modal-agendar-servico {
     display: flex;

@@ -308,4 +308,8 @@ body{
     font-size: 18px;
     margin: 2vh 0;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 

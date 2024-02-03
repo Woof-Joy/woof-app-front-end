@@ -140,6 +140,10 @@
     align-items: center;
     margin-top: 5%;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 /*---------------------------- Cliente --------------------------*/
 /*ModalMeusPets*/

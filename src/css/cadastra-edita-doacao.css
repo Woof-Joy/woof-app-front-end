@@ -8,6 +8,10 @@
     font-family: 'Nunito', sans-serif;
 
 }
+a {color: #DB4B90;
+  cursor: pointer;
+  text-decoration: none;
+  }
 .conteudo-edita-cadastra-servico{
     display: flex;
     flex-direction: column;

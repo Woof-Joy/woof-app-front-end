@@ -1,22 +1,29 @@
-.container-feed-servico{
+.container-feed-servico {
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    
+
 }
 
-.container-card-feed-servico{
+.container-card-feed-servico {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-margin-bottom: 2%;
+    margin-bottom: 2%;
 
 
 }
 
-.header-feed-servico{
+
+a {
+    color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header-feed-servico {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -26,21 +33,35 @@ margin-bottom: 2%;
 
 }
 
+.feed-servicos-localidade{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: black;
+}
 
-.entradas-feed-servico{
+
+.entradas-feed-servico {
     display: flex;
     flex-direction: column;
     margin-top: 6%;
-    width: 60% ;
+    width: 60%;
 
 }
-.img-pesquisa-feed-servico{
-margin-bottom: -1%;
+
+.img-pesquisa-feed-servico {
+    margin-bottom: -1%;
 }
-.barra-pesquisa-feed-servico{
+
+.point-feed-servico{
+
+}
+
+.barra-pesquisa-feed-servico {
     margin-top: 2%;
 }
-.input-pesquisa-feed-servico{
+
+.input-pesquisa-feed-servico {
     height: 50%;
     width: 90%;
     margin-bottom: 4%;
@@ -50,22 +71,25 @@ margin-bottom: -1%;
     border-style: none;
     box-sizing: border-box;
     box-shadow: rgb(142, 138, 138) 1px 4px 8px;
-    border-radius: 10px;
-    transition: 0.3s;
+    border-radius: 10px;   
+    padding-left: 15px; 
+ 
 }
 
-.filtros-feed-servico{
+
+
+.filtros-feed-servico {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     font-size: 20px;
 }
 
-.select-feed-servico{
-width: 150px;
-padding: 2%;
-border: none;
-border-radius: 1% 10px 10px;
-margin-bottom: 15%;
+.select-feed-servico {
+    width: 150px;
+    padding: 2%;
+    border: none;
+    border-radius: 1% 10px 10px;
+    margin-bottom: 15%;
 
 }

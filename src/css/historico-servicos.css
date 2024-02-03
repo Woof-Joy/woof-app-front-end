@@ -38,6 +38,10 @@
 .foto-perfil-historico-servicos {
     border-radius: 100%;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 
 .entradas-historico-servicos {

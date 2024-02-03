@@ -114,6 +114,10 @@
     display: flex;
     justify-content: center;
 }
+a {color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
 
 .hist-chat-lista-contatos{
     overflow-y: auto;

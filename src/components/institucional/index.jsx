@@ -32,7 +32,7 @@ function Index({ nome }) {
                     <nav className="index-nav">
                         <img className="index-logo-img-navbar" src={imgNavLogoWoofJoy} alt="logo preta da Woof Joy"></img>
                         <ul className="index-menu-navbar">
-                            <li><a className="index-menu-item" href="#" value ={nome}>Início</a></li>
+                            <li><a className="index-menu-item" href="#" value={nome}>Início</a></li>
                             <li><a className="index-menu-item" href="#servicos">Serviços</a></li>
                             <li><a className="index-menu-item" href="#trabalhe-conosco">Vire um Parceiro</a></li>
                             <li><a className="index-menu-item" href="#quem-somos">Sobre Nós</a></li>
@@ -56,7 +56,7 @@ function Index({ nome }) {
                                 </p>
                                 <button class="index-btn-confira" type="button">Confira</button>
                             </div>
-                            <img class="index-img-inicio-pata" src= {imgInicioChamativo}  alt="imagem logo pata com pet"></img>
+                            <img class="index-img-inicio-pata" src={imgInicioChamativo} alt="imagem logo pata com pet"></img>
                         </div>
                     </section>
 
