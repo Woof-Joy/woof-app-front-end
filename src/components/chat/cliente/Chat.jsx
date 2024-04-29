@@ -1,19 +1,17 @@
 import React from "react"
-import MenuCliente from "../../componentes-gerais/MenuCliente"
-import HistoricoChat from "./ChatClienteHistorico";
-import AreaChat from "./ChatClienteArea";
+import HistoricoChat from "./ChatHistorico";
+import AreaChat from "./ChatArea";
 import "../../../css/chat.css"
+import Menu from "../../componentes-gerais/MenuCliente"
 
-import { Link } from 'react-router-dom';
-
-function ChatCliente() {
+function Chat() {
 
     
     return (
         <>
             <section className="chat-container">
                 <div className="chat-menu-cliente">
-                    <MenuCliente />
+                      <Menu />
                 </div>
                 <div className="chat-hist-chat">
                     <HistoricoChat />
@@ -24,4 +22,4 @@ function ChatCliente() {
             </section>
         </>
     )
-} export default ChatCliente;
+} export default Chat;

@@ -5,9 +5,77 @@ import Menu from "./componentes-gerais/MenuCliente";
 import UpdateImg from "./componentes-gerais/BotaoUpload";
 import SimNao from "./cadastro-servico-sim-nao";
 import woofJoyApi from "../woof-joy-api";
-import Button from "../components/cadastro-servico-button";
+import Button from "./componentes-gerais/button";
+import { useNavigate } from 'react-router-dom';
+
+
+
+//import foto from "../../imgs/mock/semfoto.jpg";
+
 
 function CadastraEditaDoacao() {
+
+  const token = sessionStorage.getItem("token")
+  const userId = sessionStorage.getItem("userId")
+
+  const navigate = useNavigate()
+
+  const [item, setItem] = useState({
+    titulo: "",
+    imgItemDoacao: "",
+    descricao: "",
+    entrega: false,
+    marcaPontoEncontro: false,//
+    estado: "",
+    enviaCorreio: false,
+    cobraTaxa: false,
+    necessarioRetirada: false,//
+    categoria: ""
+
+  });
+
+
+
+
+  // http://localhost:8080/itens/1
+
+  function postarItem() {
+    woofJoyApi
+      .post(`/itens/${userId}`, item, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setItem(item)
+        console.log(response.data);
+        alert("item publicado com sucesso")
+        navigate("/doacao")
+      })
+      .catch((erroOcorrido) => {
+        console.log(erroOcorrido.mensagem);
+        alert("erro ao publicar item")
+
+      });
+  }
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setItem({
+      ...item,
+      [name]: value
+    });
+  };
+
+//   const handleTipoServicoChange = (event) => {
+//     setTipoServico(event.target.value);
+//     setServicoBody({
+//         ...servicoBody,
+//         tipoServico: event.target.value
+//     });
+// };
+
+
   return (
     <>
       <div className="conteudo-edita-cadastra-servico">
@@ -24,28 +92,38 @@ function CadastraEditaDoacao() {
             className="o-nome-obj-doacao"
             type="text"
             placeholder="Nome do objeto de doação"
+            name="titulo"
+            value={item.titulo}
+            onChange={handleInputChange}
           />
         </div>
-<div className="textarea-e-estado-categoria">
-<div className="caixa-doacao">
-          <Textarea />
+        <div className="textarea-e-estado-categoria">
+          <div className="caixa-doacao">
+            <Textarea 
+             name={"descricao"}
+             onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="categoria-estado">
+
+            <select className="categoria-doacao" id="categoria-doacao" onChange={handleInputChange} name="categoria">
+              <option className="txt-selected" selected disabled>Categoria</option>
+              <option value="brinquedo">brinquedo</option>
+              <option value="higiêne">higiêne</option>
+              <option value="acessórios">acessórios</option>
+              <option value="alimentar">alimentar</option>
+              <option value="passeio">passeio</option>
+            </select>
+
+            <select className="categoria-doacao" id="estado-doacao" onChange={handleInputChange} name="estado">
+              <option className="txt-selected" selected disabled>Estado</option>
+              <option value="novo">novo</option>
+              <option value="usado">usado</option>
+            </select>
+
+          </div>
         </div>
-        <div className="categoria-estado">
-          <select className="categoria-doacao" id="categoria-doacao">
-            <option className="txt-selected" selected disabled>Categoria</option>
-            <option value="brinquedo">brinquedo</option>
-            <option value="higiêne">higiêne</option>
-            <option value="acessórios">acessórios</option>
-            <option value="alimentar">alimentar</option>
-            <option value="passeio">passeio</option>
-          </select>
-          <select className="categoria-doacao" id="estado-doacao">
-          <option className="txt-selected" selected disabled>Estado</option>
-            <option value="novo">novo</option>
-            <option value="usado">usado</option>
-          </select>
-        </div>
-</div>
 
         <div className="upload-img-doacao">
           <div class="enviar-img-doacao">
@@ -59,32 +137,45 @@ function CadastraEditaDoacao() {
             <div className="primeira-parte-perguntas">
               <div className="perguntas-retirada-um">
                 <p className="p-das-selecoes">Leva o produto até o receptor?</p>
-                <p className="p-das-selecoes">Marca ponto de encontro mais próximo?</p>
-                <p className="p-das-selecoes">Precisa retirar no local?</p>
               </div>
               <div>
-                <SimNao />
-                <SimNao />
-                <SimNao />
+                <SimNao
+                  name={"entrega"}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
           </div>
           <div className="perguntas-retirada-segunda-parte">
             <div className="segunda-parte-perguntas">
-            <div className="perguntas-retirada-dois">
-              <p className="p-das-selecoes">Envia pelo correio?</p>
-              <p className="p-das-selecoes">Cobra taxa?</p>
-            </div>
-            <div>
-              <SimNao />
-              <SimNao />
-            </div>
+              <div className="perguntas-retirada-dois">
+                <p className="p-das-selecoes">Envia pelo correio?</p>
+                <p className="p-das-selecoes">Cobra taxa?</p>
+              </div>
+              <div>
+                <SimNao
+                  name={"enviaCorreio"}
+                  onChange={handleInputChange}
+                />
+                <SimNao
+                  name={"cobraTaxa"}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
 
           </div>
         </div>
         <div className="buttons-edita-doacao">
-          <Button />
+          <Button
+            displayOn="flex"
+            buttonBackColor="#DB4B90"
+            fontColor="white"
+            buttonName="Publicar"
+            buttonHeigth="60%"
+            buttonWidth="60%"
+           onClick={() => postarItem()}
+          />
         </div>
       </div>
     </>

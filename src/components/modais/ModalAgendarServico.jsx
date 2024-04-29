@@ -209,9 +209,9 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
                 <h5>Selecione o pet:</h5>
                 <select placeholder="Seus pets" className="select-modal-agendar-servico" name="idCachorros" id="" onChange={handleInputChange}>
                     <option value="" disabled>Escolha...</option>
-                    {usuario.cliente.dogList.map((dog) => (
+                    {/* {usuario.cliente.dogList.map((dog) => (
                         <option key={dog.id} value={dog.id}>{dog.nome}</option>
-                    ))}
+                    ))} */}
                 </select>
 
 

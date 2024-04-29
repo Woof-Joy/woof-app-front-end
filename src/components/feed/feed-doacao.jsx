@@ -3,21 +3,23 @@ import woofJoyApi from "../../woof-joy-api";
 import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/feed-doacao.css"
 import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
-import point from "../../imgs/feed-parceiro/point-localizacao.png"
 import chat from "../../imgs/meus-servicos/icon-chat.png"
 import perfil from "../../imgs/meus-servicos/image 204.png"
-import CardParceiro from "./card-parceiro-feed";
 import ItemFeed from "./item-feed";
 import Button from "../componentes-gerais/button";
 import { Link } from "react-router-dom";
-import foto from "../../imgs/mock/item.png";
+import { useNavigate } from 'react-router-dom';
+
 
 
 function FeedDocao() {
 
+    const navigate = useNavigate();
 
     const userId = sessionStorage.getItem("userId")
     const token = sessionStorage.getItem("token")
+    const enderecoLogado = sessionStorage.getItem("endereco");
+
     const [listaItens, setParceiros] = useState([])
 
     function guardarIdParaCaminhoFeedParceiro(parceiroId,nome) {
@@ -70,8 +72,7 @@ function FeedDocao() {
 
                             <h6>
                                 Sua Localização <br />
-                                <img className="point-feed-doacao" src={point} alt="point" />
-                                <p></p>
+                                 <p>📍{enderecoLogado}</p>
                             </h6>
 
 
@@ -80,13 +81,13 @@ function FeedDocao() {
                                 <select className="select-feed-doacao" name="" id=""></select>
                             </h6>
                             <h6 className="button-doar-feed-doacao">
-
                                 <Button
                                     displayOn="flex"
                                     buttonBackColor="#DB4B90"
                                     fontColor="white"
                                     buttonName="Doar"
                                     buttonHeigth="60%"
+                                    onClick={() => navigate("/cadastra-edita-doacao")}
                                 />
                             </h6>
 

@@ -16,13 +16,6 @@
 
 }
 
-
-a {
-    color: #DB4B90;
-    cursor: pointer;
-    text-decoration: none;
-}
-
 .header-feed-servico {
     display: flex;
     flex-direction: row;

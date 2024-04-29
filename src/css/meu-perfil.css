@@ -12,6 +12,8 @@
 .meu-perfil-container{
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
 }
 
@@ -99,7 +101,8 @@
     background-color: rgba(229, 229, 229, 1);
     border: none;
     overflow: none;
-    border-radius: 10px;
+    border-radius: 2%;
+
     border-bottom: 1px solid #ccc;
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
 }
@@ -144,129 +147,14 @@ a {color: #DB4B90;
     cursor: pointer;
     text-decoration: none;
     }
+    .input{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 8vh;
+    }
+    input{
+        height: 80%;
+    }
+  
 
-/*---------------------------- Cliente --------------------------*/
-/*ModalMeusPets*/
-.modal-meus-pets-container{
-    height: 600px;
-    width: 75%;
-    background-color: #FFDEDF;
-    padding: 3vh;
-    border-radius: 30px;
-    margin-bottom: 5vh;
-}
-
-.modal-meus-pets-titulo{
-    margin: 5% 10%;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.modal-meus-pets-area-cards{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3vh;
-    overflow-y: auto;
-    max-height: 80%;
-}
-
-
-/*CardMeusPets*/
-.card-meus-pets{
-    width: 85%;
-    padding: 5%;
-    display: flex;
-    align-items: center;
-    gap: 5vh;
-    border-radius: 20px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.card-meus-pets-foto-perfil{
-    width: 20%;
-    border-radius: 50%;
-}
-
-.card-meus-pets-nome{
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.card-meus-pets-idade{
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/*---------------------------- Parceiro --------------------------*/
-/*ModalMeusServicos*/
-.modal-meus-servicos-container{
-    width: 60%;
-    margin-left: 10vh;
-    background-color: #FFDEDF;
-    padding: 5%;
-    border-radius: 30px;
-    margin-top: 5vh;
-}
-
-.modal-meus-servicos-titulo{
-    margin: 5% 10%;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.modal-meus-servicos-subtitulo-qtd{
-    margin: 5% 10%;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.modal-meus-servicos-tipo-prestado{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/*---------------------------- CARDS SERVIÇOS --------------------------*/
-/* 
-ModalCardDogWalker
-ModalCardDogSitter 
-*/
-.card-modal-meus-servicos-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-left: 12vh;
-}
-
-.card-modal-meus-servicos-tipo-servico{
-    display: flex;
-    align-items: center;
-    gap: 2vh;
-    margin-bottom: 0.5vh;
-}
-
-.card-modal-meus-servicos-tipo-servico-p{
-    margin-bottom: 0;
-    font-size: 24px;
-    font-weight: 700;
-    color: #DB4B90;
-}
-
-.card-modal-meus-servicos-conteudo{
-    margin-left: 7vh;
-}
-
-.card-modal-meus-servicos-preco{
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.card-modal-meus-servicos-adicional{
-    font-size: 14px;
-    font-weight: 600;
-}

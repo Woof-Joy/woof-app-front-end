@@ -13,7 +13,7 @@ function FeedServico() {
     const enderecoLogado = sessionStorage.getItem("endereco");
 
     const [listaParceiros, setParceiros] = useState([]);
-    const [endereco, setEndereco] = useState({ cidade: "", uf: "" });
+   // const [endereco, setEndereco] = useState({ cidade: "", uf: "" });
 
     function guardarIdParaCaminhoFeedParceiro(parceiroId, nome, cidade, estado, estrelas, qtdServicos, descricao, servicos, dataEntrada) {
         sessionStorage.setItem("idParceiroFeed", parceiroId);
@@ -46,34 +46,35 @@ function FeedServico() {
             .then((response) => {
                 setParceiros(response.data);
                 console.log(response.data)
+                //alert(response.status)
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
             });
     }
 
-    function getById(userId, endereco) {
-        woofJoyApi
-            .get(`/users/${userId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((response) => {
-                console.log(response.data);
-                const novoEndereco = {
-                    cidade: response.data.endereco.localidade,
-                    uf: response.data.endereco.uf
-                };
+    // function getById(userId, endereco) {
+    //     woofJoyApi
+    //         .get(`/users/${userId}`, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         })
+    //         .then((response) => {
+    //             console.log(response.data);
+    //             const novoEndereco = {
+    //                 cidade: response.data.endereco.localidade,
+    //                 uf: response.data.endereco.uf
+    //             };
 
-                setEndereco(novoEndereco);
-            })
-            .catch((erro) => {
-                console.log(erro);
-            });
+    //             setEndereco(novoEndereco);
+    //         })
+    //         .catch((erro) => {
+    //             console.log(erro);
+    //         });
 
-        return endereco;
-    }
+    //     return endereco;
+    // }
 
     return (
         <>
@@ -97,9 +98,8 @@ function FeedServico() {
 
                             <h6>
                                 Sua Localização: <br />
-                                <b className="feed-servicos-localidade">
-                                    📍 <p>{enderecoLogado}</p>
-                                </b>
+                                    <p>📍{enderecoLogado}</p>
+                            
                             </h6>
 
                             <h6>
@@ -116,34 +116,37 @@ function FeedServico() {
 
                 </div>
                 {listaParceiros?.map((parceiro) => {
-                    const enderecoIndex = getById(parceiro.userId, endereco);
+                    //const enderecoIndex = getById(parceiro.userId, endereco);
 
                     return (
                         <Link to={"/feed-parceiro"} onClick={() => guardarIdParaCaminhoFeedParceiro(
                             parceiro.idUsuario,
                             parceiro.nome,
-                            "São Bernardo do Campo",
-                            "SP",
+                            "Nathan vai arrumar",
+                            "Nathan vai arrumar",
                             parceiro.estrelas,
                             parceiro.qtdServicosPrestados,
                             parceiro.descricao,
                             parceiro.servicos,
                             parceiro.dataEntrada
                         )} className="container-card-feed-servico">
-                            {enderecoIndex && parceiro.servicos.length > 0 && (
                                 <CardParceiro
-                                    key={parceiro.id}
-                                    servicoWalker={parceiro.servicos[0].tipoServico}
-                                    servicoSitter={parceiro.servicos[1].tipoServico}
+                                     servicoWalker={
+                                        parceiro.servicos.length > 0 ? 
+                                        parceiro.servicos[0].tipoServico : ""
+                                    }
+                                    servicoSitter={
+                                        parceiro.servicos.length > 1 ? 
+                                        parceiro.servicos[1].tipoServico : ""
+                                    }
                                     nome={parceiro.nome}
                                     sobrenome={parceiro.sobrenome}
-                                    logradouro={enderecoIndex.cidade}
-                                    uf={enderecoIndex.uf}
-                                    descricao={parceiro.descricao}
+                                    logradouro={"Nathan vai arrumar"}
+                                    uf={"Nathan vai arrumar"}
+                                    descricao=""
                                     avaliacao={parceiro.estrelas}
                                     imagem={foto}
                                 />
-                            )}
                         </Link>
                     );
                 })}

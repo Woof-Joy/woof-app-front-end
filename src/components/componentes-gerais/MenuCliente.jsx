@@ -1,79 +1,114 @@
 import React from "react"
 import "../../css/menu.css"
-
-import ImgLogoWoofJoy from "../../imgs/logo-branca-footer.png"
+import IconServicos from "../../imgs/iconServicos.png";
+import ImgLogoWoofJoy from "../../imgs/logo-branca-footer.png";
 
 import { Link } from 'react-router-dom';
 
 
 function Menu() {
-    const cleanSessionStorage = () => {
-        sessionStorage.clear()
+    const role = sessionStorage.getItem("role");
 
-    }
+    const cleanSessionStorage = () => {
+        sessionStorage.clear();
+    };
+
     return (
         <>
-            <header>
-                <nav class="cabecalho-menu">
-                    <ul class="menu-navbar">
-                        <div class="btn-lateral-menu">
-                            <i class="bi bi-list"></i>
-                            <img class="logo-img-navbar" src={ImgLogoWoofJoy} alt="logo branca da Woof Joy"></img>
-                        </div>
-                        <div class="space-menor"></div>
-                        <div class="todos-menu-item">
-                            <li class="menu-item">
+            <nav className="cabecalho-menu">
+                <ul className="menu-navbar">
+                    <div class="btn-lateral-menu">
+                        <i class="bi bi-list"></i>
+                        <img class="logo-img-navbar" src={ImgLogoWoofJoy} alt="logo branca da Woof Joy"></img>
+                    </div>
+
+                    {/* Feed */}
+                    {role === "C" && (
+                        <div className="todos-menu-item">
+                            <li className="menu-item">
                                 <Link to="/home-cliente">
                                     <a href="#">
-                                        <span class="icon"><i class="bi bi-house-heart-fill"></i></span>
-                                        <span class="txt-link">Feed</span>
+                                        <span className="icon">
+                                            <i className="bi bi-house-heart-fill"></i>
+                                        </span>
+                                        <span className="txt-link">Feed</span>
                                     </a>
                                 </Link>
                             </li>
-                            <li class="menu-item">
-                                <Link to="/chat-cliente">
-                                    <a href="#">
-                                        <span class="icon"><i class="bi bi-chat-dots-fill"></i></span>
-                                        <span class="txt-link">Chat</span>
-                                    </a>
-                                </Link>
-                            </li>
-                            <li class="menu-item">
-                                <Link to="/doacao">
-                                    <a href="#">
-                                        <span class="icon"><i class="bi bi-bag-heart-fill"></i></span>
-                                        <span class="txt-link">Doação</span>
-                                    </a>
-                                </Link>
-                            </li>
-                            {/* <li class="menu-item">
+                        </div>
+                    )}
+
+                    {/* Chat */}
+                    <div className="todos-menu-item">
+                        <li className="menu-item">
+                            <Link to="/chat-cliente">
                                 <a href="#">
-                                    <span class="icon"><i class="bi bi-clock-history"></i></span>
-                                    <span class="txt-link">Histórico</span>
+                                    <span className="icon">
+                                        <i className="bi bi-chat-dots-fill"></i>
+                                    </span>
+                                    <span className="txt-link">Chat</span>
                                 </a>
-                            </li> */}
+                            </Link>
+                        </li>
+                    </div>
+
+                    {/* Doação */}
+                    <div className="todos-menu-item">
+                        <li className="menu-item">
+                            <Link to="/doacao">
+                                <a href="#">
+                                    <span className="icon">
+                                        <i className="bi bi-bag-heart-fill"></i>
+                                    </span>
+                                    <span className="txt-link">Doação</span>
+                                </a>
+                            </Link>
+                        </li>
+                    </div>
+
+                    {/* Serviços */}
+                    {role === "P" && (
+                        <div className="todos-menu-item">
+                            <li className="menu-item">
+                                <Link to="/meus-servicos">
+                                    <a href="#">
+                                        <span className="icon">
+                                            <img src={IconServicos} alt="" />
+                                        </span>
+                                        <span className="txt-link">Serviços</span>
+                                    </a>
+                                </Link>
+                            </li>
+                        </div>
+                    )}
+
+                    {/* Meu Perfil */}
+                        <div className="todos-menu-item">
                             <li className="menu-item">
                                 <Link to="/perfil-cliente">
                                     <a href="#">
-                                        <span class="icon"><i class="bi bi-person-circle"></i></span>
-                                        <span class="txt-link">Meu Perfil</span>
+                                        <span className="icon">
+                                            <i className="bi bi-person-circle"></i>
+                                        </span>
+                                        <span className="txt-link">Meu Perfil</span>
                                     </a>
                                 </Link>
                             </li>
                         </div>
-                        <div class="space-menor"></div>
-                        <hr className="line"></hr>
-                        <div class="space-menor"></div>
-                        <Link to="/" class="menu-item-sair" onClick={cleanSessionStorage}>
+
+                    {/* Sair */}
+                    <hr className="line"></hr>
+                    <div className="space-menor"></div>
+                        <Link to="/" className="menu-item-sair" onClick={cleanSessionStorage}>
                             <a href="#">
-                                <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
-                                <span class="txt-link" >Sair</span>
+                                <span className="icon"><i className="bi bi-box-arrow-left"></i></span>
+                                <span className="txt-link">Sair</span>
                             </a>
                         </Link>
-                    </ul>
-                </nav>
-            </header>
+                </ul>
+            </nav>
         </>
     );
 }
+
 export default Menu;

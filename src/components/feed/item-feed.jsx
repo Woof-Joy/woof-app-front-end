@@ -14,16 +14,14 @@ function ItemFeed(props) {
         uf
     } = props;
 
-   
-
-
     return (
         <>
 
             <div className="card-item-doacao">
-                <div style={{ backgroundImage: `url(${foto})` }} className="container-imagem-item-doacao">
+                <div 
+                style={{ backgroundImage: `url(${foto})` }} 
+                className="container-imagem-item-doacao">
                 </div>
-
 
                 <div className="container-informacoes-item-doacao">
                     <h6>Categoria: {categoria}</h6>

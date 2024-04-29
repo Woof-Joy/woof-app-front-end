@@ -117,7 +117,7 @@ function MeuPerfilCliente() {
                                 <p className="meu-perfil-texto-guia-p">Dados Pessoais</p>
                                 <img className="meu-perfil-icon-editar" src={IconEditar} alt="" />
                             </div>
-                            <div className="meu-perfil-input-campos-juntos">
+                            <div className="meu-perfil-input-campos-juntos input">
                                 <div className="meu-perfil-input-campo-junto">
                                     <label className="meu-perfil-label-campo" htmlFor="">Nome</label>
                                     <input className="meu-perfil-input-campo" value={usuario.nomeCompleto} type="text" />
@@ -125,11 +125,11 @@ function MeuPerfilCliente() {
 
                             </div>
                             <div className="meu-perfil-input-campos-juntos">
-                                <div className="meu-perfil-input-campo-junto">
+                                <div className="meu-perfil-input-campo-junto input">
                                     <label className="meu-perfil-label-campo" htmlFor="">CPF</label>
                                     <input className="meu-perfil-input-campo" value={usuario.cpf} type="text" />
                                 </div>
-                                <div className="meu-perfil-input-campo-junto">
+                                <div className="meu-perfil-input-campo-junto input">
                                     <label className="meu-perfil-label-campo" htmlFor="">Data de Nascimento</label>
                                     <input className="meu-perfil-input-campo" value={usuario.dataNasc} type="date" />
                                 </div>
@@ -141,25 +141,25 @@ function MeuPerfilCliente() {
                                 <img src={IconEditar} alt="" />
                             </div>
                             <div className="meu-perfil-input-campos-juntos">
-                                <div className="meu-perfil-input-campo-junto">
+                                <div className="meu-perfil-input-campo-junto input">
                                     <label className="meu-perfil-label-campo" htmlFor="">CEP</label>
                                     <input className="meu-perfil-input-campo" type="text" value={usuario.endereco.cep} />
                                 </div>
-                                <div className="meu-perfil-input-campo-junto">
+                                <div className="meu-perfil-input-campo-junto input">
                                     <label className="meu-perfil-label-campo" htmlFor="">Número</label>
                                     <input className="meu-perfil-input-campo" value={usuario.endereco.numero} type="text" />
                                 </div>
                             </div>
-                            <div className="meu-perfil-input-campo-separado">
+                            <div className="meu-perfil-input-campo-separado input">
                                 <label className="meu-perfil-label-campo" htmlFor="">Rua</label>
                                 <input className="meu-perfil-input-campo" value={usuario.endereco.logradouro} type="text" />
                             </div>
                             <div className="meu-perfil-input-campos-juntos">
-                                <div className="meu-perfil-input-campo-junto">
+                                <div className="meu-perfil-input-campo-junto input">
                                     <label className="meu-perfil-label-campo" htmlFor="">Cidade</label>
                                     <input className="meu-perfil-input-campo" value={usuario.endereco.localidade} type="text" />
                                 </div>
-                                <div className="meu-perfil-input-campo-junto">
+                                <div className="meu-perfil-input-campo-junto input">
                                     <label className="meu-perfil-label-campo" htmlFor="">Estado</label>
                                     <input className="meu-perfil-input-campo" value={usuario.endereco.uf} type="text" />
                                 </div>
@@ -170,7 +170,7 @@ function MeuPerfilCliente() {
                                 <p className="meu-perfil-texto-guia-p">Dados da Conta</p>
                                 <img src={IconEditar} alt="" />
                             </div>
-                            <div className="meu-perfil-input-campo-separado">
+                            <div className="meu-perfil-input-campo-separado input">
                                 <label className="meu-perfil-label-campo" htmlFor="">E-mail</label>
                                 <input className="meu-perfil-input-campo" value={usuario.email} type="email" />
                             </div>
@@ -178,11 +178,11 @@ function MeuPerfilCliente() {
                             {mostrarAlteracaoSenha && (
                                 <div>
                                     <div className="meu-perfil-input-campos-juntos">
-                                        <div className="meu-perfil-input-campo-junto">
+                                        <div className="meu-perfil-input-campo-junto input">
                                             <label className="meu-perfil-label-campo" htmlFor="">Nova senha</label>
                                             <input className="meu-perfil-input-campo" type="password" />
                                         </div>
-                                        <div className="meu-perfil-input-campo-junto">
+                                        <div className="meu-perfil-input-campo-junto input">
                                             <label className="meu-perfil-label-campo" htmlFor="">Confirmação de Senha</label>
                                             <input className="meu-perfil-input-campo" type="password" />
                                         </div>
@@ -195,12 +195,6 @@ function MeuPerfilCliente() {
 
                         </div>
                     </div>
-                </div>
-                <div className="meu-perfil-bloco-2">
-                    <div className='meu-perfil-modal-meus-pets'>
-                        <ModalMeusPets />
-                    </div>
-
                 </div>
             </section>
         </>

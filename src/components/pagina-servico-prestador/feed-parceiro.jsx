@@ -35,6 +35,51 @@ import { Link } from "react-router-dom";
 
 function FeedParceiro() {
 
+  const userId = sessionStorage.getItem("userId")
+  const token = sessionStorage.getItem("token")
+  const idParceiro = sessionStorage.getItem("idParceiroFeed")
+  const logradouro = sessionStorage.getItem("cidadeParceiroFeed")
+  const uf = sessionStorage.getItem("estadoParceiroFeed")
+  const nome = sessionStorage.getItem("nomeParceiroFeed")
+  const estrelas = 4.7
+  const qtdServicos =sessionStorage.getItem("qtdServicosParceiroFeed")
+  const descricao = "Descrição do parceiro"
+  const servicos = sessionStorage.getItem("servicosParceiroFeed")
+  const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
+
+
+
+	const [parceiroInfo, setParceiroInfo]  = useState({
+		id: 1,
+		idUser: 2,
+		nome: "Natan",
+		sobrenome: "Viado",
+		email: "N@N",
+		dataNasc: "2024-04-25",
+		dataEntrada: "2024-04-26",
+		estrelas: null,
+		qtdServicosPrestados: 0,
+		servicos: [],
+		idUsuario: 2
+  })
+
+  woofJoyApi
+  .get(`/parceiros/${idParceiro}`, {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  })
+  .then((response) => {
+    setParceiroInfo(response.data);
+      console.log(response.data)
+      //alert(response.status)
+  })
+  .catch((erroOcorrido) => {
+      console.log(erroOcorrido);
+  });
+
+
+
   /*COMPONENTE ATENDIMENTO*/
 
   const iconDoisPet = IconDoisPet;
@@ -81,19 +126,6 @@ function FeedParceiro() {
   const clienteNome3 = ["Damares Oliveira"]
   const descricaoServico3 = ["5,0 - Serviço utilizado:  Dog Walker"]
   const descricaoAvaliacao3 = ["Adorei o atendimento dele, meu pet fica muito feliz com os passeios e a plataforma achei pratica"]
-
-  const userId = sessionStorage.getItem("userId")
-  const token = sessionStorage.getItem("token")
-  const idParceiro = sessionStorage.getItem("idParceiroFeed")
-  const logradouro = sessionStorage.getItem("cidadeParceiroFeed")
-  const uf = sessionStorage.getItem("estadoParceiroFeed")
-  const nome = sessionStorage.getItem("nomeParceiroFeed")
-  const estrelas = 4.7
-  const qtdServicos =sessionStorage.getItem("qtdServicosParceiroFeed")
-  const descricao = "Descrição do parceiro"
-  const servicos = sessionStorage.getItem("servicosParceiroFeed")
-  const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
-
 
   function getInfoPrestador() {
     woofJoyApi
@@ -274,5 +306,8 @@ function contatoDados() {
       </div>
     </>
   );
+
 }
+
+
 export default FeedParceiro;

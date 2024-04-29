@@ -3,7 +3,6 @@ import Pag from '../components/cadastro-servico-pagina'
 import Radio from '../components/cadastro-servico-sim-nao'
 import Perguntas from '../components/cadastro-servico-perguntas'
 import FormInfo from '../components/cadastro-servico-form-informacoes'
-import Button from '../components/cadastro-servico-button'
 import Menu from './componentes-gerais/MenuCliente'
 
 
@@ -60,9 +59,9 @@ return (
        perguntas={perguntasPersonalizadas}
 
         />
-     <div className="cadastro-servico-button">
-       <Button/>
-     </div>
+     <div className="">
+<button>Colocar component</button>   
+  </div>
       </div>
     </div>
 
