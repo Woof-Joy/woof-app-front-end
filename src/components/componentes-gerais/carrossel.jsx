@@ -14,16 +14,6 @@ const BootstrapCarousel = () => {
     objectFit: "cover",
   };
 
-
-  const navigate = useNavigate();
-
-  function irAteAlgo(navegacao) {
-    navigate(navegacao);
-  }
-  navigate("/doacao");
-
-
-
   return (
     <div className="container-carrossel">
         {/* <button style={{cursor: "pointer"}} onClick={() => navigate("/historico")}>ir para outro lugar</button> */}

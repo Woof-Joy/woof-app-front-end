@@ -4,14 +4,25 @@
     justify-content: space-around;
     align-items: center;
     text-align: start;
-    background-color: #FFDEDF;
+    box-shadow: 2px 2px 3px #DB4B90;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #DB4B90;
+    color: black;
     max-width: 65%;
     min-width: 65%;
     border-radius: 10px;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow: hidden;
 
+    transition: color 0.2s ease, background-color 0.3s ease;
+
+}
+
+.card-servico:hover{
+    background-color: #DB4B90;
+    color: white;
+    
 }
 
 .container-foto {
@@ -110,7 +121,8 @@
     font-size: 15px;
     margin-left: 1%;
 }
-a {color: #DB4B90;
+a {
+    color: #DB4B90;
     cursor: pointer;
     text-decoration: none;
     }
@@ -122,8 +134,9 @@ a {color: #DB4B90;
     width: 50%;
     margin-left: -100px;
     text-align: justify;
-    background-color: rgb(205, 205, 205);
-    box-shadow: 5px 5px 8px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 3px #DB4B90;
+    border: 1px solid #DB4B90;
     border-radius: 10px;
     margin: 2%;
     overflow-x: auto;

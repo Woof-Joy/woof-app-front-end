@@ -14,8 +14,7 @@ import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
-import ChatCliente from "./components/chat/cliente/ChatCliente"
-import ChatParceiro from './components/chat/parceiro/ChatParceiro'
+import Chat from "./components/chat/cliente/Chat"
 import MeuPerfilCliente from './components/meu-perfil/cliente/MeuPerfilCliente'
 import MeuPerfilParceiro from './components/meu-perfil/parceiro/MeuPerfilParceiro'
 
@@ -71,11 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path: "chat-cliente",
-        element: <ChatCliente />
-      },
-      {
-        path: "chat-parceiro",
-        element: <ChatParceiro />
+        element: <Chat />
       },
       {
         path: "historico",

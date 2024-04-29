@@ -270,12 +270,6 @@ body{
     margin-top: 10px;
     font-size: 18px;
 }
-/*COMPONENTE BUTTON*/
-.cadastro-servico-button{
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 30px;
-}
 
 .cadastro-servico-btn{
     display: flex;

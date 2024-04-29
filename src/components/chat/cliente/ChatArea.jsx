@@ -14,7 +14,7 @@ function AreaChat() {
     const contatoNome = sessionStorage.getItem("contatoName")
 
     const [sendBody, setsendBody] = useState({
-        message: "olá",
+        message: "",
         idRemetente: userId,
         idDestinatario: contatoIdAtual,
         tipo: "doacao",

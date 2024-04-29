@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../css/radio-cadastro-servico.css";
 import Radio from '../components/cadastro-servico-sim-nao' 
 import Textarea from '../components/cadastro-servico-textarea'
-import Button from '../components/cadastro-servico-button'
 import woofJoyApi from "../woof-joy-api";
 
 function CadastroServicoPagina() {

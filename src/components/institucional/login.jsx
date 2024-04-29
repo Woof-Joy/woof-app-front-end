@@ -49,7 +49,7 @@ function Login() {
                 if (roleResult === "C") {
                     navigate("/home-cliente")
                 } else {
-                    navigate("/chat-parceiro")
+                    navigate("/chat-cliente")
                 }
 
             })

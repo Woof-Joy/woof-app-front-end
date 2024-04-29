@@ -3,14 +3,29 @@
     flex-direction: row;
     margin-left: 6%;
     margin-bottom: 2%;
-
-    background-color: #FFDEDF;
+    box-shadow: 2px 0px 3px #DB4B90;
+    background-color: #DB4B90;
+    border: 1px solid #DB4B90;
+    color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
-    max-width: 90%;
-    min-width: 80%;
+    max-width: 80%;
+    min-width: 70%;
     min-height: 200px;
+    transition: 0.2s;
 }
+
+/* Quando o mouse entra no .card-item-doacao */
+.card-item-doacao:hover .container-imagem-item-doacao  {
+    box-shadow: 5px 0px 8px #DB4B90;
+}
+
+.card-item-doacao:hover{
+    background-color: #ffffff;
+    box-shadow: 8px 8px 8px  #DB4B90;
+    color: #000000;
+}
+
 
 .container-imagem-item-doacao {
     display: flex;
@@ -18,18 +33,24 @@
     background-size: cover;
     background-repeat: no-repeat;
     margin-left: -1.5%;
-    background-color: deeppink;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 0px 8px #ffffff;
+    transition: 0.2s;
 }
+
+
 
 .container-informacoes-item-doacao {
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: start;
-    margin: 2%;
-    color: black;
-
+    justify-content: center;
+    width: 40%;
+    margin-left: 8%;
 }
+
+
+
 a {color: #DB4B90;
     cursor: pointer;
     text-decoration: none;
@@ -42,7 +63,5 @@ a {color: #DB4B90;
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 30%;
-    max-width: 80%;
-
-
+    max-width: 80%; 
 }
