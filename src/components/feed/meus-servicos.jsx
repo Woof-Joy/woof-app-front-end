@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LocalDate } from "js-joda"; // Importe LocalDate corretamente
 import woofJoyApi from "../../woof-joy-api";
 import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/meus-servicos.css"
@@ -9,34 +10,52 @@ import perfil from "../../imgs/meus-servicos/image 204.png"
 
 function MeusServicos() {
 
+    const userId = sessionStorage.getItem("userId");
+    const token = sessionStorage.getItem("token");
 
-    const [listaParceiros, setParceiros] = useState([])
+    // const [servicosParceiro, setServicos] = useState({
+    //     id: 1,
+    //     tipoServico: "DogWalker",
+    //     valor: 15.0,
+    //     servico: null,
+    //     qtdServico: 1,
+    //     servicos: [
+    // dataHoraFim: LocalDate.parse("2024-04-29"),
+    //     dataHoraInicio: LocalDate.parse("2024-04-28"),
+    //     cliente: "Filipe",
+    // ]
+    // })
+
+    const [servicosParceiroList, setServicosList] = useState([])
 
 
     useEffect(() => {
-        // Chama a função listar() imediatamente
-        listar();
+        listarServicos();
 
-        // Define um intervalo para chamar a função listar() 
         const intervalId = setInterval(() => {
-            listar();
-        }, 1 * 60 * 1000);//minutos em milisegundos(O numero primario determina, exemplo: Se 1 então 1 minuto)   
+            listarServicos();
+        }, 1 * 60 * 2000);//minutos em milisegundos(O numero primario determina, exemplo: Se 1 então 1 minuto)   
 
-        // Limpa o intervalo quando o componente for desmontado
         return () => clearInterval(intervalId);
     }, []);
 
-    function listar() {
+    function listarServicos() {
         woofJoyApi
-            .get('/parceiros')
-            .then((response) => {
+            .get(`/ficha/parceiro/ ${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }).then((response) => {
                 console.log(response.data);
-                setParceiros(response.data);
+                setServicosList(response.value)
+
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
             });
     }
+
+
     return (
         <>
             <Menu />
@@ -51,27 +70,28 @@ function MeusServicos() {
                         <div className="filtros-meus-servicos">
                             <h6>
                                 Status <br />
-                                <select className="select-meus-servicos" name="" id=""></select>
+                                <select className="select-meus-servicos" name="filtro" id="">
+                                    <option value="todos">Todos</option>
+                                    <option value="agendados">Agendados</option>
+                                    <option value="realizados">Realizados</option>
+                                </select>
                             </h6>
 
                         </div>
                     </div>
-
-                    <div className="entradas-meus-servicos">
-                        <img className="icon-chat-meus-servicos" src={chat} alt="icon-chat" />
-
-                        <img className="foto-perfil-meus-servicos" src={perfil} alt="foto do cara" />
-                    </div>
-
                 </div>
                 <div className="container-card-meus-servicos">
-                    {listaParceiros?.map((parceiro) => (
-                        <>
-                        <AguardandoConfirmacao/>
-
-                        </>
-                    ))}
-
+                    {servicosParceiroList?.map((ficha) =>
+                        ficha?.map((servicoList) => (
+                            <AguardandoConfirmacao
+                                key={ficha.id} // Adicione uma chave única para cada item na lista
+                                servico={ficha.tipoServico}
+                                dataHoraInicio={servicoList?.dataHoraInicio.toString()}
+                                dataHoraFim={servicoList?.dataHoraFim.toString()}
+                                clienteNome={servicoList?.cliente}
+                            />
+                        ))
+                    )}
                 </div>
 
             </div>

@@ -1,37 +1,38 @@
 import React from "react";
 import "../css/aguardando-confirmacao.css"
 import Button from "./componentes-gerais/button";
+import { LocalDate } from "js-joda";
+
 
 
 function AguardandoConfirmacao(props) {
     const {
-        status,
         servico,
-        dataHoraAgendamento,
+        dataHoraInicio,
+        dataHoraFim,
         clienteNome,
-        petNome,
-        divFontColor,
-        cardBackColor,
-        //ATRIBUTOS BOTÕES
-        displayOn,
-        fontColor,
-        buttonBackColor,
-        buttonName,
-        textShadow
     } = props
+
+    const formtDate = LocalDate.parse(dataHoraFim)
 
     return (
         <>
-            <div style={{ backgroundColor: cardBackColor, color: divFontColor }} className="container-dados-card-meus-servicos">
+            <div className="container-dados-card-meus-servicos">
                 <div className="informacoes-parceiro-card-meus-servicos">
-                    <h2>{status}</h2>
-                    <h3>{servico}</h3>
-                    <h5>{dataHoraAgendamento}</h5>
-                    <h6 className="nome-prestador">Cliente: {clienteNome}</h6>
-                    <h6 className="nome-pet">Pet: {petNome}</h6>
+                    <h3 className="tipo-servico">atividade: {servico}</h3>
+                    <h5>início: {dataHoraInicio}</h5>
+                    <h5>término:{dataHoraFim}</h5>
+                    <h6 className="nome-prestador">cliente: {clienteNome}</h6>
                 </div>
-                <div className="botoes-status">
-                    <Button displayOn={displayOn} buttonName={buttonName} fontColor={fontColor} buttonBackColor={buttonBackColor} textShadow={textShadow} />
+                <div className="status">
+
+                    {formtDate.dayOfMonth() > LocalDate.now().dayOfMonth() ? (
+                            <h2 style={{ backgroundColor: "#49C483", borderRadius: "20px", color: "white", fontSize: "25px", padding: "4%" }}>{"REALIZADO"}</h2>
+                        ) : (
+                            <h2 style={{ backgroundColor: "#DB4B90", borderRadius: "20px", color: "white", fontSize: "25px", padding: "4%" }}>{"AGENDADO"}</h2>
+                        )}
+
+
                 </div>
             </div>
         </>
