@@ -3,35 +3,36 @@ cursor: pointer;
 text-decoration: none;
 }
 .container-dados-card-meus-servicos {
-    border-radius: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: self-end;
+    align-items: center;
+    justify-content: center;
     width: 70%;
     margin-top: 2%;
+    border-radius: 10px;
     overflow: hidden;
     border: 2px solid #DB4B90;
-    box-shadow: 0px 4px 6px #676767;
+    box-shadow: -6px 6px 6px #676767;
 
 }
 
 .informacoes-parceiro-card-meus-servicos {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-    margin-left: 5%;
-    margin-top: 3%;
+    justify-content: center;
+    width: 70%;
+    align-items:start;
+    padding: 2%;
 }
 
-.botoes-status{
+.status{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 3%;
-    margin-right: 2%;
-    width: 20%;
+    padding: 2%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2px;
+    width: 30%;
 }
 
 
@@ -46,7 +47,7 @@ text-decoration: none;
 .tipo-servico {
     font-weight: bold;
     font-size: 20px;
-    margin-top: 10%;
+    
 
 }
 
