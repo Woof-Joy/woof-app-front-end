@@ -53,28 +53,6 @@ function FeedServico() {
             });
     }
 
-    // function getById(userId, endereco) {
-    //     woofJoyApi
-    //         .get(`/users/${userId}`, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //         })
-    //         .then((response) => {
-    //             console.log(response.data);
-    //             const novoEndereco = {
-    //                 cidade: response.data.endereco.localidade,
-    //                 uf: response.data.endereco.uf
-    //             };
-
-    //             setEndereco(novoEndereco);
-    //         })
-    //         .catch((erro) => {
-    //             console.log(erro);
-    //         });
-
-    //     return endereco;
-    // }
 
     return (
         <>
