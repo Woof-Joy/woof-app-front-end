@@ -64,6 +64,12 @@ function FeedParceiro() {
         idUsuario: 2
     })
 
+    const [ficha, setFicha] = useState({
+        idParceiro: userId,
+        tipoServico: "",
+        valor: ""
+    })
+
     woofJoyApi
         .get(`/parceiros/${idParceiro}`, {
             headers: {
@@ -73,6 +79,21 @@ function FeedParceiro() {
         .then((response) => {
             setParceiroInfo(response.data);
             console.log(response.data)
+            //alert(response.status)
+        })
+        .catch((erroOcorrido) => {
+            console.log(erroOcorrido);
+        });
+        
+        woofJoyApi
+        .get(`/ficha`, ficha, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then((response) => {
+            setParceiroInfo(response.data);
+            console.log(response.status)
             //alert(response.status)
         })
         .catch((erroOcorrido) => {
@@ -158,22 +179,6 @@ function FeedParceiro() {
     const petRotasFuga = ["Sem rotas de fuga"]
     const petsSobeSofa = ["Pode subir no sofá"]
 
-    /*COMPONENTE AVALIACAO*/
-    const imgDamares = ImgDamares;
-    const clienteNome1 = ["Damares Oliveira"]
-    const descricaoServico1 = ["5,0 - Serviço utilizado:  Dog Walker"]
-    const descricaoAvaliacao1 = ["Adorei o atendimento dele, o meu cachorro se sentiu muito confortável"]
-
-    const imgRichard = ImgRichard;
-    const clienteNome2 = ["Damares Oliveira"]
-    const descricaoServico2 = ["4,0 - Serviço utilizado:  Dog Walker"]
-    const descricaoAvaliacao2 = ["Bom. O meu pet chegou em casa muito bem"]
-
-    const imgLucca = ImgLucca;
-    const clienteNome3 = ["Damares Oliveira"]
-    const descricaoServico3 = ["5,0 - Serviço utilizado:  Dog Walker"]
-    const descricaoAvaliacao3 = ["Adorei o atendimento dele, meu pet fica muito feliz com os passeios e a plataforma achei pratica"]
-
     function getInfoPrestador() {
         woofJoyApi
             .put(`/users/${userId}`, {
@@ -190,16 +195,11 @@ function FeedParceiro() {
             });
     }
 
-    function contatoDados() {
-        sessionStorage.setItem("contatoName", nome);
-        sessionStorage.setItem("contatoId", idParceiro);
-    }
-
     return (
         <>
             <div className="feed-parceiro-container">
                 < MenuCliente />
-                <Link to={"/chat-cliente"} onClick={() => contatoDados()} className="footer-feed">
+                <Link to={"/chat"}  className="footer-feed">
                     <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
                 </Link>
 
@@ -440,23 +440,6 @@ function FeedParceiro() {
                         </div>
                     </div>
                 </section>
-                <div className="avaliacoes">
-                    <p className="titulo-avaliacao">Avaliações</p>
-                    <div className="avaliacao-um">
-                        < Avaliacao imagem={imgDamares} clienteNome={clienteNome1}
-                            descricaoServico={descricaoServico1} descricaoAvaliacao={descricaoAvaliacao1} />
-                    </div>
-
-                    <div className="avaliacao-dois">
-                        < Avaliacao imagem={imgRichard} clienteNome={clienteNome2}
-                            descricaoServico={descricaoServico2} descricaoAvaliacao={descricaoAvaliacao2} />
-                    </div>
-                    <div className="avaliacao-tres">
-                        < Avaliacao imagem={imgLucca} clienteNome={clienteNome3}
-                            descricaoServico={descricaoServico3} descricaoAvaliacao={descricaoAvaliacao3} />
-                    </div>
-
-                </div>
             </div>
         </>
     );

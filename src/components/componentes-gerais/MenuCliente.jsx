@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 function Menu() {
     const role = sessionStorage.getItem("role");
+    const pathPerfil = role === "C" ? "/perfil-cliente" : "/feed-parceiro-edit";
 
     const cleanSessionStorage = () => {
         sessionStorage.clear();
@@ -85,7 +86,7 @@ function Menu() {
                     {/* Meu Perfil */}
                         <div className="todos-menu-item">
                             <li className="menu-item">
-                                <Link to="/perfil-cliente">
+                                <Link to={pathPerfil}>                                    
                                     <a href="#">
                                         <span className="icon">
                                             <i className="bi bi-person-circle"></i>
