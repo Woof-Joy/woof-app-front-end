@@ -84,8 +84,9 @@ function FeedParceiro() {
         .catch((erroOcorrido) => {
             console.log(erroOcorrido);
         });
-        
-        woofJoyApi
+
+
+    woofJoyApi
         .get(`/ficha`, ficha, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -94,7 +95,6 @@ function FeedParceiro() {
         .then((response) => {
             setParceiroInfo(response.data);
             console.log(response.status)
-            //alert(response.status)
         })
         .catch((erroOcorrido) => {
             console.log(erroOcorrido);
@@ -121,6 +121,11 @@ function FeedParceiro() {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setInputValues({ ...inputValues, [name]: value });
+    };
+
+    const handleFichaChange = (event) => {
+        const { name, value } = event.target;
+        setFicha({ ...ficha, [name]: value });
     };
 
     const inputStyle = {
@@ -199,7 +204,7 @@ function FeedParceiro() {
         <>
             <div className="feed-parceiro-container">
                 < MenuCliente />
-                <Link to={"/chat"}  className="footer-feed">
+                <Link to={"/chat"} className="footer-feed">
                     <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
                 </Link>
 
@@ -257,7 +262,7 @@ function FeedParceiro() {
                         <img className="feed-p-edit-icon-editar" src={IconEditar} alt="" />
                     </button>
                     <button onClick={handleSave}>Salvar</button>
-                </section> 
+                </section>
                 {/* ----------------*/}
 
                 <section className="carrossel-servicos">
@@ -303,29 +308,14 @@ function FeedParceiro() {
                                                             className="feed-p-edit-input-menor"
                                                             type="text"
                                                             name="inputValorPasseioDW"
-                                                            value={inputValues.inputValorPasseioDW}
-                                                            onChange={handleInputChange}
+                                                            value={ficha.valor}
+                                                            onChange={handleFichaChange}
                                                             disabled={!inputsEnabled}
                                                             style={inputStyle}
                                                         /> / Passeio
                                                     </span>
                                                 </div>
-                                                <div className="feed-p-edit-container-servico-item">
-                                                    <span>
-                                                        Duração:
-                                                        <input
-                                                            className="feed-p-edit-input-menor"
-                                                            type="text"
-                                                            name="inputDuracaoPasseioDW"
-                                                            value={inputValues.inputDuracaoPasseioDW}
-                                                            onChange={handleInputChange}
-                                                            disabled={!inputsEnabled}
-                                                            style={inputStyle}
-                                                        /> min
-                                                    </span>
-                                                </div>
-
-
+                            
                                             </div>
                                         )}
                                         {!editing && (
