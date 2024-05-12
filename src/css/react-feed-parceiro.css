@@ -1,35 +1,36 @@
-
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
 
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
-a {color: #DB4B90;
+
+a {
+    color: #DB4B90;
     cursor: pointer;
     text-decoration: none;
-    }
+}
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-body{
+body {
     font-size: 100%;
 }
 
-.foto-perfil-image-feed{
+.foto-perfil-image-feed {
     border-radius: 100%;
     width: 10%;
     margin-left: -1%;
 }
 
-.feed-parceiro-container{
+.feed-parceiro-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -40,70 +41,153 @@ body{
     padding-bottom: 10%;
     max-width: 100%;
 }
-.footer-feed{
+
+.footer-feed {
     display: flex;
     align-items: center;
     justify-content: end;
     padding-right: 30px;
     height: 59px;
-    
+
 }
-.feed-parceiro-img-damares{
+
+.feed-parceiro-img-damares {
     border-radius: 100%;
     width: 1%;
 }
 
-.feed-parceiro-img-div{
-width: 1%;
-height: 1%;
-background-color: aqua;
+.feed-parceiro-img-div {
+    width: 1%;
+    height: 1%;
+    background-color: aqua;
 
 }
 
 
-.container-info-parceiro{
+.container-info-parceiro {
     width: 50%;
     display: flex;
-    flex-direction:row;
-    align-items:center;
+    flex-direction: row;
+    align-items: center;
     padding-left: 5%;
     height: 200px;
 }
-.container-info-parceiro{
+
+.container-info-parceiro {
     display: flex;
-    align-items:center;
+    align-items: center;
     padding-left: 0%;
     gap: 50px;
 }
-.nome-parceiro{
+
+.nome-parceiro {
     font-weight: 700;
     font-size: 32px;
     color: #303030;
 }
-.conteudo-local-data-avaliacao{
+
+.conteudo-local-data-avaliacao {
     width: 1200px;
 }
-.icon-local, .icon-data, .icon-avaliacao{
+
+.icon-local,
+.icon-data,
+.icon-avaliacao {
     color: #303030;
     font-size: 20px;
 }
-.txt-local, .txt-data,.txt-avaliacao{
+
+.txt-local,
+.txt-data,
+.txt-avaliacao {
     font-weight: 600;
     font-size: 20px;
 }
-.local, .data, .avaliacao{
+
+.local,
+.data,
+.avaliacao {
     display: flex;
     padding-top: 10px;
     flex-direction: row;
     gap: 2%;
     width: 20%;
 }
-.txt-apresentacao{
+
+.txt-apresentacao {
     font-size: 20px;
     color: #000000;
     padding-top: 20px;
 }
-.btn-agendar-servico{
+
+.feed-p-container-btn-edit {
+    display: flex;
+    justify-content: end;
+    padding: 2%;
+}
+
+.feed-p-edit-icon-editar {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.feed-p-edit-container-servico {
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+    padding-bottom: 1vh;
+}
+
+.feed-p-edit-checkbox {
+    width: 25px;
+    height: 20px;
+    box-shadow: none;
+    border-style: none;
+    accent-color: black;
+}
+
+.feed-p-edit-container-servico-item {
+    display: flex;
+}
+
+.feed-p-edit-container-servico-item-ds{
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+}
+
+.feed-p-edit-input {
+    height: 4.5vh;
+    padding: 2vh;
+    width: 90%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+    outline: none;
+    background-color: #E5E5E5;
+    border-style: none;
+    box-sizing: border-box;
+    box-shadow: rgb(142, 138, 138) 1px 4px 8px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.feed-p-edit-input-menor {
+    height: 4.5vh;
+    padding: 2vh;
+    width: 30%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+    outline: none;
+    background-color: #E5E5E5;
+    border-style: none;
+    box-sizing: border-box;
+    box-shadow: rgb(142, 138, 138) 1px 4px 8px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-agendar-servico {
     background-color: #DB4B90;
     width: 20%;
     padding: 1vh;
@@ -115,200 +199,241 @@ background-color: aqua;
     font-size: 18px;
     cursor: pointer;
 }
-.carrossel-servicos{
+
+.carrossel-servicos {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 20%;
 
 }
-.conteudo-local-data-avaliacao{
+
+.conteudo-local-data-avaliacao {
     display: flex;
     align-items: center;
 }
-.conteudo-carrossel{
+
+.conteudo-carrossel {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
 }
-.conteudo-servicos{
+
+.conteudo-servicos {
     width: 40%;
 }
 
-.modal-meus-servicos-feed-parceiro{
+.modal-meus-servicos-feed-parceiro {
     background-color: #ffffff;
 }
 
 /*COMPONENTE CARROSSEL*/
-.carrossel{
+.carrossel {
     width: 500px;
     height: 400px;
 }
+
 /*FIM Carrossel*/
 
-.info-servicos-prestados{
+.info-servicos-prestados {
     background-color: white;
     padding-left: 30px;
     padding-bottom: 30px;
     border-radius: 30px;
     width: 100%;
 }
+
 .teste-servico {
     padding-top: 20px;
     font-weight: 700;
     font-size: 30px;
     color: #303030;
 }
-.txt-descricao-servico{
+
+.txt-descricao-servico {
     padding-bottom: 20px;
     font-size: 18px;
     color: #303030;
 
 }
 
-.tipo-servicos{
+.tipo-servicos {
     flex-direction: column;
 
 }
 
-.dog-walker, .dog-sitter{
-display: flex;
-margin-top: 5%;
-gap: 15px;
+.dog-walker,
+.dog-sitter {
+    display: flex;
+    margin-top: 5%;
+    gap: 15px;
 }
 
-.dog-walker img{
-    height: 80%;
-}
-.dog-sitter img{
+.dog-walker img {
     height: 80%;
 }
 
-.dog-walker-txt, .dog-sitter-txt{
+.dog-sitter img {
+    height: 80%;
+}
+
+.dog-walker-txt,
+.dog-sitter-txt {
     display: flex;
     flex-direction: column;
 }
 
-.titulo{
+.titulo {
     font-weight: 700;
     font-size: 25px;
     color: #DB4B90;
 }
 
-.dog-walker-txt, .dog-sitter-txt p{
-    font-size: 20px;
+.dog-walker-txt,
+.dog-sitter-txt {
+    font-size: 18px;
     color: #303030;
 }
 
 
-.observacoes{
+.observacoes {
+    margin-top: 2vh;
     height: 300px;
 }
-.titulo-obs-acom{
+
+.titulo-obs-acom {
     margin-top: 20px;
     font-size: 30px;
     font-weight: 700;
 }
-.txt-obs-acom{
+
+.txt-obs-acom {
     font-size: 18px;
-    font-weight: 400; 
+    font-weight: 400;
     margin-top: 20px;
 }
 
 
-.todas-observacoes, .todas-acomodacoes{
+.todas-observacoes,
+.todas-acomodacoes {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
 /*componente observacoes*/
-.obs-1,.obs-2,.obs-3{
+.obs-1,
+.obs-2,
+.obs-3 {
     align-items: center;
 }
 
 /*componente tipos atendimento*/
-.atendimentos{
+.atendimentos {
     display: flex;
     flex-direction: column;
 }
-.titulo-info-servico{
+
+.titulo-info-servico {
     font-size: 10px;
 }
-.conteudo-atendimento-primeiro, .conteudo-atendimento-segundo{
+
+.conteudo-atendimento-primeiro,
+.conteudo-atendimento-segundo {
     display: flex;
     align-items: center;
     margin-top: 20px;
     gap: 10px;
 }
-.icon-atendimento{
+
+.icon-atendimento {
     align-items: center;
     margin-bottom: 15px;
 }
-.txt-info{
+
+.txt-info {
     font-size: 20px;
     font-weight: 600;
 }
-.acomodacoes{
+
+.acomodacoes {
     padding-bottom: 10px;
 }
+
 /*componente avaliacoes*/
 
-.avaliacoes{
+.avaliacoes {
     height: 496px;
 }
-.titulo-avaliacao{
+
+.titulo-avaliacao {
     margin-top: 20px;
     font-size: 30px;
     font-weight: 700;
     color: #303030;
 }
-.avaliacao-um,.avaliacao-dois,.avaliacao-tres{
+
+.avaliacao-um,
+.avaliacao-dois,
+.avaliacao-tres {
     padding-top: 30px;
 }
-.container-avaliacao{
+
+.container-avaliacao {
     display: flex;
     align-items: center;
     height: 130px;
     background-color: white;
     border-radius: 40px;
 }
-.avaliacao-img{
+
+.avaliacao-img {
     align-items: center;
     padding-left: 30px;
 }
-.info-cliente{
+
+.info-cliente {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
     height: 90px;
 }
-.nome-cliente{
+
+.nome-cliente {
     margin-left: 20px;
     height: 33px;
 }
-.p-nome-cliente{
+
+.p-nome-cliente {
     padding-top: 10px;
     font-size: 25px;
     font-weight: 700;
     color: #303030;
 }
-.conteudo-tipo-avaliacao{
+
+.conteudo-tipo-avaliacao {
     display: flex;
     gap: 10px;
     align-items: baseline;
     height: 33px;
     padding-top: 8px;
 }
-.icon-avaliacao{
+
+.icon-avaliacao {
     margin-left: 10px;
 }
-.descricao-servico-prestado{
+
+.descricao-servico-prestado {
     font-size: 20px;
     font-weight: 600;
 }
-.conteudo-avaliacao{
+
+.conteudo-avaliacao {
     height: 33px;
 }
-.descricao-avaliacao{
+
+.descricao-avaliacao {
     font-size: 18px;
     font-weight: 500;
     margin-left: 10px;
