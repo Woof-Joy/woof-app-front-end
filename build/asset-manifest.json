@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9f8cdf7f.css",
+    "main.js": "/static/js/main.0757d513.js",
+    "static/media/matt-nelson-aI3EBLvcyu4-unsplash.jpg": "/static/media/matt-nelson-aI3EBLvcyu4-unsplash.71ad3812db9b6d0ebec5.jpg",
+    "static/media/hannah-lim-U6nlG0Y5sfs-unsplash.jpg": "/static/media/hannah-lim-U6nlG0Y5sfs-unsplash.5b6a63e83328212a9cc1.jpg",
+    "static/media/fundoCachorro.png": "/static/media/fundoCachorro.3a4efc3c3f51b6e76b1a.png",
+    "static/media/img-fundo-cadastro.png": "/static/media/img-fundo-cadastro.9c8fd25e441f43044997.png",
+    "static/media/darinka-kievskaya-ff221Bu56mI-unsplash.jpg": "/static/media/darinka-kievskaya-ff221Bu56mI-unsplash.a36e5aa0433b838dfff0.jpg",
+    "static/media/fundo-parceiro.png": "/static/media/fundo-parceiro.3bd63e05c3aa81f7829a.png",
+    "static/media/img-servicos.png": "/static/media/img-servicos.86529a6426622768534e.png",
+    "static/media/img-dog-6.png": "/static/media/img-dog-6.dc230e171235b69d1cd7.png",
+    "static/media/img-dog-3.png": "/static/media/img-dog-3.46430b2c8d2979fe6048.png",
+    "static/media/img-dog-1.png": "/static/media/img-dog-1.087a5504b9445c01ddc5.png",
+    "static/media/img-inicio-pata.jpg": "/static/media/img-inicio-pata.e676503c78297195f08b.jpg",
+    "static/media/img-dog-5.png": "/static/media/img-dog-5.6b84b8b023deeec7a9b1.png",
+    "static/media/img-dog-4.png": "/static/media/img-dog-4.1bd7e3f1392943455331.png",
+    "static/media/img-dog-2.png": "/static/media/img-dog-2.6daf3f96e6bf517dfe0c.png",
+    "static/media/semfoto.jpg": "/static/media/semfoto.2d67bc401ee3455a249f.jpg",
+    "static/media/foto-colaborador.png": "/static/media/foto-colaborador.7560468b107dfa5b3a1f.png",
+    "static/media/texto-quem-somos-m-v-v.png": "/static/media/texto-quem-somos-m-v-v.7d16ce349d805e2538ab.png",
+    "static/media/bg-top-cadastro-inicial.png": "/static/media/bg-top-cadastro-inicial.ed5748adb5e0b81e858a.png",
+    "static/media/img-descricao-servicos.png": "/static/media/img-descricao-servicos.0318b557026e2db27e15.png",
+    "static/media/bg-bot-cadastro-inicial.png": "/static/media/bg-bot-cadastro-inicial.d00d0c0220e3365cc250.png",
+    "static/media/foto-perfil-pet-exemplo.png": "/static/media/foto-perfil-pet-exemplo.416064f58f9ec63d0dba.png",
+    "static/media/foto-lucca.png": "/static/media/foto-lucca.0097785bcd341f49f4bf.png",
+    "static/media/foto-richard.png": "/static/media/foto-richard.9171c51a02cd3815ad14.png",
+    "static/media/foto-damares.png": "/static/media/foto-damares.e4ac1186095d2dc3f4a2.png",
+    "index.html": "/index.html",
+    "main.9f8cdf7f.css.map": "/static/css/main.9f8cdf7f.css.map",
+    "main.0757d513.js.map": "/static/js/main.0757d513.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9f8cdf7f.css",
+    "static/js/main.0757d513.js"
+  ]
+}
