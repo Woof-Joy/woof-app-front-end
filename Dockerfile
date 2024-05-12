@@ -1,14 +1,14 @@
 # Estágio de construção
-FROM node:14 as build-stage
-WORKDIR /usr/src/app
+FROM node:18 as build
+WORKDIR /app
 COPY package*.json ./
 RUN npm install --force 
 COPY . .
 RUN npm run build
 
 # Estágio de produção
-FROM nginx:latest
-COPY --from=build-stage /usr/src/app/build/ /usr/share/nginx/html
+FROM nginx:alpine
+COPY --from=build /usr/src/app/build/ /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
