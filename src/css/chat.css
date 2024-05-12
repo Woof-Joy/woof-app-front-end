@@ -127,6 +127,7 @@ a {color: #DB4B90;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     box-shadow: #e4d8e0 -2px -2px 0.5px ;
 }
 
@@ -137,6 +138,7 @@ a {color: #DB4B90;
     align-items: center;
     gap: 3vh;
     cursor: pointer;
+    box-shadow: 1px 0px 2px 1px rgb(196, 192, 192);
 }
 
 .contato-chat-foto{
@@ -257,9 +259,13 @@ a {color: #DB4B90;
 
 /*MensagemChat*/
 .mensagem-chat-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: self-start;
+    justify-content: center;
     width: 45%;
     background-color: #D9D9D9;
     border-radius: 20px;
-    padding: 4vh;
     margin: 2vh;
 }

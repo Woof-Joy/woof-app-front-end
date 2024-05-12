@@ -69,7 +69,7 @@ const router = createBrowserRouter([
         element: <FeedDoacao />
       },
       {
-        path: "chat-cliente",
+        path: "chat",
         element: <Chat />
       },
       {

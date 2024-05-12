@@ -153,7 +153,7 @@ function contatoDados() {
     <>
       <div className="feed-parceiro-container">
         < MenuCliente />
-        <Link to={"/chat-cliente"} onClick={() => contatoDados()} className="footer-feed">
+        <Link to={"/chat"} onClick={() => contatoDados()} className="footer-feed">
         <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
         </Link>
 

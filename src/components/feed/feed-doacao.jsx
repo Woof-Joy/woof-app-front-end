@@ -22,9 +22,9 @@ function FeedDocao() {
 
     const [listaItens, setParceiros] = useState([])
 
-    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome) {
-        sessionStorage.setItem("idParceiroFeed", parceiroId)
-        sessionStorage.setItem("nomeParceiroFeed", nome)
+    function guardarIdParaCaminhoFeedParceiro(IdDonoItem, nomeDonoItem) {
+        sessionStorage.setItem("contatoId", IdDonoItem)
+        sessionStorage.setItem("contatoName", nomeDonoItem)
     }
 
 
@@ -102,9 +102,9 @@ function FeedDocao() {
                 </div>
                 {listaItens?.map((item) => (
                     <>
-                        <Link to={"/chat-cliente"} onClick={() => guardarIdParaCaminhoFeedParceiro(
-                            3,
-                            "Filipe",
+                        <Link to={"/chat"} onClick={() => guardarIdParaCaminhoFeedParceiro(
+                           item.idDonoItem,
+                           item.nomeDonoItem
                             )} className="container-card-feed-doacao">
 
                             <ItemFeed

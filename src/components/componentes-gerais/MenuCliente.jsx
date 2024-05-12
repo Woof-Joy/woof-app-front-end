@@ -41,7 +41,7 @@ function Menu() {
                     {/* Chat */}
                     <div className="todos-menu-item">
                         <li className="menu-item">
-                            <Link to="/chat-cliente">
+                            <Link to="/chat">
                                 <a href="#">
                                     <span className="icon">
                                         <i className="bi bi-chat-dots-fill"></i>

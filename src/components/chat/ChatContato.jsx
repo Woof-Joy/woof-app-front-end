@@ -1,21 +1,29 @@
-import React from "react";
-import ExemploFotoContato from "../../imgs/chat/exemplo-foto-contato.png";
+import React, { useState } from "react";
 import "../../css/chat.css";
 import foto from "../../imgs/mock/semfoto.jpg";
 
 function ContatoChat(props) {
-  const { 
-    id = "",nome = "teste", imagem } = props;
+  const { id, nome } = props;
+  const [backGraundColor, setBackGraundColor] = useState("#E5E5E5"); 
+  const [color, setColor] = useState("black"); 
 
-  function contatoDados(props) {
-    sessionStorage.setItem("contatoName", props.nome);
-    sessionStorage.setItem("contatoId", props.id);
+  function contatoDados(nome, id) {
+    sessionStorage.setItem("contatoName", nome);
+    sessionStorage.setItem("contatoId", id);
+    setBackGraundColor("#DB4B90");
+    setColor("white") 
   }
+
+  const sectionStyle = {
+    backgroundColor: backGraundColor,
+    color: color
+  };
 
   return (
     <>
       <section
-        onClick={() => contatoDados(props)}  
+        onClick={() => contatoDados(nome, id)}
+        style={sectionStyle}
         className="contato-chat-container"
       >
         <img className="contato-chat-foto" src={foto} alt="hist-chat-foto-contato" />
