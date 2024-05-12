@@ -1,5 +1,5 @@
 # Estágio de construção
-FROM node:18 as build
+FROM node:14 as build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --force 
