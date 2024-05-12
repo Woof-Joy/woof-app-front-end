@@ -10,6 +10,7 @@ import LoginInicial from "./components/institucional/login-inicial"
 import Login from "./components/institucional/login"
 
 import FeedParceiro from './components/pagina-servico-prestador/feed-parceiro'
+import FeedParceiroEdit from './components/pagina-servico-prestador/feed-parceiro-edit';
 import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import FeedHistorico from './components/feed/historico-servicos'
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: "feed-parceiro",
         element: <FeedParceiro />
+      },
+      {
+        path: "feed-parceiro-edit",
+        element: <FeedParceiroEdit />
       },
       {
         path: "perfil-cliente",
