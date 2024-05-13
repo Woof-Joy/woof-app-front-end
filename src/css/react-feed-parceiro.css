@@ -296,16 +296,40 @@ body {
     color: #303030;
 }
 
+.feed-p-edit-container-obs-acom{
+    margin: 5% 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: first baseline;
+    justify-content: center;
+}
 
 .observacoes {
+    width: 100%;
     margin-top: 2vh;
-    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 2.5% 0;
+}
+
+.feed-p-edit-container-obs-servicos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.feed-p-edit-obs-servicos{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
 }
 
 .titulo-obs-acom {
     margin-top: 20px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .txt-obs-acom {
@@ -323,10 +347,17 @@ body {
 }
 
 /*componente observacoes*/
-.obs-1,
-.obs-2,
-.obs-3 {
+.obs-servicos {
+    width: 100%;
+    display: flex;
     align-items: center;
+    gap: 4vh;
+    padding: 2vh 0;
+}
+
+.feed-p-edit-descricao-obs{
+    font-size: 18px;
+    font-weight: 700;
 }
 
 /*componente tipos atendimento*/
