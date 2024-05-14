@@ -83,6 +83,7 @@ function FeedParceiro() {
     // ------------ 
     //FUNÇÕES P/ HABILITAR CADASTRO/EDIÇÃO DA PÁGINA DE SERVIÇO 
     //(VISÃO PARCEIRO)
+
     const [inputsEnabled, setInputsEnabled] = useState(false);
 
     const [inputValues, setInputValues] = useState({
@@ -120,17 +121,22 @@ function FeedParceiro() {
         ...(!checkboxDS1Checked && !editing ? { display: 'none' } : { display: 'flex' })
     }
 
+    const checkboxStyleDSAcomodacoes = {
+        ...(!checkboxDS1Checked ? { display: 'none' } : { display: 'flex' })
+    }
+
 
     const handleSave = (event) => {
         setInputsEnabled(false);
         setEditing(false);
     };
 
-    const [selectedOption1, setSelectedOption1] = useState('');
-    const [selectedOption2, setSelectedOption2] = useState('');
-    const [selectedOption3, setSelectedOption3] = useState('');
-    const [selectedOption4, setSelectedOption4] = useState('');
-    const [selectedOption5, setSelectedOption5] = useState('');
+    // OBSERVAÇÕES
+    const [selectedOption1, setSelectedOption1] = useState('não'); // (Não) Cuida de pets especiais
+    const [selectedOption2, setSelectedOption2] = useState('não'); // (Não) Aceita pet idoso
+    const [selectedOption3, setSelectedOption3] = useState('não'); // (Não) Aceita pet bravo
+    const [selectedOption4, setSelectedOption4] = useState('não'); // (Não) Aceita pet de grande porte
+    const [selectedOption5, setSelectedOption5] = useState('não'); // (Não) Aceita fêmea no cio
 
     const handleOptionChange1 = (event) => {
         setSelectedOption1(event.target.value);
@@ -151,6 +157,40 @@ function FeedParceiro() {
     const handleOptionChange5 = (event) => {
         setSelectedOption5(event.target.value);
     };
+
+    //ACOMODAÇÃO
+    const [selectedOption6, setSelectedOption6] = useState('casa'); // Mora em casa/apartamento
+    const [selectedOption7, setSelectedOption7] = useState('não'); // (Não) Possui área externa
+    const [selectedOption8, setSelectedOption8] = useState('não'); // (Não) Tem crianças
+    const [selectedOption9, setSelectedOption9] = useState('não'); // (Não) Tem animais
+    const [selectedOption10, setSelectedOption10] = useState('não'); // Tem/Sem rotas de fuga
+    const [selectedOption11, setSelectedOption11] = useState('não'); // (Não) Pode subir no sofá
+
+    const handleOptionChange6 = (event) => {
+        setSelectedOption6(event.target.value);
+    };
+
+    const handleOptionChange7 = (event) => {
+        setSelectedOption7(event.target.value);
+    };
+
+    const handleOptionChange8 = (event) => {
+        setSelectedOption8(event.target.value);
+    };
+
+    const handleOptionChange9 = (event) => {
+        setSelectedOption9(event.target.value);
+    };
+
+    const handleOptionChange10 = (event) => {
+        setSelectedOption10(event.target.value);
+    };
+
+    const handleOptionChange11 = (event) => {
+        setSelectedOption11(event.target.value);
+    };
+
+
     // ------------
 
 
@@ -230,16 +270,14 @@ function FeedParceiro() {
                             </p>
                         </div>
 
-
                     </div>
                 </section>
 
                 {/* VISÃO PARCEIRO */}
                 <section className="feed-p-container-btn-edit">
-                    <button onClick={toggleInputs}>
+                    <button className="feed-p-container-btn-editar" onClick={toggleInputs}>
                         <img className="feed-p-edit-icon-editar" src={IconEditar} alt="" />
                     </button>
-                    <button onClick={handleSave}>Salvar</button>
                 </section>
                 {/* ----------------*/}
 
@@ -380,277 +418,581 @@ function FeedParceiro() {
                     </div>
                 </section>
 
+                {/* OBSERVAÇÕES */}
                 <section className="feed-p-edit-container-obs-acom">
+
                     <section className="observacoes">
                         <p className="titulo-obs-acom">Observações</p>
                         <div className="feed-p-edit-container-obs-servicos">
                             <div className="feed-p-edit-obs-servicos">
+
                                 {editing && (
-                                    <div>
-                                        <p>Recebe até quantos pets?
-                                            <input
-                                                className="feed-p-edit-input-menor"
-                                                type="number"
-                                                name="inputTotalPets"
-                                                value={inputValues.inputTotalPets}
-                                                onChange={handleInputChange}
-                                                style={inputStyle}
-                                            />
-                                        </p>
+                                    <div className="feed-p-edit-container-obs1">
+                                        Recebe até quantos pets?
+                                        <input
+                                            className="feed-p-edit-input-menor-obs1"
+                                            type="number"
+                                            name="inputTotalPets"
+                                            value={inputValues.inputTotalPets}
+                                            onChange={handleInputChange}
+                                            style={inputStyle}
+                                        />
                                     </div>
                                 )}
                                 {!editing && (
                                     <div className="obs-servicos">
-                                        <img src={IconDoisPet} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Recebe até *2* pets</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <img src={IconDoisPet} alt="" />
+                                            <span className="feed-p-edit-descricao-obs">Recebe até *2* pets</span>
+                                        </div>
                                     </div>
                                 )}
 
+                                {/* ---------------------------------*/}
+
                                 {editing && (
-                                    <div>
+                                    <div className="feed-p-edit-container-option">
                                         Cuida de pets especiais?
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option1"
-                                                value="sim"
-                                                checked={selectedOption1 === 'sim'}
-                                                onChange={handleOptionChange1}
-                                            />
-                                            Sim
-                                        </label>
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option1"
-                                                value="não"
-                                                checked={selectedOption1 === 'não'}
-                                                onChange={handleOptionChange1}
-                                            />
-                                            Não
-                                        </label>
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option1"
+                                                    value="sim"
+                                                    checked={selectedOption1 === 'sim'}
+                                                    onChange={handleOptionChange1}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option1"
+                                                    value="não"
+                                                    checked={selectedOption1 === 'não'}
+                                                    onChange={handleOptionChange1}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption1 === 'sim' && (
                                     <div className="obs-servicos">
-                                        <img src={IconPetEspecial} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Cuida de pets especiais</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconPetEspecial} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Cuida de pets especiais</span>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption1 === 'não' && (
                                     <div className="obs-servicos">
-                                        <img src={IconPetEspecial} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Não cuida de pets especiais</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconPetEspecial} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Não cuida de pets especiais</span>
+                                        </div>
                                     </div>
                                 )}
                             </div>
 
-                            <div className="div-espaco-servico"></div>
-
                             <div className="feed-p-edit-obs-servicos">
                                 {editing && (
-                                    <div>
+                                    <div className="feed-p-edit-container-option">
                                         Aceita cachorro idoso?
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option2"
-                                                value="sim"
-                                                checked={selectedOption2 === 'sim'}
-                                                onChange={handleOptionChange2}
-                                            />
-                                            Sim
-                                        </label>
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option2"
-                                                value="não"
-                                                checked={selectedOption2 === 'não'}
-                                                onChange={handleOptionChange2}
-                                            />
-                                            Não
-                                        </label>
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option2"
+                                                    value="sim"
+                                                    checked={selectedOption2 === 'sim'}
+                                                    onChange={handleOptionChange2}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option2"
+                                                    value="não"
+                                                    checked={selectedOption2 === 'não'}
+                                                    onChange={handleOptionChange2}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption2 === 'sim' && (
                                     <div className="obs-servicos">
-                                        <img src={IconDogIdoso} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Aceita pet idoso</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconDogIdoso} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Aceita pet idoso</span>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption2 === 'não' && (
                                     <div className="obs-servicos">
-                                        <img src={IconDogIdoso} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Não aceita pet idoso</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconDogIdoso} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Não aceita pet idoso</span>
+                                        </div>
                                     </div>
                                 )}
 
+                                {/* ---------------------------------*/}
+
                                 {editing && (
-                                    <div>
+                                    <div className="feed-p-edit-container-option">
                                         Aceita pet bravo?
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option3"
-                                                value="sim"
-                                                checked={selectedOption3 === 'sim'}
-                                                onChange={handleOptionChange3}
-                                            />
-                                            Sim
-                                        </label>
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option3"
-                                                value="não"
-                                                checked={selectedOption3 === 'não'}
-                                                onChange={handleOptionChange3}
-                                            />
-                                            Não
-                                        </label>
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option3"
+                                                    value="sim"
+                                                    checked={selectedOption3 === 'sim'}
+                                                    onChange={handleOptionChange3}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option3"
+                                                    value="não"
+                                                    checked={selectedOption3 === 'não'}
+                                                    onChange={handleOptionChange3}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption3 === 'sim' && (
                                     <div className="obs-servicos">
-                                        <img src={IconPetBravo} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Aceita pet bravo</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconPetBravo} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Aceita pet bravo</span>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption3 === 'não' && (
                                     <div className="obs-servicos">
-                                        <img src={IconPetBravo} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Não aceita pet bravo</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconPetBravo} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Não aceita pet bravo</span>
+                                        </div>
                                     </div>
                                 )}
                             </div>
 
-                            <div className="div-espaco-servico"></div>
-
-
                             <div className="feed-p-edit-obs-servicos">
                                 {editing && (
-                                    <div>
+                                    <div className="feed-p-edit-container-option">
                                         Aceita pet de porte grande?
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option4"
-                                                value="sim"
-                                                checked={selectedOption4 === 'sim'}
-                                                onChange={handleOptionChange4}
-                                            />
-                                            Sim
-                                        </label>
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option4"
-                                                value="não"
-                                                checked={selectedOption4 === 'não'}
-                                                onChange={handleOptionChange4}
-                                            />
-                                            Não
-                                        </label>
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option4"
+                                                    value="sim"
+                                                    checked={selectedOption4 === 'sim'}
+                                                    onChange={handleOptionChange4}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option4"
+                                                    value="não"
+                                                    checked={selectedOption4 === 'não'}
+                                                    onChange={handleOptionChange4}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption4 === 'sim' && (
                                     <div className="obs-servicos">
-                                        <img src={IconGrandePorte} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Aceita pet grande porte</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconGrandePorte} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Aceita pet de grande porte</span>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption4 === 'não' && (
                                     <div className="obs-servicos">
-                                        <img src={IconGrandePorte} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Não aceita pet grande porte</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconGrandePorte} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Não aceita pet de grande porte</span>
+                                        </div>
                                     </div>
                                 )}
 
+                                {/* ---------------------------------*/}
+
                                 {editing && (
-                                    <div>
+                                    <div className="feed-p-edit-container-option">
                                         Aceita fêmea no cio?
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option5"
-                                                value="sim"
-                                                checked={selectedOption5 === 'sim'}
-                                                onChange={handleOptionChange5}
-                                            />
-                                            Sim
-                                        </label>
-                                        <label>
-                                            <input
-                                                type="radio"
-                                                name="option5"
-                                                value="não"
-                                                checked={selectedOption5 === 'não'}
-                                                onChange={handleOptionChange5}
-                                            />
-                                            Não
-                                        </label>
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option5"
+                                                    value="sim"
+                                                    checked={selectedOption5 === 'sim'}
+                                                    onChange={handleOptionChange5}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option5"
+                                                    value="não"
+                                                    checked={selectedOption5 === 'não'}
+                                                    onChange={handleOptionChange5}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption5 === 'sim' && (
                                     <div className="obs-servicos">
-                                        <div className="obs-servicos">
-                                            <img src={IconFemeaCio} alt="" />
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconFemeaCio} alt="" />
+                                            </div>
                                             <span className="feed-p-edit-descricao-obs">Aceita fêmea no cio</span>
                                         </div>
                                     </div>
                                 )}
                                 {!editing && selectedOption5 === 'não' && (
                                     <div className="obs-servicos">
-                                        <img src={IconFemeaCio} alt="" />
-                                        <span className="feed-p-edit-descricao-obs">Não aceita fêmea no cio</span>
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconFemeaCio} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Não aceita fêmea no cio</span>
+                                        </div>
                                     </div>
                                 )}
                             </div>
                         </div>
                     </section>
 
-                    <section className="observacoes">
+                    {/* ACOMODAÇÕES */}
+                    <section className="observacoes" style={checkboxStyleDSAcomodacoes}>
                         <p className="titulo-obs-acom">Acomodação</p>
                         <div className="feed-p-edit-container-obs-servicos">
                             <div className="feed-p-edit-obs-servicos">
-                                <div className="obs-servicos">
-                                    <img src={IconCasa} alt="" />
-                                    <span className="feed-p-edit-descricao-obs">Mora em casa</span>
-                                </div>
-                                <div className="obs-servicos">
-                                    <img src={IconAreaExterna} alt="" />
-                                    <span className="feed-p-edit-descricao-obs">Possui área externa</span>
-                                </div>
+                                {editing && (
+                                    <div className="feed-p-edit-container-option">
+                                        Residência tipo:
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option6"
+                                                    value="casa"
+                                                    checked={selectedOption6 === 'casa'}
+                                                    onChange={handleOptionChange6}
+                                                />
+                                                Casa
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option6"
+                                                    value="apartamento"
+                                                    checked={selectedOption6 === 'apartamento'}
+                                                    onChange={handleOptionChange6}
+                                                />
+                                                Apartamento
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption6 === 'casa' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconCasa} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Mora em casa</span>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption6 === 'apartamento' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconCasa} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Mora em apartamento</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* ---------------------------------*/}
+
+                                {editing && (
+                                    <div className="feed-p-edit-container-option">
+                                        Possui área externa?
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option7"
+                                                    value="sim"
+                                                    checked={selectedOption7 === 'sim'}
+                                                    onChange={handleOptionChange7}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option7"
+                                                    value="não"
+                                                    checked={selectedOption7 === 'não'}
+                                                    onChange={handleOptionChange7}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption7 === 'sim' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconAreaExterna} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Possui área externa</span>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption7 === 'não' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div>
+                                                <img src={IconAreaExterna} alt="" />
+                                            </div>
+                                            <span className="feed-p-edit-descricao-obs">Não possui área externa</span>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
-                            <div className="div-espaco-servico"></div>
-
                             <div className="feed-p-edit-obs-servicos">
-                                <div className="obs-servicos">
-                                    <img src={IconTemAnimais} alt="" />
-                                    <span className="feed-p-edit-descricao-obs">Tem animais</span>
-                                </div>
-                                <div className="obs-servicos">
-                                    <img src={IconCrianca} alt="" />
-                                    <span className="feed-p-edit-descricao-obs">Não tem crianças</span>
-                                </div>
+                                {editing && (
+                                    <div className="feed-p-edit-container-option">
+                                        Tem crianças na residência?
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option8"
+                                                    value="sim"
+                                                    checked={selectedOption8 === 'sim'}
+                                                    onChange={handleOptionChange8}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option8"
+                                                    value="não"
+                                                    checked={selectedOption8 === 'não'}
+                                                    onChange={handleOptionChange8}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption8 === 'sim' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconCrianca} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Tem crianças</span>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption8 === 'não' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconAreaExterna} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Não tem crianças</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* ---------------------------------*/}
+
+                                {editing && (
+                                    <div className="feed-p-edit-container-option">
+                                        Tem animais?
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option9"
+                                                    value="sim"
+                                                    checked={selectedOption9 === 'sim'}
+                                                    onChange={handleOptionChange9}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option9"
+                                                    value="não"
+                                                    checked={selectedOption9 === 'não'}
+                                                    onChange={handleOptionChange9}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption9 === 'sim' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconTemAnimais} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Tem animais</span>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption9 === 'não' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconTemAnimais} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Tem animais</span>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
-                            <div className="div-espaco-servico"></div>
-
                             <div className="feed-p-edit-obs-servicos">
-                                <div className="obs-servicos">
-                                    <img src={IconRotasFuga} alt="" />
-                                    <span className="feed-p-edit-descricao-obs">Sem rotas de fuga</span>
-                                </div>
-                                <div className="obs-servicos">
-                                    <img src={IconSobeSofa} alt="" />
-                                    <span className="feed-p-edit-descricao-obs">Pode subir no sofá</span>
-                                </div>
+                                {editing && (
+                                    <div className="feed-p-edit-container-option">
+                                        Tem rotas de fuga?
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option10"
+                                                    value="sim"
+                                                    checked={selectedOption10 === 'sim'}
+                                                    onChange={handleOptionChange10}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option10"
+                                                    value="não"
+                                                    checked={selectedOption10 === 'não'}
+                                                    onChange={handleOptionChange10}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption10 === 'sim' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconRotasFuga} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Tem rotas de fuga</span>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption10 === 'não' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconRotasFuga} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Sem rotas de fuga</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* ---------------------------------*/}
+
+                                {editing && (
+                                    <div className="feed-p-edit-container-option">
+                                        Deixa subir no sofá?
+                                        <div className="feed-p-edit-option">
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option11"
+                                                    value="sim"
+                                                    checked={selectedOption11 === 'sim'}
+                                                    onChange={handleOptionChange11}
+                                                />
+                                                Sim
+                                            </label>
+                                            <label className="radio-cadastro-servico">
+                                                <input className="cadastro-input-radio"
+                                                    type="radio"
+                                                    name="option11"
+                                                    value="não"
+                                                    checked={selectedOption11 === 'não'}
+                                                    onChange={handleOptionChange11}
+                                                />
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption11 === 'sim' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconSobeSofa} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Pode subir no sofá</span>
+                                        </div>
+                                    </div>
+                                )}
+                                {!editing && selectedOption11 === 'não' && (
+                                    <div className="obs-servicos">
+                                        <div className="obs-servicos-conteudo">
+                                            <div><img src={IconSobeSofa} alt="" /></div>
+                                            <span className="feed-p-edit-descricao-obs">Não pode subir no sofá</span>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </section>
+                </section>
+                <section className="feed-p-container-salvar">
+                    <button className="feed-p-container-btn-salvar" onClick={handleSave}>Salvar</button>
                 </section>
             </div>
         </>
