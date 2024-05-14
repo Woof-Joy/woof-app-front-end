@@ -24,6 +24,32 @@ body {
     font-size: 100%;
 }
 
+.feed-p-container-btn-editar {
+    background-color: transparent; 
+    border: none; 
+    color: inherit; 
+    font: inherit;
+    padding: 0;
+    margin: 0; 
+    cursor: pointer; 
+}
+
+.feed-p-container-salvar{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.feed-p-container-btn-salvar {
+    display: inline-block;
+    padding: 10px 50px;
+    cursor: pointer;
+    background-color: #DB4B90;
+    color: #fff;
+    border: 1px solid #DB4B90;
+    border-radius: 30px;
+  }
+
 .foto-perfil-image-feed {
     border-radius: 100%;
     width: 10%;
@@ -123,7 +149,7 @@ body {
 .feed-p-container-btn-edit {
     display: flex;
     justify-content: end;
-    padding: 2%;
+    padding: 0 2%;
 }
 
 .feed-p-edit-icon-editar {
@@ -187,6 +213,56 @@ body {
     transition: 0.3s;
 }
 
+.feed-p-edit-input-menor-obs1{
+    height: 4.5vh;
+    padding: 2vh;
+    width: 20%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+    outline: none;
+    background-color: #E5E5E5;
+    border-style: none;
+    box-sizing: border-box;
+    box-shadow: rgb(142, 138, 138) 1px 4px 8px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.feed-p-edit-container-obs1{
+    display: flex;
+    flex-direction: column;
+    padding: 3vh;
+}
+
+.feed-p-edit-container-option{
+    display: flex;
+    flex-direction: column;
+    padding: 3vh;
+}
+
+.feed-p-edit-option{
+    display: flex;
+    gap: 5vh;
+}
+
+.radio-cadastro-servico {
+    display: flex;
+    align-items:center;
+    margin-top: 10px;
+    gap: 10px;
+}
+.cadastro-input-radio{
+    width: 25px;
+    height: 20px;
+    box-shadow: none;
+    border-style: none;
+    accent-color: #DB4B90;
+}
+.sim, .nao{
+    color: #303030;
+    font-size: 20px;
+}
+
 .btn-agendar-servico {
     background-color: #DB4B90;
     width: 20%;
@@ -205,7 +281,6 @@ body {
     display: flex;
     align-items: center;
     gap: 20%;
-
 }
 
 .conteudo-local-data-avaliacao {
@@ -218,6 +293,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2vh;
+    margin-top: 5vh;
 }
 
 .conteudo-servicos {
@@ -296,16 +372,43 @@ body {
     color: #303030;
 }
 
+.feed-p-edit-container-obs-acom{
+    margin: 5% 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: first baseline;
+    justify-content: center;
+}
 
 .observacoes {
+    height: 100%;
+    width: 100%;
     margin-top: 2vh;
-    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 2.5% 0;
+}
+
+.feed-p-edit-container-obs-servicos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.feed-p-edit-obs-servicos{
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .titulo-obs-acom {
     margin-top: 20px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .txt-obs-acom {
@@ -323,10 +426,24 @@ body {
 }
 
 /*componente observacoes*/
-.obs-1,
-.obs-2,
-.obs-3 {
-    align-items: center;
+.obs-servicos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.obs-servicos-conteudo {
+    width: 90%;
+    height: 50%;
+    display: flex;
+    gap: 4vh;
+    padding: 3vh 0;
+}
+
+.feed-p-edit-descricao-obs{
+    font-size: 18px;
+    font-weight: 600;
 }
 
 /*componente tipos atendimento*/
