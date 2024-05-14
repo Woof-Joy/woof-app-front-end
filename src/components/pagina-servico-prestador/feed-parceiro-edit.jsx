@@ -351,7 +351,6 @@ function FeedParceiro() {
                                                             name="inputValorPasseioDW"
                                                             value={ficha.valor}
                                                             onChange={handleFichaChange}
-                                                            disabled={!inputsEnabled}
                                                             style={inputStyle}
                                                         /> / Passeio
                                                     </span>
