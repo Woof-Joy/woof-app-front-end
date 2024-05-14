@@ -32,14 +32,11 @@ function Login() {
                 sessionStorage.setItem("email", resposta.data.email)
                 sessionStorage.setItem("nome", resposta.data.nome)
                 sessionStorage.setItem("token", resposta.data.token)
-                alert("Login realizado com sucesso")
                 woofJoyApi
                     .get(`/users/${resposta.data.userId}`)
                     .then((subResponse) => {
                         console.log(resposta.data)
                         sessionStorage.setItem("endereco", `${subResponse.data.endereco.localidade}, ${subResponse.data.endereco.uf}`)
-                        alert("Requisito de dados do cliente logado")
-
                     })
                     .catch((erro) => {
                         console.log(erro)
@@ -84,7 +81,6 @@ function Login() {
                                 name="email"
                                 value={usuarioLogin.email}
                                 onChange={handleInputChange}
-
                             />
                         </label>
                         <label className="login-label" htmlFor="senha">Senha

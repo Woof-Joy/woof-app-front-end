@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import woofJoyApi from "../../woof-joy-api";
 import MenuCliente from "../componentes-gerais/MenuCliente.jsx";
 import BootstrapCarousel from '../componentes-gerais/carrossel.jsx'
@@ -48,7 +48,8 @@ function FeedParceiro() {
     const servicos = sessionStorage.getItem("servicosParceiroFeed")
     const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
 
-
+    const fileUploadRef = useRef(null);
+    const [imagensCarrossel, setImagensCarrossel] = useState([])
 
     const [parceiroInfo, setParceiroInfo] = useState({
         id: 1,
@@ -73,7 +74,7 @@ function FeedParceiro() {
     woofJoyApi
         .get(`/parceiros/${idParceiro}`, {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`
             },
         })
         .then((response) => {
@@ -84,7 +85,6 @@ function FeedParceiro() {
         .catch((erroOcorrido) => {
             console.log(erroOcorrido);
         });
-
 
     woofJoyApi
         .get(`/ficha`, ficha, {
@@ -144,14 +144,53 @@ function FeedParceiro() {
         ...(!checkboxDS1Checked && !editing ? { display: 'none' } : { display: 'flex' })
     }
 
+    const uploadImg = (file) => {
+        const formData = new FormData();
+
+        formData.append('file', file);
+
+        woofJoyApi
+            .post(`/img/upload/img`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((resposta) => {
+                console.log(resposta.data);
+                //RECARREGANDO A PÁGINA PARA O CARROSSEL PEGAR AS ATUALIZAÇÕES
+                window.location.reload();
+            })
+            .catch((erro) => {
+                console.log(erro)
+                alert(`Erro ao salvar a imagem: ${erro.message}`);
+            });
+    };
+
+    function listarImgUrl() {
+        woofJoyApi
+            .get(`/img/url/img`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((resposta) => {
+                console.log(resposta.data);
+                setImagensCarrossel(resposta.data);
+            })
+            .catch((erro) => {
+                console.log(erro)
+            });
+    };
+
+    useEffect(() => {
+        listarImgUrl();
+    }, []);
 
     const handleSave = (event) => {
         setInputsEnabled(false);
         setEditing(false);
     };
     // ------------
-
-
 
     /*COMPONENTE ATENDIMENTO*/
 
@@ -268,11 +307,13 @@ function FeedParceiro() {
                 <section className="carrossel-servicos">
                     <div className="conteudo-carrossel">
                         <div className="carrossel">
-                            <BootstrapCarousel />
+                            <BootstrapCarousel
+                                imagens={imagensCarrossel}
+                            />
                         </div>
                         {/* VISÃO PARCEIRO */}
                         <div>
-                            <BotaoUpload />
+                            <BotaoUpload ref={fileUploadRef} onUpload={uploadImg} />
                         </div>
                         {/* ----------------*/}
                     </div>
@@ -315,7 +356,7 @@ function FeedParceiro() {
                                                         /> / Passeio
                                                     </span>
                                                 </div>
-                            
+
                                             </div>
                                         )}
                                         {!editing && (
