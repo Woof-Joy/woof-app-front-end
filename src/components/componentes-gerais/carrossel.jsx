@@ -7,29 +7,24 @@ import img2 from "../../imgs/carrossel/darinka-kievskaya-ff221Bu56mI-unsplash.jp
 import img3 from "../../imgs/carrossel/matt-nelson-aI3EBLvcyu4-unsplash.jpg";
 import { useNavigate } from "react-router-dom";
 
-const BootstrapCarousel = () => {
+const BootstrapCarousel = (props) => {
   const imageStyle = {
     width: "600px",
     height: "400px",
     objectFit: "cover",
   };
-
-  return (
-    <div className="container-carrossel">
-        {/* <button style={{cursor: "pointer"}} onClick={() => navigate("/historico")}>ir para outro lugar</button> */}
-      <Carousel>
-        <Carousel.Item>
-          <img style={imageStyle} src={img1} alt="Imagem 1" />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img style={imageStyle} src={img2} alt="Imagem 2" />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img style={imageStyle} src={img3} alt="Imagem 3" />
-        </Carousel.Item>
-      </Carousel>
-    </div>
-  );
-};
+  console.log("PROPS: "+props)
+    return (
+      <div className="container-carrossel">
+        <Carousel>
+          {props.imagens.map((imagem) => (
+            <Carousel.Item>
+              <img style={imageStyle} src={imagem} alt="Imagem carrossel" />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    );
+  }
 
 export default BootstrapCarousel;

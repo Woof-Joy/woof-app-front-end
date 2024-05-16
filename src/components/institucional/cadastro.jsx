@@ -5,9 +5,13 @@ import customEnv from "../../process";
 
 import imgLogoWoofJoy from "../../imgs/logo-branca-footer.png"
 import imgIconBtnVoltar from "../../imgs/icon-voltar.png"
+import imgIconAtencao from "../../imgs/cadastro/icon-atencao.png"
 
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Cadastro() {
@@ -18,17 +22,17 @@ function Cadastro() {
     });
 
     const [usuario, setUsuario] = useState({
-	    nome: "filipe",
-	    sobrenome: "ricardo",
-	    cpf: "47010211809",
-	    cep: "09791160",
-	    email: "fi@sptech.com",
-	    senha: "senha1234",
-	    dataNasc: "2001-12-18",
-	    numero: "566",
-	    rua: "",
-	    cidade: "",
-	    estado: ""
+        nome: "filipe",
+        sobrenome: "ricardo",
+        cpf: "47010211809",
+        cep: "09791160",
+        email: "fi@sptech.com",
+        senha: "senha1234",
+        dataNasc: "2001-12-18",
+        numero: "566",
+        rua: "",
+        cidade: "",
+        estado: ""
     });
 
     const [cepResultado, setCepResultado] = useState({
@@ -50,13 +54,13 @@ function Cadastro() {
             .then((resposta) => {
                 alert(resposta.status);
                 navigate("/login-inicial")
-
+                toast.success('Usuário cadastrado com sucesso!')
             })
             .catch((erro) => {
-                alert(`Erro ao criar o usuário: ${erro.message}`);
-                alert(usuario);
+                // alert(`Erro ao criar o usuário: ${erro.message}`);
+                // alert(usuario);
                 console.log(usuario)
-
+                toast.error('Erro ao cadastrar usuário')
             });
     };
 
@@ -72,10 +76,12 @@ function Cadastro() {
                     localidade: resposta.data.localidade,
                     uf: resposta.data.uf,
                 });
-                setMensagemErro({
-                    texto: "Cep Encontrado",
-                    style: { color: "green" }
-                });
+
+                // setMensagemErro({
+                //     texto: "Cep Encontrado",
+                //     style: { color: "green" }
+                // });
+
                 console.log(resposta.message)
                 console.log(resposta.status)
 
@@ -89,10 +95,12 @@ function Cadastro() {
                 console.log(`${erro.message}`);
                 console.log(`${erro.status}`)
 
-                setMensagemErro({
-                    texto: "Cep Inválido",
-                    style: { color: "red" }
-                });
+                // setMensagemErro({
+                //     texto: "Cep Inválido",
+                //     style: { color: "red" }
+                // });
+
+                toast.error('CEP Inválido')
             });
     };
 
@@ -110,12 +118,57 @@ function Cadastro() {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUsuario({
-             ...usuario,
+            ...usuario,
             [name]: value
         });
     };
+
+    // Validação da input de e-mail
+    const [isValidEmail, setIsValidEmail] = useState(true);
+
+    const validateEmail = (email) => {
+        const regex = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+\.)+[a-z]{2,}$/i;
+        return regex.test(email);
+    };
+
+    const handleEmailChange = (event) => {
+        const newEmail = event.target.value;
+        setIsValidEmail(validateEmail(newEmail));
+    };
+
+    // Validação da confirmação de senha
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+        checkPasswordsMatch(event.target.value, confirmPassword);
+    };
+
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+        checkPasswordsMatch(password, event.target.value);
+    };
+
+    const checkPasswordsMatch = (password, confirmPassword) => {
+        setPasswordsMatch(password === confirmPassword);
+    };
+
     return (
         <body className="cadastro-body">
+
+            <ToastContainer position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light" />
+
             <main className="cadastro-main">
                 <section className="cadastro-sessionImg">
                     <div className="cadastro-containerText">
@@ -208,7 +261,7 @@ function Cadastro() {
                                             onBlur={buscarPorCep}
                                             placeholder="00000-000"
                                         />
-                                        <label style={mensagemErro.style} className="cadastro-mensagemErro" htmlFor="cep" >{mensagemErro.texto}</label>
+                                        {/* <label style={mensagemErro.style} className="cadastro-mensagemErro" htmlFor="cep" >{mensagemErro.texto}</label> */}
                                     </div>
                                     <div className="cadastro-campoForm">
                                         <label htmlFor="numero">Número</label>
@@ -269,11 +322,17 @@ function Cadastro() {
                                             type="text"
                                             name="email"
                                             value={usuario.email}
-                                            onChange={handleInputChange}
+                                            onChange={(e) => {
+                                                handleEmailChange(e);
+                                                handleInputChange(e)
+                                            }}
                                         />
-                                        <p className="cadastro-menssagemErro">
-                                            <img src="./imgs/Mask group (1).png" alt="" /> Digite um email válido
-                                        </p>
+                                        {!isValidEmail &&
+                                            <div className="cadastro-menssagemErro">
+                                                <img src={imgIconAtencao} alt="" />
+                                                <span>Digite um e-mail válido</span>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                                 <div className="cadastro-camposJuntos">
@@ -284,11 +343,15 @@ function Cadastro() {
                                             type="password"
                                             name="senha"
                                             value={usuario.senha}
-                                            onChange={handleInputChange}
+                                            onChange={(e) => {
+                                                handlePasswordChange(e);
+                                                handleInputChange(e)
+                                            }}
                                         />
-                                        <p className="cadastro-menssagemErro">
-                                            <img src="./imgs/Mask group (1).png" alt="" /> Digite uma senha válida
-                                        </p>
+                                        {/* <div className="cadastro-menssagemErro">
+                                            <img src={imgIconAtencao} alt="" />
+                                            <span>Digite uma senha válida</span>
+                                        </div> */}
                                     </div>
                                     <div className="cadastro-campoForm">
                                         <label htmlFor="confirmacaoSenha">Confirmação de senha</label>
@@ -297,20 +360,26 @@ function Cadastro() {
                                             type="password"
                                             name="confirmacaoSenha"
                                             value={usuario.confirmacaoSenha}
-                                            onChange={handleInputChange}
+                                            onChange={(e) => {
+                                                handleConfirmPasswordChange(e);
+                                                handleInputChange(e)
+                                            }}
                                         />
-                                        <p className="cadastro-menssagemErro">
-                                            <img src="./imgs/Mask group (1).png" alt="" /> Senhas Incompatíveis
-                                        </p>
+                                        {!passwordsMatch &&
+                                            <div className="cadastro-menssagemErro">
+                                                <img src={imgIconAtencao} alt="" />
+                                                <span>Digite a mesma senha</span>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="cadastro-campoCadastre">
-                        <button  className="cadastro-button_entrar" onClick={criarUsuario}>Criar Conta</button>
+                        <button className="cadastro-button_entrar" onClick={criarUsuario}>Criar Conta</button>
                         <span className="cadastro-span-chamativo-login">Já tem uma conta?
-                        <Link to="/login-inicial" className="cadastro-linkForm"><b>Conecte-se</b></Link>
+                            <Link to="/login-inicial" className="cadastro-linkForm"><b>Conecte-se</b></Link>
                         </span>
                     </div>
                 </section>
