@@ -33,6 +33,8 @@ import IconRotasFuga from '../../imgs/feed-parceiro/icon-dog-sem-fuga.png'
 import IconSobeSofa from '../../imgs/feed-parceiro/icon-dog-sobe-sofa.png'
 import { Link } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FeedParceiro() {
 
@@ -104,8 +106,6 @@ function FeedParceiro() {
     //FUNÇÕES P/ HABILITAR CADASTRO/EDIÇÃO DA PÁGINA DE SERVIÇO 
     //(VISÃO PARCEIRO)
 
-    const [inputsEnabled, setInputsEnabled] = useState(false);
-
     const [inputValues, setInputValues] = useState({
         inputValorPasseioDW: '',
         inputDuracaoPasseioDW: '',
@@ -116,7 +116,6 @@ function FeedParceiro() {
     const [editing, setEditing] = useState(false);
 
     const toggleInputs = () => {
-        setInputsEnabled(!inputsEnabled);
         setEditing(!editing);
     };
 
@@ -128,10 +127,6 @@ function FeedParceiro() {
     const handleFichaChange = (event) => {
         const { name, value } = event.target;
         setFicha({ ...ficha, [name]: value });
-    };
-
-    const inputStyle = {
-        ...(inputsEnabled ? {} : { backgroundColor: '#f0f0f0', color: '#666' })
     };
 
     const [checkboxDWChecked, setCheckboxDWChecked] = useState(false);
@@ -168,7 +163,8 @@ function FeedParceiro() {
             })
             .catch((erro) => {
                 console.log(erro)
-                alert(`Erro ao salvar a imagem: ${erro.message}`);
+                // alert(`Erro ao salvar a imagem: ${erro.message}`);
+                toast.error('Falha no upload')
             });
     };
 
@@ -193,7 +189,6 @@ function FeedParceiro() {
     }, []);
 
     const handleSave = (event) => {
-        setInputsEnabled(false);
         setEditing(false);
     };
 
@@ -287,6 +282,18 @@ function FeedParceiro() {
     return (
         <>
             <div className="feed-parceiro-container">
+
+                <ToastContainer position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light" />
+
                 < MenuCliente />
                 <Link to={"/chat"} className="footer-feed">
                     <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
@@ -394,7 +401,6 @@ function FeedParceiro() {
                                                             name="inputValorPasseioDW"
                                                             value={ficha.valor}
                                                             onChange={handleFichaChange}
-                                                            style={inputStyle}
                                                         /> / Passeio
                                                     </span>
                                                 </div>
@@ -407,13 +413,9 @@ function FeedParceiro() {
                                                             name="inputDuracaoPasseioDW"
                                                             value={inputValues.inputDuracaoPasseioDW}
                                                             onChange={handleInputChange}
-                                                            disabled={!inputsEnabled}
-                                                            style={inputStyle}
                                                         /> min
                                                     </span>
                                                 </div>
-
-
                                             </div>
                                         )}
                                         {!editing && (
@@ -452,8 +454,6 @@ function FeedParceiro() {
                                                             name="inputValorHoraDS"
                                                             value={inputValues.inputValorHoraDS}
                                                             onChange={handleInputChange}
-                                                            disabled={!inputsEnabled}
-                                                            style={inputStyle}
                                                         /> / Hora
                                                     </span>
                                                 </div>
@@ -502,7 +502,6 @@ function FeedParceiro() {
                                             name="inputTotalPets"
                                             value={inputValues.inputTotalPets}
                                             onChange={handleInputChange}
-                                            style={inputStyle}
                                         />
                                     </div>
                                 )}

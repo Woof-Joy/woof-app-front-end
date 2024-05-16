@@ -7,6 +7,8 @@ import customEnv from "../../process";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Login() {
@@ -52,7 +54,8 @@ function Login() {
             })
             .catch((erro) => {
                 console.log(erro)
-                alert(`Erro ao logar o usuário: ${erro.message}`);
+                // alert(`Erro ao logar o usuário: ${erro.message}`);
+                toast.error('E-mail ou senha inválidos')
             });
     };
 
@@ -69,6 +72,18 @@ function Login() {
     return (
         <>
             <body className="login-body">
+
+                <ToastContainer position="top-left"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light" />
+
                 <main className="login-main">
                     <div className="login-container1">
                         <span className="login-span_bem_vindo">
