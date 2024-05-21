@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const woofJoyApi = axios.create({
-    baseURL: "http://localhost:8080/api/",
+    baseURL: "http://3.80.197.194/api",
   });
 export default woofJoyApi;
