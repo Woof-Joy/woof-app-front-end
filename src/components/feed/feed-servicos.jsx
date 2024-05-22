@@ -80,14 +80,7 @@ function FeedServico() {
 
                             </h6>
 
-                            <h6>
-                                Tipo de Serviço <br />
-                                <select className="select-feed-servico" name="" id="">
-                                    <option value="T">Todos</option>
-                                    <option value="W">Dog Walker</option>
-                                    <option value="S">Dog Sitter</option>
-                                </select>
-                            </h6>
+                           
 
                         </div>
                     </div>
@@ -100,8 +93,8 @@ function FeedServico() {
                             onClick={() => guardarIdParaCaminhoFeedParceiro(
                                 parceiro.idUsuario,
                                 parceiro.nome,
-                                "Nathan vai arrumar",
-                                "Nathan vai arrumar",
+                                parceiro.cidade,
+                                parceiro.uf,
                                 parceiro.estrelas,
                                 parceiro.qtdServicosPrestados,
                                 parceiro.descricao,
@@ -120,9 +113,9 @@ function FeedServico() {
                                 }
                                 nome={parceiro.nome}
                                 sobrenome={parceiro.sobrenome}
-                                logradouro={"Nathan vai arrumar"}
-                                uf={"Nathan vai arrumar"}
-                                descricao=""
+                                logradouro={parceiro.cidade}
+                                uf={parceiro.uf}
+                                descricao={parceiro.descricao}
                                 avaliacao={parceiro.estrelas}
                                 imagem={foto}
                             />

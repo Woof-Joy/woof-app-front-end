@@ -8,37 +8,67 @@ import { LocalDateTime } from "js-joda"; // Importe LocalDate corretamente
 
 
 function AguardandoConfirmacao(props) {
+    const userId = sessionStorage.getItem("userId");
     const token = sessionStorage.getItem("token");
-
-
-
     const {
         idServico,
         servico,
         dataHoraInicio,
         dataHoraFim,
         clienteNome,
+        idClienteServico,
         status
     } = props
 
     const formtDateFim = LocalDateTime.parse(dataHoraFim)
     const formtDateInicio = LocalDateTime.parse(dataHoraInicio)
 
+    // const [sendBody, setsendBody] = useState({
+    //     message: "",
+    //     idRemetente: userId,
+    //     idDestinatario: "",
+    //     tipo: "servico",
+    // });
+
+
+    // function sendMensage(mensagem) {
+    //     woofJoyApi
+    //         .post(`/notification`, sendBody, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         })
+    //         .then((response) => {
+    //             console.log(response.status);
+
+    //             setsendBody({
+    //                 message:mensagem,
+    //                 idRemetente: userId,
+    //                 idDestinatario: idClienteServico,
+    //                 tipo: "doacao",
+    //             });
+    //         })
+    //         .catch((erroOcorrido) => {
+    //             console.log(erroOcorrido.mensagem);
+    //         });
+    // }
 
     function pathStatus() {
         woofJoyApi
-            .patch(`/servicos ${idServico}`, {
+            .patch(`/servicos/${idServico}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
             .then((response) => {
                 console.log(response.data);
-                alert("sucess patch")
+                console.log(idServico)
+
+                // sendMensage("Servico confirmado")
+                alert(response.status)
                 props.status(response.data.status); 
             })
             .catch((erroOcorrido) => {
-                alert("fail patch")
                 console.log(erroOcorrido);
             });
     }
@@ -52,13 +82,12 @@ function AguardandoConfirmacao(props) {
             })
             .then((response) => {
                 console.log(response.data);
-                alert("sucess delet")
+
                 window.location.reload();
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
                 console.log(idServico)
-                alert("fail delet")
 
             });
     }
@@ -70,11 +99,11 @@ function AguardandoConfirmacao(props) {
                 <div className="informacoes-parceiro-card-meus-servicos">
                     {servico === "dogWalker" ? (
                         <h3 style={{ backgroundColor: "#DB4B90", borderRadius: "5px", color: "white", padding: "3px" }} className="tipo-servico">
-                            {servico}
+                            {servico} 
                         </h3>
                     ) : (
                         <h3 style={{ backgroundColor: "orange", borderRadius: "5px", color: "white", padding: "3px" }} className="tipo-servico">
-                            {servico}
+                            {servico} 
                         </h3>)}
 
                     <h5>início: {formtDateInicio.dayOfMonth().toString()}/{formtDateInicio.monthValue().toString()}/{formtDateInicio.year().toString()} {formtDateInicio.hour().toString()}:{formtDateInicio.minute().toString()}</h5>
@@ -117,7 +146,6 @@ function AguardandoConfirmacao(props) {
                             buttonHeight={"70%"}
                             padding={"20px"}
                             cursor={"auto"}
-                            disabled={true} 
                         />
                     )}
 

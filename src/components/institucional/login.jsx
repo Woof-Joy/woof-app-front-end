@@ -42,7 +42,6 @@ function Login() {
                     })
                     .catch((erro) => {
                         console.log(erro)
-                        alert("Erro ao requisitar dados do cliente logado" + erro)
                     })
 
                 if (roleResult === "C") {
@@ -99,7 +98,7 @@ function Login() {
                             />
                         </label>
                         <label className="login-label" htmlFor="senha">Senha
-                            <input className="login-input" type="text" id="senha" placeholder=""
+                            <input className="login-input" type="password" id="senha" placeholder=""
                                 name="senha"
                                 value={usuarioLogin.senha}
                                 onChange={handleInputChange}

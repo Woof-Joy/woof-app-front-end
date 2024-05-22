@@ -10,25 +10,10 @@ import perfil from "../../imgs/meus-servicos/image 204.png"
 
 function MeusServicos() {
 
-    // const userId = sessionStorage.getItem("userId");
-    const userId = 2;
+    const userId = sessionStorage.getItem("userId");
     const token = sessionStorage.getItem("token");
 
-    // const [servicosParceiro, setServicos] = useState({
-    //     id: 1,
-    //     tipoServico: "DogWalker",
-    //     valor: 15.0,
-    //     servico: null,
-    //     qtdServico: 1,
-    //     servicos: [
-    // dataHoraFim: LocalDate.parse("2024-04-29"),
-    //     dataHoraInicio: LocalDate.parse("2024-04-28"),
-    //     cliente: "Filipe",
-    // ]
-    // })
-
     const [servicosParceiroList, setServicosList] = useState([])
-
 
     useEffect(() => {
         listarServicos();
@@ -39,6 +24,7 @@ function MeusServicos() {
 
         return () => clearInterval(intervalId);
     }, []);
+
 
     function listarServicos() {
         woofJoyApi

@@ -36,51 +36,43 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function FeedParceiro() {
 
+
+    const [infoParceiro, setInfoParceiro] = useState({
+        idUser: "",
+        nome: "",
+        dataEntrada: "",
+        fichas: [],
+        maxDogs: 2,
+        aceitaDogEspecial: false,
+        aceitaDogIdoso: true,
+        aceitaDogBravo: false,
+        aceitaDogGrande: true,
+        aceitaDogCio: false,
+        descricao: ""
+    })
+
+
+    const enderecoLogado = sessionStorage.getItem("endereco");
+
+
     const userId = sessionStorage.getItem("userId")
+    const nome = sessionStorage.getItem("nome")
     const token = sessionStorage.getItem("token")
-    const idParceiro = sessionStorage.getItem("idParceiroFeed")
-    const logradouro = sessionStorage.getItem("cidadeParceiroFeed")
-    const uf = sessionStorage.getItem("estadoParceiroFeed")
-    const nome = sessionStorage.getItem("nomeParceiroFeed")
-    const estrelas = 4.7
-    const qtdServicos = sessionStorage.getItem("qtdServicosParceiroFeed")
-    const descricao = "Descrição do parceiro"
-    const servicos = sessionStorage.getItem("servicosParceiroFeed")
-    const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
 
     const fileUploadRef = useRef(null);
     const [imagensCarrossel, setImagensCarrossel] = useState([])
 
-    const [parceiroInfo, setParceiroInfo] = useState({
-        id: 1,
-        idUser: 2,
-        nome: "Natan",
-        sobrenome: "Viado",
-        email: "N@N",
-        dataNasc: "2024-04-25",
-        dataEntrada: "2024-04-26",
-        estrelas: null,
-        qtdServicosPrestados: 0,
-        servicos: [],
-        idUsuario: 2
-    })
-
-    const [ficha, setFicha] = useState({
-        idParceiro: userId,
-        tipoServico: "",
-        valor: ""
-    })
-
     woofJoyApi
-        .get(`/parceiros/${idParceiro}`, {
+        .get(`/parceiros/${userId}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
         })
         .then((response) => {
-            setParceiroInfo(response.data);
+            setInfoParceiro(response.data);
             console.log(response.data)
             //alert(response.status)
         })
@@ -88,19 +80,6 @@ function FeedParceiro() {
             console.log(erroOcorrido);
         });
 
-    woofJoyApi
-        .get(`/ficha`, ficha, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        .then((response) => {
-            setParceiroInfo(response.data);
-            console.log(response.status)
-        })
-        .catch((erroOcorrido) => {
-            console.log(erroOcorrido);
-        });
 
     // ------------ 
     //FUNÇÕES P/ HABILITAR CADASTRO/EDIÇÃO DA PÁGINA DE SERVIÇO 
@@ -124,14 +103,14 @@ function FeedParceiro() {
         setInputValues({ ...inputValues, [name]: value });
     };
 
-    const handleFichaChange = (event) => {
-        const { name, value } = event.target;
-        setFicha({ ...ficha, [name]: value });
-    };
+    // const handleFichaChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setFicha({ ...ficha, [name]: value });
+    // };
 
-    const [checkboxDWChecked, setCheckboxDWChecked] = useState(false);
-    const [checkboxDS1Checked, setCheckboxDS1Checked] = useState(false);
-    const [checkboxDS2Checked, setCheckboxDS2Checked] = useState(false);
+    const [checkboxDWChecked, setCheckboxDWChecked] = useState(true);
+    const [checkboxDS1Checked, setCheckboxDS1Checked] = useState(true);
+    const [checkboxDS2Checked, setCheckboxDS2Checked] = useState(true);
 
     const checkboxStyleDW = {
         ...(!checkboxDWChecked && !editing ? { display: 'none' } : { display: 'flex' })
@@ -156,8 +135,8 @@ function FeedParceiro() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            .then((resposta) => {
-                console.log(resposta.data);
+            .then((response) => {
+                console.log(response.data);
                 //RECARREGANDO A PÁGINA PARA O CARROSSEL PEGAR AS ATUALIZAÇÕES
                 window.location.reload();
             })
@@ -175,9 +154,9 @@ function FeedParceiro() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            .then((resposta) => {
-                console.log(resposta.data);
-                setImagensCarrossel(resposta.data);
+            .then((response) => {
+                console.log(response.data);
+                setImagensCarrossel(response.data);
             })
             .catch((erro) => {
                 console.log(erro)
@@ -274,10 +253,7 @@ function FeedParceiro() {
             });
     }
 
-    function contatoDados() {
-        sessionStorage.setItem("contatoName", nome);
-        sessionStorage.setItem("contatoId", idParceiro);
-    }
+    
 
     return (
         <>
@@ -295,15 +271,13 @@ function FeedParceiro() {
                     theme="light" />
 
                 < MenuCliente />
-                <Link to={"/chat"} className="footer-feed">
-                    <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
-                </Link>
+
 
                 <img className="foto-perfil-image-feed" src={foto} alt="" />
 
                 <section className="container-info-parceiro">
                     <div className="conteudo-info-parceiro">
-                        <p className="nome-parceiro">{nome}</p>
+                        <p className="nome-parceiro">{infoParceiro.nome}</p>
 
                         <div className="conteudo-local-data-avaliacao">
                             <div className="local">
@@ -312,7 +286,7 @@ function FeedParceiro() {
                                 </span>
                                 <span className="txt-local">
                                     <p>
-                                        <b>{logradouro}, {uf}</b>
+                                        <b>{enderecoLogado}</b>
                                     </p>
                                 </span>
                             </div>
@@ -322,7 +296,7 @@ function FeedParceiro() {
                                 </span>
                                 <span className="txt-data">
                                     <p>
-                                        <b>Desde {dataEntrada}</b>
+                                        <b>Desde {infoParceiro.dataEntrada}</b>
                                     </p>
                                 </span>
                             </div>
@@ -332,7 +306,7 @@ function FeedParceiro() {
                                 </span>
                                 <span className="txt-avaliacao">
                                     <p>
-                                        <b>{estrelas}</b>
+                                     <b>{infoParceiro?.fichas?.[0]?.servicos?.[0]?.nota ?? 0}</b>
                                     </p>
                                 </span>
                             </div>
@@ -371,7 +345,7 @@ function FeedParceiro() {
                     <div className="conteudo-servicos">
                         <div className="info-servicos-prestados">
                             <p className="teste-servico">Serviços</p>
-                            <p className="txt-descricao-servico">Qtd. Serviços Prestados: {qtdServicos}</p>
+                            <p className="txt-descricao-servico">Qtd. Serviços Prestados: {infoParceiro?.fichas?.[0]?.servicos?.length ?? 0}</p>
                             <div className="tipo-servicos">
 
                                 <div className="dog-walker" style={checkboxStyleDW}>
@@ -388,40 +362,33 @@ function FeedParceiro() {
                                                     onChange={() => setCheckboxDWChecked(!checkboxDWChecked)}
                                                 />
                                             )}
+                                            {!editing && (
+                                                <input
+                                                    className="feed-p-edit-checkbox"
+                                                    type="checkbox"
+                                                    checked={checkboxDWChecked}
+                                                    onChange={() => setCheckboxDWChecked(!checkboxDWChecked)}
+                                                />
+                                            )}
                                         </div>
 
                                         {editing && (
                                             <div>
                                                 <div className="feed-p-edit-container-servico-item">
                                                     <span>
-                                                        R$
-                                                        <input
-                                                            className="feed-p-edit-input-menor"
-                                                            type="text"
-                                                            name="inputValorPasseioDW"
-                                                            value={ficha.valor}
-                                                            onChange={handleFichaChange}
-                                                        /> / Passeio
+
                                                     </span>
                                                 </div>
                                                 <div className="feed-p-edit-container-servico-item">
                                                     <span>
-                                                        Duração:
-                                                        <input
-                                                            className="feed-p-edit-input-menor"
-                                                            type="text"
-                                                            name="inputDuracaoPasseioDW"
-                                                            value={inputValues.inputDuracaoPasseioDW}
-                                                            onChange={handleInputChange}
-                                                        /> min
+
                                                     </span>
                                                 </div>
                                             </div>
                                         )}
                                         {!editing && (
                                             <div>
-                                                <p>R$ {inputValues.inputValorPasseioDW} / Passeio</p>
-                                                <p>Duração: {inputValues.inputDuracaoPasseioDW} min</p>
+                                                R$ {infoParceiro?.fichas?.[0]?.valor != null ? infoParceiro.fichas[0].valor : 'Informe um valor'} / Passeio
                                             </div>
                                         )}
                                     </div>
@@ -433,28 +400,14 @@ function FeedParceiro() {
                                     <div className="dog-sitter-txt">
                                         <div className="feed-p-edit-container-servico">
                                             <div className="titulo">Dog Sitter</div>
-                                            {editing && (
-                                                <input
-                                                    className="feed-p-edit-checkbox"
-                                                    type="checkbox"
-                                                    checked={checkboxDS1Checked}
-                                                    onChange={() => setCheckboxDS1Checked(!checkboxDS1Checked)}
-                                                />
-                                            )}
+
                                         </div>
 
                                         {editing && (
                                             <div>
                                                 <div className="feed-p-edit-container-servico-item">
                                                     <span>
-                                                        R$
-                                                        <input
-                                                            className="feed-p-edit-input-menor"
-                                                            type="text"
-                                                            name="inputValorHoraDS"
-                                                            value={inputValues.inputValorHoraDS}
-                                                            onChange={handleInputChange}
-                                                        /> / Hora
+
                                                     </span>
                                                 </div>
                                                 <div className="feed-p-edit-container-servico-item">
@@ -464,19 +417,14 @@ function FeedParceiro() {
                                                             type="checkbox"
                                                             checked={checkboxDS2Checked}
                                                             onChange={() => setCheckboxDS2Checked(!checkboxDS2Checked)}
-                                                        /> Recebe o pet em residência.
+                                                        />
                                                     </span>
                                                 </div>
 
 
                                             </div>
                                         )}
-                                        {!editing && (
-                                            <div>
-                                                <p>R$ {inputValues.inputValorHoraDS} / Hora</p>
-                                                {checkboxDS2Checked && <p>Recebe o pet em residência.</p>}
-                                            </div>
-                                        )}
+
                                     </div>
                                 </div>
                             </div>
@@ -492,27 +440,6 @@ function FeedParceiro() {
                         <p className="titulo-obs-acom">Observações</p>
                         <div className="feed-p-edit-container-obs-servicos">
                             <div className="feed-p-edit-obs-servicos">
-
-                                {editing && (
-                                    <div className="feed-p-edit-container-obs1">
-                                        Recebe até quantos pets?
-                                        <input
-                                            className="feed-p-edit-input-menor-obs1"
-                                            type="number"
-                                            name="inputTotalPets"
-                                            value={inputValues.inputTotalPets}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                )}
-                                {!editing && (
-                                    <div className="obs-servicos">
-                                        <div className="obs-servicos-conteudo">
-                                            <img src={IconDoisPet} alt="" />
-                                            <span className="feed-p-edit-descricao-obs">Recebe até *2* pets</span>
-                                        </div>
-                                    </div>
-                                )}
 
                                 {/* ---------------------------------*/}
 
@@ -1037,22 +964,7 @@ function FeedParceiro() {
                                         </div>
                                     </div>
                                 )}
-                                {!editing && selectedOption11 === 'sim' && (
-                                    <div className="obs-servicos">
-                                        <div className="obs-servicos-conteudo">
-                                            <div><img src={IconSobeSofa} alt="" /></div>
-                                            <span className="feed-p-edit-descricao-obs">Pode subir no sofá</span>
-                                        </div>
-                                    </div>
-                                )}
-                                {!editing && selectedOption11 === 'não' && (
-                                    <div className="obs-servicos">
-                                        <div className="obs-servicos-conteudo">
-                                            <div><img src={IconSobeSofa} alt="" /></div>
-                                            <span className="feed-p-edit-descricao-obs">Não pode subir no sofá</span>
-                                        </div>
-                                    </div>
-                                )}
+
                             </div>
                         </div>
                     </section>

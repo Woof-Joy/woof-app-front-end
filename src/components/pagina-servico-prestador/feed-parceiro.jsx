@@ -42,41 +42,42 @@ function FeedParceiro() {
   const uf = sessionStorage.getItem("estadoParceiroFeed")
   const nome = sessionStorage.getItem("nomeParceiroFeed")
   const estrelas = 4.7
-  const qtdServicos =sessionStorage.getItem("qtdServicosParceiroFeed")
+  const qtdServicos = sessionStorage.getItem("qtdServicosParceiroFeed")
   const descricao = "Descrição do parceiro"
   const servicos = sessionStorage.getItem("servicosParceiroFeed")
   const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
 
 
 
-	const [parceiroInfo, setParceiroInfo]  = useState({
-		id: 1,
-		idUser: 2,
-		nome: "Natan",
-		sobrenome: "Viado",
-		email: "N@N",
-		dataNasc: "2024-04-25",
-		dataEntrada: "2024-04-26",
-		estrelas: null,
-		qtdServicosPrestados: 0,
-		servicos: [],
-		idUsuario: 2
+  const [parceiroInfo, setParceiroInfo] = useState({
+    idUser: "",
+    nome: "",
+    dataEntrada: "",
+    fichas: [""],
+    maxDogs: 2,
+    aceitaDogEspecial: false,
+    aceitaDogIdoso: true,
+    aceitaDogBravo: false,
+    aceitaDogGrande: true,
+    aceitaDogCio: false,
+    descricao: ""
   })
+  const enderecoLogado = sessionStorage.getItem("endereco");
 
   woofJoyApi
-  .get(`/parceiros/${idParceiro}`, {
+    .get(`/parceiros/${idParceiro}`, {
       headers: {
-          Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
-  })
-  .then((response) => {
-    setParceiroInfo(response.data);
+    })
+    .then((response) => {
+      setParceiroInfo(response.data);
       console.log(response.data)
       //alert(response.status)
-  })
-  .catch((erroOcorrido) => {
+    })
+    .catch((erroOcorrido) => {
       console.log(erroOcorrido);
-  });
+    });
 
 
 
@@ -129,24 +130,24 @@ function FeedParceiro() {
 
   function getInfoPrestador() {
     woofJoyApi
-        .put(`/users/${userId}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        .then((response) => {
-            console.log(response.data);
-            console.log(response.status);
-        })
-        .catch((erroOcorrido) => {
-            console.log(erroOcorrido.mensagem);
-        });
-}
+      .put(`/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.status);
+      })
+      .catch((erroOcorrido) => {
+        console.log(erroOcorrido.mensagem);
+      });
+  }
 
-function contatoDados() {
-  sessionStorage.setItem("contatoName", nome);
-  sessionStorage.setItem("contatoId", idParceiro);
-}
+  function contatoDados() {
+    sessionStorage.setItem("contatoName", nome);
+    sessionStorage.setItem("contatoId", idParceiro);
+  }
 
 
   return (
@@ -154,16 +155,16 @@ function contatoDados() {
       <div className="feed-parceiro-container">
         < MenuCliente />
         <Link to={"/chat"} onClick={() => contatoDados()} className="footer-feed">
-        <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
+          <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
         </Link>
 
-            <img className="foto-perfil-image-feed" src={foto} alt="" />
+        <img className="foto-perfil-image-feed" src={foto} alt="" />
 
         <section className="container-info-parceiro">
-          
-          
+
+
           <div className="conteudo-info-parceiro">
-            <p className="nome-parceiro">{nome}</p>
+            <p className="nome-parceiro">{parceiroInfo.nome}</p>
 
             <div className="conteudo-local-data-avaliacao">
               <div className="local">
@@ -172,7 +173,7 @@ function contatoDados() {
                 </span>
                 <span className="txt-local">
                   <p>
-                    <b>{logradouro}, {uf}</b>
+                    <b>{enderecoLogado}</b>
                   </p>
                 </span>
               </div>
@@ -182,7 +183,7 @@ function contatoDados() {
                 </span>
                 <span className="txt-data">
                   <p>
-                    <b>Desde {dataEntrada}</b>
+                    <b>Desde {parceiroInfo.dataEntrada}</b>
                   </p>
                 </span>
               </div>
@@ -192,18 +193,18 @@ function contatoDados() {
                 </span>
                 <span className="txt-avaliacao">
                   <p>
-                    <b>{estrelas}</b>
+                    <b>{parceiroInfo?.fichas?.[0]?.servicos?.[0]?.nota ?? 0}</b>
                   </p>
                 </span>
               </div>
             </div>
             <div className="txt-apresentacao">
               <p>
-                {/* {descricao} */}
+                {parceiroInfo.descricao}
               </p>
             </div>
-        
-          
+
+
           </div>
         </section>
 
@@ -224,7 +225,7 @@ function contatoDados() {
                   <img className="feed-parceiro-img" src={IconDogWalker} alt="icon dog walker"></img>
                   <div className="dog-walker-txt">
                     <div className="titulo">Dog Walker</div>
-                    <p>R$ 60,00 / Passeio</p>
+                    <p>R$ {parceiroInfo?.fichas?.[0]?.valor != null ? parceiroInfo.fichas[0].valor : 'Informe um valor'}/ Passeio</p>
                     <p>Duração: 40min</p>
                   </div>
                 </div>
@@ -233,8 +234,6 @@ function contatoDados() {
                   <img className="feed-parceiro-img" src={IconDogSitter} alt="icon dog sitter"></img>
                   <div className="dog-sitter-txt">
                     <div className="titulo">Dog Sitter</div>
-                    <p>R$ 20,00 / Hora</p>
-                    <p>Receber o Pet na Resid.</p>
                   </div>
                 </div>
               </div>
@@ -289,18 +288,21 @@ function contatoDados() {
         <div className="avaliacoes">
           <p className="titulo-avaliacao">Avaliações</p>
           <div className="avaliacao-um">
-            < Avaliacao imagem={imgDamares} clienteNome={clienteNome1}
-              descricaoServico={descricaoServico1} descricaoAvaliacao={descricaoAvaliacao1} />
+            {(parceiroInfo?.fichas?.[0]?.servicos?.length ?? 0)  > 0 ? (
+              parceiroInfo.fichas[0].servicos.map((servico, index) => (
+                <div key={index}>
+                  <Avaliacao
+                    imagem={foto}
+                    clienteNome={servico.nomeParceiro}
+                    descricaoAvaliacao={servico.descricao}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>Seja o primeiro a avaliar</p>
+            )}
           </div>
 
-          <div className="avaliacao-dois">
-            < Avaliacao imagem={imgRichard} clienteNome={clienteNome2}
-              descricaoServico={descricaoServico2} descricaoAvaliacao={descricaoAvaliacao2} />
-          </div>
-          <div className="avaliacao-tres">
-            < Avaliacao imagem={imgLucca} clienteNome={clienteNome3}
-              descricaoServico={descricaoServico3} descricaoAvaliacao={descricaoAvaliacao3} />
-          </div>
 
         </div>
       </div>
