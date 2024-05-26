@@ -28,8 +28,8 @@ jobs:
       
       - name: CD APP
         run: |
-          export path_atual=$(pwd)
+          export atual=$(pwd)
           cd /var/www/html/
           sudo rm -r *
-          cd ${{ path_atual }}/dist
+          cd $atual/dist
           cp -r * /var/www/html/
