@@ -1,0 +1,35 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "teste-1" ]
+  pull_request:
+    branches: [ "teste-1" ]
+
+jobs:
+  build:
+
+    runs-on: woof-runner
+
+    steps:
+      - name: Clone Repositório
+        uses: actions/checkout@v4
+      - name: Use Node.js 
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.X
+          cache: 'npm'
+      - name: CI APP
+        run: |
+          npm i
+          npm run build
+          pwd
+      - name: CD FRONT
+        run: |
+          export path_atual=$(pwd)
+          cd /var/www/html
+          sudo rm -r *
+	        cd $path_atual/dist
+          cp -r * /var/www/html
+
+          
