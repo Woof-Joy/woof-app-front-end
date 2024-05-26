@@ -22,7 +22,7 @@ jobs:
       
       - name: CI APP
         run: |
-          npm i
+          npm i --force
           npm run build
           pwd
       
@@ -31,5 +31,5 @@ jobs:
           export atual=$(pwd)
           cd /var/www/html/
           sudo rm -r *
-          cd $atual/dist
+          cd $atual/build
           cp -r * /var/www/html/
