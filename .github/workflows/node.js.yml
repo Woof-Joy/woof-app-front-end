@@ -24,12 +24,13 @@ jobs:
           npm i
           npm run build
           pwd
-      - name: CD FRONT
-        run: |
-          export path_atual=$(pwd)
-          cd /var/www/html
+      -  name: CD FRONT
+         run: |
+	  export path_atual=$(pwd)
+          cd /var/www/html/
           sudo rm -r *
 	  cd ${{ path_atual }}/dist
-          cp -r * /var/www/html
+          cp -r * /var/www/html/
+          
 
           
