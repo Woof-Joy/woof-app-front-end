@@ -11,6 +11,7 @@ function AreaChat() {
     const contatoIdAtual = sessionStorage.getItem("contatoId")
     const userId = sessionStorage.getItem("userId")
     const token = sessionStorage.getItem("token")
+    const role = sessionStorage.getItem("role")
     const contatoNome = sessionStorage.getItem("contatoName")
 
     const [sendBody, setsendBody] = useState({
@@ -31,7 +32,6 @@ function AreaChat() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 console.log(response.status);
                 setMensagemBody(response.data);
             })
@@ -48,7 +48,6 @@ function AreaChat() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 console.log(response.status);
 
                 setsendBody({
@@ -92,13 +91,18 @@ function AreaChat() {
             {contatoIdAtual === null || contatoIdAtual === "" ? null : (
                 <section className="area-chat-cabecalho">
                     <div className="area-chat-cabecalho-contato">
-                        <img
-                            className="area-chat-foto-contato"
-                            src={foto}
-                            alt=""
-                        />
-                        <p className="area-chat-nome-contato">{contatoNome}</p>
+                        {contatoNome ? (
+                            <>
+                                <img
+                                    className="area-chat-foto-contato"
+                                    src={foto}
+                                    alt=""
+                                />
+                                <p className="area-chat-nome-contato">{contatoNome}</p>
+                            </>
+                        ) : null}
                     </div>
+
                     <button
                         className="area-chat-btn-agendar-servico"
                         onClick={setDisplayFlex}
@@ -129,13 +133,16 @@ function AreaChat() {
                             Seja o primeiro a enviar uma mensagem
                         </div>
                     )}
-                    <ModalAgendarServico
-                      opacityOn={modalDisplay}
-                      idParceiro={userId} 
-                      cancelarOn={setModelCancelar}
-                      sendOn={sendMensage}
-                      parceiroWoofJoy={contatoNome} 
-                      />
+                    {role === 'C' && (
+                        <ModalAgendarServico
+                            opacityOn={modalDisplay}
+                            idParceiro={userId}
+                            cancelarOn={setModelCancelar}
+                            sendOn={sendMensage}
+                            parceiroWoofJoy={contatoNome}
+                        />
+                    )}
+
                 </div>
             </section>
             <section className="area-chat-campo-envio">

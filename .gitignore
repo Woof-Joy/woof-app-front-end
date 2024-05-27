@@ -1,6 +1,7 @@
 # Arquivos temporários
 *.log
 *.tmp
+*.build
 
 # Diretório de dependências (por exemplo, para Node.js)
 node_modules/

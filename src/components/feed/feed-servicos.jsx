@@ -13,7 +13,7 @@ function FeedServico() {
     const enderecoLogado = sessionStorage.getItem("endereco");
 
     const [listaParceiros, setParceiros] = useState([]);
-   // const [endereco, setEndereco] = useState({ cidade: "", uf: "" });
+    // const [endereco, setEndereco] = useState({ cidade: "", uf: "" });
 
     function guardarIdParaCaminhoFeedParceiro(parceiroId, nome, cidade, estado, estrelas, qtdServicos, descricao, servicos, dataEntrada) {
         sessionStorage.setItem("idParceiroFeed", parceiroId);
@@ -76,59 +76,54 @@ function FeedServico() {
 
                             <h6>
                                 Sua Localização: <br />
-                                    <p>📍{enderecoLogado}</p>
-                            
+                                <p>📍{enderecoLogado}</p>
+
                             </h6>
 
-                            <h6>
-                                Tipo de Serviço <br />
-                                <select className="select-feed-servico" name="" id="">
-                                    <option value="T">Todos</option>
-                                    <option value="W">Dog Walker</option>
-                                    <option value="S">Dog Sitter</option>
-                                </select>
-                            </h6>
+                           
 
                         </div>
                     </div>
 
                 </div>
-                {listaParceiros?.map((parceiro) => {
-                    //const enderecoIndex = getById(parceiro.userId, endereco);
-
-                    return (
-                        <Link to={"/feed-parceiro"} onClick={() => guardarIdParaCaminhoFeedParceiro(
-                            parceiro.idUsuario,
-                            parceiro.nome,
-                            "Nathan vai arrumar",
-                            "Nathan vai arrumar",
-                            parceiro.estrelas,
-                            parceiro.qtdServicosPrestados,
-                            parceiro.descricao,
-                            parceiro.servicos,
-                            parceiro.dataEntrada
-                        )} className="container-card-feed-servico">
-                                <CardParceiro
-                                     servicoWalker={
-                                        parceiro.servicos.length > 0 ? 
-                                        parceiro.servicos[0].tipoServico : ""
-                                    }
-                                    servicoSitter={
-                                        parceiro.servicos.length > 1 ? 
-                                        parceiro.servicos[1].tipoServico : ""
-                                    }
-                                    nome={parceiro.nome}
-                                    sobrenome={parceiro.sobrenome}
-                                    logradouro={"Nathan vai arrumar"}
-                                    uf={"Nathan vai arrumar"}
-                                    descricao=""
-                                    avaliacao={parceiro.estrelas}
-                                    imagem={foto}
-                                />
+                {listaParceiros && listaParceiros.length > 0 ? (
+                    listaParceiros.map((parceiro) => (
+                        <Link
+                            to={"/feed-parceiro"}
+                            onClick={() => guardarIdParaCaminhoFeedParceiro(
+                                parceiro.idUsuario,
+                                parceiro.nome,
+                                parceiro.cidade,
+                                parceiro.uf,
+                                parceiro.estrelas,
+                                parceiro.qtdServicosPrestados,
+                                parceiro.descricao,
+                                parceiro.servicos,
+                                parceiro.dataEntrada
+                            )}
+                            className="container-card-feed-servico"
+                            key={parceiro.idUsuario} // Adicione uma chave única para cada item
+                        >
+                            <CardParceiro
+                                servicoWalker={
+                                    parceiro.servicos.length > 0 ? parceiro.servicos[0].tipoServico : ""
+                                }
+                                servicoSitter={
+                                    parceiro.servicos.length > 1 ? parceiro.servicos[1].tipoServico : ""
+                                }
+                                nome={parceiro.nome}
+                                sobrenome={parceiro.sobrenome}
+                                logradouro={parceiro.cidade}
+                                uf={parceiro.uf}
+                                descricao={parceiro.descricao}
+                                avaliacao={parceiro.estrelas}
+                                imagem={foto}
+                            />
                         </Link>
-                    );
-                })}
-
+                    ))
+                ) : (
+                    <div>Nenhum parceiro disponível no momento</div>
+                )}
 
             </div>
         </>

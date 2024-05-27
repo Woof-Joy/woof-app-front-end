@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { LocalDate } from "js-joda"; // Importe LocalDate corretamente
+import { LocalDateTime } from "js-joda"; // Importe LocalDate corretamente
 import woofJoyApi from "../../woof-joy-api";
 import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/meus-servicos.css"
@@ -13,21 +13,7 @@ function MeusServicos() {
     const userId = sessionStorage.getItem("userId");
     const token = sessionStorage.getItem("token");
 
-    // const [servicosParceiro, setServicos] = useState({
-    //     id: 1,
-    //     tipoServico: "DogWalker",
-    //     valor: 15.0,
-    //     servico: null,
-    //     qtdServico: 1,
-    //     servicos: [
-    // dataHoraFim: LocalDate.parse("2024-04-29"),
-    //     dataHoraInicio: LocalDate.parse("2024-04-28"),
-    //     cliente: "Filipe",
-    // ]
-    // })
-
     const [servicosParceiroList, setServicosList] = useState([])
-
 
     useEffect(() => {
         listarServicos();
@@ -39,6 +25,7 @@ function MeusServicos() {
         return () => clearInterval(intervalId);
     }, []);
 
+
     function listarServicos() {
         woofJoyApi
             .get(`/ficha/parceiro/ ${userId}`, {
@@ -47,11 +34,11 @@ function MeusServicos() {
                 },
             }).then((response) => {
                 console.log(response.data);
-                setServicosList(response.value)
-
+                setServicosList(response.data)
             })
             .catch((erroOcorrido) => {
-                console.log(erroOcorrido);
+                console.log(userId);
+                console.log("Servicos:" + erroOcorrido);
             });
     }
 
@@ -81,14 +68,16 @@ function MeusServicos() {
                     </div>
                 </div>
                 <div className="container-card-meus-servicos">
-                    {servicosParceiroList?.map((ficha) =>
-                        ficha?.map((servicoList) => (
+                    {servicosParceiroList.map((ficha) =>
+                        ficha.servicos.map((servicoFicha) => (
                             <AguardandoConfirmacao
-                                key={ficha.id} // Adicione uma chave única para cada item na lista
+                                key={ficha.id}
                                 servico={ficha.tipoServico}
-                                dataHoraInicio={servicoList?.dataHoraInicio.toString()}
-                                dataHoraFim={servicoList?.dataHoraFim.toString()}
-                                clienteNome={servicoList?.cliente}
+                                dataHoraInicio={servicoFicha.dataHoraInicio}
+                                dataHoraFim={servicoFicha.dataHoraFim}
+                                clienteNome={servicoFicha.cliente}
+                                status={servicoFicha.status}
+                                idServico={servicoFicha.id}
                             />
                         ))
                     )}
