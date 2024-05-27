@@ -22,8 +22,8 @@ jobs:
       
       - name: CI APP
         run: |
-          npm install --force
-          npm run build
+          sudo npm install --force
+          sudo npm run build
           pwd
       
       - name: CD APP
@@ -32,4 +32,4 @@ jobs:
           cd /var/www/html/
           sudo rm -r *
           cd $atual/build
-          cp -r * /var/www/html/
+          sudo cp -r * /var/www/html/
