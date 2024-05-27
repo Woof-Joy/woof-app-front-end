@@ -33,3 +33,4 @@ jobs:
           sudo rm -r *
           cd $atual/build
           sudo cp -r * /var/www/html/
+          sudo systemctl restart nginx 
