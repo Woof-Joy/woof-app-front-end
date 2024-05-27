@@ -22,7 +22,7 @@ jobs:
       
       - name: CI APP
         run: |
-          npm i --force
+          npm install --force
           npm run build
           pwd
       
