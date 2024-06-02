@@ -10,7 +10,8 @@ import perfil from "../../imgs/meus-servicos/image 204.png"
 
 function MeusServicos() {
 
-    const userId = sessionStorage.getItem("userId");
+    // const userId = sessionStorage.getItem("userId");
+    const userId = 2;
     const token = sessionStorage.getItem("token");
 
     const [servicosParceiroList, setServicosList] = useState([])
