@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { LocalDateTime } from "js-joda"; // Importe LocalDate corretamente
-import woofJoyApi from "../../woof-joy-api";
-import Menu from "../componentes-gerais/MenuCliente";
-import "../../css/meus-servicos.css"
-import AguardandoConfirmacao from "../aguardando-confirmacao";
-import chat from "../../imgs/meus-servicos/icon-chat.png"
-import perfil from "../../imgs/meus-servicos/image 204.png"
+// import React, { useEffect, useState } from "react";
+// import { LocalDateTime } from "js-joda"; // Importe LocalDate corretamente
+// import woofJoyApi from "../woof-joy-api";
+// import Menu from "./componentes-gerais/MenuCliente";
+// import "../../css/meus-servicos.css"
+// import AguardandoConfirmacao from "./aguardando-confirmacao";
+// import chat from "../../imgs/meus-servicos/icon-chat.png"
+// import perfil from "../../imgs/meus-servicos/image 204.png"
 
 
-function MeusServicos() {
+function HistoricoClienteServicos() {
 
-    const userId = sessionStorage.getItem("userId");
+    // const userId = sessionStorage.getItem("userId");
+    const userId = 2;
     const token = sessionStorage.getItem("token");
 
     const [servicosParceiroList, setServicosList] = useState([])
@@ -51,8 +52,8 @@ function MeusServicos() {
 
                 <div className="header-meus-servicos">
                     <div className="titulo-meus-servicos">
-                        <h1>Meus Serviços</h1>
-                        <h4>Consulte as solicitações dos seus clientes e os serviços prestados.</h4>
+                        <h1>Historico de Serviços</h1>
+                        <h4>Aqui você pode ver todos os serviçõs que voce agendou.</h4>
 
                         <div className="filtros-meus-servicos">
                             <h6>
@@ -88,4 +89,4 @@ function MeusServicos() {
         </>
     );
 }
-export default MeusServicos;
+export default HistoricoClienteServicos;

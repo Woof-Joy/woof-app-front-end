@@ -13,7 +13,6 @@ import FeedParceiro from './components/pagina-servico-prestador/feed-parceiro'
 import FeedParceiroEdit from './components/pagina-servico-prestador/feed-parceiro-edit';
 import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
-import FeedHistorico from './components/feed/historico-servicos'
 import MeusServicos from './components/feed/meus-servicos'
 import Chat from "./components/chat/cliente/Chat"
 import MeuPerfilCliente from './components/meu-perfil/cliente/MeuPerfilCliente'
@@ -72,10 +71,6 @@ const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat />
-      },
-      {
-        path: "historico",
-        element: <FeedHistorico />
       },
       {
         path: "meus-servicos",

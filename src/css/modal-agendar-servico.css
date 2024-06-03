@@ -15,6 +15,11 @@
     opacity: 1;
 }
 
+.error-message{
+    color: red;
+    font-size: 15px;
+}
+
 .select-modal-agendar-servico {
     width: 80%;
     padding: 0.5%;
@@ -41,12 +46,13 @@ a {color: #DB4B90;
 .container-inputs-modal-agendar-servico{
     display: flex;
     flex-direction: column;
+    padding-bottom: 10%;
     width: 90%;
 
 }
 .div-inputs-modal-agendar-servico{
 display: flex;
-flex-direction: row;
+flex-direction: column;
 justify-content: space-between;
 margin-bottom: 2%;
 width: 80%;
