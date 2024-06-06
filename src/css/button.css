@@ -1,15 +1,19 @@
 .component-button {
+    display: flex;
     padding: 2%;
     width: 100%;
     border-radius: 10px;
     border: none;
-    background-color: transparent;
-    display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 3%;
+    margin: 3%;
     cursor: pointer;
 }
+
+.component-button:hover{
+background-color: #DB4B90;
+}
+
 a {color: #DB4B90;
     cursor: pointer;
     text-decoration: none;

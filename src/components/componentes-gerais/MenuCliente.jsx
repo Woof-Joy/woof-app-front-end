@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 function Menu() {
     const role = sessionStorage.getItem("role");
+    const pathPerfil = role === "C" ? "/perfil-cliente" : "/feed-parceiro-edit";
 
     const cleanSessionStorage = () => {
         sessionStorage.clear();
@@ -41,7 +42,7 @@ function Menu() {
                     {/* Chat */}
                     <div className="todos-menu-item">
                         <li className="menu-item">
-                            <Link to="/chat-cliente">
+                            <Link to="/chat">
                                 <a href="#">
                                     <span className="icon">
                                         <i className="bi bi-chat-dots-fill"></i>
@@ -81,11 +82,26 @@ function Menu() {
                             </li>
                         </div>
                     )}
+                        {/* Historico Servicos Cliente */}
+                        {role === "C" && (
+                        <div className="todos-menu-item">
+                            <li className="menu-item">
+                                <Link to="/historico-servicos-cliente">
+                                    <a href="#">
+                                        <span className="icon">
+                                            <img src={IconServicos} alt="" />
+                                        </span>
+                                        <span className="txt-link">Histórico de Serviços</span>
+                                    </a>
+                                </Link>
+                            </li>
+                        </div>
+                    )}   
 
                     {/* Meu Perfil */}
                         <div className="todos-menu-item">
                             <li className="menu-item">
-                                <Link to="/perfil-cliente">
+                                <Link to={pathPerfil}>                                    
                                     <a href="#">
                                         <span className="icon">
                                             <i className="bi bi-person-circle"></i>

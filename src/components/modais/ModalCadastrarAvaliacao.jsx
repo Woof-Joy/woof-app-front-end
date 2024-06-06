@@ -1,21 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import woofJoyApi from "../../woof-joy-api";
 import "../../css/modal-cadastrar-avaliacao.css"
-import { Link } from 'react-router-dom';
 import TextBoxCharacterCounter from '../componentes-gerais/TextBoxCharacterCounter';
 
-function ModalCadastrarAvaliacao({ onClose }) {
+function ModalCadastrarAvaliacao(props) {
+
+    const {
+        idServico,
+        idParceiro,
+        clienteNome,
+        idCliente,
+        onClose
+    } = props;
 
     const [rating, setRating] = useState(0);
 
+    const [avaliacaoBody, setAvaliacaoBody] = useState({
+        nota: 0,
+        comentario: "",
+        idCliente: idCliente,
+        nomeCliente: clienteNome,
+        idServico: idServico
+    });
+
+    useEffect(() => {
+        setAvaliacaoBody(prevState => ({
+            ...prevState,
+            idCliente: idCliente,
+            nomeCliente: clienteNome,
+            idServico: idServico
+        }));
+    }, [idCliente, clienteNome, idServico]);
+
     const handleStarClick = (value) => {
         setRating(value);
+        setAvaliacaoBody(prevState => ({
+            ...prevState,
+            nota: value
+        }));
     };
 
-    const handleSubmit = () => {
-        // Lógica para enviar a avaliação (pode ser implementada conforme necessário)
-        console.log(`Avaliação: ${rating}`);
-        onClose(); // Fechar o modal após a avaliação
+    const handleCommentChange = (comment) => {
+        setAvaliacaoBody(prevState => ({
+            ...prevState,
+            comentario: comment
+        }));
     };
+
+    function postAvaliacao() {
+        const token = sessionStorage.getItem("token");
+
+        woofJoyApi
+            .post(`/avaliacoes/${idParceiro}`, avaliacaoBody,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+            .then((response) => {
+                console.log(clienteNome);
+                alert("Avaliação enviada com sucesso!");
+                onClose();
+            })
+            .catch((erroOcorrido) => {
+                console.log(avaliacaoBody);
+                alert("É necessário inserir uma nota");
+            });
+    }
 
     return (
         <section className='modal-avaliacao-container'>
@@ -36,11 +87,11 @@ function ModalCadastrarAvaliacao({ onClose }) {
                     ))}
                 </div>
                 <div className='modal-avaliacao-caixa-texto'>
-                    <TextBoxCharacterCounter />
+                    <TextBoxCharacterCounter onInputChange={handleCommentChange} />
                 </div>
                 <div className='modal-avaliacao-btn'>
-                    <button className='modal-avaliacao-btn-enviar' onClick={handleSubmit}>Enviar</button>
-                    <Link className='modal-avaliacao-btn-voltar' to="/historico">Não, obrigado(a)!</Link>
+                    <button className='modal-avaliacao-btn-enviar' onClick={() => postAvaliacao()}>Enviar</button>
+                    <button className='modal-avaliacao-btn-enviar' onClick={() => onClose()}>Não, obrigado(a)!</button>
                 </div>
             </div>
         </section>

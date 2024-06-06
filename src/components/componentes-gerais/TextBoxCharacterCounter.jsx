@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 
-function TextBoxCharacterCounter() {
+function TextBoxCharacterCounter(props) {
+    const { onInputChange } = props;
     const [texto, setTexto] = useState('');
 
     const handleChange = (event) => {
         const inputValue = event.target.value;
         if (inputValue.length <= 500) {
             setTexto(inputValue);
+            onInputChange(inputValue); 
         }
     };
 
     return (
         <section className='modal-avaliacao-txt-area-container'>
-            <textarea className='modal-avaliacao-textarea'
+            <textarea
+                className='modal-avaliacao-textarea'
                 value={texto}
                 onChange={handleChange}
                 maxLength={500}

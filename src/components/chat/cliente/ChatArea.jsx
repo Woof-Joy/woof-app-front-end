@@ -8,10 +8,11 @@ import ModalAgendarServico from "../../modais/ModalAgendarServico";
 import foto from "../../../imgs/mock/semfoto.jpg";
 
 function AreaChat() {
-    const contatoIdAtual = sessionStorage.getItem("contatoId")
-    const userId = sessionStorage.getItem("userId")
-    const token = sessionStorage.getItem("token")
-    const contatoNome = sessionStorage.getItem("contatoName")
+    const contatoIdAtual = sessionStorage.getItem("contatoId");
+    const userId = sessionStorage.getItem("userId");
+    const token = sessionStorage.getItem("token");
+    const role = sessionStorage.getItem("role");
+    const contatoNome = sessionStorage.getItem("contatoName");
 
     const [sendBody, setsendBody] = useState({
         message: "",
@@ -22,6 +23,7 @@ function AreaChat() {
 
     const [mensagemBody, setMensagemBody] = useState([]);
     const [modalDisplay, setModalDisplay] = useState(0);
+    const [servicoModal, setServicoModal] = useState(false);
 
     function getMensagensHistory() {
         woofJoyApi
@@ -31,35 +33,11 @@ function AreaChat() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 console.log(response.status);
                 setMensagemBody(response.data);
             })
             .catch((erroOcorrido) => {
-                console.log(erroOcorrido.mensagem);
-            });
-    }
-
-    function sendMensage() {
-        woofJoyApi
-            .post(`/notification`, sendBody, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((response) => {
-                console.log(response.data);
-                console.log(response.status);
-
-                setsendBody({
-                    message: "",
-                    idRemetente: userId,
-                    idDestinatario: contatoIdAtual,
-                    tipo: "doacao",
-                });
-            })
-            .catch((erroOcorrido) => {
-                console.log(erroOcorrido.mensagem);
+                console.log(erroOcorrido.message);
             });
     }
 
@@ -71,12 +49,33 @@ function AreaChat() {
         });
     };
 
+    const sendMensage = () => {
+        if (sendBody.message.trim() === "") return;
+
+        woofJoyApi
+            .post(`/sendMessage`, sendBody, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.status);
+                getMensagensHistory();
+                setsendBody({ ...sendBody, message: "" });
+            })
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido.message);
+            });
+    };
+
     const setDisplayFlex = () => {
         setModalDisplay(1);
+        setServicoModal(true);
     };
 
     const setModelCancelar = () => {
         setModalDisplay(0);
+        setServicoModal(false);
     };
 
     useEffect(() => {
@@ -92,19 +91,19 @@ function AreaChat() {
             {contatoIdAtual === null || contatoIdAtual === "" ? null : (
                 <section className="area-chat-cabecalho">
                     <div className="area-chat-cabecalho-contato">
-                        <img
-                            className="area-chat-foto-contato"
-                            src={foto}
-                            alt=""
-                        />
-                        <p className="area-chat-nome-contato">{contatoNome}</p>
+                        {contatoNome ? (
+                            <>
+                                <img
+                                    className="area-chat-foto-contato"
+                                    src={foto}
+                                    alt=""
+                                />
+                                <p className="area-chat-nome-contato">{contatoNome}</p>
+                            </>
+                        ) : null}
                     </div>
-                    <button
-                        className="area-chat-btn-agendar-servico"
-                        onClick={setDisplayFlex}
-                    >
-                        Agendar Serviço
-                    </button>
+
+        
                 </section>
             )}
             <section className="area-chat-container">
@@ -129,13 +128,14 @@ function AreaChat() {
                             Seja o primeiro a enviar uma mensagem
                         </div>
                     )}
-                    <ModalAgendarServico
-                      opacityOn={modalDisplay}
-                      idParceiro={userId} 
-                      cancelarOn={setModelCancelar}
-                      sendOn={sendMensage}
-                      parceiroWoofJoy={contatoNome} 
-                      />
+                    {servicoModal === true && (
+                        <ModalAgendarServico
+                            opacityOn={modalDisplay}
+                            idParceiro={userId}
+                            cancelarOn={() => setModelCancelar()}
+                            parceiroWoofJoy={contatoNome}
+                        />
+                    )}
                 </div>
             </section>
             <section className="area-chat-campo-envio">

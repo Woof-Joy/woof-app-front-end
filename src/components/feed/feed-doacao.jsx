@@ -22,9 +22,9 @@ function FeedDocao() {
 
     const [listaItens, setParceiros] = useState([])
 
-    function guardarIdParaCaminhoFeedParceiro(parceiroId,nome) {
-        sessionStorage.setItem("idParceiroFeed", parceiroId)
-        sessionStorage.setItem("nomeParceiroFeed", nome)
+    function guardarIdParaCaminhoFeedParceiro(IdDonoItem, nomeDonoItem) {
+        sessionStorage.setItem("contatoId", IdDonoItem)
+        sessionStorage.setItem("contatoName", nomeDonoItem)
     }
 
 
@@ -72,14 +72,11 @@ function FeedDocao() {
 
                             <h6>
                                 Sua Localização <br />
-                                 <p>📍{enderecoLogado}</p>
+                                <p>📍{enderecoLogado}</p>
                             </h6>
 
 
-                            <h6>
-                                Ordenar Por <br />
-                                <select className="select-feed-doacao" name="" id=""></select>
-                            </h6>
+            
                             <h6 className="button-doar-feed-doacao">
                                 <Button
                                     displayOn="flex"
@@ -93,22 +90,21 @@ function FeedDocao() {
 
                         </div>
                     </div>
-                    <div className="links-feed-doacao">
-                        <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
-
-                        <img className="foto-perfil-historico-servicos" src={perfil} alt="foto do cara" />
-                    </div>
+                    
 
                 </div>
-                {listaItens?.map((item) => (
-                    <>
-                        <Link to={"/chat-cliente"} onClick={() => guardarIdParaCaminhoFeedParceiro(
-                            3,
-                            "Filipe",
-                            )} className="container-card-feed-doacao">
-
+                {listaItens && listaItens.length > 0 ? (
+                    listaItens.map((item) => (
+                        <Link
+                            to={"/chat"}
+                            onClick={() => guardarIdParaCaminhoFeedParceiro(
+                                item.idDonoItem,
+                                item.nomeDonoItem
+                            )}
+                            className="container-card-feed-doacao"
+                            key={item.id} // Adicione uma chave única para cada item
+                        >
                             <ItemFeed
-                                key={item.id}
                                 titulo={item.titulo}
                                 categoria={item.categoria}
                                 logradouro={item.endereco.logradouro}
@@ -116,9 +112,11 @@ function FeedDocao() {
                                 uf={item.endereco.uf}
                             />
                         </Link>
+                    ))
+                ) : (
+                    <div>Nenhum item disponível no momento</div>
+                )}
 
-                    </>
-                ))}
 
 
             </div>

@@ -8,12 +8,7 @@ function HistoricoChat() {
     const userId = sessionStorage.getItem("userId")
     const token = sessionStorage.getItem("token")
 
-    // const [contatoInfo, setContatoInfo] = useState({
-    //     id: 3,
-    //     nome: "Teste historico",
-    //     imagem: ""
-    // })
-
+ 
     const [contatoInfo, setContatoInfo] = useState([]);
 
     function getMensagensHistory() {
@@ -25,12 +20,10 @@ function HistoricoChat() {
             })
             .then((response) => {
                 console.log(response.data);
-                console.log(response.status);
                 setContatoInfo(response.data);
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido.mensagem);
-                console.log(userId)
             });
     }
 

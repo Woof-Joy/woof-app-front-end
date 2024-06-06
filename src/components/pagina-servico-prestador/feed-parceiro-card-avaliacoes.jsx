@@ -1,51 +1,36 @@
-import React, { useState } from "react";
-import "../../css/react-feed-parceiro.css";
+import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
+import "../../css/card-avaliacao.css";
+import point from "../../imgs/feed-parceiro/point-localizacao.png";
 
-function FeedParceiroCard({
-    imagem,
+function CardParceiro(props) {
+  const {
     clienteNome,
-    descricaoServico,
-    descricaoAvaliacao
-}) {
+    nota,
+    comentario,
+    imagem
+  } = props;
+
   return (
     <>
-      <div className="container-avaliacao">
-        <img
-          className="avaliacao-img"
-          src={imagem}
-          alt="imagem do cliente"
-        ></img>
+      <div className="card-servico-avaliacao ">
+        <div className="container-dados-avaliacao">
 
-        <div className="info-cliente">
-          <div className="nome-cliente">
-            {clienteNome.map((clienteNome, index) => (
-              <p key={index} className="p-nome-cliente">
-                {clienteNome}
-              </p>
-            ))}
-          </div>
-          <div className="conteudo-tipo-avaliacao">
-          <span className="icon-avaliacao">
-                      <i className="bi bi-star-fill"></i>
-                    </span>
-                    {descricaoServico.map((descricaoServico, index) => (
-                      <p key={index} className="descricao-servico-prestado">
-                        {descricaoServico}
-                      </p>
-                    ))}
-          </div>
-          <div className="conteudo-avaliacao">
-          {descricaoAvaliacao.map((descricaoAvaliacao, index) => (
-            <p key={index} className="descricao-avaliacao">
-              {descricaoAvaliacao}
-            </p>
-          ))}
-          </div>
+          <div className="nome-prestador-avaliacao">{clienteNome}</div>
+          <div className="nota-avaliacao">{nota} ★</div>
 
         </div>
+
+        <label className="descricao-avaliacao">
+
+          <strong className="descricao-texto-card-parceiro-avaliacao">
+            {comentario}
+          </strong>
+
+        </label>
       </div>
     </>
   );
 }
-export default FeedParceiroCard;
+
+export default CardParceiro;
