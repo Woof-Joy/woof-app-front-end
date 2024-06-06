@@ -99,7 +99,7 @@ const setModelCancelar = () => {
 
   useEffect(() => {
     woofJoyApi
-      .get(`/parceiros/${idParceiro}`, {
+      .get(`/parceiros/31`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -115,7 +115,7 @@ const setModelCancelar = () => {
 
   function listar() {
     woofJoyApi
-      .get(`/avaliacoes/parceiro/${idParceiro}`, {
+      .get(`/avaliacoes/parceiro/31`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -147,7 +147,7 @@ const setModelCancelar = () => {
 
   function listarServicos() {
     woofJoyApi
-      .get(`/ficha/parceiro/${idParceiro}`, {
+      .get(`/ficha/parceiro/31`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -171,7 +171,7 @@ const setModelCancelar = () => {
     <>
       {servicoModal === true && (
                         <ModalAgendarServico
-                            idParceiro={userId}
+                            idParceiro={idParceiro}
                             cancelarOn={() => setModelCancelar()}
                             parceiroWoofJoy={parceiroInfo.nome}
                         />

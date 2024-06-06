@@ -41,7 +41,7 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
     const [servicoBody, setServicoBody] = useState({
         inicioDoServico: "",
         fimDoServico: "",
-        idParceiro: contatoIdAtual,
+        idParceiro: idParceiro,
         tipoServico: "",
         idCliente: userId,
     });

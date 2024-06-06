@@ -6,7 +6,8 @@ import CardHistorico from "../card-historico";
 
 
 function HistoricoClienteServicos() {
-    const userId = sessionStorage.getItem("userId");
+    const userId = 16
+    // const userId = sessionStorage.getItem("userId");
     const token = sessionStorage.getItem("token");
 
     const [servicosParceiroList, setServicosList] = useState([]);
