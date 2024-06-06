@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 import Menu from "../componentes-gerais/MenuCliente";
-import "../../css/feed-servicos.css"
-import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png"
+import "../../css/feed-servicos.css";
+import lupa from "../../imgs/feed-parceiro/lupa-pesquisa.png";
 import CardParceiro from "./card-parceiro-feed";
 import { Link } from 'react-router-dom';
 import foto from "../../imgs/mock/semfoto.jpg";
@@ -13,7 +13,8 @@ function FeedServico() {
     const enderecoLogado = sessionStorage.getItem("endereco");
 
     const [listaParceiros, setParceiros] = useState([]);
-    // const [endereco, setEndereco] = useState({ cidade: "", uf: "" });
+    const [termoPesquisa, setTermoPesquisa] = useState("");
+    const [tipoServico, setTipoServico] = useState("Todos");
 
     function guardarIdParaCaminhoFeedParceiro(parceiroId, nome, cidade, estado, estrelas, qtdServicos, descricao, servicos, dataEntrada) {
         sessionStorage.setItem("idParceiroFeed", parceiroId);
@@ -45,14 +46,38 @@ function FeedServico() {
             })
             .then((response) => {
                 setParceiros(response.data);
-                console.log(response.data)
-                //alert(response.status)
+                console.log(response.data);
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
             });
     }
 
+    const parceirosFiltrados = listaParceiros.filter(parceiro => {
+        const nome = parceiro.nome ? parceiro.nome.toLowerCase() : "";
+        const sobrenome = parceiro.sobrenome ? parceiro.sobrenome.toLowerCase() : "";
+        const cidade = parceiro.cidade ? parceiro.cidade.toLowerCase() : "";
+        const uf = parceiro.uf ? parceiro.uf.toLowerCase() : "";
+        const descricao = parceiro.descricao ? parceiro.descricao.toLowerCase() : "";
+        const termo = termoPesquisa.toLowerCase();
+
+        const tipoServicoWalker = parceiro.servicos.length > 0 ? parceiro.servicos[0].tipoServico : "";
+        const tipoServicoSitter = parceiro.servicos.length > 1 ? parceiro.servicos[1].tipoServico : "";
+
+        const matchServico = tipoServico === "Todos" ||
+            tipoServicoWalker.toLowerCase() === tipoServico.toLowerCase() ||
+            tipoServicoSitter.toLowerCase() === tipoServico.toLowerCase();
+
+        return (
+            matchServico && (
+                nome.includes(termo) ||
+                sobrenome.includes(termo) ||
+                cidade.includes(termo) ||
+                uf.includes(termo) ||
+                descricao.includes(termo)
+            )
+        );
+    });
 
     return (
         <>
@@ -70,28 +95,43 @@ function FeedServico() {
 
                         <div className="barra-pesquisa-feed-servico">
                             <img className="img-pesquisa-feed-servico" src={lupa} alt="ícone de pesquisa" />
-                            <input className="input-pesquisa-feed-servico" type="text" placeholder="pesquisar" />
+                            <input 
+                                className="input-pesquisa-feed-servico" 
+                                type="text" 
+                                placeholder="pesquisar" 
+                                value={termoPesquisa}
+                                onChange={(e) => setTermoPesquisa(e.target.value)}
+                            />
                         </div>
                         <div className="filtros-feed-servico">
+                            <h6>
+                                Serviço desejado <br />
+                                <select
+                                    className="select-meus-servicos"
+                                    value={tipoServico}
+                                    onChange={(e) => setTipoServico(e.target.value)}
+                                >
+                                    <option value="Todos">Todos</option>
+                                    <option value="Dog Walker">Dog Walker</option>
+                                    <option value="Dog Sitter">Dog Sitter</option>
+                                </select>
+                            </h6>
 
                             <h6>
                                 Sua Localização: <br />
                                 <p>📍{enderecoLogado}</p>
-
                             </h6>
-
-                           
 
                         </div>
                     </div>
 
                 </div>
-                {listaParceiros && listaParceiros.length > 0 ? (
-                    listaParceiros.map((parceiro) => (
+                {parceirosFiltrados.length > 0 ? (
+                    parceirosFiltrados.map((parceiro) => (
                         <Link
                             to={"/feed-parceiro"}
                             onClick={() => guardarIdParaCaminhoFeedParceiro(
-                                parceiro.idUsuario,
+                                parceiro.idParceiro,
                                 parceiro.nome,
                                 parceiro.cidade,
                                 parceiro.uf,
@@ -102,7 +142,7 @@ function FeedServico() {
                                 parceiro.dataEntrada
                             )}
                             className="container-card-feed-servico"
-                            key={parceiro.idUsuario} // Adicione uma chave única para cada item
+                            key={parceiro.idUsuario}
                         >
                             <CardParceiro
                                 servicoWalker={
@@ -118,11 +158,12 @@ function FeedServico() {
                                 descricao={parceiro.descricao}
                                 avaliacao={parceiro.estrelas}
                                 imagem={foto}
+                                idParceiro={parceiro.idParceiro}
                             />
                         </Link>
                     ))
                 ) : (
-                    <div>Nenhum parceiro disponível no momento</div>
+                    <div>Nada por aqui</div>
                 )}
 
             </div>

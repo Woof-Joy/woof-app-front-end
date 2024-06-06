@@ -103,14 +103,7 @@ function AreaChat() {
                         ) : null}
                     </div>
 
-                    {role === 'C' && (
-                        <button
-                            className="area-chat-btn-agendar-servico"
-                            onClick={setDisplayFlex}
-                        >
-                            Agendar Serviço
-                        </button>
-                    )}
+        
                 </section>
             )}
             <section className="area-chat-container">

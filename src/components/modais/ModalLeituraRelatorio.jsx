@@ -3,7 +3,18 @@ import "../../css/modal-leitura-relatorio.css"
 import { Link } from 'react-router-dom';
 import ModalCadastrarAvaliacao from './ModalCadastrarAvaliacao';
 
-function ModalLeituraRelatorio() {
+function ModalLeituraRelatorio(props) {
+    const token = sessionStorage.getItem("token");
+
+    const {
+        idServico,
+        servico,
+        parceiroNome,
+        idParceiro,
+        idClienteServico,
+        relatorio,
+        onClose
+    } = props;
     return (
         <section className='modal-leitura-relatorio-container'>
             <div className='modal-leitura-relatorio-conteudo-container'>
@@ -12,30 +23,24 @@ function ModalLeituraRelatorio() {
                         Relatório
                     </p>
                     <p className='modal-leitura-relatorio-txt-subtitulo'>
-                        Serviço: <span>Dog Walker</span>
+                        Serviço: <span>{servico}</span>
                     </p>
-                    <p className='modal-leitura-relatorio-txt-texto'>
-                        <b>Início do Serviço:</b> <span>28/11/2023</span> - <span>13:00</span> |
-                        <b> Fim do Serviço:</b> <span>28/11/2023</span> - <span>14:00</span>
-                    </p>
+                   
                     <div className='space'></div>
                     <p className='modal-leitura-relatorio-txt-texto'>
-                        <b>Parceiro:</b> <span>José</span>
+                        <b>Parceiro:</b> <span>{parceiroNome}</span>
                     </p>
-                    <p className='modal-leitura-relatorio-txt-texto'>
-                        <b>Pet:</b> <span>Pipoca</span>
-                    </p>
+                    
                 </div>
                 <div className='modal-leitura-relatorio-caixa-texto'>
-                    <textarea readOnly className='modal-leitura-relatorio-textarea'></textarea>
+                    <textarea readOnly className='modal-leitura-relatorio-textarea'>
+                    {relatorio}
+                    </textarea>
                 </div>
                 <div className='modal-leitura-relatorio-btn-container'>
-                    <Link to="/cadastrar-avaliacao">
-                        <button className='modal-leitura-relatorio-btn-enviar' >
+                        <button className='modal-leitura-relatorio-btn-enviar' onClick={() => onClose()} >
                             Fechar
                         </button>
-                    </Link>
-
                 </div>
             </div>
         </section>

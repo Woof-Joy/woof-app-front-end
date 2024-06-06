@@ -82,6 +82,21 @@ function Menu() {
                             </li>
                         </div>
                     )}
+                        {/* Historico Servicos Cliente */}
+                        {role === "C" && (
+                        <div className="todos-menu-item">
+                            <li className="menu-item">
+                                <Link to="/historico-servicos-cliente">
+                                    <a href="#">
+                                        <span className="icon">
+                                            <img src={IconServicos} alt="" />
+                                        </span>
+                                        <span className="txt-link">Histórico de Serviços</span>
+                                    </a>
+                                </Link>
+                            </li>
+                        </div>
+                    )}   
 
                     {/* Meu Perfil */}
                         <div className="todos-menu-item">

@@ -72,8 +72,8 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
         setSendBody((prevSendBody) => ({
             ...prevSendBody,
             message: `Serviço Solicitado para com início: ${name === "inicioDoServico" ? formattedDate : servicoBody.inicioDoServico}, ` +
-                     `sendo finalizado na data: ${name === "fimDoServico" ? formattedDate : servicoBody.fimDoServico}. \n` +
-                     `Tipo de serviço: ${tipoServico}`,
+                `sendo finalizado na data: ${name === "fimDoServico" ? formattedDate : servicoBody.fimDoServico}. \n` +
+                `Tipo de serviço: ${tipoServico}`,
         }));
     };
 
@@ -87,8 +87,8 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
         setSendBody((prevSendBody) => ({
             ...prevSendBody,
             message: `Serviço Solicitado, com início: ${servicoBody.inicioDoServico}, ` +
-                     `sendo finalizado na data: ${servicoBody.fimDoServico}. \n` +
-                     `Tipo de serviço: ${event.target.value}`,
+                `sendo finalizado na data: ${servicoBody.fimDoServico}. \n` +
+                `Tipo de serviço: ${event.target.value}`,
         }));
     };
 
@@ -177,66 +177,68 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
 
     return (
         <>
-            <div style={styleEdition} className="container-modal-agendar-servico">
-                <h2>Agende o serviço desejado</h2>
-                <br />
+            <div className="fundo-modal">
+                <div style={styleEdition} className="container-modal-agendar-servico">
+                    <h2>Agende o serviço desejado</h2>
+                    <br />
 
-                <h5>Serviço</h5>
-                <select
-                    placeholder="Serviços disponíveis"
-                    className="select-modal-agendar-servico"
-                    name="tipoServico"
-                    value={tipoServico}
-                    onChange={handleTipoServicoChange}
-                >
-                    <option value="" disabled>Escolha...</option>
-                    <option value="Dog Walker">Dog Walker</option>
-                    <option value="Dog Sitter">Dog Sitter</option>
-                </select>
+                    <h5>Serviço</h5>
+                    <select
+                        placeholder="Serviços disponíveis"
+                        className="select-modal-agendar-servico"
+                        name="tipoServico"
+                        value={tipoServico}
+                        onChange={handleTipoServicoChange}
+                    >
+                        <option value="" disabled>Escolha...</option>
+                        <option value="Dog Walker">Dog Walker</option>
+                        <option value="Dog Sitter">Dog Sitter</option>
+                    </select>
 
-                <div className="container-dados-modal-agendar-servico">
-                    <h5>Parceiro WoofJoy: {parceiroWoofJoy}</h5>
-                </div>
-                <div className="container-inputs-modal-agendar-servico">
-                    <h5>Início do serviço</h5>
-                    <div className="div-inputs-modal-agendar-servico">
-                        <input
-                            className="inputs-modal-agendar-servico"
-                            type="datetime-local"
-                            placeholder="Data"
-                            name="inicioDoServico"
-                            value={servicoBody.inicioDoServico.split(".")[0]}
-                            onChange={handleInputChange}
-                        />
-                        {errorMessages.inicio && <p className="error-message">{errorMessages.inicio}</p>}
+                    <div className="container-dados-modal-agendar-servico">
+                        <h5>Parceiro WoofJoy: {parceiroWoofJoy}</h5>
                     </div>
-                    <h5>Fim do serviço</h5>
-                    <div className="div-inputs-modal-agendar-servico">
-                        <input
-                            className="inputs-modal-agendar-servico"
-                            type="datetime-local"
-                            placeholder="Hora"
-                            name="fimDoServico"
-                            value={servicoBody.fimDoServico.split(".")[0]}
-                            onChange={handleInputChange}
-                        />
-                        {errorMessages.fim && <p className="error-message">{errorMessages.fim}</p>}
+                    <div className="container-inputs-modal-agendar-servico">
+                        <h5>Início do serviço</h5>
+                        <div className="div-inputs-modal-agendar-servico">
+                            <input
+                                className="inputs-modal-agendar-servico"
+                                type="datetime-local"
+                                placeholder="Data"
+                                name="inicioDoServico"
+                                value={servicoBody.inicioDoServico.split(".")[0]}
+                                onChange={handleInputChange}
+                            />
+                            {errorMessages.inicio && <p className="error-message">{errorMessages.inicio}</p>}
+                        </div>
+                        <h5>Fim do serviço</h5>
+                        <div className="div-inputs-modal-agendar-servico">
+                            <input
+                                className="inputs-modal-agendar-servico"
+                                type="datetime-local"
+                                placeholder="Hora"
+                                name="fimDoServico"
+                                value={servicoBody.fimDoServico.split(".")[0]}
+                                onChange={handleInputChange}
+                            />
+                            {errorMessages.fim && <p className="error-message">{errorMessages.fim}</p>}
+                        </div>
                     </div>
-                </div>
 
-                <div className="botoes-modal-agendar-servico">
-                    <Button
-                        buttonName="Cancelar"
-                        fontColor="#DB4B90"
-                        buttonBackColor="#D9D9D9"
-                        onClick={() => cancelarOn()}
-                    />
-                    <Button
-                        buttonName="Agendar"
-                        fontColor="white"
-                        buttonBackColor="#DB4B90"
-                        onClick={() => agendarServico()}
-                    />
+                    <div className="botoes-modal-agendar-servico">
+                        <Button
+                            buttonName="Cancelar"
+                            fontColor="#DB4B90"
+                            buttonBackColor="#D9D9D9"
+                            onClick={() => cancelarOn()}
+                        />
+                        <Button
+                            buttonName="Agendar"
+                            fontColor="white"
+                            buttonBackColor="#DB4B90"
+                            onClick={() => agendarServico()}
+                        />
+                    </div>
                 </div>
             </div>
         </>

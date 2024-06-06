@@ -76,10 +76,7 @@ function FeedDocao() {
                             </h6>
 
 
-                            <h6>
-                                Ordenar Por <br />
-                                <select className="select-feed-doacao" name="" id=""></select>
-                            </h6>
+            
                             <h6 className="button-doar-feed-doacao">
                                 <Button
                                     displayOn="flex"
@@ -93,11 +90,7 @@ function FeedDocao() {
 
                         </div>
                     </div>
-                    <div className="links-feed-doacao">
-                        <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
-
-                        <img className="foto-perfil-historico-servicos" src={perfil} alt="foto do cara" />
-                    </div>
+                    
 
                 </div>
                 {listaItens && listaItens.length > 0 ? (

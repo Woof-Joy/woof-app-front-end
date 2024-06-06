@@ -40,6 +40,21 @@ body {
     justify-content: end;
 }
 
+.modal-avaliacao-btn-enviar-avaliacao{
+    margin-top: 2%;
+    background-color: #DB4B90;
+    border-radius: 30px;
+    width: 249px;
+    height: 40px;
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-bottom: 1vh;
+    text-align: center;
+}
+
 .feed-p-container-btn-salvar {
     display: inline-block;
     padding: 10px 50px;

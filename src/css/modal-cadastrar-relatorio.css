@@ -71,7 +71,9 @@ a {color: #DB4B90;
 .modal-relatorio-btn-container{
     margin-top: 2vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 .modal-relatorio-btn-enviar{
@@ -83,4 +85,5 @@ a {color: #DB4B90;
     border: none;
     font-size: 20px;
     text-align: center;
+    margin-bottom: 2vh;
 }
