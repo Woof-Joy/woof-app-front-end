@@ -27,6 +27,7 @@ jobs:
           pwd
 
   cd:
+    needs: [ci]
     runs-on: woof-runner
     steps:
       - name: CD APP
