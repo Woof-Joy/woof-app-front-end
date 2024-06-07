@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Criar Work
         run: |
-          mkdir ${ github.workflow_sha }
-          cd ${ github.workflow_sha }
+          mkdir ${{ github.sha }}
+          cd ${{ github.sha }}
       
       - name: Clone Repositório
         uses: actions/checkout@v4
