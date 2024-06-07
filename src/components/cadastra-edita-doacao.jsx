@@ -67,13 +67,13 @@ function CadastraEditaDoacao() {
     });
   };
 
-//   const handleTipoServicoChange = (event) => {
-//     setTipoServico(event.target.value);
-//     setServicoBody({
-//         ...servicoBody,
-//         tipoServico: event.target.value
-//     });
-// };
+  //   const handleTipoServicoChange = (event) => {
+  //     setTipoServico(event.target.value);
+  //     setServicoBody({
+  //         ...servicoBody,
+  //         tipoServico: event.target.value
+  //     });
+  // };
 
 
   return (
@@ -81,17 +81,17 @@ function CadastraEditaDoacao() {
       <div className="conteudo-edita-cadastra-servico">
         <Menu />
         <div className="titulo-cadastra">
-          <p className="titulo-publicacao-doacao">Publicacão</p>
-          <p className="sub-doacao">Doacão</p>
+          <span className="titulo-publicacao-doacao">Publicação</span>
+          <p className="sub-doacao">Doação</p>
         </div>
         <div className="titulo-input">
-          <p>Título</p>
+          <span>Título</span>
         </div>
         <div className="objeto-doacao">
           <input
             className="o-nome-obj-doacao"
             type="text"
-            placeholder="Nome do objeto de doação"
+            placeholder="Item a ser doado"
             name="titulo"
             value={item.titulo}
             onChange={handleInputChange}
@@ -99,9 +99,9 @@ function CadastraEditaDoacao() {
         </div>
         <div className="textarea-e-estado-categoria">
           <div className="caixa-doacao">
-            <Textarea 
-             name={"descricao"}
-             onChange={handleInputChange}
+            <Textarea
+              name={"descricao"}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -136,34 +136,32 @@ function CadastraEditaDoacao() {
             <p className="txt-retirada">Retirada:</p>
             <div className="primeira-parte-perguntas">
               <div className="perguntas-retirada-um">
-                <p className="p-das-selecoes">Leva o produto até o receptor?</p>
-              </div>
-              <div>
-                <SimNao
-                  name={"entrega"}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="perguntas-retirada-segunda-parte">
-            <div className="segunda-parte-perguntas">
-              <div className="perguntas-retirada-dois">
-                <p className="p-das-selecoes">Envia pelo correio?</p>
-                <p className="p-das-selecoes">Cobra taxa?</p>
-              </div>
-              <div>
-                <SimNao
-                  name={"enviaCorreio"}
-                  onChange={handleInputChange}
-                />
-                <SimNao
-                  name={"cobraTaxa"}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
+                <div className="selecoes-cadastro-doacao">
+                  <p className="p-das-selecoes-cadastro-doacao">Leva o produto até o receptor?</p>
+                  <SimNao
+                    name={"entrega"}
+                    onChange={handleInputChange}
+                  />
+                </div>
 
+                <div className="selecoes-cadastro-doacao">
+                  <p className="p-das-selecoes-cadastro-doacao">Envia pelo correio?</p>
+                  <SimNao
+                    name={"enviaCorreio"}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="selecoes-cadastro-doacao">
+                  <p className="p-das-selecoes-cadastro-doacao">Cobra taxa?</p>
+                  <SimNao
+                    name={"cobraTaxa"}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
         <div className="buttons-edita-doacao">
@@ -174,7 +172,7 @@ function CadastraEditaDoacao() {
             buttonName="Publicar"
             buttonHeigth="60%"
             buttonWidth="60%"
-           onClick={() => postarItem()}
+            onClick={() => postarItem()}
           />
         </div>
       </div>

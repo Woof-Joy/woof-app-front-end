@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../woof-joy-api";
-import "../css/aguardando-confirmacao.css"
+import "../css/aguardando-confirmacao.css";
 import Button from "./componentes-gerais/button";
 import { LocalDateTime } from "js-joda"; // Importe LocalDate corretamente
-
+import ModalCadastrarRelatorio from "../components/modais/ModalCadastrarRelatorio";
+import ModalLeituraRelatorio from "../components/modais/ModalLeituraRelatorio";
 
 
 
@@ -17,62 +18,37 @@ function AguardandoConfirmacao(props) {
         dataHoraFim,
         clienteNome,
         idClienteServico,
-        status
-    } = props
+        status,
+        relatorio
+    } = props;
 
-    const formtDateFim = LocalDateTime.parse(dataHoraFim)
-    const formtDateInicio = LocalDateTime.parse(dataHoraInicio)
+    const formtDateFim = LocalDateTime.parse(dataHoraFim);
+    const formtDateInicio = LocalDateTime.parse(dataHoraInicio);
 
-    // const [sendBody, setsendBody] = useState({
-    //     message: "",
-    //     idRemetente: userId,
-    //     idDestinatario: "",
-    //     tipo: "servico",
-    // });
-
-
-    // function sendMensage(mensagem) {
-    //     woofJoyApi
-    //         .post(`/notification`, sendBody, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //         })
-    //         .then((response) => {
-    //             console.log(response.status);
-
-    //             setsendBody({
-    //                 message:mensagem,
-    //                 idRemetente: userId,
-    //                 idDestinatario: idClienteServico,
-    //                 tipo: "doacao",
-    //             });
-    //         })
-    //         .catch((erroOcorrido) => {
-    //             console.log(erroOcorrido.mensagem);
-    //         });
-    // }
+    const [patchResponse, setPatchResponse] = useState({
+        status: status,
+    });
 
     function pathStatus() {
         woofJoyApi
-            .patch(`/servicos/${idServico}`, {
+            .patch(`/servicos/${idServico}`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
             .then((response) => {
                 console.log(response.data);
-                console.log(idServico)
+                console.log(idServico);
 
-                // sendMensage("Servico confirmado")
-                alert(response.status)
-                props.status(response.data.status); 
+                alert(response.status);
+                setPatchResponse(response.data);
+                props.status(response.data.status);
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
             });
     }
-    
+
     function deletService() {
         woofJoyApi
             .delete(`/servicos/${idServico}`, {
@@ -82,77 +58,122 @@ function AguardandoConfirmacao(props) {
             })
             .then((response) => {
                 console.log(response.data);
-
                 window.location.reload();
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido);
-                console.log(idServico)
-
+                console.log(idServico);
             });
     }
+
     
+    const [relatorioVal, setRelatorio] = useState(false);
+
+    function openRelatorio() {
+        setRelatorio(true);
+    }
+     function closeRelatorio() {
+        setRelatorio(false);
+    }
 
     return (
-        <>
+        <> 
+          {relatorioVal && (
+                <ModalCadastrarRelatorio
+                idServico={idServico}
+                onClose={closeRelatorio}          
+               />
+            )}
+
+               
+       
             <div className="container-dados-card-meus-servicos">
                 <div className="informacoes-parceiro-card-meus-servicos">
-                    {servico === "dogWalker" ? (
+                    <h3 style={{ fontSize: "25px", color: "black", padding: "3px" }} className="tipo-servico">
+                        {patchResponse.status}
+                    </h3>
+                    {servico === "Dog Walker" ? (
                         <h3 style={{ backgroundColor: "#DB4B90", borderRadius: "5px", color: "white", padding: "3px" }} className="tipo-servico">
-                            {servico} 
+                            {servico}
                         </h3>
                     ) : (
                         <h3 style={{ backgroundColor: "orange", borderRadius: "5px", color: "white", padding: "3px" }} className="tipo-servico">
-                            {servico} 
-                        </h3>)}
+                            {servico}
+                        </h3>
+                    )}
+                    
 
                     <h5>início: {formtDateInicio.dayOfMonth().toString()}/{formtDateInicio.monthValue().toString()}/{formtDateInicio.year().toString()} {formtDateInicio.hour().toString()}:{formtDateInicio.minute().toString()}</h5>
-                    <h5>término: {formtDateFim.dayOfMonth().toString()}/{formtDateFim.monthValue().toString()}/{formtDateFim.year().toString()} {formtDateInicio.hour().toString()}:{formtDateInicio.minute().toString()}</h5>
+                    <h5>término: {formtDateFim.dayOfMonth().toString()}/{formtDateFim.monthValue().toString()}/{formtDateFim.year().toString()} {formtDateFim.hour().toString()}:{formtDateFim.minute().toString()}</h5>
                     <h6 className="nome-prestador">cliente: {clienteNome}</h6>
                 </div>
                 <div className="status">
-
-                    {status === "aguardandoInicio" ? (
+                    {patchResponse.status === "Aguardando Confirmação" ? (
                         <>
                             <Button
-                                buttonName={"aceitar"}
+                                buttonName={"Aceitar"}
                                 fontColor={"white"}
                                 buttonBackColor={"green"}
                                 displayOn={"flex"}
                                 textShadow={"black"}
-                                buttonWidth={"50%"}
-                                buttonHeight={"40%"}
-                                onClick={()=>pathStatus()}
+                                buttonWidth={"70%"}
+                                buttonHeight={"70%"}
+                                onClick={() => pathStatus()}
                             />
                             <Button
-                                buttonName={"recusar"}
+                                buttonName={"Recusar"}
                                 fontColor={"white"}
                                 buttonBackColor={"red"}
                                 displayOn={"flex"}
                                 textShadow={"black"}
-                                buttonWidth={"50%"}
-                                buttonHeight={"40%"}
-                                onClick={()=>deletService()}
+                                buttonWidth={"70%"}
+                                buttonHeight={"70%"}
+                                onClick={() => deletService()}
                             />
                         </>
-                    ) : (
+                    ) : patchResponse.status === "Em andamento" ? (
                         <Button
-                            buttonName={status}
+                            buttonName={"Finalizar Servico"}
                             displayOn={"disable"}
                             fontColor={"white"}
                             buttonBackColor={"#DB4B90"}
                             textShadow={"black"}
-                            buttonWidth={"60%"}
+                            buttonWidth={"90%"}
+                            buttonHeight={"70%"}
+                            padding={"20px"}
+                            cursor={"auto"}
+                            onClick={() => pathStatus()}
+                        />
+                    ) : relatorio !== null ?(
+                        <Button
+                            buttonName={"Relatório Emitido"}
+                            displayOn={"disable"}
+                            fontColor={"white"}
+                            buttonBackColor={"green"}
+                            textShadow={"black"}
+                            buttonWidth={"90%"}
                             buttonHeight={"70%"}
                             padding={"20px"}
                             cursor={"auto"}
                         />
+                    ) : (
+                        <Button
+                            buttonName={"Emitir Relatório"}
+                            displayOn={"disable"}
+                            fontColor={"white"}
+                            buttonBackColor={"#DB4B90"}
+                            textShadow={"black"}
+                            buttonWidth={"90%"}
+                            buttonHeight={"70%"}
+                            padding={"20px"}
+                            cursor={"auto"}
+                            onClick={() => openRelatorio()}
+                        />
                     )}
-
-
                 </div>
             </div>
         </>
     );
 }
+
 export default AguardandoConfirmacao;

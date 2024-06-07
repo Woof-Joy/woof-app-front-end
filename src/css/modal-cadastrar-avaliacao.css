@@ -100,6 +100,8 @@ a {color: #DB4B90;
     border: none;
     font-size: 20px;
     padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-bottom: 1vh;
     text-align: center;
 }
 

@@ -1,25 +1,16 @@
-import "../../css/modal-agendar-servico.css"
+import "../../css/modal-agendar-servico.css";
 import Button from "../componentes-gerais/button";
 import React, { useEffect, useState } from "react";
 import woofJoyApi from "../../woof-joy-api";
 
-
-function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendOn, parceiroWoofJoy }) {
+function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parceiroWoofJoy }) {
     const [styleEdition, setStyleEdition] = useState({
         opacity: opacityOn,
-        width: widthOn
+        width: widthOn,
     });
-    const contatoIdAtual = sessionStorage.getItem("contatoId")
-    const userId = sessionStorage.getItem("userId")
-    const token = sessionStorage.getItem("token")
-
-    useEffect(() => {
-        setStyleEdition({
-            opacity: opacityOn,
-        });
-    }, [opacityOn]);
-
-
+    const contatoIdAtual = sessionStorage.getItem("contatoId");
+    const userId = sessionStorage.getItem("userId");
+    const token = sessionStorage.getItem("token");
 
     const [usuario, setUsuario] = useState({
         id: "",
@@ -33,7 +24,7 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
         parceiro: null,
         cliente: {
             idCliente: "",
-            dogList: []
+            dogList: [],
         },
         role: "",
         listaItens: [],
@@ -43,56 +34,79 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
             logradouro: "",
             numero: "",
             localidade: "",
-            uf: ""
-        }
+            uf: "",
+        },
     });
-
 
     const [servicoBody, setServicoBody] = useState({
-        inicioDoServico: "2020-12-12T12:12:12",
-        fimDoServico: "2025-12-12T12:12:12",
-        idCachorros: [1],
+        inicioDoServico: "",
+        fimDoServico: "",
         idParceiro: contatoIdAtual,
-        tipoServico: "dogWalker"
+        tipoServico: "",
+        idCliente: userId,
     });
 
-    const [sendBody, setsendBody] = useState({
-        message: `Serviço Solicitado para com início: ${servicoBody.inicioDoServico},`+
-                  `sendo finalizado na data: ${servicoBody.inicioDoServico}.\n`+
-                  `Tipo de serviço: ${servicoBody.tipoServico}`,
+    const [sendBody, setSendBody] = useState({
+        message: "",
         idRemetente: userId,
         idDestinatario: contatoIdAtual,
         tipo: "doacao",
     });
 
     const [tipoServico, setTipoServico] = useState("");
+    const [errorMessages, setErrorMessages] = useState({ inicio: "", fim: "" });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setUsuario({
-            ...usuario,
-            [name]: value
-        });
 
-        if (name === "inicioTime" || name === "fimTime") {
-            setServicoBody({
-                ...servicoBody,
-                [name]: value
-            });
-        }
+        // Formatando as datas no formato ISO 8601
+        const formattedDate = new Date(value).toISOString();
+
+        setServicoBody((prevServicoBody) => ({
+            ...prevServicoBody,
+            [name]: formattedDate,
+        }));
+
+        validateDates(name, formattedDate);
+
+        setSendBody((prevSendBody) => ({
+            ...prevSendBody,
+            message: `Serviço Solicitado para com início: ${name === "inicioDoServico" ? formattedDate : servicoBody.inicioDoServico}, ` +
+                `sendo finalizado na data: ${name === "fimDoServico" ? formattedDate : servicoBody.fimDoServico}. \n` +
+                `Tipo de serviço: ${tipoServico}`,
+        }));
     };
 
     const handleTipoServicoChange = (event) => {
         setTipoServico(event.target.value);
-        setServicoBody({
-            ...servicoBody,
-            tipoServico: event.target.value
-        });
+        setServicoBody((prevServicoBody) => ({
+            ...prevServicoBody,
+            tipoServico: event.target.value,
+        }));
+
+        setSendBody((prevSendBody) => ({
+            ...prevSendBody,
+            message: `Serviço Solicitado, com início: ${servicoBody.inicioDoServico}, ` +
+                `sendo finalizado na data: ${servicoBody.fimDoServico}. \n` +
+                `Tipo de serviço: ${event.target.value}`,
+        }));
     };
 
+    const validateDates = (name, value) => {
+        const currentDateTime = new Date().toISOString();
+        let errors = { ...errorMessages };
 
+        if (name === "inicioDoServico") {
+            errors.inicio = value < currentDateTime ? "A data de início deve ser maior que a data atual." : "";
+        }
+        if (name === "fimDoServico") {
+            errors.fim = value <= servicoBody.inicioDoServico ? "A data de fim deve ser maior que a data de início." : "";
+        }
 
-    function sendMensage(sendBody) {
+        setErrorMessages(errors);
+    };
+
+    const sendMensage = (sendBody) => {
         woofJoyApi
             .post(`/notification`, sendBody, {
                 headers: {
@@ -103,7 +117,7 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
                 console.log(response.data);
                 console.log(response.status);
 
-                setsendBody({
+                setSendBody({
                     message: "",
                     idRemetente: userId,
                     idDestinatario: contatoIdAtual,
@@ -113,11 +127,14 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido.mensagem);
             });
-    }
-    const [opacityAfterAgendamento, setOpacityAfterAgendamento] = useState(0);
-
+    };
 
     const agendarServico = () => {
+        if (errorMessages.inicio || errorMessages.fim) {
+            alert("Por favor, corrija os erros antes de agendar o serviço.");
+            return;
+        }
+
         woofJoyApi
             .post(`/servicos`, servicoBody, {
                 headers: {
@@ -125,14 +142,17 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
                 },
             })
             .then((resposta) => {
+                cancelarOn();
                 alert(resposta.status);
-                sendMensage(sendBody)
+                sendMensage(sendBody);
                 setStyleEdition({
-                    opacity:0
-                })
+                    opacity: 0,
+                });
             })
             .catch((erro) => {
-                alert(`Erro ao criar o usuário: ${erro.message}`);
+                alert(`Preencha todos os campos corretamente`);
+                console.log(servicoBody)
+                alert(erro.data)
             });
     };
 
@@ -150,84 +170,75 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, sendO
 
     useEffect(() => {
         setStyleEdition({
-            opacity: opacityOn
+            opacity: opacityOn,
         });
         getInfoCliente();
     }, [opacityOn]);
 
     return (
         <>
-            <div style={styleEdition} className="container-modal-agendar-servico">
-                <h2>Agende o serviço desejado</h2>
-                <br />
+            <div className="fundo-modal">
+                <div style={styleEdition} className="container-modal-agendar-servico">
+                    <h2>Agende o serviço desejado</h2>
+                    <br />
 
-                <h5>Serviço</h5>
-                <select
-                    placeholder="Serviços disponíveis"
-                    className="select-modal-agendar-servico"
-                    name="tipoServico"
-                    value={tipoServico}
-                    onChange={handleTipoServicoChange}
-                >
-                    <option value="" disabled>Escolha...</option>
-                    <option key={servicoBody.tipoServico} value={servicoBody.tipoServico}>
-                        dogWalker
-                    </option>
-                    <option key={servicoBody.tipoServico} value={servicoBody.tipoServico}>
-                        dogSitter
-                    </option>
-                </select>
+                    <h5>Serviço</h5>
+                    <select
+                        placeholder="Serviços disponíveis"
+                        className="select-modal-agendar-servico"
+                        name="tipoServico"
+                        value={tipoServico}
+                        onChange={handleTipoServicoChange}
+                    >
+                        <option value="" disabled>Escolha...</option>
+                        <option value="Dog Walker">Dog Walker</option>
+                        <option value="Dog Sitter">Dog Sitter</option>
+                    </select>
 
-                <div className="container-dados-modal-agendar-servico">
-                    <h5>Parceiro WoofJoy: {parceiroWoofJoy}</h5>
-                </div>
-                <div className="container-inputs-modal-agendar-servico">
-                    <h5>Início do serviço</h5>
-                    <div className="div-inputs-modal-agendar-servico">
-                        <input
-                            className="inputs-modal-agendar-servico"
-                            type="datetime-local"
-                            placeholder="Data"
-                            name="inicioTime"
-                            value={servicoBody.inicioDoServico}
-                            onChange={handleInputChange}
+                    <div className="container-dados-modal-agendar-servico">
+                        <h5>Parceiro WoofJoy: {parceiroWoofJoy}</h5>
+                    </div>
+                    <div className="container-inputs-modal-agendar-servico">
+                        <h5>Início do serviço</h5>
+                        <div className="div-inputs-modal-agendar-servico">
+                            <input
+                                className="inputs-modal-agendar-servico"
+                                type="datetime-local"
+                                placeholder="Data"
+                                name="inicioDoServico"
+                                value={servicoBody.inicioDoServico.split(".")[0]}
+                                onChange={handleInputChange}
+                            />
+                            {errorMessages.inicio && <p className="error-message">{errorMessages.inicio}</p>}
+                        </div>
+                        <h5>Fim do serviço</h5>
+                        <div className="div-inputs-modal-agendar-servico">
+                            <input
+                                className="inputs-modal-agendar-servico"
+                                type="datetime-local"
+                                placeholder="Hora"
+                                name="fimDoServico"
+                                value={servicoBody.fimDoServico.split(".")[0]}
+                                onChange={handleInputChange}
+                            />
+                            {errorMessages.fim && <p className="error-message">{errorMessages.fim}</p>}
+                        </div>
+                    </div>
+
+                    <div className="botoes-modal-agendar-servico">
+                        <Button
+                            buttonName="Cancelar"
+                            fontColor="#DB4B90"
+                            buttonBackColor="#D9D9D9"
+                            onClick={() => cancelarOn()}
+                        />
+                        <Button
+                            buttonName="Agendar"
+                            fontColor="white"
+                            buttonBackColor="#DB4B90"
+                            onClick={() => agendarServico()}
                         />
                     </div>
-                    <h5>Fim do serviço</h5>
-                    <div className="div-inputs-modal-agendar-servico">
-                        <input
-                            className="inputs-modal-agendar-servico"
-                            type="datetime-local"
-                            placeholder="Hora"
-                            name="fimTime"
-                            value={servicoBody.fimDoServico}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                </div>
-
-                <h5>Selecione o pet:</h5>
-                <select placeholder="Seus pets" className="select-modal-agendar-servico" name="idCachorros" id="" onChange={handleInputChange}>
-                    <option value="" disabled>Escolha...</option>
-                    {/* {usuario.cliente.dogList.map((dog) => (
-                        <option key={dog.id} value={dog.id}>{dog.nome}</option>
-                    ))} */}
-                </select>
-
-
-                <div className="botoes-modal-agendar-servico">
-                    <Button
-                        buttonName="Cancelar"
-                        fontColor="#DB4B90"
-                        buttonBackColor="#D9D9D9"
-                        onClick={cancelarOn}
-                    />
-                    <Button
-                        buttonName="Agendar"
-                        fontColor="white"
-                        buttonBackColor="#DB4B90"
-                        onClick={() => agendarServico()}
-                    />
                 </div>
             </div>
         </>

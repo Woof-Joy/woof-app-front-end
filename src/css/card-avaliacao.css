@@ -1,0 +1,82 @@
+.card-servico-avaliacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    box-shadow: 2px 2px 3px #DB4B90;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #DB4B90;
+    color: black;
+    max-width: 80%;
+    min-width: 65%;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+
+    transition: color 0.2s ease, background-color 0.3s ease;
+
+}
+
+
+
+
+.container-dados-avaliacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 2%;
+    margin-left: 2%;
+    overflow: hidden;
+
+}
+
+
+
+.nota-avaliacao {
+    display: flex;
+    justify-content: space-between;
+    width: 55px;
+    font-size: 15px;
+}
+
+
+
+.nome-prestador-avaliacao {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+
+
+a {
+    color: #DB4B90;
+    cursor: pointer;
+    text-decoration: none;
+    }
+
+.descricao-avaliacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    text-align: justify;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 3px #DB4B90;
+    border: 1px solid #DB4B90;
+    border-radius: 10px;
+    margin: 2%;
+    overflow-x: auto;
+    max-height: 10vh;
+    min-height: 10vh;
+}
+
+.descricao-texto-card-parceiro-avaliacao {
+    margin: 3%;
+    font-size: 13px;
+    text-shadow: rgb(255, 255, 255) -1px 2px 2px;
+    align-items: center;
+}

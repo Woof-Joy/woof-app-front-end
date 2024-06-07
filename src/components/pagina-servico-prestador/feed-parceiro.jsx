@@ -10,6 +10,7 @@ import ImgRichard from '../../imgs/feed-parceiro/foto-richard.png'
 import ImgLucca from '../../imgs/feed-parceiro/foto-lucca.png'
 import chat from "../../imgs/meus-servicos/icon-chat.png"
 import foto from "../../imgs/mock/semfoto.jpg";
+import ModalAgendarServico from "../modais/ModalAgendarServico";
 
 
 import IconDogWalker from '../../imgs/feed-parceiro/icon-dog-walker.png'
@@ -34,7 +35,6 @@ import { Link } from "react-router-dom";
 
 
 function FeedParceiro() {
-
   const userId = sessionStorage.getItem("userId")
   const token = sessionStorage.getItem("token")
   const idParceiro = sessionStorage.getItem("idParceiroFeed")
@@ -47,8 +47,15 @@ function FeedParceiro() {
   const servicos = sessionStorage.getItem("servicosParceiroFeed")
   const dataEntrada = sessionStorage.getItem("dataEntradaParceiroFeed")
 
+  const [servicosParceiroList, setServicosList] = useState([]);
 
 
+  const [avaliacaoMedia, setAvaliacaoMedia] = useState("");
+  const [viewAvaliacao, setViewAvaliacao] = useState(false);
+  const [servicoModal, setServicoModal] = useState(false);
+
+
+  const [listaAvaliacoes, setListaAvaliacoes] = useState([]);
   const [parceiroInfo, setParceiroInfo] = useState({
     idUser: "",
     nome: "",
@@ -61,108 +68,121 @@ function FeedParceiro() {
     aceitaDogGrande: true,
     aceitaDogCio: false,
     descricao: ""
-  })
+  });
+
   const enderecoLogado = sessionStorage.getItem("endereco");
 
-  woofJoyApi
-    .get(`/parceiros/${idParceiro}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      setParceiroInfo(response.data);
-      console.log(response.data)
-      //alert(response.status)
-    })
-    .catch((erroOcorrido) => {
-      console.log(erroOcorrido);
-    });
+  function avaliacaoTrue() {
+    if (viewAvaliacao) {
+      setViewAvaliacao(false)
+    } else {
+      setViewAvaliacao(true)
+    }
+  }
 
+  const setDisplayFlex = () => {
+    setServicoModal(true);
+};
 
+const setModelCancelar = () => {
+    setServicoModal(false);
+};
 
-  /*COMPONENTE ATENDIMENTO*/
+  useEffect(() => {
+    listar();
 
-  const iconDoisPet = IconDoisPet;
-  const iconPetEspecial = IconPetEspecial;
-  const iconDogIdoso = IconDogIdoso;
-  const iconDogBravo = IconPetBravo;
-  const iconDogGrande = IconGrandePorte;
-  const iconFemeaCio = IconFemeaCio;
+    const intervalId = setInterval(() => {
+      listar();
+    }, 10 * 60 * 1000); // Ajuste para 10 minutos
+    return () => clearInterval(intervalId);
+  }, []);
 
-  const iconCasa = IconCasa;
-  const iconAreaExterna = IconAreaExterna;
-  const iconTemAnimais = IconTemAnimais;
-  const iconCrianca = IconCrianca;
-  const iconRotasFuga = IconRotasFuga;
-  const iconSobeSofa = IconSobeSofa;
-
-
-  const doisPets = ["Permitido até dois Pets"]
-  const petEspecial = ["Cuida de pets especiais"]
-  const petIdoso = ["Aceita Pet idoso"]
-  const petBravo = ["Aceita pet bravo"]
-  const petGrande = ["Aceita pet grande porte"]
-  const petCio = ["Não aceita fêmea no cio"]
-
-  const petCasa = ["Mora em casa"]
-  const petAreaExterna = ["Possui área externa"]
-  const petTemAnimais = ["Tem animais"]
-  const petCrianca = ["Não tem crianças"]
-  const petRotasFuga = ["Sem rotas de fuga"]
-  const petsSobeSofa = ["Pode subir no sofá"]
-
-  /*COMPONENTE AVALIACAO*/
-  const imgDamares = ImgDamares;
-  const clienteNome1 = ["Damares Oliveira"]
-  const descricaoServico1 = ["5,0 - Serviço utilizado:  Dog Walker"]
-  const descricaoAvaliacao1 = ["Adorei o atendimento dele, o meu cachorro se sentiu muito confortável"]
-
-  const imgRichard = ImgRichard;
-  const clienteNome2 = ["Damares Oliveira"]
-  const descricaoServico2 = ["4,0 - Serviço utilizado:  Dog Walker"]
-  const descricaoAvaliacao2 = ["Bom. O meu pet chegou em casa muito bem"]
-
-  const imgLucca = ImgLucca;
-  const clienteNome3 = ["Damares Oliveira"]
-  const descricaoServico3 = ["5,0 - Serviço utilizado:  Dog Walker"]
-  const descricaoAvaliacao3 = ["Adorei o atendimento dele, meu pet fica muito feliz com os passeios e a plataforma achei pratica"]
-
-  function getInfoPrestador() {
+  useEffect(() => {
     woofJoyApi
-      .put(`/users/${userId}`, {
+      .get(`/parceiros/${idParceiro}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
+        setParceiroInfo(response.data);
+        console.log(response.data)
       })
       .catch((erroOcorrido) => {
-        console.log(erroOcorrido.mensagem);
+        console.log(erroOcorrido);
+      });
+  }, [idParceiro, token]);
+
+  function listar() {
+    woofJoyApi
+      .get(`/avaliacoes/parceiro/${idParceiro}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setListaAvaliacoes(response.data);
+        if (response.data.length > 0) {
+          const somaNotas = response.data.reduce((soma, avaliacao) => soma + avaliacao.nota, 0);
+          setAvaliacaoMedia((somaNotas / response.data.length).toFixed(2));
+        } else {
+          setAvaliacaoMedia("0");
+        }
+        console.log(response.data);
+      })
+      .catch((erroOcorrido) => {
+        console.log(erroOcorrido);
       });
   }
+
+  useEffect(() => {
+    listarServicos();
+
+    const intervalId = setInterval(() => {
+      listarServicos();
+    }, 1 * 60 * 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  function listarServicos() {
+    woofJoyApi
+      .get(`/ficha/parceiro/${idParceiro}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => {
+        console.log(response.data);
+        setServicosList(response.data);
+      })
+      .catch((erroOcorrido) => {
+        console.log(userId);
+        console.log("Servicos:" + erroOcorrido);
+      });
+  }
+
 
   function contatoDados() {
     sessionStorage.setItem("contatoName", nome);
     sessionStorage.setItem("contatoId", idParceiro);
   }
 
-
   return (
     <>
+      {servicoModal === true && (
+                        <ModalAgendarServico
+                            idParceiro={userId}
+                            cancelarOn={() => setModelCancelar()}
+                            parceiroWoofJoy={parceiroInfo.nome}
+                        />
+                    )}
       <div className="feed-parceiro-container">
-        < MenuCliente />
-        <Link to={"/chat"} onClick={() => contatoDados()} className="footer-feed">
-          <img className="icon-chat-historico-servicos" src={chat} alt="icon-chat" />
-        </Link>
+        <MenuCliente />
+
 
         <img className="foto-perfil-image-feed" src={foto} alt="" />
 
         <section className="container-info-parceiro">
-
-
           <div className="conteudo-info-parceiro">
             <p className="nome-parceiro">{parceiroInfo.nome}</p>
 
@@ -189,127 +209,145 @@ function FeedParceiro() {
               </div>
               <div className="avaliacao">
                 <span className="icon-avaliacao">
-                  <i className="bi bi-star-fill"></i>
                 </span>
                 <span className="txt-avaliacao">
                   <p>
-                    <b>{parceiroInfo?.fichas?.[0]?.servicos?.[0]?.nota ?? 0}</b>
+                    <b>{avaliacaoMedia}★</b>
                   </p>
                 </span>
               </div>
+              <div className="avaliacao">
+                <span className="icon-avaliacao">
+                </span>
+                <span className="txt-avaliacao">
+                  <p>
+                  <button className='modal-avaliacao-btn-enviar-avaliacao' onClick={() => setDisplayFlex()}>Agendar Servico</button>
+                  </p>
+                </span>
+              </div>
+
             </div>
             <div className="txt-apresentacao">
               <p>
                 {parceiroInfo.descricao}
               </p>
             </div>
-
-
           </div>
         </section>
 
         <section className="carrossel-servicos">
-          <div className="conteudo-carrossel">
-            <div className="carrossel">
-              <BootstrapCarousel />
-            </div>
-
-          </div>
-
           <div className="conteudo-servicos">
             <div className="info-servicos-prestados">
               <p className="teste-servico">Serviços</p>
-              <p className="txt-descricao-servico">Qtd. Serviços Prestados: {qtdServicos}</p>
               <div className="tipo-servicos">
                 <div className="dog-walker">
-                  <img className="feed-parceiro-img" src={IconDogWalker} alt="icon dog walker"></img>
-                  <div className="dog-walker-txt">
-                    <div className="titulo">Dog Walker</div>
-                    <p>R$ {parceiroInfo?.fichas?.[0]?.valor != null ? parceiroInfo.fichas[0].valor : 'Informe um valor'}/ Passeio</p>
-                    <p>Duração: 40min</p>
-                  </div>
+
+                  {servicosParceiroList.map((ficha) => {
+                    if (ficha.tipoServico === "Dog Walker") {
+                      return (
+                        <>
+                          <img className="feed-parceiro-img" src={IconDogWalker} alt="icon dog walker"></img>
+
+                          <div className="dog-walker-txt" key={ficha.id}>
+                            <div className="titulo">Dog Walker</div>
+                            <p>R$ {ficha.valor}</p>
+                            <p>Qtd. Serviços Prestados: {ficha.qtdServico}</p>
+                          </div>
+                        </>
+                      );
+                    }
+                    return null; // Retorna null para não renderizar nada se a ficha não corresponder
+                  })}
                 </div>
 
                 <div className="dog-sitter">
-                  <img className="feed-parceiro-img" src={IconDogSitter} alt="icon dog sitter"></img>
-                  <div className="dog-sitter-txt">
-                    <div className="titulo">Dog Sitter</div>
-                  </div>
+                  {servicosParceiroList.map((ficha) => {
+                    if (ficha.tipoServico === "Dog Sitter") {
+                      return (
+                        <>
+                          <img className="feed-parceiro-img" src={IconDogSitter} alt="icon dog sitter"></img>
+
+                          <div className="dog-sitter-txt" key={ficha.id}>
+                            <div className="titulo">Dog Sitter</div>
+                            <p>R$ {ficha.valor}</p>
+                            <p>Qtd. Serviços Prestados: {ficha.qtdServico}</p>
+                          </div>
+                        </>
+
+                      );
+                    }
+                    return null; // Retorna null para não renderizar nada se a ficha não corresponder
+                  })}
                 </div>
+
               </div>
             </div>
-
           </div>
         </section>
 
         <section className="observacoes">
           <p className="titulo-obs-acom">Observacões</p>
-          <p className="txt-obs-acom">(vale para os dois serviços)</p>
           <div className="todas-observacoes">
-
             <div className="obs-1">
-              < TipoAtendimento icon={iconDoisPet} descricao={doisPets}
-                icon2={iconPetEspecial} descricao2={petEspecial} />
+              <TipoAtendimento icon={IconDoisPet} descricao={["Permitido até dois Pets"]}
+                icon2={IconPetEspecial} descricao2={["Cuida de pets especiais"]} />
             </div>
 
             <div className="obs-2">
-              < TipoAtendimento icon={iconDogIdoso} descricao={petIdoso}
-                icon2={iconDogBravo} descricao2={petBravo} />
+              <TipoAtendimento icon={IconDogIdoso} descricao={["Aceita Pet idoso"]}
+                icon2={IconPetBravo} descricao2={["Aceita pet bravo"]} />
             </div>
 
             <div className="obs-3">
-              < TipoAtendimento icon={iconDogGrande} descricao={petGrande}
-                icon2={iconFemeaCio} descricao2={petCio} />
+              <TipoAtendimento icon={IconDogIdoso} descricao={["Aceita pet grande porte"]}
+                icon2={IconFemeaCio} descricao2={["Aceita fêmea no cio"]} />
             </div>
-
           </div>
         </section>
 
-        <section className="acomodacoes">
-          <p className="titulo-obs-acom">Acomodação </p>
-          <p className="txt-obs-acom">(Só no caso de pet sitter)</p>
+        <section className="acomodacao">
+          <p className="titulo-obs-acom">Acomodação</p>
           <div className="todas-acomodacoes">
-            <div className="acom-4">
-              < TipoAtendimento icon={iconCasa} descricao={petCasa}
-                icon2={iconAreaExterna} descricao2={petAreaExterna} />
+            <div className="acom-1">
+              <TipoAtendimento icon={IconCasa} descricao={["Mora em Casa"]}
+                icon2={IconAreaExterna} descricao2={["Tem Área externa"]} />
             </div>
 
-            <div className="acom-5">
-              < TipoAtendimento icon={iconTemAnimais} descricao={petTemAnimais}
-                icon2={iconCrianca} descricao2={petCrianca} />
+            <div className="acom-2">
+              <TipoAtendimento icon={IconTemAnimais} descricao={["Tem animais em casa"]}
+                icon2={IconCrianca} descricao2={["Não tem crianças em casa"]} />
             </div>
 
-            <div className="acom-6">
-              < TipoAtendimento icon={iconRotasFuga} descricao={petRotasFuga}
-                icon2={iconSobeSofa} descricao2={petsSobeSofa} />
+            <div className="acom-3">
+              <TipoAtendimento icon={IconRotasFuga} descricao={["Sem rotas de fuga"]}
+                icon2={IconSobeSofa} descricao2={["Pode subir no sofá"]}
+              />
             </div>
           </div>
         </section>
-        <div className="avaliacoes">
-          <p className="titulo-avaliacao">Avaliações</p>
-          <div className="avaliacao-um">
-            {(parceiroInfo?.fichas?.[0]?.servicos?.length ?? 0)  > 0 ? (
-              parceiroInfo.fichas[0].servicos.map((servico, index) => (
-                <div key={index}>
+
+        <section className="feed-avaliacoes-container">
+          <button className='modal-avaliacao-btn-enviar-avaliacao' onClick={() => avaliacaoTrue()}>Ver Avaliações</button>
+          {viewAvaliacao && (
+            <div className="card-avaliacoes">
+              {listaAvaliacoes.length > 0 ? (
+                listaAvaliacoes.map((avaliacao) => (
                   <Avaliacao
-                    imagem={foto}
-                    clienteNome={servico.nomeParceiro}
-                    descricaoAvaliacao={servico.descricao}
+                    key={avaliacao.id}
+                    clienteNome={avaliacao.nomeCliente}
+                    nota={avaliacao.nota}
+                    comentario={avaliacao.comentario}
                   />
-                </div>
-              ))
-            ) : (
-              <p>Seja o primeiro a avaliar</p>
-            )}
-          </div>
-
-
-        </div>
+                ))
+              ) : (
+                <p>O Parceiro ainda não foi avaliado.</p>
+              )}
+            </div>
+          )}
+        </section>
       </div>
     </>
   );
-
 }
-
 
 export default FeedParceiro;

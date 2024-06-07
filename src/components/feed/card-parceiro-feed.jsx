@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import woofJoyApi from "../../woof-joy-api";
 import "../../css/card-parceiro-feed.css";
 import point from "../../imgs/feed-parceiro/point-localizacao.png";
 
@@ -12,8 +13,45 @@ function CardParceiro(props) {
         uf,
         descricao,
         avaliacao,
-        imagem
+        imagem,
+        idParceiro
     } = props;
+
+    const [avaliacaoMedia, setAvaliacaoMedia] = useState("");
+    const [listaAvaliacoes, setListaAvaliacoes] = useState([]);
+
+    useEffect(() => {
+        listar();
+
+        const intervalId = setInterval(() => {
+            listar();
+        }, 10 * 60 * 1000); // Ajuste para 10 minutos
+        return () => clearInterval(intervalId);
+    }, []);
+
+    function listar() {
+        const token = sessionStorage.getItem("token");
+
+        woofJoyApi
+            .get(`/avaliacoes/parceiro/${idParceiro}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                setListaAvaliacoes(response.data);
+                if (response.data.length > 0) {
+                    const somaNotas = response.data.reduce((soma, avaliacao) => soma + avaliacao.nota, 0);
+                    setAvaliacaoMedia((somaNotas / response.data.length).toFixed(2));
+                } else {
+                    setAvaliacaoMedia("0");
+                }
+                console.log(response.data);
+            })
+            .catch((erroOcorrido) => {
+                console.log(erroOcorrido);
+            });
+    }
 
     return (
         <>
@@ -44,7 +82,7 @@ function CardParceiro(props) {
                 </div>
 
                 <div className="container-estrelas">
-                    <div className="avaliacao">{avaliacao} ★</div>
+                    <div className="avaliacao">{avaliacaoMedia} ★</div>
                 </div>
             </div>
         </>
