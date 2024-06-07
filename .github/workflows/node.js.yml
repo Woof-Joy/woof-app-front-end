@@ -9,7 +9,8 @@ on:
 jobs:
   ci:
     runs-on: woof-runner
-
+    outputs:
+      atual: ${{ steps.ci-app.outputs.atual }}
     steps:
       - name: Clone Repositório
         uses: actions/checkout@v4
@@ -21,10 +22,11 @@ jobs:
           cache: 'npm'
       
       - name: CI APP
+        id: ci-app
         run: |
           sudo npm install --force
           sudo npm run build
-          pwd
+          echo "atual=$(pwd)" >> GITHUB_OUTPUTS
 
   cd:
     needs: [ci]
@@ -32,9 +34,9 @@ jobs:
     steps:
       - name: CD APP
         run: |
-          export atual=$(pwd)
+          export atual=${{ steps.ci.outputs.atual }}
           cd /var/www/html/
-          sudo rm -r *
+          //sudo rm -r *
           cd $atual/build
           sudo cp -r * /var/www/html/
           sudo systemctl restart nginx 
