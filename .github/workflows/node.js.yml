@@ -7,7 +7,7 @@ on:
     branches: [ "teste-1" ]
 
 jobs:
-  build:
+  ci:
     runs-on: woof-runner
 
     steps:
@@ -25,7 +25,10 @@ jobs:
           sudo npm install --force
           sudo npm run build
           pwd
-      
+
+  cd:
+    runs-on: woof-runner
+    steps:
       - name: CD APP
         run: |
           export atual=$(pwd)
