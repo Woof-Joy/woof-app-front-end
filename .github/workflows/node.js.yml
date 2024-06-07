@@ -31,7 +31,11 @@ jobs:
         run: |
           sudo npm install --force
           sudo npm run build
-          echo "atual=$(pwd)" >> GITHUB_OUTPUTS
+          export atual=$(pwd)
+          cd /var/www/html/
+          # sudo rm -r *
+          cd $atual/build
+          sudo cp -r * /var/www/html/
 
   cd:
     needs: [ci]
@@ -39,9 +43,5 @@ jobs:
     steps:
       - name: CD APP
         run: |
-          export atual=${{ steps.ci.outputs.atual }}
-          cd /var/www/html/
-          # sudo rm -r *
-          cd $atual/build
-          sudo cp -r * /var/www/html/
+          
           sudo systemctl restart nginx 
