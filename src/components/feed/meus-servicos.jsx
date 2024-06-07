@@ -25,7 +25,7 @@ function MeusServicos() {
 
     function listarServicos() {
         woofJoyApi
-            .get(`/ficha/parceiro/${userId}`, {
+            .get(`/ficha/parceiro/31`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
