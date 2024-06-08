@@ -429,6 +429,10 @@ function FeedParceiro() {
                                 </div>
                             </div>
                         </div>
+                        <div className="feed-p-edit-btn-pgto">
+                            <p>Seja um <span className="feed-p-edit-pgto-bold">parceiro premium</span> na Woof Joy:</p>
+                            <button className="feed-p-edit-pgto-btn-confira">Confira</button>
+                        </div>
 
                     </div>
                 </section>
