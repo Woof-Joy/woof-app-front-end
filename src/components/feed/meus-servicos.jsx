@@ -6,8 +6,7 @@ import AguardandoConfirmacao from "../aguardando-confirmacao";
 
 function MeusServicos() {
 
-    // const userId = sessionStorage.getItem("userId");
-    const userId = 2;
+    const userId = sessionStorage.getItem("userId");
     const token = sessionStorage.getItem("token");
 
     const [servicosParceiroList, setServicosList] = useState([]);
@@ -25,7 +24,7 @@ function MeusServicos() {
 
     function listarServicos() {
         woofJoyApi
-            .get(`/ficha/parceiro/31`, {
+            .get(`/ficha/parceiro/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

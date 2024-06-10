@@ -39,7 +39,7 @@ function Menu() {
                         </div>
                     )}
 
-                    {/* Chat */}
+                    {/* Chat
                     <div className="todos-menu-item">
                         <li className="menu-item">
                             <Link to="/chat">
@@ -51,9 +51,9 @@ function Menu() {
                                 </a>
                             </Link>
                         </li>
-                    </div>
+                    </div> */}
 
-                    {/* Doação */}
+                    {/* Doação
                     <div className="todos-menu-item">
                         <li className="menu-item">
                             <Link to="/doacao">
@@ -65,7 +65,7 @@ function Menu() {
                                 </a>
                             </Link>
                         </li>
-                    </div>
+                    </div> */}
 
                     {/* Serviços */}
                     {role === "P" && (

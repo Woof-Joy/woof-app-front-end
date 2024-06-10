@@ -4,10 +4,8 @@ import Menu from "../componentes-gerais/MenuCliente";
 import "../../css/meus-servicos.css";
 import CardHistorico from "../card-historico";
 
-
 function HistoricoClienteServicos() {
-    const userId = 16
-    // const userId = sessionStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
     const token = sessionStorage.getItem("token");
 
     const [servicosParceiroList, setServicosList] = useState([]);
@@ -43,13 +41,15 @@ function HistoricoClienteServicos() {
         setFiltroStatus(event.target.value);
     };
 
-    const servicosFiltrados = servicosParceiroList.filter((servicos) => {
-        if (filtroStatus === "todos") return true;
-        if (filtroStatus === "agendados") return servicos.status === "Aguardando Confirmação" 
-        if (filtroStatus === "andamento") return servicos.status === "Em andamento";
-        if (filtroStatus === "realizados") return servicos.status === "Concluído";
-        return false;
-    });
+    const servicosFiltrados = Array.isArray(servicosParceiroList)
+        ? servicosParceiroList.filter((servicos) => {
+            if (filtroStatus === "todos") return true;
+            if (filtroStatus === "agendados") return servicos.status === "Aguardando Confirmação";
+            if (filtroStatus === "andamento") return servicos.status === "Em andamento";
+            if (filtroStatus === "realizados") return servicos.status === "Concluído";
+            return false;
+        })
+        : [];
 
     return (
         <>
@@ -59,7 +59,7 @@ function HistoricoClienteServicos() {
                 <div className="header-meus-servicos">
                     <div className="titulo-meus-servicos">
                         <h1>Historico de Serviços</h1>
-                        <h4>Aqui você pode ver todos os serviços que voce agendou.</h4>
+                        <h4>Aqui você pode ver todos os serviços que você agendou.</h4>
 
                         <div className="filtros-meus-servicos">
                             <h6>
@@ -76,7 +76,6 @@ function HistoricoClienteServicos() {
                                     <option value="realizados">Concluído</option>
                                 </select>
                             </h6>
-
                         </div>
                     </div>
                 </div>
@@ -97,7 +96,7 @@ function HistoricoClienteServicos() {
                             />
                         ))
                     ) : (
-                        <p> Você ainda não tem serviços agendados.</p>
+                        <p>Você ainda não agendou nenhum serviço.</p>
                     )}
                 </div>
             </div>

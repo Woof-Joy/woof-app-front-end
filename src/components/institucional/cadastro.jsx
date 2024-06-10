@@ -3,127 +3,71 @@ import "../../css/cadastro.css";
 import woofJoyApi from "../../woof-joy-api";
 import customEnv from "../../process";
 
-import imgLogoWoofJoy from "../../imgs/logo-branca-footer.png"
-import imgIconBtnVoltar from "../../imgs/icon-voltar.png"
-import imgIconAtencao from "../../imgs/cadastro/icon-atencao.png"
+import imgLogoWoofJoy from "../../imgs/logo-branca-footer.png";
+import imgIconBtnVoltar from "../../imgs/icon-voltar.png";
+import imgIconAtencao from "../../imgs/cadastro/icon-atencao.png";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import Button from "../componentes-gerais/button";
 
 function Cadastro() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const role = sessionStorage.getItem("role");
+
     const [mensagemErro, setMensagemErro] = useState({
         texto: "",
-        style: { color: "red" }
+        style: { color: "red" },
     });
 
     const [usuario, setUsuario] = useState({
         nome: "filipe",
         sobrenome: "ricardo",
         cpf: "47010211809",
-        cep: "09791160",
         email: "fi@sptech.com",
-        senha: "senha1234",
+        senha: "123",
+        confirmacaoSenha: "",
         dataNasc: "2001-12-18",
+        cep: "09791-160",
         numero: "566",
         rua: "",
         cidade: "",
-        estado: ""
+        estado: "",
     });
 
-    const [cepResultado, setCepResultado] = useState({
-        cep: "",
-        logradouro: "",
-        complemento: "",
-        bairro: "",
-        localidade: "",
-        uf: "",
-    });
-
-    const userID = customEnv.tipo;
-
-    let cepTimer;
 
     const criarUsuario = () => {
         woofJoyApi
-            .post(`/users/${userID}`, usuario)
+            .post(`/users/${role}`, usuario)
             .then((resposta) => {
                 alert(resposta.status);
-                navigate("/login-inicial")
-                toast.success('Usuário cadastrado com sucesso!')
+                if (role === "C") {
+                    navigate("/login");
+                }
+                else {
+                    navigate("/feed-parceiro-edit");
+
+                }
+                toast.success("Usuário cadastrado com sucesso!");
             })
             .catch((erro) => {
-                // alert(`Erro ao criar o usuário: ${erro.message}`);
-                // alert(usuario);
-                console.log(usuario)
-                toast.error('Erro ao cadastrar usuário')
+                console.log(usuario);
+                toast.error("Erro ao cadastrar usuário");
             });
-    };
-
-    const buscarPorCep = (cep) => {
-        woofJoyApi
-            .get(`/cep/${cep}`)
-            .then((resposta) => {
-                setCepResultado({
-                    cep: resposta.data.cep,
-                    logradouro: resposta.data.logradouro,
-                    complemento: resposta.data.complemento,
-                    bairro: resposta.data.bairro,
-                    localidade: resposta.data.localidade,
-                    uf: resposta.data.uf,
-                });
-
-                // setMensagemErro({
-                //     texto: "Cep Encontrado",
-                //     style: { color: "green" }
-                // });
-
-                console.log(resposta.message)
-                console.log(resposta.status)
-
-                setUsuario({
-                    rua: resposta.data.logradouro,
-                    cidade: resposta.data.localidade,
-                    estado: resposta.data.uf
-                })
-            })
-            .catch((erro) => {
-                console.log(`${erro.message}`);
-                console.log(`${erro.status}`)
-
-                // setMensagemErro({
-                //     texto: "Cep Inválido",
-                //     style: { color: "red" }
-                // });
-
-                toast.error('CEP Inválido')
-            });
-    };
-
-    const handleCepChange = (event) => {
-        const { value } = event.target;
-        setUsuario({ ...usuario, cep: value });
-
-        clearTimeout(cepTimer);
-
-        cepTimer = setTimeout(() => {
-            buscarPorCep(value);
-        }, 1000);
     };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUsuario({
             ...usuario,
-            [name]: value
+            [name]: value,
         });
     };
 
-    // Validação da input de e-mail
     const [isValidEmail, setIsValidEmail] = useState(true);
 
     const validateEmail = (email) => {
@@ -134,21 +78,23 @@ function Cadastro() {
     const handleEmailChange = (event) => {
         const newEmail = event.target.value;
         setIsValidEmail(validateEmail(newEmail));
+        handleInputChange(event);
     };
 
-    // Validação da confirmação de senha
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [passwordsMatch, setPasswordsMatch] = useState(true);
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
         checkPasswordsMatch(event.target.value, confirmPassword);
+        handleInputChange(event);
     };
 
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
         checkPasswordsMatch(password, event.target.value);
+        handleInputChange(event);
     };
 
     const checkPasswordsMatch = (password, confirmPassword) => {
@@ -157,8 +103,8 @@ function Cadastro() {
 
     return (
         <body className="cadastro-body">
-
-            <ToastContainer position="top-right"
+            <ToastContainer
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -167,7 +113,8 @@ function Cadastro() {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light" />
+                theme="light"
+            />
 
             <main className="cadastro-main">
                 <section className="cadastro-sessionImg">
@@ -183,7 +130,7 @@ function Cadastro() {
                 </section>
 
                 <section className="cadastro-div_botao_voltar">
-                    <Link to="/" className="cadastro-button_voltar" onClick={() => criarUsuario(userID)}>
+                    <Link to="/" className="cadastro-button_voltar">
                         <img className="cadastro-img_botao_voltar" src={imgIconBtnVoltar} alt="Ícone de curtir" />
                         <b>Voltar</b>
                     </Link>
@@ -257,8 +204,7 @@ function Cadastro() {
                                             type="text"
                                             name="cep"
                                             value={usuario.cep}
-                                            onChange={handleCepChange}
-                                            onBlur={buscarPorCep}
+                                            onChange={handleInputChange}
                                             placeholder="00000-000"
                                         />
                                         {/* <label style={mensagemErro.style} className="cadastro-mensagemErro" htmlFor="cep" >{mensagemErro.texto}</label> */}
@@ -274,118 +220,68 @@ function Cadastro() {
                                         />
                                     </div>
                                 </div>
-                                <div className="cadastro-campoSozinho">
-                                    <div className="cadastro-campoForm">
-                                        <label htmlFor="rua">Rua</label>
-                                        <input
-                                            className="cadastro-inputEmail"
-                                            type="text"
-                                            name="rua"
-                                            value={cepResultado.logradouro}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="cadastro-camposJuntos">
-                                    <div className="cadastro-campoForm">
-                                        <label htmlFor="cidade">Cidade</label>
-                                        <input
-                                            className="cadastro-inputOutros"
-                                            type="text"
-                                            name="cidade"
-                                            value={cepResultado.localidade}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                    <div className="cadastro-campoForm">
-                                        <label htmlFor="estado">Estado</label>
-                                        <input
-                                            className="cadastro-inputOutros"
-                                            type="text"
-                                            name="estado"
-                                            value={cepResultado.uf}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 
-                        <div className="cadastro-container-login">
-                            <p className="cadastro-texto-guia">Login:</p>
-                            <div className="cadastro-login">
-                                <div className="cadastro-campoSozinho">
-                                    <div className="cadastro-campoForm">
-                                        <label htmlFor="email">E-mail</label>
-                                        <input
-                                            className="cadastro-inputEmail"
-                                            type="text"
-                                            name="email"
-                                            value={usuario.email}
-                                            onChange={(e) => {
-                                                handleEmailChange(e);
-                                                handleInputChange(e)
-                                            }}
-                                        />
-                                        {!isValidEmail &&
-                                            <div className="cadastro-menssagemErro">
-                                                <img src={imgIconAtencao} alt="" />
-                                                <span>Digite um e-mail válido</span>
-                                            </div>
-                                        }
-                                    </div>
+                        <div className="cadastro-container-dados-usuario">
+                            <p className="cadastro-texto-guia">Dados do usuário:</p>
+                            <div className="cadastro-dados-usuario">
+                                <div className="cadastro-campoForm">
+                                    <label htmlFor="email">E-mail</label>
+                                    <input
+                                        className={`cadastro-inputOutros ${isValidEmail ? "" : "invalid"}`}
+                                        type="email"
+                                        name="email"
+                                        value={usuario.email}
+                                        onChange={handleEmailChange}
+                                    />
+                                    {!isValidEmail && <p className="error-message">Email inválido</p>}
                                 </div>
                                 <div className="cadastro-camposJuntos">
                                     <div className="cadastro-campoForm">
                                         <label htmlFor="senha">Senha</label>
                                         <input
-                                            className="cadastro-inputOutros"
+                                            className={`cadastro-inputOutros ${passwordsMatch ? "" : "invalid"}`}
                                             type="password"
                                             name="senha"
                                             value={usuario.senha}
-                                            onChange={(e) => {
-                                                handlePasswordChange(e);
-                                                handleInputChange(e)
-                                            }}
+                                            onChange={handlePasswordChange}
                                         />
-                                        {/* <div className="cadastro-menssagemErro">
-                                            <img src={imgIconAtencao} alt="" />
-                                            <span>Digite uma senha válida</span>
-                                        </div> */}
                                     </div>
                                     <div className="cadastro-campoForm">
-                                        <label htmlFor="confirmacaoSenha">Confirmação de senha</label>
+                                        <label htmlFor="confirmacaoSenha">Confirmar senha</label>
                                         <input
-                                            className="cadastro-inputOutros"
+                                            className={`cadastro-inputOutros ${passwordsMatch ? "" : "invalid"}`}
                                             type="password"
                                             name="confirmacaoSenha"
                                             value={usuario.confirmacaoSenha}
-                                            onChange={(e) => {
-                                                handleConfirmPasswordChange(e);
-                                                handleInputChange(e)
-                                            }}
+                                            onChange={handleConfirmPasswordChange}
                                         />
-                                        {!passwordsMatch &&
-                                            <div className="cadastro-menssagemErro">
-                                                <img src={imgIconAtencao} alt="" />
-                                                <span>Digite a mesma senha</span>
-                                            </div>
-                                        }
+                                        {!passwordsMatch && <p className="error-message">As senhas não coincidem</p>}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
-                    <div className="cadastro-campoCadastre">
-                        <button className="cadastro-button_entrar" onClick={criarUsuario}>Criar Conta</button>
-                        <span className="cadastro-span-chamativo-login">Já tem uma conta?
-                            <Link to="/login-inicial" className="cadastro-linkForm"><b>Conecte-se</b></Link>
-                        </span>
+
+                    <div className="cadastro-container-btn">
+                        <Button
+                            buttonName={"Cadastrar"}
+                            displayOn={"flez"}
+                            fontColor={"white"}
+                            buttonBackColor={"#DB4B90"}
+                            buttonWidth={"90%"}
+                            buttonHeigth={"15%"}
+                            cursor={"pointer"}
+                            onClick={() => criarUsuario()}
+                        />
                     </div>
                 </section>
             </main>
         </body>
-
     );
 }
 

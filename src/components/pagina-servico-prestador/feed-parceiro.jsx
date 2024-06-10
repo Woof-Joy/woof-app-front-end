@@ -99,7 +99,7 @@ const setModelCancelar = () => {
 
   useEffect(() => {
     woofJoyApi
-      .get(`/parceiros/31`, {
+      .get(`/parceiros/${idParceiro}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -115,7 +115,7 @@ const setModelCancelar = () => {
 
   function listar() {
     woofJoyApi
-      .get(`/avaliacoes/parceiro/31`, {
+      .get(`/avaliacoes/parceiro/${idParceiro}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -147,7 +147,7 @@ const setModelCancelar = () => {
 
   function listarServicos() {
     woofJoyApi
-      .get(`/ficha/parceiro/31`, {
+      .get(`/ficha/parceiro/${idParceiro  }`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

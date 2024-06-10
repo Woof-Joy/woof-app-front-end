@@ -27,6 +27,7 @@ import CadastroPet from "./components/pets/CadastroPet"
 import ModalCadastroAvalicao from "./components/modais/ModalCadastrarAvaliacao"
 import ModalCadastrarRelatorio from './components/modais/ModalCadastrarRelatorio';
 import ModalLeituraRelatorio from "./components/modais/ModalLeituraRelatorio"
+import ModalPagamento from "./components/modais/ModalPagamento"
 
 //-------------------IMPORT ERROR PAGE------------------------
 import ErrorPage from './components/ErrorPage'
@@ -127,6 +128,11 @@ const router = createBrowserRouter([
       {
         path: "visualizar-relatorio",
         element: <ModalLeituraRelatorio />
+
+      },
+      {
+        path: "pagamento",
+        element: <ModalPagamento />
 
       }
     ]

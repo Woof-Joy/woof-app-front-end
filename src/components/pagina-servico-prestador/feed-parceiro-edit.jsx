@@ -13,6 +13,8 @@ import foto from "../../imgs/mock/semfoto.jpg";
 import IconEditar from "../../imgs/meu-perfil/icon-editar.png"
 import BotaoUpload from "../componentes-gerais/BotaoUpload"
 
+import ModalPagamento from "../modais/ModalPagamento.jsx"
+
 import IconDogWalker from '../../imgs/feed-parceiro/icon-dog-walker.png'
 import IconDogSitter from '../../imgs/feed-parceiro/icon-dog-sitter.png'
 
@@ -93,6 +95,20 @@ function FeedParceiro() {
     });
 
     const [editing, setEditing] = useState(false);
+    const [mostrarPagamento, setMostrarPagamento] = useState(false);
+
+    function pagamentoOnModal() {
+        setMostrarPagamento(true);
+    }
+
+    function pagamentoOffModal() {
+        setMostrarPagamento(false);
+    }
+
+
+
+
+
 
     const toggleInputs = () => {
         setEditing(!editing);
@@ -253,10 +269,18 @@ function FeedParceiro() {
             });
     }
 
-    
+
 
     return (
         <>
+
+            {/* {mostrarPagamento && ( */}
+
+                <ModalPagamento
+                    onClose={pagamentoOffModal}
+
+                />
+            {/* )} */}
             <div className="feed-parceiro-container">
 
                 <ToastContainer position="top-right"
@@ -306,7 +330,7 @@ function FeedParceiro() {
                                 </span>
                                 <span className="txt-avaliacao">
                                     <p>
-                                     <b>{infoParceiro?.fichas?.[0]?.servicos?.[0]?.nota ?? 0}</b>
+                                        <b>{infoParceiro?.fichas?.[0]?.servicos?.[0]?.nota ?? 0}</b>
                                     </p>
                                 </span>
                             </div>
@@ -329,18 +353,7 @@ function FeedParceiro() {
                 {/* ----------------*/}
 
                 <section className="carrossel-servicos">
-                    <div className="conteudo-carrossel">
-                        <div className="carrossel">
-                            <BootstrapCarousel
-                                imagens={imagensCarrossel}
-                            />
-                        </div>
-                        {/* VISÃO PARCEIRO */}
-                        <div>
-                            <BotaoUpload ref={fileUploadRef} onUpload={uploadImg} />
-                        </div>
-                        {/* ----------------*/}
-                    </div>
+
 
                     <div className="conteudo-servicos">
                         <div className="info-servicos-prestados">
@@ -431,7 +444,7 @@ function FeedParceiro() {
                         </div>
                         <div className="feed-p-edit-btn-pgto">
                             <p>Seja um <span className="feed-p-edit-pgto-bold">parceiro premium</span> na Woof Joy:</p>
-                            <button className="feed-p-edit-pgto-btn-confira">Confira</button>
+                            <button onClick={() => pagamentoOnModal()} className="feed-p-edit-pgto-btn-confira">Confira</button>
                         </div>
 
                     </div>
