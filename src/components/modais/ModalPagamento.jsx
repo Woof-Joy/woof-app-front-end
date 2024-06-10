@@ -101,7 +101,7 @@ function ModalPagamento(props) {
                         </label>
                         <Button
                             buttonName={"Assinar Agora"}
-                            displayOn={"flez"}
+                            displayOn={"flex"}
                             fontColor={"white"}
                             buttonBackColor={"#DB4B90"}
                             buttonWidth={"90%"}
