@@ -105,7 +105,17 @@ a {color: #DB4B90;
     font-size: 16px;
     font-weight: 700;
     color: #DB4B90;
-    justify-content: end;
+    justify-content: start;
+    margin-right: 5%;
+}
+
+.cadastro-texto-guia-endereco {
+    width: 15%;
+    display: flex;
+    font-size: 16px;
+    font-weight: 700;
+    color: #DB4B90;
+    justify-content: start;
     margin-right: 5%;
 }
 
@@ -198,6 +208,12 @@ a {color: #DB4B90;
 .cadastro-span-chamativo-login {
     display: flex;
     gap: 5px;
+}
+
+.cadastro-container-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
 }
 
 
@@ -372,7 +388,7 @@ a {color: #DB4B90;
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: start;
         margin-top: 5%;
     }
     
