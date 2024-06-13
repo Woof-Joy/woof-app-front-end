@@ -7,6 +7,7 @@ import "../../../css/meu-perfil.css"
 import ExemploFoto from "../../../imgs/chat/exemplo-foto-contato.png";
 import IconLixeira from "../../../imgs/meu-perfil/lixeira.png"
 import IconEditar from "../../../imgs/meu-perfil/icon-editar.png"
+import { ToastContainer, toast } from 'react-toastify'
 
 
 function MeuPerfilCliente() {
@@ -19,7 +20,7 @@ function MeuPerfilCliente() {
         email: "",
         senha: "",
         dataNasc: "",
-        imgUsuario: null,
+        imgUsuario: "",
         descricao: null,
         parceiro: null,
         cliente: {
@@ -48,6 +49,29 @@ function MeuPerfilCliente() {
             .catch((erro) => {
                 alert("erro:" + erro.status);
                 console.log(erro.status);
+            });
+    };
+
+    const uploadImg = (file) => {
+        const formData = new FormData();
+
+        formData.append('file', file);
+
+        woofJoyApi
+            .post(`/img/upload/perfil`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                //RECARREGANDO A PÁGINA PARA A FOTO MUDAR
+                window.location.reload();
+            })
+            .catch((erro) => {
+                console.log(erro)
+                // alert(`Erro ao salvar a imagem: ${erro.message}`);
+                toast.error('Falha no upload')
             });
     };
 
@@ -107,8 +131,8 @@ function MeuPerfilCliente() {
                 <div className="meu-perfil-bloco-1">
                     <p className="meu-perfil-titulo">Meu perfil</p>
                     <div className="meu-perfil-foto-perfil">
-                        <img className="meu-perfil-img-foto" src={ExemploFoto} alt="" />
-                        <BotaoUpload />
+                        <img className="meu-perfil-img-foto" src={usuario.imgUsuario} alt="" />
+                        <BotaoUpload onUpload={uploadImg}/>
                         <img src={IconLixeira} alt="" />
                     </div>
                     <div className="meu-perfil-inputs">
