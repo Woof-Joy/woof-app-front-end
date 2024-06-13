@@ -71,6 +71,36 @@ function MenuParceiro() {
   };
 
 
+  const handleInputChangeSitter = (event) => {
+    const { name, value } = event.target;
+    setFichaBodyPostSitter({
+      ...postFichaBodySitter,
+      [name]: value
+    });
+  };
+
+  const handleInputChangeWalker = (event) => {
+    const { name, value } = event.target;
+    setFichaBodyPostWalker({
+      ...postFichaBodyWalker,
+      [name]: value
+    });
+  };
+
+  const [postFichaBodySitter, setFichaBodyPostSitter] = useState({
+    idParceiro: userId,
+    tipoServico: "Dog Sitter",
+    valor: "100"
+
+  })
+
+  const [postFichaBodyWalker, setFichaBodyPostWalker] = useState({
+    idParceiro: userId,
+    tipoServico: "Dog Walker",
+    valor: "50"
+
+  })
+
 
   function pagamentoOnModal() {
     setMostrarPagamento(true);
@@ -114,12 +144,7 @@ function MenuParceiro() {
     aceitaDogCio: "",
   })
 
-  const [postFichaBody, setFichaBodyPost] = useState({
-    idParceiro: userId,
-    tipoServico: "",
-    valor: ""
 
-  })
 
 
   const [parceiroInfo, setParceiroInfo] = useState({
@@ -229,6 +254,7 @@ function MenuParceiro() {
       }).then((response) => {
         console.log(response.data);
         setServicosList(response.data);
+        setFichaBodyPostWalker(response.data)
       })
       .catch((erroOcorrido) => {
         console.log(userId);
@@ -240,33 +266,27 @@ function MenuParceiro() {
 
 
 
-  function putFicha(valorPassado, tipoServicoPassado) {
-
-  
-    setFichaBodyPost({
-      valor: valorPassado,
-      tipoServico: tipoServicoPassado,
-
-    })
-
+  function putFicha(body) {
     woofJoyApi
-      .put(`/ficha/parceiro/${userId}`, postFichaBody, {
+      .put(`/ficha`, body, {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((response) => {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        listarServicos()
         console.log(response.data);
-        setServicosList(response.data);
+        alert("Ficha atualizada com sucesso!");
       })
       .catch((erroOcorrido) => {
-        console.log(userId);
-        console.log("Servicos:" + erroOcorrido);
+        console.log("Erro ao atualizar a ficha:", erroOcorrido);
+        alert("Erro ao atualizar a ficha.");
       });
   }
 
   function putObservacoes() {
     woofJoyApi
-      .put(`/parceiros//${userId}`, postFichaBody, {
+      .put(`/parceiros/${userId}`, putObservacoesBody, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -300,14 +320,6 @@ function MenuParceiro() {
       });
   };
 
-
-  function save() {
-    putValidacao()
-    putObservacoes()
-    putFicha()
-    listarServicos()
-    listarDados()
-  }
 
 
 
@@ -371,7 +383,7 @@ function MenuParceiro() {
                   buttonHeight={"20%"}
                   padding={"20px"}
                   cursor={"auto"}
-                  onClick={() => save()}
+                   onClick={() => deixarInputsEditaveus()}
                 />
               )}
             </div>
@@ -432,15 +444,15 @@ function MenuParceiro() {
                                   fontColor={"white"}
                                   buttonBackColor={"#DB4B90"}
                                   textShadow={"black"}
-                                  buttonWidth={"100%"}
+                                  buttonWidth={"75%"}
                                   buttonHeight={"20%"}
-                                  padding={"20px"}
+                                  padding={"0px"}
                                   cursor={"auto"}
-                                  onClick={() => putFicha("valorDogWalker.value", "Dog Walker")}
+                                  onClick={() => putFicha(postFichaBodyWalker)}
                                 />
                               )}
                             </div>
-                            <p>R$ <input id="valorDogWalker" className="i-menu" type="text" disabled={editarPerfil} value={ficha.valor} /></p>
+                            <p>R$ <input id="valor" className="i-menu"  onChange={handleInputChangeWalker} type="text" disabled={editarPerfil} placeholder={ficha.valor} /></p>
                             <p>Qtd. Serviços Prestados: {ficha.qtdServico}</p>
                           </div>
                         </>
@@ -465,15 +477,16 @@ function MenuParceiro() {
                                   fontColor={"white"}
                                   buttonBackColor={"#DB4B90"}
                                   textShadow={"black"}
-                                  buttonWidth={"100%"}
-                                  buttonHeight={"20%"}
-                                  padding={"20px"}
+                                  buttonWidth={"70%"}
+                                  buttonHeight={"10%"}
+                                  padding={"0px"}
                                   cursor={"auto"}
-                                  onClick={() => putFicha("valorDogSitter.value", "Dog Sitter")}
+                                  onClick={() => putFicha(postFichaBodySitter)}
                                 />
-                              )}                            </div>
+                              )}                          
+                              </div>
                             <>
-                              <p>R$ <input id="valorDogSitter" name="valorDogSitter" className="i-menu" key="valorDogSitter" type="text" disabled={editarPerfil} value={ficha.valor} /></p>
+                              <p>R$ <input id="valor" name="valorDogSitter" onChange={handleInputChangeSitter} className="i-menu" key="valorDogSitter" type="text" disabled={editarPerfil} placeholder={ficha.valor} /></p>
                               <p>Qtd. Serviços Prestados: {ficha.qtdServico}</p>
                             </>
                           </div>
@@ -494,12 +507,12 @@ function MenuParceiro() {
           </div>
         </section>
 
-        <p className="titulo-obs-acom" value={parceiroInfo.aceitaDogBravo}></p>
+        <p className="titulo-obs-acom" >Observações</p>
         <section className="acomodacao">
           <div className="todas-acomodacoes">
             <div className="obs obs-condicional">
-              <TipoAtendimento icon={IconPetEspecial} descricao={["Aceita pet especiais"]} /> parceiroInfo 
-              <input type="checkbox" name="aceitaDogEspecial" onChange={handleInputChangeObservacao} disabled={editarPerfil} checked={parceiroInfo.aceitaDogEspecial? true : false}/>
+              <TipoAtendimento icon={IconPetEspecial} descricao={["Aceita pet especiais"]} />  
+              <input type="checkbox" name="aceitaDogEspecial" onChange={handleInputChangeObservacao} disabled={editarPerfil} />
             </div>
 
             <div className="obs obs-condicional">
@@ -510,7 +523,7 @@ function MenuParceiro() {
 
             <div className="obs obs-condicional">
               <TipoAtendimento icon={IconCasa} descricao={["Aceita Pet idoso"]} />
-              <input type="checkbox" name="aceitaDogIdoso" onChange={handleInputChangeObservacao} disabled={editarPerfil} />
+              <input type="checkbox"  name="aceitaDogIdoso" onChange={handleInputChangeObservacao} disabled={editarPerfil} />
             </div>
           </div>
 

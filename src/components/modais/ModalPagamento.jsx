@@ -11,7 +11,7 @@ function ModalPagamento(props) {
     const { nomeUsuario, onClose } = props;
 
     const [pagamentoBody, setPagamentoBody] = useState({
-        amount: "40",
+        amount: "119.90",
         description: "Pagamento concluído com sucesso"
     });
 
