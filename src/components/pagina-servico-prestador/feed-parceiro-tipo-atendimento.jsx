@@ -17,15 +17,6 @@ function FeedParceiroTipoAtendimento({icon, descricao, icon2,descricao2}) {
             </p>
           ))}
         </div>
-
-        <div className="conteudo-atendimento-primeiro">
-        <img className="icon-atendimento" src={icon2} alt="imagem do parceiro" />
-          {descricao2.map((descricao2, index) => (
-            <p key={index} className="txt-info">
-              {descricao2}
-            </p>
-          ))}
-        </div>
       </div>
     </>
   );

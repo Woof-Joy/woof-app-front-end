@@ -274,13 +274,14 @@ function FeedParceiro() {
     return (
         <>
 
-            {/* {mostrarPagamento && ( */}
+            {mostrarPagamento && (
 
                 <ModalPagamento
+                    nomeUsuario={nome}
                     onClose={pagamentoOffModal}
 
                 />
-            {/* )} */}
+            )}
             <div className="feed-parceiro-container">
 
                 <ToastContainer position="top-right"

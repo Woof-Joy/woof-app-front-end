@@ -10,7 +10,7 @@ import LoginInicial from "./components/institucional/login-inicial"
 import Login from "./components/institucional/login"
 
 import FeedParceiro from './components/pagina-servico-prestador/feed-parceiro'
-import FeedParceiroEdit from './components/pagina-servico-prestador/feed-parceiro-edit';
+import FeedParceiroEdit from './components/pagina-servico-prestador/menu-parceiro';
 import FeedDoacao from './components/feed/feed-doacao'
 import FeedServico from './components/feed/feed-servicos'
 import MeusServicos from './components/feed/meus-servicos'
