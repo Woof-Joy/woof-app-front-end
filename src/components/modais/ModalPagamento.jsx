@@ -46,7 +46,7 @@ function ModalPagamento(props) {
                 console.log("Resposta da API:", response.data);
                 if (response.data && response.data.redirectUrl) {
                     setPayment({ redirectUrl: response.data.redirectUrl });
-                    window.open("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-77U645654S019294F", '_blank');
+                    window.open(response.data.redirectUrl, '_blank');
                     alert("Pagamento feito com sucesso");
                     onClose();
                 } else {

@@ -45,6 +45,7 @@ function FeedServico() {
                 },
             })
             .then((response) => {
+                console.log();
                 setParceiros(response.data);
                 console.log(response.data);
             })
@@ -59,6 +60,7 @@ function FeedServico() {
         const cidade = parceiro.cidade ? parceiro.cidade.toLowerCase() : "";
         const uf = parceiro.uf ? parceiro.uf.toLowerCase() : "";
         const descricao = parceiro.descricao ? parceiro.descricao.toLowerCase() : "";
+        const imgUsuario = parceiro.imgUsuario ? parceiro.imgUsuario.toLowerCase() : "";
         const termo = termoPesquisa.toLowerCase();
 
         const tipoServicoWalker = parceiro.servicos.length > 0 ? parceiro.servicos[0].tipoServico : "";
@@ -74,7 +76,8 @@ function FeedServico() {
                 sobrenome.includes(termo) ||
                 cidade.includes(termo) ||
                 uf.includes(termo) ||
-                descricao.includes(termo)
+                descricao.includes(termo) ||
+                imgUsuario.includes(termo)
             )
         );
     });
@@ -95,10 +98,10 @@ function FeedServico() {
 
                         <div className="barra-pesquisa-feed-servico">
                             <img className="img-pesquisa-feed-servico" src={lupa} alt="ícone de pesquisa" />
-                            <input 
-                                className="input-pesquisa-feed-servico" 
-                                type="text" 
-                                placeholder="pesquisar" 
+                            <input
+                                className="input-pesquisa-feed-servico"
+                                type="text"
+                                placeholder="pesquisar"
                                 value={termoPesquisa}
                                 onChange={(e) => setTermoPesquisa(e.target.value)}
                             />
@@ -157,7 +160,7 @@ function FeedServico() {
                                 uf={parceiro.uf}
                                 descricao={parceiro.descricao}
                                 avaliacao={parceiro.estrelas}
-                                imagem={foto}
+                                imagem={parceiro.imgUsuario}
                                 idParceiro={parceiro.idParceiro}
                             />
                         </Link>

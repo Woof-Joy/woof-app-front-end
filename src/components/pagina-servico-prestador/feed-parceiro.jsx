@@ -66,7 +66,8 @@ function FeedParceiro() {
     aceitaDogBravo: false,
     aceitaDogGrande: true,
     aceitaDogCio: false,
-    descricao: ""
+    descricao: "",
+    imgParceiro: ""
   });
 
   const enderecoLogado = sessionStorage.getItem("endereco");
@@ -179,7 +180,7 @@ const setModelCancelar = () => {
         <MenuCliente />
 
 
-        <img className="foto-perfil-image-feed" src={foto} alt="" />
+        <img className="foto-perfil-image-feed" src={parceiroInfo.imgParceiro} alt="" />
 
         <section className="container-info-parceiro">
           <div className="conteudo-info-parceiro">
@@ -192,7 +193,7 @@ const setModelCancelar = () => {
                 </span>
                 <span className="txt-local">
                   <p>
-                    <b>{enderecoLogado}</b>
+                    <b>{logradouro}, {uf}</b>
                   </p>
                 </span>
               </div>
