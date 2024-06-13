@@ -47,7 +47,7 @@ function Login() {
                 if (roleResult === "C") {
                     navigate("/home-cliente")
                 } else {
-                    navigate("/chat")
+                    navigate("/feed-parceiro-edit")
                 }
 
             })
