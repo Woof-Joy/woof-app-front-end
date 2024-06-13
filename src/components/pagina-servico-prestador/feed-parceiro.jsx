@@ -82,11 +82,11 @@ function FeedParceiro() {
 
   const setDisplayFlex = () => {
     setServicoModal(true);
-};
+  };
 
-const setModelCancelar = () => {
+  const setModelCancelar = () => {
     setServicoModal(false);
-};
+  };
 
   useEffect(() => {
     listar();
@@ -147,7 +147,7 @@ const setModelCancelar = () => {
 
   function listarServicos() {
     woofJoyApi
-      .get(`/ficha/parceiro/${idParceiro  }`, {
+      .get(`/ficha/parceiro/${idParceiro}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -170,12 +170,12 @@ const setModelCancelar = () => {
   return (
     <>
       {servicoModal === true && (
-                        <ModalAgendarServico
-                            idParceiro={idParceiro}
-                            cancelarOn={() => setModelCancelar()}
-                            parceiroWoofJoy={parceiroInfo.nome}
-                        />
-                    )}
+        <ModalAgendarServico
+          idParceiro={idParceiro}
+          cancelarOn={() => setModelCancelar()}
+          parceiroWoofJoy={parceiroInfo.nome}
+        />
+      )}
       <div className="feed-parceiro-container">
         <MenuCliente />
 
@@ -221,7 +221,7 @@ const setModelCancelar = () => {
                 </span>
                 <span className="txt-avaliacao">
                   <p>
-                  <button className='modal-avaliacao-btn-enviar-avaliacao' onClick={() => setDisplayFlex()}>Agendar Servico</button>
+                    <button className='modal-avaliacao-btn-enviar-avaliacao' onClick={() => setDisplayFlex()}>Agendar Servico</button>
                   </p>
                 </span>
               </div>
@@ -285,46 +285,43 @@ const setModelCancelar = () => {
           </div>
         </section>
 
-        <section className="observacoes">
-          <p className="titulo-obs-acom">Observacões</p>
-          <div className="todas-observacoes">
-            <div className="obs-1">
-              <TipoAtendimento icon={IconDoisPet} descricao={["Permitido até dois Pets"]}
-                icon2={IconPetEspecial} descricao2={["Cuida de pets especiais"]} />
+        <p className="titulo-obs-acom" >Observações</p>
+        <section className="acomodacao">
+          <div className="todas-acomodacoes">
+            <div className="obs obs-condicional">
+              <TipoAtendimento icon={IconPetEspecial} descricao={["Aceita pet especiais"]} />
             </div>
 
-            <div className="obs-2">
-              <TipoAtendimento icon={IconDogIdoso} descricao={["Aceita Pet idoso"]}
-                icon2={IconPetBravo} descricao2={["Aceita pet bravo"]} />
+            <div className="obs obs-condicional">
+              <TipoAtendimento icon={IconPetBravo} descricao={["Aceita pet bravo"]} />
             </div>
 
-            <div className="obs-3">
-              <TipoAtendimento icon={IconDogIdoso} descricao={["Aceita pet grande porte"]}
-                icon2={IconFemeaCio} descricao2={["Aceita fêmea no cio"]} />
+            <div className="obs obs-condicional">
+              <TipoAtendimento icon={IconCasa} descricao={["Aceita Pet idoso"]} />
             </div>
           </div>
-        </section>
+
+
+          <div className="todas-acomodacoes">
+
+            <div className="obs  obs-condicional">
+              <TipoAtendimento icon={IconDogIdoso} descricao={["Aceita pet grande porte"]} />
+            </div>
+
+            <div className="obs obs-condicional">
+              <TipoAtendimento icon={IconFemeaCio} descricao={["Aceita fêmea no cio"]} />
+            </div>
+
+          </div>
+
+
+        </section >
 
         <section className="acomodacao">
-          <p className="titulo-obs-acom">Acomodação</p>
           <div className="todas-acomodacoes">
-            <div className="acom-1">
-              <TipoAtendimento icon={IconCasa} descricao={["Mora em Casa"]}
-                icon2={IconAreaExterna} descricao2={["Tem Área externa"]} />
-            </div>
 
-            <div className="acom-2">
-              <TipoAtendimento icon={IconTemAnimais} descricao={["Tem animais em casa"]}
-                icon2={IconCrianca} descricao2={["Não tem crianças em casa"]} />
-            </div>
-
-            <div className="acom-3">
-              <TipoAtendimento icon={IconRotasFuga} descricao={["Sem rotas de fuga"]}
-                icon2={IconSobeSofa} descricao2={["Pode subir no sofá"]}
-              />
-            </div>
           </div>
-        </section>
+        </section >
 
         <section className="feed-avaliacoes-container">
           <button className='modal-avaliacao-btn-enviar-avaliacao' onClick={() => avaliacaoTrue()}>Ver Avaliações</button>
