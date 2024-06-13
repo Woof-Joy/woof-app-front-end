@@ -8,7 +8,7 @@ import imgInicioChamativo from "../../imgs/img-inicio-pata.jpg";
 import imgLogoWoffJoy from "../../imgs/logo-branca-footer.png";
 
 function ModalPagamento(props) {
-    const { nomeUsuario, onClose } = props;
+    const { nomeUsuario, onClose, parceirosClick } = props;
 
     const [pagamentoBody, setPagamentoBody] = useState({
         amount: "119.90",
@@ -50,6 +50,8 @@ function ModalPagamento(props) {
                     window.open(response.data.redirectUrl, '_blank');
                     alert("Pagamento feito com sucesso");
                     onClose();
+                    parceirosClick();
+                    
                 } else {
                     console.error("Resposta inesperada:", response.data);
                     alert("Pagamento indisponível no momento");

@@ -162,6 +162,7 @@ function MenuParceiro() {
     aceitaDogGrande: true,
     aceitaDogCio: false,
     descricao: "",
+    premium: "",
     imgParceiro: ""
   });
 
@@ -357,20 +358,12 @@ function MenuParceiro() {
         <ModalPagamento
           nomeUsuario={nome}
           onClose={pagamentoOffModal}
+          parceirosClick={listarDados}
 
         />
       )}
 
-      {/* {mostrarPagamento ? (
-
-<ModalPagamento
-  nomeUsuario={nome}
-  onClose={pagamentoOffModal}
-
-/>
-) : (
-<>teste</>
-)} */}
+  
 
       <div className="feed-parceiro-container">
         <MenuCliente />
@@ -406,7 +399,7 @@ function MenuParceiro() {
                   buttonHeight={"20%"}
                   padding={"20px"}
                   cursor={"auto"}
-                   onClick={() => deixarInputsEditaveus()}
+                  onClick={() => deixarInputsEditaveus()}
                 />
               )}
             </div>
@@ -475,13 +468,13 @@ function MenuParceiro() {
                                 />
                               )}
                             </div>
-                            <p>R$ <input id="valor" className="i-menu"  onChange={handleInputChangeWalker} type="text" disabled={editarPerfil} placeholder={ficha.valor} /></p>
+                            <p>R$ <input id="valor" className="i-menu" onChange={handleInputChangeWalker} type="text" disabled={editarPerfil} placeholder={ficha.valor} /></p>
                             <p>Qtd. Serviços Prestados: {ficha.qtdServico}</p>
                           </div>
                         </>
                       );
                     }
-                    return null; // Retorna null para não renderizar nada se a ficha não corresponder
+                    return null; 
                   })}
                 </div>
 
@@ -506,8 +499,8 @@ function MenuParceiro() {
                                   cursor={"auto"}
                                   onClick={() => putFicha(postFichaBodySitter)}
                                 />
-                              )}                          
-                              </div>
+                              )}
+                            </div>
                             <>
                               <p>R$ <input id="valor" name="valorDogSitter" onChange={handleInputChangeSitter} className="i-menu" key="valorDogSitter" type="text" disabled={editarPerfil} placeholder={ficha.valor} /></p>
                               <p>Qtd. Serviços Prestados: {ficha.qtdServico}</p>
@@ -523,18 +516,31 @@ function MenuParceiro() {
 
               </div>
             </div>
-            <div className="feed-p-edit-btn-pgto">
-              <p>Seja<span className="feed-p-edit-pgto-bold"> premium</span> na Woof Joy:</p>
-              <button onClick={() => pagamentoOnModal()} className="feed-p-edit-pgto-btn-confira">Confira</button>
-            </div>
-          </div>
+
+
+            {parceiroInfo.premium ? (
+              <>
+                <div className="feed-p-edit-btn-pgto-premium">
+                  <p>Você já é<span className="feed-p-edit-pgto-bold"> Premium</span></p>
+                  <button  className="feed-p-edit-pgto-btn-confira">Plano anual efetivo</button>
+                </div>
+              </>
+            ) : (
+
+              <div className="feed-p-edit-btn-pgto">
+                <p>Seja<span className="feed-p-edit-pgto-bold"> premium</span> na Woof Joy:</p>
+                <button onClick={() => pagamentoOnModal()} className="feed-p-edit-pgto-btn-confira">Confira</button>
+              </div>
+        )}
+                  </div>
+
         </section>
 
         <p className="titulo-obs-acom" >Observações</p>
         <section className="acomodacao">
           <div className="todas-acomodacoes">
             <div className="obs obs-condicional">
-              <TipoAtendimento icon={IconPetEspecial} descricao={["Aceita pet especiais"]} />  
+              <TipoAtendimento icon={IconPetEspecial} descricao={["Aceita pet especiais"]} />
               <input type="checkbox" name="aceitaDogEspecial" onChange={handleInputChangeObservacao} disabled={editarPerfil} />
             </div>
 
@@ -546,7 +552,7 @@ function MenuParceiro() {
 
             <div className="obs obs-condicional">
               <TipoAtendimento icon={IconCasa} descricao={["Aceita Pet idoso"]} />
-              <input type="checkbox"  name="aceitaDogIdoso" onChange={handleInputChangeObservacao} disabled={editarPerfil} />
+              <input type="checkbox" name="aceitaDogIdoso" onChange={handleInputChangeObservacao} disabled={editarPerfil} />
             </div>
           </div>
 
