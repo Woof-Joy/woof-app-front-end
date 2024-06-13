@@ -281,7 +281,6 @@ function MenuParceiro() {
       })
       .catch((erroOcorrido) => {
         console.log("Erro ao atualizar a ficha:", erroOcorrido);
-        alert("Erro ao atualizar a ficha.");
       });
   }
 
@@ -296,7 +295,6 @@ function MenuParceiro() {
         setPutObservacoesBody(response.data)
       })
       .catch((erroOcorrido) => {
-        alert("erro no put de observacoes")
         console.log(userId);
         console.log("Servicos:" + erroOcorrido);
       });
@@ -316,7 +314,6 @@ function MenuParceiro() {
       })
       .catch((erroOcorrido) => {
         console.log(erroOcorrido);
-        alert("erro no put cadastral")
 
       });
   };
@@ -346,7 +343,6 @@ function MenuParceiro() {
       })
       .catch((erro) => {
         console.log(erro)
-        // alert(`Erro ao salvar a imagem: ${erro.message}`);
         toast.error('Falha no upload')
       });
   };

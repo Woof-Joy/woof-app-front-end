@@ -142,6 +142,7 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
                 },
             })
             .then((resposta) => {
+                alert(`Agendado com sucesso`);
                 cancelarOn();
                 alert(resposta.status);
                 sendMensage(sendBody);
@@ -152,7 +153,6 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
             .catch((erro) => {
                 alert(`Preencha todos os campos corretamente`);
                 console.log(servicoBody)
-                alert(erro.data)
             });
     };
 
