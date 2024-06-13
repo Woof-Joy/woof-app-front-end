@@ -45,6 +45,7 @@ function MeuPerfilCliente() {
             .get(`/users/${userId}`)
             .then((resposta) => {
                 setUsuario(resposta.data);
+                console.log(resposta.data)
             })
             .catch((erro) => {
                 alert("erro:" + erro.status);
@@ -75,7 +76,7 @@ function MeuPerfilCliente() {
             });
     };
 
-  
+
 
 
 
@@ -113,11 +114,11 @@ function MeuPerfilCliente() {
     }, []);
 
     const handleMostrarAlteracaoSenha = () => {
-        if(mostrarAlteracaoSenha === true){
+        if (mostrarAlteracaoSenha === true) {
             setMostrarAlteracaoSenha(false);
 
-        }else{
-        setMostrarAlteracaoSenha(true);
+        } else {
+            setMostrarAlteracaoSenha(true);
         }
     };
     return (
@@ -132,7 +133,7 @@ function MeuPerfilCliente() {
                     <p className="meu-perfil-titulo">Meu perfil</p>
                     <div className="meu-perfil-foto-perfil">
                         <img className="meu-perfil-img-foto" src={usuario.imgUsuario} alt="" />
-                        <BotaoUpload onUpload={uploadImg}/>
+                        <BotaoUpload onUpload={uploadImg} />
                         <img src={IconLixeira} alt="" />
                     </div>
                     <div className="meu-perfil-inputs">

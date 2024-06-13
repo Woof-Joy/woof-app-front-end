@@ -35,6 +35,8 @@ import IconCrianca from '../../imgs/feed-parceiro/icon-dog-sem-crianca.png'
 import IconRotasFuga from '../../imgs/feed-parceiro/icon-dog-sem-fuga.png'
 import IconSobeSofa from '../../imgs/feed-parceiro/icon-dog-sobe-sofa.png'
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify'
+import BotaoUpload from "../componentes-gerais/BotaoUpload"
 
 
 function MenuParceiro() {
@@ -93,7 +95,8 @@ function MenuParceiro() {
     aceitaDogBravo: false,
     aceitaDogGrande: true,
     aceitaDogCio: false,
-    descricao: ""
+    descricao: "",
+    imgParceiro: ""
   });
 
   const enderecoLogado = sessionStorage.getItem("endereco");
@@ -125,7 +128,7 @@ function MenuParceiro() {
 
   useEffect(() => {
     woofJoyApi
-      .get(`/parceiros/${userId}`, {
+      .get(`/parceiros/4`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -154,6 +157,7 @@ function MenuParceiro() {
         } else {
           setAvaliacaoMedia("0");
         }
+        console.log(response.data);
         console.log(response.data);
       })
       .catch((erroOcorrido) => {
@@ -193,6 +197,28 @@ function MenuParceiro() {
     sessionStorage.setItem("contatoId", idParceiro);
   }
 
+  const uploadImg = (file) => {
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    woofJoyApi
+      .post(`/img/upload/perfil`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        //RECARREGANDO A PÁGINA PARA A FOTO MUDAR
+        window.location.reload();
+      })
+      .catch((erro) => {
+        console.log(erro)
+        // alert(`Erro ao salvar a imagem: ${erro.message}`);
+        toast.error('Falha no upload')
+      });
+  };
+
   return (
     <>
       {mostrarPagamento && (
@@ -218,9 +244,10 @@ function MenuParceiro() {
       <div className="feed-parceiro-container">
         <MenuCliente />
 
-
-        <img className="foto-perfil-image-feed" src={foto} alt="" />
-
+        <div>
+          <img className="foto-perfil-image-feed" src={parceiroInfo.imgParceiro} alt="" />
+          <BotaoUpload onUpload={uploadImg} />
+        </div>
         <section className="container-info-parceiro">
           <div className="conteudo-info-parceiro">
             <div className="cadastrar-menu-parceiro">
