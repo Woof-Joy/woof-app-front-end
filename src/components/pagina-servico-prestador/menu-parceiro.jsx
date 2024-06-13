@@ -213,7 +213,7 @@ function MenuParceiro() {
 
   function listar() {
     woofJoyApi
-      .get(`/avaliacoes/parceiro/${parceiroInfo.idParceiro}`, {
+      .get(`/avaliacoes/parceiro/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -231,6 +231,7 @@ function MenuParceiro() {
       })
       .catch((erroOcorrido) => {
         console.log(erroOcorrido);
+        console.log("ID PARCEIRO" + userId)
       });
   }
 
@@ -416,7 +417,7 @@ function MenuParceiro() {
                 </span>
                 <span className="txt-avaliacao-menu">
                   <p>
-                    <b className="media-avaliacao-menu-parceiro" >Sua média avaliativa {avaliacaoMedia}★</b>
+                    <b className="media-avaliacao-menu-parceiro" > {avaliacaoMedia}★</b>
                   </p>
                 </span>
               </div>
