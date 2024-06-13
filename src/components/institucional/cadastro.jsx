@@ -194,7 +194,7 @@ function Cadastro() {
                         </div>
 
                         <div className="cadastro-container-endereco">
-                            <p className="cadastro-texto-guia">Endereço:</p>
+                            <p className="cadastro-texto-guia-endereco">Endereço:</p>
                             <div className="cadastro-endereco">
                                 <div className="cadastro-camposJuntos">
                                     <div className="cadastro-campoForm">
@@ -224,9 +224,9 @@ function Cadastro() {
                             </div>
                         </div>
 
-                        <div className="cadastro-container-dados-usuario">
+                        <div className="cadastro-container-login">
                             <p className="cadastro-texto-guia">Dados do usuário:</p>
-                            <div className="cadastro-dados-usuario">
+                            <div className="cadastro-login">
                                 <div className="cadastro-campoForm">
                                     <label htmlFor="email">E-mail</label>
                                     <input
@@ -270,11 +270,11 @@ function Cadastro() {
                     <div className="cadastro-container-btn">
                         <Button
                             buttonName={"Cadastrar"}
-                            displayOn={"flez"}
+                            displayOn={"flex"}
                             fontColor={"white"}
                             buttonBackColor={"#DB4B90"}
-                            buttonWidth={"90%"}
-                            buttonHeigth={"15%"}
+                            buttonWidth={"50%"}
+                            buttonHeigth={"30%"}
                             cursor={"pointer"}
                             onClick={() => criarUsuario()}
                         />
