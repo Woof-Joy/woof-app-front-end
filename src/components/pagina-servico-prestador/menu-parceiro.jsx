@@ -184,12 +184,6 @@ function MenuParceiro() {
       });
   };
 
-
-
-
-
-
-
   function listar() {
     woofJoyApi
       .get(`/avaliacoes/parceiro/${userId}`, {
@@ -239,10 +233,6 @@ function MenuParceiro() {
         console.log("Servicos:" + erroOcorrido);
       });
   }
-
-
-
-
 
   function putFicha(valorPassado, tipoServicoPassado) {
 
