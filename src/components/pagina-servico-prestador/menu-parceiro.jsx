@@ -280,7 +280,7 @@ function MenuParceiro() {
         alert("Ficha atualizada com sucesso!");
       })
       .catch((erroOcorrido) => {
-        console.log("Erro ao atualizar a ficha:", erroOcorrido);
+        console.log("Erro ao atualizar a ficha");
       });
   }
 

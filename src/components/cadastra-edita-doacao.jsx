@@ -49,12 +49,10 @@ function CadastraEditaDoacao() {
       .then((response) => {
         setItem(item)
         console.log(response.data);
-        alert("item publicado com sucesso")
         navigate("/doacao")
       })
       .catch((erroOcorrido) => {
         console.log(erroOcorrido.mensagem);
-        alert("erro ao publicar item")
 
       });
   }

@@ -53,7 +53,6 @@ function Login() {
             })
             .catch((erro) => {
                 console.log(erro)
-                // alert(`Erro ao logar o usuário: ${erro.message}`);
                 toast.error('E-mail ou senha inválidos')
             });
     };

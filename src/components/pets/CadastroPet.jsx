@@ -65,13 +65,11 @@ function CadastroPet() {
                 console.log(response.data);
                 console.log(response.status);
                 setDog(response.data)
-                alert("pet cadastrado")
                 navigate("/perfil-cliente")
 
             })
             .catch((erroOcorrido) => {
                 console.log(erroOcorrido.mensagem);
-                alert("complete as informações")
 
 
             });

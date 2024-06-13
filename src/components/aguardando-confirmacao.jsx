@@ -40,7 +40,6 @@ function AguardandoConfirmacao(props) {
                 console.log(response.data);
                 console.log(idServico);
 
-                alert(response.status);
                 setPatchResponse(response.data);
                 props.status(response.data.status);
             })

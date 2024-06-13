@@ -28,7 +28,6 @@ function ModalPagamento(props) {
     //             newWindow.opener = null;
     //         } else {
     //             console.error("Navegador bloqueou a abertura de uma nova aba.");
-    //             alert("Por favor, permita pop-ups para continuar.");
     //         }
     //     }
     // }, [responsePayment]);

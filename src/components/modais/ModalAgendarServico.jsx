@@ -144,7 +144,6 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
             .then((resposta) => {
                 alert(`Agendado com sucesso`);
                 cancelarOn();
-                alert(resposta.status);
                 sendMensage(sendBody);
                 setStyleEdition({
                     opacity: 0,
@@ -163,7 +162,6 @@ function ModalAgendarServico({ opacityOn, widthOn, idParceiro, cancelarOn, parce
                 setUsuario(resposta.data);
             })
             .catch((erro) => {
-                alert("erro:" + erro.status);
                 console.log(erro.status);
             });
     };

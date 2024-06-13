@@ -38,7 +38,6 @@ const Topicos = () => {
 
             })
             .catch((erroOcorrido) => {
-                alert(erroOcorrido.status)
                 console.log(erroOcorrido.mensagem);
             });
     }
@@ -56,12 +55,10 @@ const Topicos = () => {
                 console.log(response.mensagem);
                 console.log(response.status);
                 setTopicos(response.data);
-                alert("acerto porra")
 
             })
             .catch((erroOcorrido) => {
-                alert("erro")
-                alert(token)
+              
                 console.log(erroOcorrido.mensagem);
             });
     }
@@ -88,7 +85,6 @@ const Topicos = () => {
             //   console.log("Connected");
             //   stompClient.subscribe("/topic/doacao/22/20", function (message) {
             //     showMessage(message.body);
-            //     alert(message.body)
 
             // Inscrever-se no tópico
             var subscription = stompClient.subscribe('/topic/doacao/22/20', function (message) {

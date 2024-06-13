@@ -44,7 +44,6 @@ function Cadastro() {
         woofJoyApi
             .post(`/users/${role}`, usuario)
             .then((resposta) => {
-                alert(resposta.status);
                 if (role === "C") {
                     navigate("/login");
                 }

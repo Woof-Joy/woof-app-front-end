@@ -48,7 +48,6 @@ function MeuPerfilCliente() {
                 console.log(resposta.data)
             })
             .catch((erro) => {
-                alert("erro:" + erro.status);
                 console.log(erro.status);
             });
     };
@@ -71,7 +70,6 @@ function MeuPerfilCliente() {
             })
             .catch((erro) => {
                 console.log(erro)
-                // alert(`Erro ao salvar a imagem: ${erro.message}`);
                 toast.error('Falha no upload')
             });
     };
