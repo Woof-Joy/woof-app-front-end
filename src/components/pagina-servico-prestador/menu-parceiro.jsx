@@ -170,7 +170,7 @@ function MenuParceiro() {
 
   function listarDados() {
     woofJoyApi
-      .get(`/parceiros/4`, {
+      .get(`/parceiros/{userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
