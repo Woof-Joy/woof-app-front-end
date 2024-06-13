@@ -41,7 +41,6 @@ function FeedParceiro() {
   const logradouro = sessionStorage.getItem("cidadeParceiroFeed")
   const uf = sessionStorage.getItem("estadoParceiroFeed")
   const nome = sessionStorage.getItem("nomeParceiroFeed")
-  const estrelas = 4.7
   const qtdServicos = sessionStorage.getItem("qtdServicosParceiroFeed")
   const descricao = "Descrição do parceiro"
   const servicos = sessionStorage.getItem("servicosParceiroFeed")
