@@ -67,7 +67,7 @@ function MeuPerfilCliente() {
             .then((response) => {
                 console.log(response.data);
                 //RECARREGANDO A PÁGINA PARA A FOTO MUDAR
-                window.location.reload();
+                window.location.reload(true);
             })
             .catch((erro) => {
                 console.log(erro)
