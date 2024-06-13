@@ -134,7 +134,7 @@ function FeedServico() {
                         <Link
                             to={"/feed-parceiro"}
                             onClick={() => guardarIdParaCaminhoFeedParceiro(
-                                parceiro.idParceiro,
+                                parceiro.idUsuario,
                                 parceiro.nome,
                                 parceiro.cidade,
                                 parceiro.uf,
@@ -161,7 +161,7 @@ function FeedServico() {
                                 descricao={parceiro.descricao}
                                 avaliacao={parceiro.estrelas}
                                 imagem={parceiro.imgUsuario}
-                                idParceiro={parceiro.idParceiro}
+                                idParceiro={parceiro.idUsuario}
                             />
                         </Link>
                     ))

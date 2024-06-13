@@ -126,6 +126,7 @@ function MenuParceiro() {
 
   const [parceiroInfo, setParceiroInfo] = useState({
     idUser: "",
+    idParceiro: "",
     nome: "",
     dataEntrada: "",
     fichas: [""],
@@ -170,7 +171,7 @@ function MenuParceiro() {
 
   function listarDados() {
     woofJoyApi
-      .get(`/parceiros/{userId}`, {
+      .get(`/parceiros/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -186,7 +187,7 @@ function MenuParceiro() {
 
   function listar() {
     woofJoyApi
-      .get(`/avaliacoes/parceiro/${userId}`, {
+      .get(`/avaliacoes/parceiro/${parceiroInfo.idParceiro}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -323,7 +324,7 @@ function MenuParceiro() {
       })
       .then((response) => {
         //RECARREGANDO A PÁGINA PARA A FOTO MUDAR
-        window.location.reload();
+        window.location.reload(true);
       })
       .catch((erro) => {
         console.log(erro)

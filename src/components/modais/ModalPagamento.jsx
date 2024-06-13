@@ -11,7 +11,7 @@ function ModalPagamento(props) {
     const { nomeUsuario, onClose } = props;
 
     const [pagamentoBody, setPagamentoBody] = useState({
-        amount: "40",
+        amount: "119.90",
         description: "Pagamento concluído com sucesso"
     });
 
@@ -46,6 +46,7 @@ function ModalPagamento(props) {
                 console.log("Resposta da API:", response.data);
                 if (response.data && response.data.redirectUrl) {
                     setPayment({ redirectUrl: response.data.redirectUrl });
+                    console.log("LINK: " + response.data.redirectUrl)
                     window.open(response.data.redirectUrl, '_blank');
                     alert("Pagamento feito com sucesso");
                     onClose();
@@ -86,7 +87,7 @@ function ModalPagamento(props) {
                             <b style={{ fontSize: "18px", color: "#DB4B90", }}>POR APENAS:</b>
                             <div className='plano-pagamento'>
                                 <b style={{ fontSize: "17px", color: "#DB4B90", marginTop: "10px", marginBottom: "-2px" }}>Plano Anual</b>
-                                <p style={{ fontSize: "17px", color: "#DB4B90", }}>R$ 29.90 / ano</p>
+                                <p style={{ fontSize: "17px", color: "#DB4B90", }}>R$ 119.90 / ano</p>
                             </div>
                         </label>
                         <Button
